@@ -4,9 +4,9 @@ setlocal EnableExtensions EnableDelayedExpansion
 call "%~dp0ib_env.bat"
 if errorlevel 1 exit /b 1
 
-set "USE_STEAM=1"
+set "USE_STEAM=0"
 set "USE_OFFLINE=0"
-set "USE_AUTH=1"
+set "USE_AUTH=0"
 set "AUTH_TOKEN="
 set "HOST=%IB_HOST%"
 set "PORT=%IB_PORT%"
@@ -34,6 +34,11 @@ if /i "%~1"=="nosteam" (
 )
 if /i "%~1"=="offline" (
     set "USE_OFFLINE=1"
+    shift
+    goto :parse
+)
+if /i "%~1"=="nooffline" (
+    set "USE_OFFLINE=0"
     shift
     goto :parse
 )
@@ -191,7 +196,7 @@ if "%USE_AUTH%"=="1" (
 
 REM Must stay outside parenthesized blocks: PowerShell uses ^( ^).
 REM Quote args that contain spaces. Start-Process -ArgumentList does not.
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; if ($env:IB_OFFLINE -eq '1') { $list.Add('-offline') }; $list.Add('-direct'); $list.Add($env:IB_HOST); $list.Add('-join'); $list.Add('-host'); $list.Add($env:IB_HOST); $list.Add('-serverpassword'); $list.Add($env:IB_PASSWORD); $list.Add('-port'); $list.Add($env:IB_PORT); $list.Add('-portrange'); $list.Add($env:IB_PORTRANGE); $list.Add('-username'); $list.Add($env:IB_USERNAME); if ($env:IB_USE_AUTH -eq '1') { $list.Add('-auth'); if ($env:IB_AUTH_TOKEN) { $list.Add($env:IB_AUTH_TOKEN) } }; $parts = New-Object System.Collections.Generic.List[string]; foreach ($a in $list) { if ($a -match '\s') { $parts.Add(([string][char]34 + $a + [char]34)) } else { $parts.Add($a) } }; $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $env:IB_EXE; $psi.WorkingDirectory = $env:IB_BIN; $psi.UseShellExecute = $true; $psi.Arguments = [string]::Join(' ', $parts.ToArray()); $p = [Diagnostics.Process]::Start($psi); Set-Content -Path $env:IB_CLIENT_PID_FILE -Value $p.Id -Encoding ascii"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; if ($env:IB_OFFLINE -eq '1') { $list.Add('-offline') }; $list.Add('-direct'); $list.Add($env:IB_HOST); $list.Add('-host'); $list.Add($env:IB_HOST); $list.Add('-serverpassword'); $list.Add($env:IB_PASSWORD); $list.Add('-port'); $list.Add($env:IB_PORT); $list.Add('-portrange'); $list.Add($env:IB_PORTRANGE); $list.Add('-username'); $list.Add($env:IB_USERNAME); if ($env:IB_USE_AUTH -eq '1') { $list.Add('-auth'); if ($env:IB_AUTH_TOKEN) { $list.Add($env:IB_AUTH_TOKEN) } }; $parts = New-Object System.Collections.Generic.List[string]; foreach ($a in $list) { if ($a -match '\s') { $parts.Add(([string][char]34 + $a + [char]34)) } else { $parts.Add($a) } }; $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $env:IB_EXE; $psi.WorkingDirectory = $env:IB_BIN; $psi.UseShellExecute = $true; $psi.Arguments = [string]::Join(' ', $parts.ToArray()); $p = [Diagnostics.Process]::Start($psi); Set-Content -Path $env:IB_CLIENT_PID_FILE -Value $p.Id -Encoding ascii"
 
 if not exist "%IB_CLIENT_PID_FILE%" (
     echo ERROR: Failed to start the client process.
@@ -223,16 +228,18 @@ exit /b 0
 echo.
 echo Usage: %~nx0 [options]
 echo.
-echo Start an Infinity Battlescape client that connects to the local server.
+echo Start an Infinity Battlescape client aimed at the local dedicated server.
 echo This is a separate process from start_server.bat.
-echo Always passes -join so the client does not stop at the main menu.
+echo -direct/-host/-port only list the server in the multiplayer browser.
+echo The exe does not auto-join an already-running dedicated server from the CLI.
 echo.
 echo Options:
-echo   steam                 Add -steam ^(default; needed for Multiplayer^)
-echo   nosteam               Omit -steam
-echo   offline               Add -offline ^(notes: loading screen, may never connect^)
-echo   auth [token]          Add -auth, optionally with a token ^(default: flag only^)
-echo   noauth                Omit -auth
+echo   steam                 Add -steam ^(marks a Steam-environment launch; not for local servers^)
+echo   nosteam               Omit -steam ^(default; standalone / local dedicated server^)
+echo   offline               Add -offline
+echo   nooffline             Omit -offline ^(default^)
+echo   auth [token]          Add -auth, optionally with a token
+echo   noauth                Omit -auth ^(default; local servers do not use Steam tokens^)
 echo   username ^<name^>       Default: Pendrokar
 echo   password ^<password^>   Default: abcd1234 ^(Admin password in server config^)
 echo   host ^<ip^>             Default: 127.0.0.1
