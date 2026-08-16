@@ -21,7 +21,7 @@ IB command line arguments:
 -public = Unknown; Server viewable in server browser?
 -offline
 -reboot = Unknown; Do not load DB?
--mission <xml> = Mission XML file
+-mission <xml> = Server-only. Mission XML file run by the dedicated server. Irrelevant to client login/auth.
 -steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
 -launcher = Configure the game launcher
 -direct <ip> = Adds that IP to the multiplayer server browser list only. Does not connect.

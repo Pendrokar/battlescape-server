@@ -7,15 +7,13 @@ if errorlevel 1 exit /b 1
 set "USE_STEAM=1"
 set "USE_OFFLINE=0"
 set "USE_AUTH=0"
-set "USE_DIRECT=0"
+set "USE_PASSWORD=0"
 set "AUTH_TOKEN="
 set "HOST=%IB_HOST%"
 set "PORT=%IB_PORT%"
 set "PORTRANGE=%IB_PORTRANGE%"
 set "USERNAME=%IB_USERNAME%"
 set "PASSWORD=%IB_PASSWORD%"
-set "MISSION=%IB_MISSION_DEFAULT%"
-set "SERVERCONFIG=%IB_SERVERCONFIG%"
 
 :parse
 if "%~1"=="" goto :parsed
@@ -45,36 +43,6 @@ if /i "%~1"=="nooffline" (
     shift
     goto :parse
 )
-if /i "%~1"=="direct" (
-    set "USE_DIRECT=1"
-    shift
-    goto :parse
-)
-if /i "%~1"=="nodirect" (
-    set "USE_DIRECT=0"
-    shift
-    goto :parse
-)
-if /i "%~1"=="mission" (
-    if "%~2"=="" (
-        echo ERROR: Incorrect command argument. "mission" requires a path.
-        goto :usage
-    )
-    set "MISSION=%~2"
-    shift
-    shift
-    goto :parse
-)
-if /i "%~1"=="config" (
-    if "%~2"=="" (
-        echo ERROR: Incorrect command argument. "config" requires a serverconfig name or path.
-        goto :usage
-    )
-    set "SERVERCONFIG=%~2"
-    shift
-    shift
-    goto :parse
-)
 if /i "%~1"=="noauth" (
     set "USE_AUTH=0"
     set "AUTH_TOKEN="
@@ -92,10 +60,6 @@ if /i "%~1"=="auth" (
     if /i "%~2"=="offline" (shift & goto :parse)
     if /i "%~2"=="nooffline" (shift & goto :parse)
     if /i "%~2"=="noauth" (shift & goto :parse)
-    if /i "%~2"=="direct" (shift & goto :parse)
-    if /i "%~2"=="nodirect" (shift & goto :parse)
-    if /i "%~2"=="mission" (shift & goto :parse)
-    if /i "%~2"=="config" (shift & goto :parse)
     if /i "%~2"=="username" (shift & goto :parse)
     if /i "%~2"=="password" (shift & goto :parse)
     if /i "%~2"=="host" (shift & goto :parse)
@@ -123,6 +87,7 @@ if /i "%~1"=="password" (
         goto :usage
     )
     set "PASSWORD=%~2"
+    set "USE_PASSWORD=1"
     shift
     shift
     goto :parse
@@ -195,14 +160,6 @@ if not defined USERNAME (
     echo The client was not started.
     exit /b 1
 )
-if "%USE_DIRECT%"=="0" (
-    if not exist "%MISSION%" (
-        echo ERROR: Mission file not found:
-        echo   "%MISSION%"
-        echo The client was not started.
-        exit /b 1
-    )
-)
 
 if exist "%IB_CLIENT_PID_FILE%" (
     set /p OLDPID=<"%IB_CLIENT_PID_FILE%"
@@ -229,18 +186,12 @@ set "IB_PASSWORD=%PASSWORD%"
 
 echo Starting Infinity Battlescape client...
 echo   Working dir : "%IB_BIN%"
-if "%USE_DIRECT%"=="1" (
-    echo   Mode        : browser/direct ^(Local servers reject this as Player 0^(^)^)
-    echo   Direct/host : %HOST%
-    echo   Port        : %PORT%  ^(range %PORTRANGE%^)
-) else (
-    echo   Mode        : local mission ^(client starts shared server, LocalPlayer login^)
-    echo   Mission     : "%MISSION%"
-    echo   Config      : "%SERVERCONFIG%"
-)
+echo   Direct/host : %HOST%
+echo   Port        : %PORT%  ^(range %PORTRANGE%^)
 echo   Username    : %USERNAME%
 if "%USE_STEAM%"=="1" (echo   Steam       : yes) else (echo   Steam       : no)
 if "%USE_OFFLINE%"=="1" (echo   Offline     : yes ^(notes: may sit on the loading screen^)) else (echo   Offline     : no)
+if "%USE_PASSWORD%"=="1" (echo   Server pwd  : set) else (echo   Server pwd  : omitted)
 if "%USE_AUTH%"=="1" (
     if defined AUTH_TOKEN (echo   Auth        : token set) else (echo   Auth        : flag only, no token)
 ) else (
@@ -255,11 +206,9 @@ set "IB_LAUNCH_AUTH="
 if "%USE_AUTH%"=="1" (
     if defined AUTH_TOKEN (set "IB_LAUNCH_AUTH=-auth %AUTH_TOKEN%") else (set "IB_LAUNCH_AUTH=-auth")
 )
-if "%USE_DIRECT%"=="1" (
-    powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_CLIENT_PID_FILE%" %IB_LAUNCH_EXTRA% -direct %HOST% -host %HOST% -serverpassword %PASSWORD% -port %PORT% -portrange %PORTRANGE% -username %USERNAME% %IB_LAUNCH_AUTH%
-) else (
-    powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_CLIENT_PID_FILE%" %IB_LAUNCH_EXTRA% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
-)
+set "IB_LAUNCH_PASSWORD="
+if "%USE_PASSWORD%"=="1" set "IB_LAUNCH_PASSWORD=-serverpassword %PASSWORD%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_CLIENT_PID_FILE%" %IB_LAUNCH_EXTRA% -direct %HOST% -host %HOST% %IB_LAUNCH_PASSWORD% -port %PORT% -portrange %PORTRANGE% -username %USERNAME% %IB_LAUNCH_AUTH%
 
 if not exist "%IB_CLIENT_PID_FILE%" (
     echo ERROR: Failed to start the client process.
@@ -291,11 +240,11 @@ exit /b 0
 echo.
 echo Usage: %~nx0 [options]
 echo.
-echo Start an Infinity Battlescape client.
-echo Default: launch Workshop\Empty.xml as a local mission so the client
-echo starts a shared private child server and logs in as LocalPlayer.
-echo Browser/direct join to a separately started dedicated server is rejected
-echo ^(Player 0 with an empty name / invalid token^).
+echo Start an Infinity Battlescape client aimed at the local dedicated server.
+echo This is a separate process from start_server.bat.
+echo -direct/-host/-port only list the server in the multiplayer browser.
+echo The exe does not auto-join an already-running dedicated server from the CLI.
+echo -mission is a server-only flag; do not pass it to the client.
 echo.
 echo Options:
 echo   steam                 Add -steam ^(default; client launched as from the Steam environment^)
@@ -304,21 +253,15 @@ echo   offline               Add -offline
 echo   nooffline             Omit -offline ^(default^)
 echo   auth [token]          Add -auth, optionally with a token
 echo   noauth                Omit -auth ^(default; local servers do not use Steam tokens^)
-echo   mission ^<xml^>         Local mission file ^(default: Documents Workshop\Empty.xml^)
-echo   config ^<xml^>          -serverconfig name ^(default: LocalServerConfig.xml^)
-echo   direct                Browser-list mode: -direct/-host/-port. Local dedicated rejects this.
-echo   nodirect              Local-mission mode ^(default^)
 echo   username ^<name^>       Default: Pendrokar
-echo   password ^<password^>   Default: abcd1234 ^(used only with direct^)
-echo   host ^<ip^>             Default: 127.0.0.1 ^(used only with direct^)
-echo   port ^<n^>              Default: 7778 ^(used only with direct^)
-echo   portrange ^<n^>         Default: 1 ^(used only with direct^)
+echo   password ^<password^>   Add -serverpassword. Default omitted; admin password is abcd1234
+echo   host ^<ip^>             Default: 127.0.0.1
+echo   port ^<n^>              Default: 7778
+echo   portrange ^<n^>         Default: 1
 echo   help                  Show this help
 echo.
 echo Examples:
 echo   %~nx0
-echo   %~nx0 mission "%IB_MISSION_DEFAULT%"
-echo   %~nx0 direct
 echo   %~nx0 offline
 echo   %~nx0 username Pendrokar password abcd1234
 echo   %~nx0 host 127.0.0.1 port 7778
