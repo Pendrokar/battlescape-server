@@ -16,11 +16,11 @@ IB command line arguments:
 
 -server = Launch a Infinity Battlescape dedicated server
 -serverconfig <xml> = Server configuration XML file
--shared = Server privately shared?
--private = Server accessable only with correct IP, token or password?
--public = Server viewable in server browser?
+-shared = Unknown; Server privately shared?
+-private = Unknown; Server accessable only with correct IP, token or password?
+-public = Unknown; Server viewable in server browser?
 -offline
--reboot = Do not load DB?
+-reboot = Unknown; Do not load DB?
 -mission <xml> = Mission XML file
 -steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
 -launcher = Configure the game launcher
@@ -29,10 +29,6 @@ IB command line arguments:
 -spawn = Boolean parsed by the exe; purpose unknown
 -auth <?token> = Server-browser listing/join token for official/public servers. Not used by local dedicated servers.
 -offline = Sets local login name to "default". Does not auto-connect to a running dedicated server.
-
-Auto-connect: the exe only auto-connects when THIS client process launched the local mission
-(log: "Client: launching local mission" then "local server started notification received, initiating connection").
-There is no command-line path that auto-joins an already-running dedicated server. -direct/-host/-port only change the browser list.
 -port <port> = Server port (127.0.0.1)
 -portrange <num> = Port range (default 5)
 -host <ip> = Server IP (7778)
@@ -40,7 +36,7 @@ There is no command-line path that auto-joins an already-running dedicated serve
 -dedicated = Dedicated server
 -username <name>
 -instance
--entrypoint
+-entrypoint <string> = changes the value of the global variable `Global.EntryPoint` to use in Mission Scripts
 
 IB SteamGameId = 1079620
 
