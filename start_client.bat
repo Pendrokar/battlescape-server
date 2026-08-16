@@ -190,7 +190,8 @@ if "%USE_AUTH%"=="1" (
 )
 
 REM Must stay outside parenthesized blocks: PowerShell uses ^( ^).
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; if ($env:IB_OFFLINE -eq '1') { $list.Add('-offline') }; $list.Add('-direct'); $list.Add($env:IB_HOST); if ($env:IB_USE_AUTH -eq '1') { $list.Add('-auth'); if ($env:IB_AUTH_TOKEN) { $list.Add($env:IB_AUTH_TOKEN) } }; $list.Add('-host'); $list.Add($env:IB_HOST); $list.Add('-serverpassword'); $list.Add($env:IB_PASSWORD); $list.Add('-port'); $list.Add($env:IB_PORT); $list.Add('-portrange'); $list.Add($env:IB_PORTRANGE); $list.Add('-username'); $list.Add($env:IB_USERNAME); $p = Start-Process -FilePath $env:IB_EXE -WorkingDirectory $env:IB_BIN -ArgumentList $list.ToArray() -PassThru; Set-Content -Path $env:IB_CLIENT_PID_FILE -Value $p.Id -Encoding ascii"
+REM Quote args that contain spaces. Start-Process -ArgumentList does not.
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; if ($env:IB_OFFLINE -eq '1') { $list.Add('-offline') }; $list.Add('-direct'); $list.Add($env:IB_HOST); $list.Add('-join'); $list.Add('-host'); $list.Add($env:IB_HOST); $list.Add('-serverpassword'); $list.Add($env:IB_PASSWORD); $list.Add('-port'); $list.Add($env:IB_PORT); $list.Add('-portrange'); $list.Add($env:IB_PORTRANGE); $list.Add('-username'); $list.Add($env:IB_USERNAME); if ($env:IB_USE_AUTH -eq '1') { $list.Add('-auth'); if ($env:IB_AUTH_TOKEN) { $list.Add($env:IB_AUTH_TOKEN) } }; $parts = New-Object System.Collections.Generic.List[string]; foreach ($a in $list) { if ($a -match '\s') { $parts.Add(([string][char]34 + $a + [char]34)) } else { $parts.Add($a) } }; $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $env:IB_EXE; $psi.WorkingDirectory = $env:IB_BIN; $psi.UseShellExecute = $true; $psi.Arguments = [string]::Join(' ', $parts.ToArray()); $p = [Diagnostics.Process]::Start($psi); Set-Content -Path $env:IB_CLIENT_PID_FILE -Value $p.Id -Encoding ascii"
 
 if not exist "%IB_CLIENT_PID_FILE%" (
     echo ERROR: Failed to start the client process.
@@ -224,6 +225,7 @@ echo Usage: %~nx0 [options]
 echo.
 echo Start an Infinity Battlescape client that connects to the local server.
 echo This is a separate process from start_server.bat.
+echo Always passes -join so the client does not stop at the main menu.
 echo.
 echo Options:
 echo   steam                 Add -steam ^(default; needed for Multiplayer^)

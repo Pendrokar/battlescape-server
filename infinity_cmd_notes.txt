@@ -24,7 +24,9 @@ IB command line arguments:
 -mission <xml> = Mission XML file
 -steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
 -launcher = Configure the game launcher
--direct <ip> = Server browser IP or direct server
+-direct <ip> = Server browser IP or direct server (does not by itself join)
+-join = Actually join/connect to the -direct/-host server (without this the client sits in the main menu)
+-spawn = Skip to spawn menu after connect?
 -auth <?token> = Parameter required by server browser (Steam related); without this: host IP does not get recognized, cannot ping servers; seems to skip Steam API
 -port <port> = Server port (127.0.0.1)
 -portrange <num> = Port range (default 5)
