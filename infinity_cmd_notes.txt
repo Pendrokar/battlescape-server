@@ -76,3 +76,6 @@ Client: -steam
   child server: -server -shared -private -reboot -mission "...\Workshop\Empty.xml" -serverconfig "LocalServerConfig.xml"
   login: LocalPlayer as Pendrokar — login success — first spawn menu
 Browser join to a separately started dedicated server sends Player 0 () and is rejected.
+
+From the main menu, the client starts the server with the following command and the auto-connects to it,
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -shared -private -reboot -mission "C:\Users\Pendr\OneDrive\Documents\I-Novae Studios\Infinity Battlescape\Workshop\Empty.xml"-serverconfig "LocalServerConfig.xml"
