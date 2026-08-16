@@ -24,10 +24,15 @@ IB command line arguments:
 -mission <xml> = Mission XML file
 -steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
 -launcher = Configure the game launcher
--direct <ip> = Server browser IP or direct server (does not by itself join)
--join = Actually join/connect to the -direct/-host server (without this the client sits in the main menu)
--spawn = Skip to spawn menu after connect?
--auth <?token> = Parameter required by server browser (Steam related); without this: host IP does not get recognized, cannot ping servers; seems to skip Steam API
+-direct <ip> = Adds that IP to the multiplayer server browser list only. Does not connect.
+-join = Boolean parsed by the exe; does not auto-connect. User still has to click the listed server.
+-spawn = Boolean parsed by the exe; purpose unknown
+-auth <?token> = Server-browser listing/join token for official/public servers. Not used by local dedicated servers.
+-offline = Sets local login name to "default". Does not auto-connect to a running dedicated server.
+
+Auto-connect: the exe only auto-connects when THIS client process launched the local mission
+(log: "Client: launching local mission" then "local server started notification received, initiating connection").
+There is no command-line path that auto-joins an already-running dedicated server. -direct/-host/-port only change the browser list.
 -port <port> = Server port (127.0.0.1)
 -portrange <num> = Port range (default 5)
 -host <ip> = Server IP (7778)
