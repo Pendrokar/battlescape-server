@@ -215,7 +215,7 @@ if not defined NEWPID (
     exit /b 1
 )
 
-timeout /t 1 /nobreak >nul
+ping 127.0.0.1 -n 3 >nul
 tasklist /FI "PID eq %NEWPID%" /NH | findstr /i "%NEWPID%" >nul
 if errorlevel 1 (
     echo ERROR: Client process %NEWPID% exited immediately. Check the game logs.

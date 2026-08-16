@@ -67,19 +67,34 @@ $ok = [IbNative]::CreateProcess(
     $env:IB_EXE, $cmdLine, [IntPtr]::Zero, [IntPtr]::Zero, $false, $flags,
     [IntPtr]::Zero, $env:IB_BIN, [ref]$si, [ref]$pi)
 
-if (-not $ok) {
-    # Job may forbid breakaway. Fall back to explorer, which is outside the agent job.
-    $ok = [IbNative]::CreateProcess(
-        $env:IB_EXE, $cmdLine, [IntPtr]::Zero, [IntPtr]::Zero, $false,
-        [IbNative]::CREATE_NEW_PROCESS_GROUP, [IntPtr]::Zero, $env:IB_BIN, [ref]$si, [ref]$pi)
+$pidOut = 0
+if ($ok) {
+    $pidOut = $pi.dwProcessId
+    [IbNative]::CloseHandle($pi.hThread) | Out-Null
+    [IbNative]::CloseHandle($pi.hProcess) | Out-Null
+} else {
+    # Job forbids breakaway. WMI Create runs under WmiPrvSE, outside this job.
+    try {
+        $wmi = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
+            CommandLine       = $cmdLine
+            CurrentDirectory  = $env:IB_BIN
+        }
+        if ($wmi.ReturnValue -eq 0 -and $wmi.ProcessId) {
+            $pidOut = [int]$wmi.ProcessId
+        } else {
+            Write-Error ("Win32_Process.Create failed: return " + $wmi.ReturnValue)
+            exit 1
+        }
+    } catch {
+        Write-Error ("CreateProcess/WMI failed: " + $_.Exception.Message)
+        exit 1
+    }
 }
 
-if (-not $ok) {
-    Write-Error ("CreateProcess failed: Win32 " + [Runtime.InteropServices.Marshal]::GetLastWin32Error())
+if ($pidOut -le 0) {
+    Write-Error "Launch succeeded but no PID was returned."
     exit 1
 }
 
-[IbNative]::CloseHandle($pi.hThread) | Out-Null
-[IbNative]::CloseHandle($pi.hProcess) | Out-Null
-Set-Content -Path $PidFile -Value $pi.dwProcessId -Encoding ascii
+Set-Content -Path $PidFile -Value $pidOut -Encoding ascii
 exit 0

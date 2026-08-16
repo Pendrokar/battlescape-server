@@ -146,7 +146,7 @@ if not defined NEWPID (
     exit /b 1
 )
 
-timeout /t 1 /nobreak >nul
+ping 127.0.0.1 -n 3 >nul
 tasklist /FI "PID eq %NEWPID%" /NH | findstr /i "%NEWPID%" >nul
 if errorlevel 1 (
     echo ERROR: Server process %NEWPID% exited immediately. Check the game logs.
@@ -175,8 +175,8 @@ echo   private            -shared -private ^(default, matches notes^)
 echo   public             -dedicated -public instead
 echo   reboot             Do not load DB ^(default, -reboot^)
 echo   db                 Load DB ^(omit -reboot^)
-echo   mission ^<xml^>      Mission file ^(default: Dev\Server\Training\Empty.xml^)
-echo   config ^<xml^>       -serverconfig name ^(default: PrivateSharedServerConfig.xml^)
+echo   mission ^<xml^>      Mission file ^(default: Documents Workshop\Empty.xml^)
+echo   config ^<xml^>       -serverconfig name ^(default: LocalServerConfig.xml^)
 echo   help               Show this help
 echo.
 echo Examples:
