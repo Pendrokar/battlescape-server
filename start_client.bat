@@ -4,7 +4,7 @@ setlocal EnableExtensions EnableDelayedExpansion
 call "%~dp0ib_env.bat"
 if errorlevel 1 exit /b 1
 
-set "USE_STEAM=0"
+set "USE_STEAM=1"
 set "USE_OFFLINE=0"
 set "USE_AUTH=0"
 set "AUTH_TOKEN="
@@ -194,9 +194,15 @@ if "%USE_AUTH%"=="1" (
     echo   Auth        : omitted
 )
 
-REM Must stay outside parenthesized blocks: PowerShell uses ^( ^).
-REM Quote args that contain spaces. Start-Process -ArgumentList does not.
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; if ($env:IB_OFFLINE -eq '1') { $list.Add('-offline') }; $list.Add('-direct'); $list.Add('-join'); $list.Add($env:IB_HOST); $list.Add('-host'); $list.Add($env:IB_HOST); $list.Add('-serverpassword'); $list.Add($env:IB_PASSWORD); $list.Add('-port'); $list.Add($env:IB_PORT); $list.Add('-portrange'); $list.Add($env:IB_PORTRANGE); $list.Add('-username'); $list.Add($env:IB_USERNAME); if ($env:IB_USE_AUTH -eq '1') { $list.Add('-auth'); if ($env:IB_AUTH_TOKEN) { $list.Add($env:IB_AUTH_TOKEN) } }; $parts = New-Object System.Collections.Generic.List[string]; foreach ($a in $list) { if ($a -match '\s') { $parts.Add(([string][char]34 + $a + [char]34)) } else { $parts.Add($a) } }; $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $env:IB_EXE; $psi.WorkingDirectory = $env:IB_BIN; $psi.UseShellExecute = $true; $psi.Arguments = [string]::Join(' ', $parts.ToArray()); $p = [Diagnostics.Process]::Start($psi); Set-Content -Path $env:IB_CLIENT_PID_FILE -Value $p.Id -Encoding ascii"
+REM Launch outside the parent job so the game keeps running after this window closes.
+set "IB_LAUNCH_EXTRA="
+if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
+if "%USE_OFFLINE%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -offline"
+set "IB_LAUNCH_AUTH="
+if "%USE_AUTH%"=="1" (
+    if defined AUTH_TOKEN (set "IB_LAUNCH_AUTH=-auth %AUTH_TOKEN%") else (set "IB_LAUNCH_AUTH=-auth")
+)
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_CLIENT_PID_FILE%" %IB_LAUNCH_EXTRA% -direct %HOST% -host %HOST% -serverpassword %PASSWORD% -port %PORT% -portrange %PORTRANGE% -username %USERNAME% %IB_LAUNCH_AUTH%
 
 if not exist "%IB_CLIENT_PID_FILE%" (
     echo ERROR: Failed to start the client process.
@@ -234,8 +240,8 @@ echo -direct/-host/-port only list the server in the multiplayer browser.
 echo The exe does not auto-join an already-running dedicated server from the CLI.
 echo.
 echo Options:
-echo   steam                 Add -steam ^(marks a Steam-environment launch; not for local servers^)
-echo   nosteam               Omit -steam ^(default; standalone / local dedicated server^)
+echo   steam                 Add -steam ^(default; client launched as from the Steam environment^)
+echo   nosteam               Omit -steam
 echo   offline               Add -offline
 echo   nooffline             Omit -offline ^(default^)
 echo   auth [token]          Add -auth, optionally with a token

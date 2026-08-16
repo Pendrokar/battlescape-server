@@ -127,10 +127,13 @@ if exist "%IB_DOCS_SERVER%\%SERVERCONFIG%" (
     echo   Documents   : "%SERVERCONFIG%" not found yet -- the game copies it from Dev\ on first run.
 )
 
-REM Must stay outside parenthesized blocks: PowerShell uses ^( ^).
-REM Start-Process -ArgumentList does not quote paths with spaces, so the game
-REM saw -mission C:\Program and failed to load Empty.xml. Use ProcessStartInfo.
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$list = New-Object System.Collections.Generic.List[string]; if ($env:IB_USE_STEAM -eq '1') { $list.Add('-steam') }; $list.Add('-server'); if ($env:IB_SERVER_MODE -eq 'public') { $list.Add('-dedicated'); $list.Add('-public') } else { $list.Add('-shared'); $list.Add('-private') }; if ($env:IB_REBOOT -eq '1') { $list.Add('-reboot') }; $list.Add('-mission'); $list.Add($env:IB_MISSION); $list.Add('-serverconfig'); $list.Add($env:IB_SERVERCONFIG); $parts = New-Object System.Collections.Generic.List[string]; foreach ($a in $list) { if ($a -match '\s') { $parts.Add(([string][char]34 + $a + [char]34)) } else { $parts.Add($a) } }; $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $env:IB_EXE; $psi.WorkingDirectory = $env:IB_BIN; $psi.UseShellExecute = $true; $psi.Arguments = [string]::Join(' ', $parts.ToArray()); $p = [Diagnostics.Process]::Start($psi); Set-Content -Path $env:IB_SERVER_PID_FILE -Value $p.Id -Encoding ascii"
+REM Launch outside the parent job so the server keeps running after this window closes.
+set "IB_LAUNCH_EXTRA="
+if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
+if "%SERVER_MODE%"=="public" (set "IB_LAUNCH_MODE=-dedicated -public") else (set "IB_LAUNCH_MODE=-shared -private")
+set "IB_LAUNCH_REBOOT="
+if "%USE_REBOOT%"=="1" set "IB_LAUNCH_REBOOT=-reboot"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
 
 if not exist "%IB_SERVER_PID_FILE%" (
     echo ERROR: Failed to start the server process.

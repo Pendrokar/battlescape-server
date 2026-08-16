@@ -69,3 +69,10 @@ ALMOST WORKS:
 
 (Client connects to server, but server denies client due to an invalid "token or password")
 "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
+
+WORKS (in-game Empty, 2026-08-16 16:26):
+Client: -steam
+  launching local mission Workshop\Empty.xml
+  child server: -server -shared -private -reboot -mission "...\Workshop\Empty.xml" -serverconfig "LocalServerConfig.xml"
+  login: LocalPlayer as Pendrokar — login success — first spawn menu
+Browser join to a separately started dedicated server sends Player 0 () and is rejected.
