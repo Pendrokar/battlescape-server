@@ -154,6 +154,15 @@ if errorlevel 1 (
     exit /b 1
 )
 
+echo Waiting for ServerStarted ^(client splash poll needs this signaled^)...
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_wait_event.ps1" -Name ServerStarted -TimeoutSec 30
+if errorlevel 1 (
+    echo WARNING: Server process is up but ServerStarted was not signaled.
+    echo A -shared client will not LocalPlayer-join.
+) else (
+    echo ServerStarted is signaled. start_client.bat can join as LocalPlayer.
+)
+
 echo.
 echo Server started as PID %NEWPID%
 echo PID file: "%IB_SERVER_PID_FILE%"
@@ -167,6 +176,8 @@ echo Usage: %~nx0 [options]
 echo.
 echo Start a local Infinity Battlescape dedicated server as a separate process.
 echo Commands are launched from the IB Bin directory.
+echo Creates named events ServerStarted/ServerClosed so a -shared client
+echo can LocalPlayer-join. Start the server before start_client.bat.
 echo.
 echo Options:
 echo   steam              Add -steam

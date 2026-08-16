@@ -70,12 +70,19 @@ ALMOST WORKS:
 (Client connects to server, but server denies client due to an invalid "token or password")
 "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
 
-WORKS (client started server, in-game Empty, 2026-08-16 16:26):
+WORKS (client started server, in-game Empty, 2026-08-16 16:26 and 17:20):
 Client: -steam
   launching local mission Workshop\Empty.xml
-  child server: -server -shared -private -reboot -mission "...\Workshop\Empty.xml" -serverconfig "LocalServerConfig.xml"
+  child server: -server -shared -private -reboot -mission "...\Workshop\Empty.xml"-serverconfig "LocalServerConfig.xml"
   login: LocalPlayer as Pendrokar — login success — first spawn menu
 Browser join to a separately started dedicated server sends Player 0 () and is rejected.
+
+LocalPlayer handshake (live pair 17:20):
+  Server is a child of the client.
+  Named events (session-local, manual-reset): ServerStarted (signaled), ServerClosed (not).
+  Dedicated -shared server OpenEventA's those names; it does not create them.
+  Client splash path polls ServerStarted with timeout 0 after HUD init.
+  start_server.bat creates the events before the dedicated process so OpenEvent succeeds.
 
 From the main menu, the client starts the server with the following command and the auto-connects to it,
 "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -shared -private -reboot -mission "C:\Users\Pendr\OneDrive\Documents\I-Novae Studios\Infinity Battlescape\Workshop\Empty.xml"-serverconfig "LocalServerConfig.xml"

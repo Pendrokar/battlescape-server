@@ -50,6 +50,8 @@ public class IbNative {
         bool bInheritHandles, uint dwCreationFlags, IntPtr lpEnvironment, string lpCurrentDirectory,
         ref STARTUPINFO lpStartupInfo, out PROCESS_INFORMATION lpProcessInformation);
     [DllImport("kernel32.dll")] public static extern bool CloseHandle(IntPtr hObject);
+    [DllImport("kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
+    public static extern IntPtr CreateEventA(IntPtr lpEventAttributes, bool bManualReset, bool bInitialState, string lpName);
     public const uint CREATE_BREAKAWAY_FROM_JOB = 0x01000000;
     public const uint CREATE_NEW_PROCESS_GROUP = 0x00000200;
     public const uint DETACHED_PROCESS = 0x00000008;
@@ -57,6 +59,25 @@ public class IbNative {
 '@
 if (-not ([System.Management.Automation.PSTypeName]'IbNative').Type) {
     Add-Type -TypeDefinition $src
+}
+
+# A client-spawned shared server OpenEventA("ServerStarted" / "ServerClosed")
+# and signals ServerStarted when ready. An independently started dedicated
+# server does the same OpenEvent -- so someone must create the events first
+# and hold a handle until the server opens them.
+$isServer = $false
+foreach ($a in $GameArgs) {
+    if ($a -eq '-server') { $isServer = $true; break }
+}
+$evStarted = [IntPtr]::Zero
+$evClosed = [IntPtr]::Zero
+if ($isServer) {
+    $evStarted = [IbNative]::CreateEventA([IntPtr]::Zero, $true, $false, 'ServerStarted')
+    $evClosed = [IbNative]::CreateEventA([IntPtr]::Zero, $true, $false, 'ServerClosed')
+    if ($evStarted -eq [IntPtr]::Zero -or $evClosed -eq [IntPtr]::Zero) {
+        Write-Error ("Failed to create ServerStarted/ServerClosed events: Win32 " + [Runtime.InteropServices.Marshal]::GetLastWin32Error())
+        exit 1
+    }
 }
 
 $si = New-Object IbNative+STARTUPINFO
@@ -97,4 +118,11 @@ if ($pidOut -le 0) {
 }
 
 Set-Content -Path $PidFile -Value $pidOut -Encoding ascii
+
+if ($isServer) {
+    # Hold the event handles until the server has opened them (early init).
+    Start-Sleep -Seconds 4
+    if ($evStarted -ne [IntPtr]::Zero) { [IbNative]::CloseHandle($evStarted) | Out-Null }
+    if ($evClosed -ne [IntPtr]::Zero) { [IbNative]::CloseHandle($evClosed) | Out-Null }
+}
 exit 0
