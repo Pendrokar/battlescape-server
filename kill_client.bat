@@ -54,7 +54,7 @@ exit /b 0
 set "IB_KILL_MARKER=%TEMP%\ib_kill_client_%RANDOM%.txt"
 if exist "%IB_KILL_MARKER%" del "%IB_KILL_MARKER%" >nul 2>&1
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$n = 0; Get-CimInstance Win32_Process -Filter 'Name=''Infinity Battlescape.exe''' | Where-Object { $_.CommandLine -match '(^|\s)-direct(\s|$)' -and $_.CommandLine -notmatch '(^|\s)-server(\s|$)' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; Write-Output $_.ProcessId; $n++ }; if ($n -eq 0) { exit 2 }" > "%IB_KILL_MARKER%"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$n = 0; Get-CimInstance Win32_Process -Filter 'Name=''Infinity Battlescape.exe''' | Where-Object { $_.CommandLine -notmatch '(^|\s)-server(\s|$)' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; Write-Output $_.ProcessId; $n++ }; if ($n -eq 0) { exit 2 }" > "%IB_KILL_MARKER%"
 
 if errorlevel 2 (
     if exist "%IB_KILL_MARKER%" del "%IB_KILL_MARKER%" >nul 2>&1
@@ -95,7 +95,7 @@ echo Usage: %~nx0 [PID]
 echo.
 echo Stop the Infinity Battlescape client process.
 echo.
-echo   %~nx0          Kill the PID in client.pid, or any IB process launched with -direct
+echo   %~nx0          Kill the PID in client.pid, or any IB process not launched with -server
 echo   %~nx0 1234     Kill that PID if it is an Infinity Battlescape process
 echo.
 echo Incorrect arguments abort without killing a process.
