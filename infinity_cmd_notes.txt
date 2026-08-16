@@ -1,0 +1,68 @@
+passwords and IPs are only examples
+
+---
+
+-steam -direct 54.37.88.88 -auth Gt1VsWB7ACqTrNATu0tQ/Dib/5cOP+3GXADNhqbU+UU= -host 54.37.88.88 -serverpassword -port 7778 -portrange 5 -username Pendrokar
+
+-direct 54.37.88.88 -auth Gt1VsWB7ACqTrNATu0tQ/Dib/5cOP+3GXADNhqbU+UU= -host 54.37.88.88 -serverpassword Gt1VsWB7ACqTrNATu0tQ/Dib/5cOP+3GXADNhqbU+UU= -port 7778 -portrange 5 -username Pendrokar
+
+-direct 54.37.88.88 -host 54.37.88.88 -port 7778 -portrange 5 -username Pendrokar
+
+54.37.88.88 = Battlescape EU #1
+
+---
+
+IB command line arguments:
+
+-server = Launch a Infinity Battlescape dedicated server
+-serverconfig <xml> = Server configuration XML file
+-shared = Server privately shared?
+-private = Server accessable only with correct IP, token or password?
+-public = Server viewable in server browser?
+-offline
+-reboot = Do not load DB?
+-mission <xml> = Mission XML file
+-steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
+-launcher = Configure the game launcher
+-direct <ip> = Server browser IP or direct server
+-auth <?token> = Parameter required by server browser (Steam related); without this: host IP does not get recognized, cannot ping servers; seems to skip Steam API
+-port <port> = Server port (127.0.0.1)
+-portrange <num> = Port range (default 5)
+-host <ip> = Server IP (7778)
+-serverpassword <password> = Admin password?
+-dedicated = Dedicated server
+-username <name>
+-instance
+-entrypoint
+
+IB SteamGameId = 1079620
+
+* auth token = It may be the token that is acquired when clicking Multiplayer as Steam account verification takes place; Long time ago I was able to acquire it. I don't remember how I did it. I might have used Cheat Engine to fetch it from the game's memory
+
+
+
+IB Server:
+
+Commands must be run from the IB Bin directory to work.
+
+no Steam
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -shared -private -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Training\Empty.xml" -serverconfig "PrivateSharedServerConfig.xml"
+
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -dedicated -public -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Training\Empty.xml" -serverconfig "PrivateSharedServerConfig.xml"
+
+with Steam
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -server -shared -private -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Training\Empty.xml"-serverconfig "PrivateSharedServerConfig.xml"
+
+PrivateSharedServerConfig.xml = it is the one under Documents, if it does not exist it is copied from the IB Dev\ folder
+
+
+
+IB Client that connects to server:
+
+ALMOST WORKS:
+
+Client goes to loading screen, but never connects
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -offline -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
+
+Client connects to server, but server denies client due to an invalid "token or password"
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
