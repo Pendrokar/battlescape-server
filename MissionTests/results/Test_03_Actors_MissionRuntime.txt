@@ -1,111 +1,227 @@
-[  0.001 s,  477 / 3482] Server Mission Runtime Log
-[  0.002 s,  477 / 3481] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_03_Actors.xml'
-[  0.004 s,  477 / 3481] Mission runtime successfully loaded
-[  0.020 s,  478 / 3481] Test: BEGIN Test_03_Actors ok
-[  0.022 s,  478 / 3481] Action 2:0:Log
-[  0.022 s,  479 / 3481] Action 2:1:CreateActor
-[  0.023 s,  479 / 3481] Action 2:2:SetPosition
-[  0.023 s,  479 / 3481] Action 2:3:SetValue
-[  0.023 s,  479 / 3481] Test: CreateActor_PlayerActor Interceptor Interceptor
-[  0.024 s,  479 / 3481] Action 2:4:Log
-[  0.024 s,  479 / 3481] Test: CreateActor_TeamID 1 1
-[  0.025 s,  479 / 3481] Action 2:5:Log
-[  0.025 s,  479 / 3481] Test: CreateActor_Type Ship Ship
-[  0.027 s,  479 / 3481] Action 2:6:Log
-[  0.027 s,  479 / 3481] Action 2:7:CreateActor
-[  0.027 s,  479 / 3481] Action 2:8:SetPosition
-[  0.027 s,  479 / 3481] Test: Instructor_Class Corvette Corvette
-[  0.028 s,  479 / 3481] Action 2:9:Log
-[  0.028 s,  479 / 3481] Test: Instructor_DisplayName Instructor Instructor
-[  0.030 s,  479 / 3481] Action 2:10:Log
-[  0.030 s,  479 / 3481] Action 2:11:CreateActor
-[  0.030 s,  479 / 3481] Action 2:12:CreateActor
-[  0.030 s,  479 / 3481] Test: Group_StaticDrone [12, 13] two_ids
-[  0.031 s,  479 / 3481] Action 2:13:Log
-[  0.031 s,  479 / 3481] Test: Group_first Drone #1 Drone #1
-[  0.033 s,  479 / 3481] Action 2:14:Log
-[  0.033 s,  479 / 3481] Action 2:15:CreateActor
-[  0.033 s,  479 / 3481] Test: Marker_Class Marker Marker
-[  0.034 s,  479 / 3481] Action 2:16:Log
-[  0.034 s,  479 / 3481] Test: Marker_TeamID -1 -1
-[  0.035 s,  479 / 3481] Action 2:17:Log
-[  0.035 s,  479 / 3481] Action 2:18:SetPosition
-[  0.035 s,  479 / 3481] Test: SetPosition [10.0000000000000000, 0.0000000000000000, 5.0000000000000000, 0.0000000000000000] [10,0,5]
-[  0.037 s,  479 / 3481] Action 2:19:Log
-[  0.037 s,  479 / 3481] Action 2:20:SetRotation
-[  0.037 s,  479 / 3481] Test: SetRotation [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 1.0000000000000000] [0,0,0,1]
-[  0.038 s,  479 / 3481] Action 2:21:Log
-[  0.038 s,  479 / 3481] Action 2:22:SetVelocity
-[  0.038 s,  479 / 3481] Test: SetVelocity [0.0000000000000000, 0.0000000000000000, 0.3000000000000000, 0.0000000000000000] [0,0,0.3]
-[  0.039 s,  479 / 3481] Action 2:23:Log
-[  0.039 s,  479 / 3481] Action 2:24:SetRotVelocity
-[  0.039 s,  479 / 3481] Test: SetRotVelocity [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000] [0,0,0]
-[  0.040 s,  479 / 3481] Action 2:25:Log
-[  0.040 s,  479 / 3481] Action 2:26:SetValue
-[  0.040 s,  479 / 3481] Action 2:27:SetValue
-[  0.041 s,  479 / 3481] Action 2:28:CreateActor
-[  0.041 s,  479 / 3481] Action 2:29:SetPosition
-[  0.041 s,  479 / 3481] Test: SetPosition_Parent [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000] [0,0,1]
-[  0.042 s,  479 / 3481] Action 2:30:Log
-[  0.042 s,  479 / 3481] Action 2:31:CreateActor
-[  0.043 s,  479 / 3479] Action 2:32:CreateActor
-[  0.043 s,  479 / 3479] Action 2:33:SetPosition
-[  0.043 s,  479 / 3479] Action 2:34:SetPosition
-[  0.043 s,  479 / 3478] Action 2:35:SetValue
-[  0.043 s,  479 / 3478] Action 2:36:SetValue
-[  0.043 s,  479 / 3478] Test: Wing1_Pos [-0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000] [-0.3,0,-0.5]
-[  0.044 s,  479 / 3478] Action 2:37:Log
-[  0.044 s,  479 / 3478] Test: Wing2_Pos [0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000] [0.3,0,-0.5]
-[  0.045 s,  479 / 3478] Action 2:38:Log
-[  0.045 s,  479 / 3478] Action 2:39:SetVelocity
-[  0.045 s,  479 / 3478] Test: SetVelocity_Normalize [0.0000000000000000, 0.0000000000000000, 0.5000000000000000, 0.0000000000000000] [0,0,0.5]
-[  0.046 s,  479 / 3478] Action 2:40:Log
-[  0.046 s,  479 / 3478] Action 2:41:CreateActor
-[  0.046 s,  479 / 3478] Action 2:42:SetPosition
-[  0.046 s,  479 / 3478] Action 2:43:SetVisible
-[  0.046 s,  479 / 3478] Action 2:44:SetVisible
-[  0.047 s,  479 / 3478] Test: Crate1_Class SupplyCrate SupplyCrate
-[  0.048 s,  479 / 3478] Action 2:45:Log
-[  0.048 s,  479 / 3478] Action 0:0:AddValue
-[  0.048 s,  479 / 3478] Action 0:1:CreateActor
-[  0.048 s,  479 / 3478] Action 0:2:MulValue
-[  0.048 s,  479 / 3478] Action 0:3:AddValue
-[  0.048 s,  479 / 3478] Action 0:4:TransformValue
-[  0.052 s,  480 / 3478] Action 0:0:AddValue
-[  0.052 s,  480 / 3478] Action 0:1:CreateActor
-[  0.052 s,  480 / 3478] Action 0:2:MulValue
-[  0.052 s,  480 / 3478] Action 0:3:AddValue
-[  0.052 s,  480 / 3478] Action 0:4:TransformValue
-[  0.064 s,  480 / 3478] Action 0:0:AddValue
-[  0.065 s,  480 / 3478] Action 0:1:CreateActor
-[  0.065 s,  480 / 3478] Action 0:2:MulValue
-[  0.065 s,  480 / 3478] Action 0:3:AddValue
-[  0.065 s,  480 / 3478] Action 0:4:TransformValue
-[  0.080 s,  480 / 3478] Action 2:46:Loop
-[  0.080 s,  480 / 3478] Action 2:47:SetAIState
-[  0.080 s,  480 / 3478] Action 2:48:SetValue
-[  0.080 s,  480 / 3478] Action 1:0:AddValue
-[  0.080 s,  480 / 3478] Action 1:0:AddValue
-[  0.080 s,  480 / 3478] Action 1:0:AddValue
-[  0.080 s,  480 / 3478] Action 2:49:Loop
-[  0.080 s,  480 / 3478] Test: FwdWing_Count 3.0 3
-[  0.081 s,  480 / 3478] Action 2:50:Log
-[  0.082 s,  480 / 3476] Action 2:51:CreateActor
-[  0.082 s,  480 / 3476] Test: ToDelete_before Interceptor Interceptor
-[  0.083 s,  480 / 3476] Action 2:52:Log
-[  0.083 s,  480 / 3476] Action 2:53:DeleteActor
-[  0.372 s,  480 / 3505] Action 2:54:Wait
-[  0.372 s,  480 / 3505] Test: ToDelete_after  empty
-[  0.374 s,  480 / 3505] Action 2:55:Log
-[  0.374 s,  480 / 3505] Action 2:56:CreateActor
-[  0.374 s,  480 / 3505] Action 2:57:KillActor
-[  3.861 s,  481 / 3578] Action 2:58:Wait
-[  3.861 s,  481 / 3578] Test: ToKill_after  empty
-[  3.863 s,  481 / 3578] Action 2:59:Log
-[  3.863 s,  481 / 3578] Action 2:60:SetValue
-[  3.863 s,  481 / 3578] Test: Rename_Dummy Interceptor Interceptor
-[  3.864 s,  481 / 3578] Action 2:61:Log
-[  3.864 s,  481 / 3578] Test: Rename_oldName  empty_or_Drone2
-[  3.865 s,  481 / 3578] Action 2:62:Log
-[  3.865 s,  481 / 3578] Test: COMPLETE Test_03_Actors ok
-[  3.866 s,  481 / 3578] Action 2:63:Log
+[  0.000 s,  477 / 3738] Server Mission Runtime Log
+[  0.002 s,  477 / 3738] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_03_Actors.xml'
+[  0.003 s,  477 / 3738] Mission runtime successfully loaded
+[  0.019 s,  478 / 3737] Action 30:0:Include
+[  0.019 s,  478 / 3737] Action 30:1:SetValue
+[  0.019 s,  478 / 3737] Test: BEGIN Test_03_Actors ok
+[  0.022 s,  478 / 3737] Action 30:2:Log
+[  0.023 s,  479 / 3737] Action 30:3:CreateActor
+[  0.023 s,  479 / 3737] Action 30:4:SetPosition
+[  0.023 s,  479 / 3737] Action 30:5:SetValue
+[  0.023 s,  479 / 3737] Action 30:6:Execute: executing action group AssertEqual..
+[  0.023 s,  479 / 3737] Test: CreateActor_PlayerActor Pass Interceptor
+[  0.024 s,  479 / 3737] Action 0:0:Log
+[  0.024 s,  479 / 3737] Action 2:0:Condition
+[  0.024 s,  479 / 3737] Action 2:1:Else
+[  0.024 s,  479 / 3737] Action 30:6:Execute
+[  0.024 s,  479 / 3737] Action 30:7:Execute: executing action group AssertEqual..
+[  0.024 s,  479 / 3737] Test: CreateActor_TeamID Pass 1
+[  0.025 s,  479 / 3737] Action 0:0:Log
+[  0.025 s,  479 / 3737] Action 2:0:Condition
+[  0.025 s,  479 / 3737] Action 2:1:Else
+[  0.025 s,  479 / 3737] Action 30:7:Execute
+[  0.025 s,  479 / 3737] Action 30:8:Execute: executing action group AssertEqual..
+[  0.025 s,  479 / 3737] Test: CreateActor_Type Pass Ship
+[  0.027 s,  479 / 3737] Action 0:0:Log
+[  0.027 s,  479 / 3737] Action 2:0:Condition
+[  0.027 s,  479 / 3737] Action 2:1:Else
+[  0.027 s,  479 / 3737] Action 30:8:Execute
+[  0.027 s,  479 / 3737] Action 30:9:CreateActor
+[  0.027 s,  479 / 3737] Action 30:10:SetPosition
+[  0.027 s,  479 / 3737] Action 30:11:Execute: executing action group AssertEqual..
+[  0.027 s,  479 / 3737] Test: Instructor_Class Pass Corvette
+[  0.028 s,  479 / 3737] Action 0:0:Log
+[  0.028 s,  479 / 3737] Action 2:0:Condition
+[  0.028 s,  479 / 3737] Action 2:1:Else
+[  0.028 s,  479 / 3737] Action 30:11:Execute
+[  0.028 s,  479 / 3737] Action 30:12:Execute: executing action group AssertEqual..
+[  0.028 s,  479 / 3737] Test: Instructor_DisplayName Pass Instructor
+[  0.030 s,  479 / 3737] Action 0:0:Log
+[  0.030 s,  479 / 3737] Action 2:0:Condition
+[  0.030 s,  479 / 3737] Action 2:1:Else
+[  0.030 s,  479 / 3737] Action 30:12:Execute
+[  0.030 s,  479 / 3737] Action 30:13:CreateActor
+[  0.030 s,  479 / 3737] Action 30:14:CreateActor
+[  0.030 s,  479 / 3737] Action 30:15:Execute: executing action group AssertNotEqual..
+[  0.030 s,  479 / 3737] Test: Group_StaticDrone Pass [12, 13]
+[  0.031 s,  479 / 3737] Action 3:0:Log
+[  0.031 s,  479 / 3737] Action 5:0:Condition
+[  0.031 s,  479 / 3737] Action 5:1:Else
+[  0.031 s,  479 / 3737] Action 30:15:Execute
+[  0.031 s,  479 / 3737] Action 30:16:Execute: executing action group AssertEqual..
+[  0.032 s,  479 / 3737] Test: Group_first Pass Drone #1
+[  0.033 s,  479 / 3737] Action 0:0:Log
+[  0.033 s,  479 / 3737] Action 2:0:Condition
+[  0.033 s,  479 / 3737] Action 2:1:Else
+[  0.033 s,  479 / 3737] Action 30:16:Execute
+[  0.033 s,  479 / 3737] Action 30:17:CreateActor
+[  0.033 s,  479 / 3737] Action 30:18:Execute: executing action group AssertEqual..
+[  0.033 s,  479 / 3737] Test: Marker_Class Pass Marker
+[  0.034 s,  479 / 3737] Action 0:0:Log
+[  0.034 s,  479 / 3737] Action 2:0:Condition
+[  0.034 s,  479 / 3737] Action 2:1:Else
+[  0.034 s,  479 / 3737] Action 30:18:Execute
+[  0.034 s,  479 / 3737] Action 30:19:Execute: executing action group AssertEqual..
+[  0.034 s,  479 / 3737] Test: Marker_TeamID Pass -1
+[  0.035 s,  479 / 3737] Action 0:0:Log
+[  0.035 s,  479 / 3737] Action 2:0:Condition
+[  0.035 s,  479 / 3737] Action 2:1:Else
+[  0.035 s,  479 / 3737] Action 30:19:Execute
+[  0.035 s,  479 / 3737] Action 30:20:SetPosition
+[  0.035 s,  479 / 3737] Action 30:21:Execute: executing action group AssertVec3..
+[  0.035 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.035 s,  479 / 3737] Test: SetPosition Pass [10.0000000000000000, 0.0000000000000000, 5.0000000000000000, 0.0000000000000000]
+[  0.037 s,  479 / 3737] Action 21:0:Log
+[  0.037 s,  479 / 3737] Action 23:1:Condition
+[  0.037 s,  479 / 3737] Action 23:2:Else
+[  0.037 s,  479 / 3737] Action 30:21:Execute
+[  0.037 s,  479 / 3737] Action 30:22:SetRotation
+[  0.037 s,  479 / 3737] Action 30:23:Execute: executing action group AssertVec3..
+[  0.037 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.037 s,  479 / 3737] Test: SetRotation Pass [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 1.0000000000000000]
+[  0.038 s,  479 / 3737] Action 21:0:Log
+[  0.038 s,  479 / 3737] Action 23:1:Condition
+[  0.038 s,  479 / 3737] Action 23:2:Else
+[  0.038 s,  479 / 3737] Action 30:23:Execute
+[  0.038 s,  479 / 3737] Action 30:24:Execute: executing action group AssertEqual..
+[  0.038 s,  479 / 3737] Test: SetRotation_W Pass 1.0
+[  0.039 s,  479 / 3737] Action 0:0:Log
+[  0.039 s,  479 / 3737] Action 2:0:Condition
+[  0.039 s,  479 / 3737] Action 2:1:Else
+[  0.039 s,  479 / 3737] Action 30:24:Execute
+[  0.039 s,  479 / 3737] Action 30:25:SetVelocity
+[  0.039 s,  479 / 3737] Action 30:26:Execute: executing action group AssertVec3..
+[  0.039 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.039 s,  479 / 3737] Test: SetVelocity Pass [0.0000000000000000, 0.0000000000000000, 0.3000000000000000, 0.0000000000000000]
+[  0.040 s,  479 / 3737] Action 21:0:Log
+[  0.040 s,  479 / 3737] Action 23:1:Condition
+[  0.040 s,  479 / 3737] Action 23:2:Else
+[  0.040 s,  479 / 3737] Action 30:26:Execute
+[  0.040 s,  479 / 3737] Action 30:27:SetRotVelocity
+[  0.041 s,  479 / 3737] Action 30:28:Execute: executing action group AssertVec3..
+[  0.041 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.041 s,  479 / 3737] Test: SetRotVelocity Pass [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000]
+[  0.042 s,  479 / 3737] Action 21:0:Log
+[  0.042 s,  479 / 3737] Action 23:1:Condition
+[  0.042 s,  479 / 3737] Action 23:2:Else
+[  0.042 s,  479 / 3737] Action 30:28:Execute
+[  0.042 s,  479 / 3737] Action 30:29:SetValue
+[  0.042 s,  479 / 3737] Action 30:30:SetValue
+[  0.042 s,  479 / 3737] Action 30:31:CreateActor
+[  0.042 s,  479 / 3737] Action 30:32:SetPosition
+[  0.042 s,  479 / 3737] Action 30:33:Execute: executing action group AssertVec3..
+[  0.042 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.042 s,  479 / 3737] Test: SetPosition_Parent Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
+[  0.043 s,  479 / 3737] Action 21:0:Log
+[  0.043 s,  479 / 3737] Action 23:1:Condition
+[  0.044 s,  479 / 3737] Action 23:2:Else
+[  0.044 s,  479 / 3737] Action 30:33:Execute
+[  0.044 s,  479 / 3737] Action 30:34:CreateActor
+[  0.044 s,  479 / 3737] Action 30:35:CreateActor
+[  0.044 s,  479 / 3737] Action 30:36:SetPosition
+[  0.044 s,  479 / 3737] Action 30:37:SetPosition
+[  0.044 s,  479 / 3737] Action 30:38:SetValue
+[  0.044 s,  479 / 3737] Action 30:39:SetValue
+[  0.044 s,  479 / 3737] Action 30:40:Execute: executing action group AssertVec3..
+[  0.044 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.044 s,  479 / 3737] Test: Wing1_Pos Pass [-0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000]
+[  0.045 s,  479 / 3737] Action 21:0:Log
+[  0.045 s,  479 / 3737] Action 23:1:Condition
+[  0.045 s,  479 / 3737] Action 23:2:Else
+[  0.045 s,  479 / 3737] Action 30:40:Execute
+[  0.045 s,  479 / 3737] Action 30:41:Execute: executing action group AssertVec3..
+[  0.045 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.045 s,  479 / 3737] Test: Wing2_Pos Pass [0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000]
+[  0.047 s,  479 / 3737] Action 21:0:Log
+[  0.047 s,  479 / 3737] Action 23:1:Condition
+[  0.047 s,  479 / 3737] Action 23:2:Else
+[  0.047 s,  479 / 3737] Action 30:41:Execute
+[  0.047 s,  479 / 3737] Action 30:42:SetVelocity
+[  0.047 s,  479 / 3737] Action 30:43:Execute: executing action group AssertVec3..
+[  0.047 s,  479 / 3737] Action 23:0:DistanceValue
+[  0.047 s,  479 / 3737] Test: SetVelocity_Normalize Pass [0.0000000000000000, 0.0000000000000000, 0.5000000000000000, 0.0000000000000000]
+[  0.048 s,  479 / 3737] Action 21:0:Log
+[  0.048 s,  479 / 3737] Action 23:1:Condition
+[  0.048 s,  479 / 3737] Action 23:2:Else
+[  0.048 s,  479 / 3737] Action 30:43:Execute
+[  0.048 s,  479 / 3737] Action 30:44:CreateActor
+[  0.048 s,  479 / 3737] Action 30:45:SetPosition
+[  0.048 s,  479 / 3737] Action 30:46:SetVisible
+[  0.048 s,  479 / 3737] Action 30:47:SetVisible
+[  0.048 s,  479 / 3737] Action 30:48:Execute: executing action group AssertEqual..
+[  0.048 s,  479 / 3737] Test: Crate1_Class Pass SupplyCrate
+[  0.049 s,  479 / 3737] Action 0:0:Log
+[  0.049 s,  479 / 3737] Action 2:0:Condition
+[  0.049 s,  479 / 3737] Action 2:1:Else
+[  0.049 s,  479 / 3737] Action 30:48:Execute
+[  0.049 s,  479 / 3737] Action 28:0:AddValue
+[  0.050 s,  479 / 3737] Action 28:1:CreateActor
+[  0.050 s,  479 / 3737] Action 28:2:MulValue
+[  0.050 s,  479 / 3737] Action 28:3:AddValue
+[  0.050 s,  479 / 3737] Action 28:4:TransformValue
+[  0.053 s,  480 / 3737] Action 28:0:AddValue
+[  0.054 s,  480 / 3737] Action 28:1:CreateActor
+[  0.054 s,  480 / 3737] Action 28:2:MulValue
+[  0.054 s,  480 / 3737] Action 28:3:AddValue
+[  0.054 s,  480 / 3737] Action 28:4:TransformValue
+[  0.065 s,  480 / 3737] Action 28:0:AddValue
+[  0.066 s,  480 / 3737] Action 28:1:CreateActor
+[  0.066 s,  480 / 3737] Action 28:2:MulValue
+[  0.066 s,  480 / 3737] Action 28:3:AddValue
+[  0.066 s,  480 / 3737] Action 28:4:TransformValue
+[  0.081 s,  480 / 3737] Action 30:49:Loop
+[  0.081 s,  480 / 3737] Action 30:50:SetAIState
+[  0.081 s,  480 / 3737] Action 30:51:SetValue
+[  0.081 s,  480 / 3737] Action 29:0:AddValue
+[  0.081 s,  480 / 3737] Action 29:0:AddValue
+[  0.081 s,  480 / 3737] Action 29:0:AddValue
+[  0.081 s,  480 / 3737] Action 30:52:Loop
+[  0.081 s,  480 / 3737] Action 30:53:Execute: executing action group AssertEqual..
+[  0.081 s,  480 / 3737] Test: FwdWing_Count Pass 3.0
+[  0.082 s,  480 / 3737] Action 0:0:Log
+[  0.082 s,  480 / 3737] Action 2:0:Condition
+[  0.082 s,  480 / 3737] Action 2:1:Else
+[  0.082 s,  480 / 3737] Action 30:53:Execute
+[  0.083 s,  480 / 3737] Action 30:54:CreateActor
+[  0.083 s,  480 / 3737] Action 30:55:Execute: executing action group AssertEqual..
+[  0.083 s,  480 / 3737] Test: ToDelete_before Pass Interceptor
+[  0.084 s,  480 / 3737] Action 0:0:Log
+[  0.084 s,  480 / 3737] Action 2:0:Condition
+[  0.084 s,  480 / 3737] Action 2:1:Else
+[  0.084 s,  480 / 3737] Action 30:55:Execute
+[  0.084 s,  480 / 3737] Action 30:56:DeleteActor
+[  0.371 s,  480 / 3750] Action 30:57:Wait
+[  0.371 s,  480 / 3750] Action 30:58:Execute: executing action group AssertNotEqual..
+[  0.371 s,  480 / 3750] Test: ToDelete_after Pass 
+[  0.373 s,  480 / 3750] Action 3:0:Log
+[  0.373 s,  480 / 3750] Action 5:0:Condition
+[  0.373 s,  480 / 3750] Action 5:1:Else
+[  0.373 s,  480 / 3750] Action 30:58:Execute
+[  0.373 s,  480 / 3750] Action 30:59:CreateActor
+[  0.373 s,  480 / 3749] Action 30:60:KillActor
+[  3.868 s,  481 / 3690] Action 30:61:Wait
+[  3.868 s,  481 / 3690] Action 30:62:Execute: executing action group AssertNotEqual..
+[  3.868 s,  481 / 3690] Test: ToKill_after Pass 
+[  3.870 s,  481 / 3690] Action 3:0:Log
+[  3.870 s,  481 / 3690] Action 5:0:Condition
+[  3.870 s,  481 / 3690] Action 5:1:Else
+[  3.870 s,  481 / 3690] Action 30:62:Execute
+[  3.870 s,  481 / 3690] Action 30:63:SetValue
+[  3.870 s,  481 / 3690] Action 30:64:Execute: executing action group AssertEqual..
+[  3.870 s,  481 / 3690] Test: Rename_Dummy Pass Interceptor
+[  3.871 s,  481 / 3690] Action 0:0:Log
+[  3.871 s,  481 / 3690] Action 2:0:Condition
+[  3.871 s,  481 / 3690] Action 2:1:Else
+[  3.871 s,  481 / 3690] Action 30:64:Execute
+[  3.871 s,  481 / 3690] Action 30:65:Execute: executing action group AssertNotEqual..
+[  3.871 s,  481 / 3690] Test: Rename_oldName Pass 
+[  3.872 s,  481 / 3690] Action 3:0:Log
+[  3.872 s,  481 / 3690] Action 5:0:Condition
+[  3.872 s,  481 / 3690] Action 5:1:Else
+[  3.872 s,  481 / 3690] Action 30:65:Execute
+[  3.872 s,  481 / 3690] Action 30:66:Execute: executing action group AssertDone..
+[  3.872 s,  481 / 3690] Test: COMPLETE Pass 0
+[  3.874 s,  481 / 3690] Action 24:0:Log
+[  3.874 s,  481 / 3690] Action 26:0:Condition
+[  3.874 s,  481 / 3690] Action 26:1:Else
+[  3.874 s,  481 / 3690] Action 30:66:Execute

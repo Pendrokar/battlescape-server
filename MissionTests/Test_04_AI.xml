@@ -1,4 +1,6 @@
 <Mission ID="904" Category="Workshop" Title="Test_04_AI" Descr="PDF 6.3 AI and 6.2 path examples" Tags="TEST" GameMode="Custom">
+	<Include Target="$Current/Test_Assert.xml" />
+	<SetValue Target="Global.FailCount" Source="0" />
 	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_04_AI" Arg3="ok" />
 
 	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
@@ -6,7 +8,6 @@
 	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
 	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
 
-	<!-- 6.2 CreatePath: registered when the file is read -->
 	<CreatePath Name="DroneSpawnPath">
 		<Key T="0" X="0" Y="0" Z="0" />
 		<Key T="1" X="0" Y="0" Z="2" />
@@ -17,63 +18,57 @@
 		<Key T="1" X="1" Y="0" Z="2" />
 	</CreatePath>
 
-	<!-- 6.3 SetAIState -->
 	<CreateActor Name="Instructor" Class="Corvette" TeamID="1" Loadout="Default" AI="false" DisplayName="Instructor" />
 	<SetPosition Target="Instructor" X="2" Y="0" Z="0" />
 	<SetAIState Target="Instructor" HasAI="true" Rank="0" IsElite="false" Objective="Battle" AllowFiring="false" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetAIState_Instructor" Arg2="Actor:Instructor.ActorClassName" Arg3="Corvette" />
+	<Execute Target="AssertEqual" Arg1="SetAIState_Instructor" Arg2="Actor:Instructor.ActorClassName" Arg3="Corvette" />
 
 	<CreateActor Name="Drone11" Class="Interceptor" TeamID="0" Loadout="Default" DisplayName="Drone11" />
 	<SetPosition Target="Drone11" X="-2" Y="0" Z="0" />
 	<SetAIState Target="Drone11" HasAI="true" Rank="0" Objective="Battle" Behavior="MissileFrenzy" AllowChaffs="false" AllowMissiles="true" AllowFiring="false" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetAIState_Drone11" Arg2="Actor:Drone11.ActorID" Arg3="id" />
+	<Execute Target="AssertNotEqual" Arg1="SetAIState_Drone11" Arg2="Actor:Drone11.ActorID" Arg3="" />
 
-	<!-- Remove AI -->
 	<SetAIState Target="Instructor" HasAI="false" AllowFiring="false" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetAIState_HasAI_false" Arg2="Actor:Instructor.ActorClassName" Arg3="Corvette" />
+	<Execute Target="AssertEqual" Arg1="SetAIState_HasAI_false" Arg2="Actor:Instructor.ActorClassName" Arg3="Corvette" />
 
-	<!-- PDF bandit example: 8 km behind PlayerActor, attack that ship, leave via timer -->
 	<CreateActor Name="Bandit" Class="Interceptor" TeamID="0" DisplayName="Bandit" />
 	<TransformValue Target="Actor:Bandit.Position" Source="[0, 0, -8]" From="Actor:PlayerActor" />
 	<SetValue Target="Actor:Bandit.Rotation" Source="Actor:PlayerActor.Rotation" />
 	<SetAIState Target="Bandit" HasAI="true" Rank="3" Objective="Battle" AllowMissiles="false" AllowFiring="false" />
 	<SetValue Target="Actor:Bandit.AIActorTarget" Source="Actor:PlayerActor.ActorID" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Bandit_Pos" Arg2="Actor:Bandit.Position" Arg3="[0,0,-8]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Bandit_AIActorTarget" Arg2="Actor:Bandit.AIActorTarget" Arg3="PlayerActorID" />
+	<Execute Target="AssertVec3" Arg1="Bandit_Pos" Arg2="Actor:Bandit.Position" Arg3="[0, 0, -8]" />
+	<Execute Target="AssertEqual" Arg1="Bandit_AIActorTarget" Arg2="Actor:Bandit.AIActorTarget" Arg3="Actor:PlayerActor.ActorID" />
 
+	<SetValue Target="Global.BanditLeft" Source="0" />
 	<CreateTrigger Name="BanditLeaves" Type="Timer" Target="Actor:Bandit" Duration="0.8" Once="true" AutoDelete="true">
 		<SetAIState Target="Bandit" HasAI="true" Behavior="WarpOut" AllowFiring="false" />
 		<SetValue Target="Actor:Bandit.AIActorTarget" Source="" />
 		<SetValue Target="Global.BanditLeft" Source="1" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BanditLeaves" Arg2="Global.BanditLeft" Arg3="1" />
 	</CreateTrigger>
 
-	<!-- SetAIPath along CreatePath keys -->
 	<CreateActor Name="Drone4" Class="Interceptor" TeamID="0" Loadout="Default" AI="false" />
 	<SetPosition Target="Drone4" X="0" Y="0" Z="0" />
 	<SetAIState Target="Drone4" HasAI="true" Rank="0" Objective="Path" AllowFiring="false" />
 	<SetAIPath Target="Drone4" Path="DroneSpawnPath" Mode="SequentialClosest" Looping="true" Retaliate="false" MaxSpeed="0.1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetAIPath" Arg2="Actor:Drone4.ActorClassName" Arg3="Interceptor" />
+	<Execute Target="AssertEqual" Arg1="SetAIPath" Arg2="Actor:Drone4.ActorClassName" Arg3="Interceptor" />
 
-	<!-- MoveAI to a point; then log that the destination was accepted (position may not arrive in 1s) -->
 	<CreateActor Name="Escort" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" DisplayName="Escort" />
 	<SetPosition Target="Escort" X="0.5" Y="0" Z="0" />
 	<SetAIState Target="Escort" HasAI="true" Rank="0" Objective="Battle" AllowFiring="false" />
 	<MoveAI Target="Escort" Position="[0.1, 0, 0.4]" MinSpeed="0.0" MaxSpeed="0.5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="MoveAI_issued" Arg2="Actor:Escort.Position" Arg3="start" />
+	<Execute Target="AssertVec3" Arg1="MoveAI_issued" Arg2="Actor:Escort.Position" Arg3="[0.5, 0, 0]" />
 
-	<!-- SetActorPath: scripted flight, actor must not be player-controlled -->
 	<CreateActor Name="PathShip" Class="Interceptor" TeamID="1" Loadout="None" AI="false" />
 	<SetActorPath Target="PathShip" Path="ShortFlight" PosParent="" RotParent="" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetActorPath_start" Arg2="Actor:PathShip.Position" Arg3="any" />
 
 	<Wait Duration="1.2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BanditLeaves_flag" Arg2="Global.BanditLeft" Arg3="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetActorPath_after" Arg2="Actor:PathShip.Position" Arg3="near_[1,0,2]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetAIPath_after" Arg2="Actor:Drone4.Position" Arg3="moved_along_path" />
+	<Execute Target="AssertEqual" Arg1="BanditLeaves_flag" Arg2="Global.BanditLeft" Arg3="1" />
+	<Execute Target="AssertVec3" Arg1="SetActorPath_after" Arg2="Actor:PathShip.Position" Arg3="[1, 0, 2]" />
+	<DistanceValue Target="Global.Drone4Moved" Source1="Actor:Drone4.Position" Source2="[0, 0, 0]" />
+	<Execute Target="AssertHigher" Arg1="SetAIPath_after" Arg2="Global.Drone4Moved" Arg3="0" />
 
 	<SetActorPath Target="PathShip" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetActorPath_stop" Arg2="Actor:PathShip.ActorClassName" Arg3="Interceptor" />
+	<Execute Target="AssertEqual" Arg1="SetActorPath_stop" Arg2="Actor:PathShip.ActorClassName" Arg3="Interceptor" />
 
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_04_AI" Arg3="ok" />
+	<Execute Target="AssertDone" />
 </Mission>

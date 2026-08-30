@@ -1,5 +1,4 @@
-<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Include" Arg2="toplevel" Arg3="ran" />
+<SetValue Target="Global.IncludeTop" Source="1" />
 <Actions Name="FromFragment">
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Include" Arg2="FromFragment" Arg3="ran" />
 	<SetValue Target="Global.FromInclude" Source="yes" />
 </Actions>

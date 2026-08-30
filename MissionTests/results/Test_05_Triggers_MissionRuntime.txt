@@ -1,155 +1,206 @@
-[  0.000 s,  477 / 3540] Server Mission Runtime Log
-[  0.003 s,  477 / 3540] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_05_Triggers.xml'
-[  0.005 s,  477 / 3540] Mission runtime successfully loaded
-[  0.019 s,  478 / 3540] Test: BEGIN Test_05_Triggers ok
-[  0.021 s,  478 / 3540] Action 13:0:Log
-[  0.021 s,  479 / 3539] Action 13:1:CreateActor
-[  0.021 s,  479 / 3539] Action 13:2:SetPosition
-[  0.021 s,  479 / 3539] Action 13:3:SetValue
-[  0.021 s,  479 / 3539] Action 13:4:SetValue
-[  0.021 s,  479 / 3539] Created trigger 0 (AnySpawned) for action group 0..
-[  0.021 s,  479 / 3539] Action 13:5:CreateTrigger
-[  0.021 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated starting
-[  0.021 s,  479 / 3539] Test: ActorCreated Bomber 11
-[  0.023 s,  479 / 3539] Action 0:0:Log
-[  0.023 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated finished
-[  0.023 s,  479 / 3539] Action 13:6:CreateActor
-[  0.023 s,  479 / 3539] Action 13:7:SetPosition
-[  0.023 s,  479 / 3539] Created trigger 1 (DroneDestroyed) for action group 1..
-[  0.023 s,  479 / 3539] Action 13:8:CreateTrigger
-[  0.023 s,  479 / 3539] Action 13:9:SetValue
-[  0.024 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated starting
-[  0.024 s,  479 / 3539] Test: ActorCreated Interceptor 12
-[  0.025 s,  479 / 3539] Action 0:0:Log
-[  0.025 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated finished
-[  0.025 s,  479 / 3539] Action 13:10:CreateActor
-[  0.025 s,  479 / 3539] Action 13:11:SetPosition
-[  0.025 s,  479 / 3539] Action 13:12:KillActor
-[  0.025 s,  479 / 3539] Created trigger 2 (PowerShipUp) for action group 2..
-[  0.025 s,  479 / 3539] Action 13:13:CreateTrigger
-[  0.025 s,  479 / 3539] Trigger 2:PowerShipUp:ActorProperty starting
-[  0.025 s,  479 / 3539] Test: ActorProperty_PowerState 0 0
-[  0.027 s,  479 / 3539] Action 2:0:Log
-[  0.027 s,  479 / 3539] Action 2:1:SetValue
-[  0.027 s,  479 / 3539] Trigger 2:PowerShipUp:ActorProperty finished
-[  0.027 s,  479 / 3539] Action 13:14:SetValue
-[  0.027 s,  479 / 3539] Created trigger 3 (HitPointsChanged) for action group 3..
-[  0.027 s,  479 / 3539] Action 13:15:CreateTrigger
-[  0.027 s,  479 / 3539] Action 13:16:SetValue
-[  0.027 s,  479 / 3539] Created trigger 4 (ActorTick) for action group 4..
-[  0.027 s,  479 / 3539] Action 13:17:CreateTrigger
-[  0.027 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated starting
-[  0.027 s,  479 / 3539] Test: ActorCreated Marker 13
-[  0.028 s,  479 / 3539] Action 0:0:Log
-[  0.028 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated finished
-[  0.028 s,  479 / 3539] Action 13:18:CreateActor
-[  0.028 s,  479 / 3539] Action 13:19:SetPosition
-[  0.028 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated starting
-[  0.028 s,  479 / 3539] Test: ActorCreated Interceptor 14
-[  0.030 s,  479 / 3539] Action 0:0:Log
-[  0.030 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated finished
-[  0.030 s,  479 / 3539] Action 13:20:CreateActor
-[  0.030 s,  479 / 3539] Action 13:21:SetPosition
-[  0.030 s,  479 / 3539] Created trigger 5 (CloseToOutpost) for action group 5..
-[  0.030 s,  479 / 3539] Action 13:22:CreateTrigger
-[  0.031 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated starting
-[  0.031 s,  479 / 3539] Test: ActorCreated InterceptorDebris1 15
-[  0.033 s,  479 / 3539] Action 0:0:Log
-[  0.033 s,  479 / 3539] Trigger 0:AnySpawned:ActorCreated finished
-[  0.202 s,  479 / 3578] Trigger 3:HitPointsChanged:ActorProperty starting
-[  0.202 s,  479 / 3578] Test: ActorProperty_HitPoints 0.25 0.25
-[  0.204 s,  479 / 3578] Action 3:0:Log
-[  0.204 s,  479 / 3578] Trigger 3:HitPointsChanged:ActorProperty finished
-[  0.358 s,  479 / 3578] Action 13:23:Wait
-[  0.358 s,  479 / 3578] Action 13:24:SetPosition
-[  0.358 s,  479 / 3578] Trigger 0:AnySpawned:ActorCreated starting
-[  0.358 s,  479 / 3578] Test: ActorCreated Interceptor 16
-[  0.360 s,  479 / 3578] Action 0:0:Log
-[  0.360 s,  479 / 3578] Trigger 0:AnySpawned:ActorCreated finished
-[  0.360 s,  479 / 3578] Action 13:25:CreateActor
-[  0.360 s,  479 / 3578] Action 13:26:SetPosition
-[  0.360 s,  479 / 3578] Created trigger 6 (LeavingOutpost) for action group 6..
-[  0.360 s,  479 / 3578] Action 13:27:CreateTrigger
-[  0.452 s,  479 / 3578] Trigger 4:ActorTick:Timer starting
-[  0.452 s,  479 / 3578] Test: Timer 0.42500931 fired
-[  0.453 s,  479 / 3578] Action 4:0:Log
-[  0.453 s,  479 / 3578] Action 4:1:SetValue
-[  0.453 s,  479 / 3578] Trigger 4:ActorTick:Timer finished
-[  0.654 s,  479 / 3577] Action 13:28:Wait
-[  0.654 s,  479 / 3577] Action 13:29:SetPosition
-[  0.654 s,  479 / 3577] Trigger 0:AnySpawned:ActorCreated starting
-[  0.654 s,  479 / 3577] Test: ActorCreated Marker 17
-[  0.656 s,  479 / 3577] Action 0:0:Log
-[  0.656 s,  479 / 3577] Trigger 0:AnySpawned:ActorCreated finished
-[  0.656 s,  479 / 3577] Action 13:30:CreateActor
-[  0.656 s,  479 / 3577] Action 13:31:SetPosition
-[  0.656 s,  479 / 3577] Action 13:32:SetValue
-[  0.656 s,  479 / 3577] Created trigger 6 (LookingAtMarker) for action group 7..
-[  0.656 s,  479 / 3577] Action 13:33:CreateTrigger
-[  0.670 s,  479 / 3577] Trigger 6:LookingAtMarker:ActorLookAt starting
-[  0.670 s,  479 / 3577] Test: ActorLookAt LookTarget LookTarget
-[  0.671 s,  479 / 3577] Action 7:0:Log
-[  0.671 s,  479 / 3577] Action 7:1:SetValue
-[  0.671 s,  479 / 3577] Trigger 6:LookingAtMarker:ActorLookAt finished
-[  0.944 s,  479 / 3547] Action 13:34:Wait
-[  0.944 s,  479 / 3547] Action 13:35:SetValue
-[  0.944 s,  479 / 3547] Created trigger 7 (WaveCompleted) for action group 8..
-[  0.944 s,  479 / 3547] Action 13:36:CreateTrigger
-[  0.944 s,  479 / 3547] Action 13:37:SetValue
-[  0.944 s,  479 / 3547] Created trigger 8 (UniqueTick) for action group 9..
-[  0.945 s,  479 / 3547] Action 13:38:CreateTrigger
-[  0.945 s,  479 / 3547] Trigger already exists 8 (UniqueTick) but should be unique, ignoring..
-[  0.945 s,  479 / 3547] Action 13:39:CreateTrigger
-[  0.945 s,  479 / 3547] Created trigger 9 (WillBeDeleted) for action group 11..
-[  0.945 s,  479 / 3547] Action 13:40:CreateTrigger
-[  0.945 s,  479 / 3547] Action 13:41:DeleteTrigger
-[  0.945 s,  479 / 3547] Action 13:42:SetValue
-[  0.945 s,  479 / 3547] Created trigger 10 (Resetable) for action group 12..
-[  0.945 s,  479 / 3547] Action 13:43:CreateTrigger
-[  0.945 s,  479 / 3547] Action 13:44:SetValue
-[  0.961 s,  479 / 3546] Trigger 7:WaveCompleted:Condition starting
-[  0.961 s,  479 / 3546] Test: ConditionTrigger 3 3
-[  0.963 s,  479 / 3547] Action 8:0:Log
-[  0.963 s,  479 / 3547] Action 8:1:SetValue
-[  0.963 s,  479 / 3547] Trigger 7:WaveCompleted:Condition finished
-[  0.963 s,  479 / 3547] Trigger 10:Resetable:Condition starting
-[  0.963 s,  479 / 3547] Action 12:0:AddValue
-[  0.963 s,  479 / 3547] Test: ResetTrigger_fire 1.0 count
-[  0.964 s,  479 / 3547] Action 12:1:Log
-[  0.964 s,  479 / 3547] Action 12:2:SetValue
-[  0.964 s,  479 / 3547] Trigger 10:Resetable:Condition finished
-[  1.539 s,  480 / 3518] Action 13:45:Wait
-[  1.539 s,  480 / 3518] Action 13:46:ResetTrigger
-[  1.539 s,  480 / 3518] Action 13:47:SetValue
-[  1.555 s,  480 / 3517] Trigger 9:Resetable:Condition starting
-[  1.555 s,  480 / 3517] Action 12:0:AddValue
-[  1.555 s,  480 / 3517] Test: ResetTrigger_fire 2.0 count
-[  1.557 s,  480 / 3517] Action 12:1:Log
-[  1.557 s,  480 / 3517] Action 12:2:SetValue
-[  1.557 s,  480 / 3517] Trigger 9:Resetable:Condition finished
-[  3.059 s,  480 / 3511] Trigger 1:DroneDestroyed:ActorDestroyed starting
-[  3.059 s,  480 / 3511] Test: ActorDestroyed TestDrone TestDrone
-[  3.061 s,  480 / 3512] Action 1:0:Log
-[  3.061 s,  480 / 3512] Action 1:1:AddValue
-[  3.061 s,  480 / 3512] Test: ActorDestroyed_KillCount 1.0 1
-[  3.062 s,  480 / 3512] Action 1:2:Log
-[  3.062 s,  480 / 3512] Trigger 1:DroneDestroyed:ActorDestroyed finished
-[  5.038 s,  480 / 3513] Action 13:48:Wait
-[  5.038 s,  480 / 3513] Test: PowerTrigger 1 1
-[  5.041 s,  480 / 3513] Action 13:49:Log
-[  5.041 s,  480 / 3513] Test: TimerFired 1 1
-[  5.043 s,  480 / 3513] Action 13:50:Log
-[  5.043 s,  480 / 3513] Test: RangeEnter  1
-[  5.046 s,  480 / 3513] Action 13:51:Log
-[  5.046 s,  480 / 3513] Test: RangeLeave  1
-[  5.048 s,  480 / 3513] Action 13:52:Log
-[  5.048 s,  480 / 3513] Test: LookAt 1 1
-[  5.050 s,  480 / 3513] Action 13:53:Log
-[  5.050 s,  480 / 3513] Test: WaveDone 1 1
-[  5.052 s,  480 / 3513] Action 13:54:Log
-[  5.052 s,  480 / 3513] Test: ResetCount 2.0 2
-[  5.054 s,  480 / 3513] Action 13:55:Log
-[  5.054 s,  480 / 3513] Test: KillCount 1.0 1
-[  5.055 s,  480 / 3513] Action 13:56:Log
-[  5.056 s,  480 / 3513] Test: COMPLETE Test_05_Triggers ok
-[  5.057 s,  480 / 3513] Action 13:57:Log
+[  0.000 s,  476 / 3634] Server Mission Runtime Log
+[  0.002 s,  477 / 3634] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_05_Triggers.xml'
+[  0.003 s,  477 / 3634] Mission runtime successfully loaded
+[  0.012 s,  478 / 3631] Action 42:0:Include
+[  0.012 s,  478 / 3631] Action 42:1:SetValue
+[  0.012 s,  478 / 3631] Test: BEGIN Test_05_Triggers ok
+[  0.014 s,  478 / 3631] Action 42:2:Log
+[  0.014 s,  478 / 3631] Action 42:3:CreateActor
+[  0.014 s,  478 / 3631] Action 42:4:SetPosition
+[  0.014 s,  478 / 3631] Action 42:5:SetValue
+[  0.015 s,  478 / 3631] Action 42:6:SetValue
+[  0.015 s,  478 / 3631] Action 42:7:SetValue
+[  0.015 s,  478 / 3631] Created trigger 0 (AnySpawned) for action group 29..
+[  0.015 s,  478 / 3631] Action 42:8:CreateTrigger
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated starting
+[  0.015 s,  478 / 3631] Action 28:0:SetValue
+[  0.015 s,  478 / 3631] Action 29:0:Condition
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated finished
+[  0.015 s,  478 / 3631] Action 42:9:CreateActor
+[  0.015 s,  478 / 3631] Action 42:10:SetPosition
+[  0.015 s,  478 / 3631] Action 42:11:SetValue
+[  0.015 s,  478 / 3631] Created trigger 1 (DroneDestroyed) for action group 30..
+[  0.015 s,  478 / 3631] Action 42:12:CreateTrigger
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated starting
+[  0.015 s,  478 / 3631] Action 29:0:Condition
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated finished
+[  0.015 s,  478 / 3631] Action 42:13:CreateActor
+[  0.015 s,  478 / 3631] Action 42:14:SetPosition
+[  0.015 s,  478 / 3631] Action 42:15:KillActor
+[  0.015 s,  478 / 3631] Action 42:16:SetValue
+[  0.015 s,  478 / 3631] Created trigger 2 (PowerShipUp) for action group 31..
+[  0.015 s,  478 / 3631] Action 42:17:CreateTrigger
+[  0.015 s,  478 / 3631] Trigger 2:PowerShipUp:ActorProperty starting
+[  0.015 s,  478 / 3631] Action 31:0:SetValue
+[  0.015 s,  478 / 3631] Trigger 2:PowerShipUp:ActorProperty finished
+[  0.015 s,  478 / 3631] Action 42:18:SetValue
+[  0.015 s,  478 / 3631] Action 42:19:SetValue
+[  0.015 s,  478 / 3631] Created trigger 3 (HitPointsChanged) for action group 32..
+[  0.015 s,  478 / 3631] Action 42:20:CreateTrigger
+[  0.015 s,  478 / 3631] Action 42:21:SetValue
+[  0.015 s,  478 / 3631] Action 42:22:SetValue
+[  0.015 s,  478 / 3631] Created trigger 4 (ActorTick) for action group 33..
+[  0.015 s,  478 / 3631] Action 42:23:CreateTrigger
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated starting
+[  0.015 s,  478 / 3631] Action 29:0:Condition
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated finished
+[  0.015 s,  478 / 3631] Action 42:24:CreateActor
+[  0.015 s,  478 / 3631] Action 42:25:SetPosition
+[  0.015 s,  478 / 3631] Trigger 0:AnySpawned:ActorCreated starting
+[  0.015 s,  478 / 3630] Action 29:0:Condition
+[  0.015 s,  478 / 3630] Trigger 0:AnySpawned:ActorCreated finished
+[  0.015 s,  478 / 3630] Action 42:26:CreateActor
+[  0.015 s,  478 / 3630] Action 42:27:SetPosition
+[  0.015 s,  478 / 3630] Action 42:28:SetValue
+[  0.015 s,  478 / 3630] Created trigger 5 (CloseToOutpost) for action group 34..
+[  0.015 s,  478 / 3630] Action 42:29:CreateTrigger
+[  0.016 s,  479 / 3630] Trigger 0:AnySpawned:ActorCreated starting
+[  0.016 s,  479 / 3630] Action 29:0:Condition
+[  0.016 s,  479 / 3630] Trigger 0:AnySpawned:ActorCreated finished
+[  0.189 s,  479 / 3653] Trigger 3:HitPointsChanged:ActorProperty starting
+[  0.189 s,  479 / 3653] Action 32:0:SetValue
+[  0.189 s,  479 / 3653] Trigger 3:HitPointsChanged:ActorProperty finished
+[  0.343 s,  479 / 3603] Action 42:30:Wait
+[  0.343 s,  479 / 3603] Action 42:31:SetPosition
+[  0.343 s,  479 / 3603] Trigger 0:AnySpawned:ActorCreated starting
+[  0.343 s,  479 / 3603] Action 29:0:Condition
+[  0.343 s,  479 / 3603] Trigger 0:AnySpawned:ActorCreated finished
+[  0.343 s,  479 / 3603] Action 42:32:CreateActor
+[  0.343 s,  479 / 3603] Action 42:33:SetPosition
+[  0.343 s,  479 / 3603] Action 42:34:SetValue
+[  0.343 s,  479 / 3603] Created trigger 6 (LeavingOutpost) for action group 35..
+[  0.343 s,  479 / 3603] Action 42:35:CreateTrigger
+[  0.437 s,  479 / 3603] Trigger 4:ActorTick:Timer starting
+[  0.437 s,  479 / 3603] Action 33:0:SetValue
+[  0.437 s,  479 / 3603] Trigger 4:ActorTick:Timer finished
+[  0.639 s,  479 / 3604] Action 42:36:Wait
+[  0.639 s,  479 / 3604] Action 42:37:SetPosition
+[  0.639 s,  479 / 3604] Trigger 0:AnySpawned:ActorCreated starting
+[  0.639 s,  479 / 3604] Action 29:0:Condition
+[  0.639 s,  479 / 3604] Trigger 0:AnySpawned:ActorCreated finished
+[  0.639 s,  479 / 3604] Action 42:38:CreateActor
+[  0.640 s,  479 / 3604] Action 42:39:SetPosition
+[  0.640 s,  479 / 3604] Action 42:40:SetValue
+[  0.640 s,  479 / 3604] Action 42:41:SetValue
+[  0.640 s,  479 / 3604] Created trigger 6 (LookingAtMarker) for action group 36..
+[  0.640 s,  479 / 3604] Action 42:42:CreateTrigger
+[  0.655 s,  479 / 3604] Trigger 6:LookingAtMarker:ActorLookAt starting
+[  0.655 s,  479 / 3604] Action 36:0:SetValue
+[  0.655 s,  479 / 3604] Trigger 6:LookingAtMarker:ActorLookAt finished
+[  0.934 s,  479 / 3600] Action 42:43:Wait
+[  0.934 s,  479 / 3600] Action 42:44:SetValue
+[  0.934 s,  479 / 3600] Action 42:45:SetValue
+[  0.934 s,  479 / 3600] Created trigger 7 (WaveCompleted) for action group 37..
+[  0.934 s,  479 / 3600] Action 42:46:CreateTrigger
+[  0.934 s,  479 / 3600] Action 42:47:SetValue
+[  0.934 s,  479 / 3600] Action 42:48:SetValue
+[  0.934 s,  479 / 3600] Created trigger 8 (UniqueTick) for action group 38..
+[  0.934 s,  479 / 3600] Action 42:49:CreateTrigger
+[  0.934 s,  479 / 3600] Trigger already exists 8 (UniqueTick) but should be unique, ignoring..
+[  0.934 s,  479 / 3600] Action 42:50:CreateTrigger
+[  0.934 s,  479 / 3600] Action 42:51:SetValue
+[  0.934 s,  479 / 3600] Created trigger 9 (WillBeDeleted) for action group 40..
+[  0.934 s,  479 / 3600] Action 42:52:CreateTrigger
+[  0.934 s,  479 / 3600] Action 42:53:DeleteTrigger
+[  0.934 s,  479 / 3600] Action 42:54:SetValue
+[  0.934 s,  479 / 3600] Created trigger 10 (Resetable) for action group 41..
+[  0.934 s,  479 / 3600] Action 42:55:CreateTrigger
+[  0.934 s,  479 / 3600] Action 42:56:SetValue
+[  0.949 s,  479 / 3598] Trigger 7:WaveCompleted:Condition starting
+[  0.949 s,  479 / 3598] Action 37:0:SetValue
+[  0.949 s,  479 / 3598] Trigger 7:WaveCompleted:Condition finished
+[  0.949 s,  479 / 3598] Trigger 10:Resetable:Condition starting
+[  0.949 s,  479 / 3598] Action 41:0:AddValue
+[  0.949 s,  479 / 3598] Action 41:1:SetValue
+[  0.949 s,  479 / 3598] Trigger 10:Resetable:Condition finished
+[  1.521 s,  479 / 3599] Action 42:57:Wait
+[  1.521 s,  479 / 3599] Action 42:58:ResetTrigger
+[  1.521 s,  479 / 3599] Action 42:59:SetValue
+[  1.536 s,  479 / 3599] Trigger 9:Resetable:Condition starting
+[  1.536 s,  479 / 3599] Action 41:0:AddValue
+[  1.536 s,  479 / 3599] Action 41:1:SetValue
+[  1.536 s,  479 / 3599] Trigger 9:Resetable:Condition finished
+[  3.035 s,  479 / 3599] Trigger 1:DroneDestroyed:ActorDestroyed starting
+[  3.035 s,  479 / 3599] Action 30:0:AddValue
+[  3.035 s,  479 / 3599] Trigger 1:DroneDestroyed:ActorDestroyed finished
+[  5.006 s,  479 / 3593] Action 42:60:Wait
+[  5.006 s,  479 / 3593] Action 42:61:Execute: executing action group AssertEqual..
+[  5.006 s,  479 / 3593] Test: ActorCreated_Bomber Pass 1
+[  5.007 s,  479 / 3593] Action 0:0:Log
+[  5.007 s,  479 / 3593] Action 2:0:Condition
+[  5.007 s,  479 / 3593] Action 2:1:Else
+[  5.007 s,  479 / 3593] Action 42:61:Execute
+[  5.007 s,  479 / 3593] Action 42:62:Execute: executing action group AssertEqual..
+[  5.007 s,  479 / 3593] Test: ActorDestroyed_KillCount Pass 1.0
+[  5.008 s,  479 / 3593] Action 0:0:Log
+[  5.008 s,  479 / 3593] Action 2:0:Condition
+[  5.008 s,  479 / 3593] Action 2:1:Else
+[  5.009 s,  479 / 3593] Action 42:62:Execute
+[  5.009 s,  479 / 3593] Action 42:63:Execute: executing action group AssertEqual..
+[  5.009 s,  479 / 3593] Test: ActorProperty_PowerState Pass 1
+[  5.010 s,  479 / 3593] Action 0:0:Log
+[  5.010 s,  479 / 3593] Action 2:0:Condition
+[  5.010 s,  479 / 3593] Action 2:1:Else
+[  5.010 s,  479 / 3593] Action 42:63:Execute
+[  5.010 s,  479 / 3593] Action 42:64:Execute: executing action group AssertEqual..
+[  5.010 s,  479 / 3593] Test: ActorProperty_HitPoints Pass 1
+[  5.011 s,  479 / 3593] Action 0:0:Log
+[  5.011 s,  479 / 3593] Action 2:0:Condition
+[  5.011 s,  479 / 3593] Action 2:1:Else
+[  5.011 s,  479 / 3593] Action 42:64:Execute
+[  5.011 s,  479 / 3593] Action 42:65:Execute: executing action group AssertEqual..
+[  5.011 s,  479 / 3593] Test: Timer Pass 1
+[  5.012 s,  479 / 3593] Action 0:0:Log
+[  5.012 s,  479 / 3593] Action 2:0:Condition
+[  5.012 s,  479 / 3593] Action 2:1:Else
+[  5.012 s,  479 / 3593] Action 42:65:Execute
+[  5.012 s,  479 / 3593] Action 42:66:Execute: executing action group AssertEqual..
+[  5.012 s,  479 / 3593] Action 2:0:Condition
+[  5.012 s,  479 / 3593] Test: ActorRange_enter Failure 0
+[  5.014 s,  479 / 3593] Action 1:0:Log
+[  5.014 s,  479 / 3593] Action 1:1:AddValue
+[  5.014 s,  479 / 3593] Action 2:1:Else
+[  5.014 s,  479 / 3593] Action 42:66:Execute
+[  5.014 s,  479 / 3593] Action 42:67:Execute: executing action group AssertEqual..
+[  5.014 s,  479 / 3593] Action 2:0:Condition
+[  5.014 s,  479 / 3593] Test: ActorRange_leave Failure 0
+[  5.015 s,  479 / 3593] Action 1:0:Log
+[  5.015 s,  479 / 3593] Action 1:1:AddValue
+[  5.015 s,  479 / 3593] Action 2:1:Else
+[  5.015 s,  479 / 3593] Action 42:67:Execute
+[  5.015 s,  479 / 3593] Action 42:68:Execute: executing action group AssertEqual..
+[  5.015 s,  479 / 3593] Test: ActorLookAt Pass 1
+[  5.016 s,  479 / 3593] Action 0:0:Log
+[  5.016 s,  479 / 3593] Action 2:0:Condition
+[  5.016 s,  479 / 3593] Action 2:1:Else
+[  5.016 s,  479 / 3593] Action 42:68:Execute
+[  5.016 s,  479 / 3593] Action 42:69:Execute: executing action group AssertEqual..
+[  5.016 s,  479 / 3593] Test: ConditionTrigger Pass 1
+[  5.018 s,  479 / 3593] Action 0:0:Log
+[  5.018 s,  479 / 3593] Action 2:0:Condition
+[  5.018 s,  479 / 3593] Action 2:1:Else
+[  5.018 s,  479 / 3593] Action 42:69:Execute
+[  5.018 s,  479 / 3593] Action 42:70:Execute: executing action group AssertEqual..
+[  5.018 s,  479 / 3593] Test: Unique_not_fired Pass 0
+[  5.019 s,  479 / 3593] Action 0:0:Log
+[  5.019 s,  479 / 3593] Action 2:0:Condition
+[  5.019 s,  479 / 3593] Action 2:1:Else
+[  5.019 s,  479 / 3593] Action 42:70:Execute
+[  5.019 s,  479 / 3593] Action 42:71:Execute: executing action group AssertEqual..
+[  5.019 s,  479 / 3593] Test: DeleteTrigger_not_fired Pass 0
+[  5.020 s,  479 / 3593] Action 0:0:Log
+[  5.020 s,  479 / 3593] Action 2:0:Condition
+[  5.020 s,  479 / 3593] Action 2:1:Else
+[  5.020 s,  479 / 3593] Action 42:71:Execute
+[  5.020 s,  479 / 3593] Action 42:72:Execute: executing action group AssertEqual..
+[  5.020 s,  479 / 3593] Test: ResetTrigger Pass 2.0
+[  5.021 s,  479 / 3593] Action 0:0:Log
+[  5.021 s,  479 / 3593] Action 2:0:Condition
+[  5.021 s,  479 / 3593] Action 2:1:Else
+[  5.021 s,  479 / 3593] Action 42:72:Execute
+[  5.021 s,  479 / 3593] Action 42:73:Execute: executing action group AssertDone..
+[  5.021 s,  479 / 3593] Action 26:0:Condition
+[  5.021 s,  479 / 3593] Test: COMPLETE Failure 2.0
+[  5.023 s,  479 / 3593] Action 25:0:Log
+[  5.023 s,  479 / 3593] Action 26:1:Else
+[  5.023 s,  479 / 3593] Action 42:73:Execute

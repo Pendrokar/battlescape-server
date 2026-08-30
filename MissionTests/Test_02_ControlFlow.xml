@@ -1,142 +1,181 @@
 <Mission ID="902" Category="Workshop" Title="Test_02_ControlFlow" Descr="PDF ch.5 control-flow examples" Tags="TEST" GameMode="Custom">
 	<EntryPoint Name="Trial" Text="UI_Trial" Hidden="false" />
+	<Include Target="$Current/Test_Assert.xml" />
+	<SetValue Target="Global.FailCount" Source="0" />
 	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_02_ControlFlow" Arg3="ok" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Main" />
 
 	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
 	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
 
-	<!-- 5.8 Include: top-level actions run here; groups become callable -->
+	<Execute Target="AssertEqual" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Main" />
+
 	<Include Target="$Current/Test_02_Include_Fragment.xml" />
 	<Execute Target="FromFragment" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Include_Global" Arg2="Global.FromInclude" Arg3="yes" />
+	<Execute Target="AssertEqual" Arg1="Include_toplevel" Arg2="Global.IncludeTop" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Include_group" Arg2="Global.FromInclude" Arg3="yes" />
 
-	<!-- 2.5 / 5.1 Execute group with Arg1..Arg7 as Local.ArgN -->
 	<Actions Name="SpawnDrone">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg1" Arg2="Local.Arg1" Arg3="class" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg2" Arg2="Local.Arg2" Arg3="display" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg3" Arg2="Local.Arg3" Arg3="team" />
 		<CreateActor Name="Drone" Group="Drones" Class="Local.Arg1" DisplayName="Local.Arg2" TeamID="Local.Arg3" Loadout="Default" />
 		<SetAIState Target="Drone" HasAI="true" Rank="0" Objective="Battle" AllowFiring="false" />
+		<SetValue Target="Global.LastDroneClass" Source="Local.Arg1" />
+		<SetValue Target="Global.LastDroneName" Source="Local.Arg2" />
+		<SetValue Target="Global.LastDroneTeam" Source="Local.Arg3" />
 	</Actions>
 
 	<Execute Target="SpawnDrone" Arg1="Interceptor" Arg2="Drone #1" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg1" Arg2="Global.LastDroneClass" Arg3="Interceptor" />
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg2" Arg2="Global.LastDroneName" Arg3="Drone #1" />
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg3" Arg2="Global.LastDroneTeam" Arg3="0" />
 	<Execute Target="SpawnDrone" Arg1="Bomber" Arg2="Drone #2" Arg3="0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_group" Arg2="Actors:Drones" Arg3="two_ids" />
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg1b" Arg2="Global.LastDroneClass" Arg3="Bomber" />
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg2b" Arg2="Global.LastDroneName" Arg3="Drone #2" />
 
-	<!-- Execute Target from memory -->
+	<SetValue Target="Global.DroneCount" Source="0" />
+	<Loop Target="Actors:Drones">
+		<AddValue Target="Global.DroneCount" Source1="Global.DroneCount" Source2="1" />
+	</Loop>
+	<Execute Target="AssertEqual" Arg1="SpawnDrone_count" Arg2="Global.DroneCount" Arg3="2" />
+
 	<SetValue Target="Global.Checkpoint" Source="LogCheckpoint" />
+	<SetValue Target="Global.MemoryRan" Source="0" />
 	<Actions Name="LogCheckpoint">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Execute_memory" Arg2="Global.Checkpoint" Arg3="LogCheckpoint" />
+		<SetValue Target="Global.MemoryRan" Source="1" />
 	</Actions>
 	<Execute Target="Global.Checkpoint" />
+	<Execute Target="AssertEqual" Arg1="Execute_memory" Arg2="Global.MemoryRan" Arg3="1" />
 
-	<!-- 5.1 EntryPoint filter: default launch is Main, so Trial group is skipped -->
+	<SetValue Target="Global.TrialRan" Source="0" />
+	<SetValue Target="Global.MainRan" Source="0" />
 	<Actions Name="OnlyTrial">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="OnlyTrial" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+		<SetValue Target="Global.TrialRan" Source="1" />
 	</Actions>
 	<Actions Name="OnlyMain">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="OnlyMain" Arg2="ran" Arg3="ok" />
+		<SetValue Target="Global.MainRan" Source="1" />
 	</Actions>
 	<Execute Target="OnlyTrial" EntryPoint="Trial" />
 	<Execute Target="OnlyMain" EntryPoint="Main" />
+	<Execute Target="AssertEqual" Arg1="OnlyTrial_skipped" Arg2="Global.TrialRan" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="OnlyMain_ran" Arg2="Global.MainRan" Arg3="1" />
 
-	<!-- 5.1 Replace: remaining actions of the caller are abandoned -->
+	<SetValue Target="Global.ReplaceInto" Source="0" />
+	<SetValue Target="Global.ReplaceRest" Source="0" />
 	<Actions Name="ReplacedInto">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Replace" Arg2="ReplacedInto" Arg3="ok" />
+		<SetValue Target="Global.ReplaceInto" Source="1" />
 	</Actions>
 	<Actions Name="ReplaceDemo">
 		<Execute Target="ReplacedInto" Replace="true" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Replace" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+		<SetValue Target="Global.ReplaceRest" Source="1" />
 	</Actions>
 	<Execute Target="ReplaceDemo" />
+	<Execute Target="AssertEqual" Arg1="Replace_into" Arg2="Global.ReplaceInto" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Replace_rest_skipped" Arg2="Global.ReplaceRest" Arg3="0" />
 
-	<!-- Missing group is skipped with a log line -->
 	<Execute Target="NoSuchGroup" />
 
-	<!-- 5.2 Wait: pause this sequence only -->
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wait" Arg2="before" Arg3="ok" />
+	<SetValue Target="Global.WaitAfter" Source="0" />
 	<Wait Duration="0.5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wait" Arg2="after" Arg3="ok" />
+	<SetValue Target="Global.WaitAfter" Source="1" />
+	<Execute Target="AssertEqual" Arg1="Wait_after" Arg2="Global.WaitAfter" Arg3="1" />
 
-	<!-- 5.3 counter Loop -->
 	<SetValue Target="Global.LoopSum" Source="0" />
 	<Loop Target="Global.Index" Start="0" Count="4">
 		<AddValue Target="Global.LoopSum" Source1="Global.LoopSum" Source2="Global.Index" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_Index" Arg2="Global.Index" Arg3="0to3" />
 	</Loop>
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_Sum" Arg2="Global.LoopSum" Arg3="6" />
+	<Execute Target="AssertEqual" Arg1="Loop_Sum" Arg2="Global.LoopSum" Arg3="6" />
 
-	<!-- Loop over actor collection -->
 	<SetValue Target="Global.Count" Source="0" />
+	<SetValue Target="Global.SawInterceptor" Source="0" />
+	<SetValue Target="Global.SawBomber" Source="0" />
 	<Loop Target="Actors:Drones">
 		<AddValue Target="Global.Count" Source1="Global.Count" Source2="1" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_DroneClass" Arg2="Actor.ActorClassName" Arg3="InterceptorOrBomber" />
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="Interceptor">
+			<SetValue Target="Global.SawInterceptor" Source="1" />
+		</Condition>
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="Bomber">
+			<SetValue Target="Global.SawBomber" Source="1" />
+		</Condition>
 	</Loop>
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_DroneCount" Arg2="Global.Count" Arg3="2" />
+	<Execute Target="AssertEqual" Arg1="Loop_DroneCount" Arg2="Global.Count" Arg3="2" />
+	<Execute Target="AssertEqual" Arg1="Loop_SawInterceptor" Arg2="Global.SawInterceptor" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Loop_SawBomber" Arg2="Global.SawBomber" Arg3="1" />
 
-	<!-- Break leaves the innermost loop -->
 	<SetValue Target="Global.BreakAt" Source="none" />
+	<SetValue Target="Global.PastBreak" Source="0" />
 	<Loop Target="Global.J" Start="0" Count="5">
 		<Condition Left1="Global.J" Comp1="Equal" Right1="2">
 			<SetValue Target="Global.BreakAt" Source="Global.J" />
 			<Break />
 		</Condition>
+		<Condition Left1="Global.J" Comp1="Higher" Right1="2">
+			<SetValue Target="Global.PastBreak" Source="1" />
+		</Condition>
 		<SetValue Target="Global.LastJ" Source="Global.J" />
 	</Loop>
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Break_BreakAt" Arg2="Global.BreakAt" Arg3="2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Break_LastJ" Arg2="Global.LastJ" Arg3="2" />
+	<Execute Target="AssertEqual" Arg1="Break_BreakAt" Arg2="Global.BreakAt" Arg3="2" />
+	<Execute Target="AssertEqual" Arg1="Break_no_further_iter" Arg2="Global.PastBreak" Arg3="0" />
 
-	<!-- 5.4 Condition / Else -->
+	<SetValue Target="Global.CondHigher" Source="0" />
 	<Condition Left1="3" Comp1="Higher" Right1="0.3">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Higher" Arg2="true" Arg3="ok" />
+		<SetValue Target="Global.CondHigher" Source="1" />
 	</Condition>
 	<Else>
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Higher" Arg2="ELSE_SHOULD_NOT" Arg3="fail" />
+		<SetValue Target="Global.CondHigher" Source="-1" />
 	</Else>
+	<Execute Target="AssertEqual" Arg1="Condition_Higher" Arg2="Global.CondHigher" Arg3="1" />
 
+	<SetValue Target="Global.CondEqualFalse" Source="0" />
 	<Condition Left1="1" Comp1="Equal" Right1="2">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_EqualFalse" Arg2="THEN_SHOULD_NOT" Arg3="fail" />
+		<SetValue Target="Global.CondEqualFalse" Source="-1" />
 	</Condition>
 	<Else>
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_EqualFalse" Arg2="else" Arg3="ok" />
+		<SetValue Target="Global.CondEqualFalse" Source="1" />
 	</Else>
+	<Execute Target="AssertEqual" Arg1="Condition_EqualFalse" Arg2="Global.CondEqualFalse" Arg3="1" />
 
-	<!-- NotEqual, LowerEqual, In, NotIn -->
+	<SetValue Target="Global.CondNotEqual" Source="0" />
 	<Condition Left1="A" Comp1="NotEqual" Right1="B">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_NotEqual" Arg2="true" Arg3="ok" />
+		<SetValue Target="Global.CondNotEqual" Source="1" />
 	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_NotEqual" Arg2="Global.CondNotEqual" Arg3="1" />
 
+	<SetValue Target="Global.CondInText" Source="0" />
 	<Condition Left1="Interceptor" Comp1="In" Right1="Interceptor;Bomber;Corvette">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InText" Arg2="true" Arg3="ok" />
+		<SetValue Target="Global.CondInText" Source="1" />
 	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_InText" Arg2="Global.CondInText" Arg3="1" />
 
+	<SetValue Target="Global.CondInList" Source="0" />
 	<Condition Left1="Actor:H_missing.ActorID" Comp1="In" Right1="Actors:Drones">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InList" Arg2="THEN_SHOULD_NOT" Arg3="fail" />
+		<SetValue Target="Global.CondInList" Source="-1" />
 	</Condition>
 	<Else>
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InList" Arg2="else" Arg3="ok" />
+		<SetValue Target="Global.CondInList" Source="1" />
 	</Else>
+	<Execute Target="AssertEqual" Arg1="Condition_InList" Arg2="Global.CondInList" Arg3="1" />
 
-	<!-- OR chain: AndN=false on every segment -->
+	<SetValue Target="Global.CondOr" Source="0" />
 	<Condition Left1="0" Comp1="Equal" Right1="1" And1="false" Left2="2" Comp2="Equal" Right2="2" And2="false">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Or" Arg2="true" Arg3="ok" />
+		<SetValue Target="Global.CondOr" Source="1" />
 	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_Or" Arg2="Global.CondOr" Arg3="1" />
 
-	<!-- AND chain (default): both must hold -->
+	<SetValue Target="Global.CondAnd" Source="0" />
 	<Condition Left1="5" Comp1="HigherEqual" Right1="1" And1="true" Left2="5" Comp2="LowerEqual" Right2="10">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_And" Arg2="true" Arg3="ok" />
+		<SetValue Target="Global.CondAnd" Source="1" />
 	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_And" Arg2="Global.CondAnd" Arg3="1" />
 
-	<!-- 5.5 Stop inside a group: remaining group actions do not run; caller continues -->
+	<SetValue Target="Global.StopBefore" Source="0" />
+	<SetValue Target="Global.StopAfter" Source="0" />
 	<Actions Name="StopEarly">
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="before" Arg3="ok" />
+		<SetValue Target="Global.StopBefore" Source="1" />
 		<Stop Group="StopEarly" />
 		<Wait Duration="0.2" />
-		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+		<SetValue Target="Global.StopAfter" Source="1" />
 	</Actions>
 	<Execute Target="StopEarly" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="caller_continued" Arg3="ok" />
+	<Execute Target="AssertEqual" Arg1="StopEarly_before" Arg2="Global.StopBefore" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="StopEarly_after_skipped" Arg2="Global.StopAfter" Arg3="0" />
 
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_02_ControlFlow" Arg3="ok" />
+	<Execute Target="AssertDone" />
 </Mission>

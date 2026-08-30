@@ -1,176 +1,162 @@
 <Mission ID="901" Category="Workshop" Title="Test_01_Values" Descr="PDF ch.4 and 6.8 value examples" Tags="TEST" GameMode="Custom">
-	<!-- Manual 5.11 Log, 4.1-4.8 memories/values, 6.8 arithmetic. No player join required. -->
+	<Include Target="$Current/Test_Assert.xml" />
+	<SetValue Target="Global.FailCount" Source="0" />
 	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_01_Values" Arg3="ok" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Main" />
 
 	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" DisplayName="PlayerActor" />
 	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
 	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="PlayerActor_Class" Arg2="Actor:PlayerActor.ActorClassName" Arg3="Interceptor" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="PlayerActor_PowerState" Arg2="Actor:PlayerActor.PowerState" Arg3="1" />
 
-	<!-- 4.1 / 6.8 SetValue -->
+	<Execute Target="AssertEqual" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Main" />
+	<Execute Target="AssertEqual" Arg1="PlayerActor_Class" Arg2="Actor:PlayerActor.ActorClassName" Arg3="Interceptor" />
+	<Execute Target="AssertEqual" Arg1="PlayerActor_PowerState" Arg2="Actor:PlayerActor.PowerState" Arg3="1" />
+
 	<SetValue Target="Global.Checkpoint" Source="BasicCourse" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetValue_Checkpoint" Arg2="Global.Checkpoint" Arg3="BasicCourse" />
+	<Execute Target="AssertEqual" Arg1="SetValue_Checkpoint" Arg2="Global.Checkpoint" Arg3="BasicCourse" />
 
 	<SetValue Target="Global.Wave" Source="3" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetValue_Wave" Arg2="Global.Wave" Arg3="3" />
+	<Execute Target="AssertEqual" Arg1="SetValue_Wave" Arg2="Global.Wave" Arg3="3" />
 
-	<!-- Unwritten value reads as empty / 0 -->
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Unwritten" Arg2="Global.NeverSet" Arg3="empty" />
+	<Execute Target="AssertEqual" Arg1="Unwritten" Arg2="Global.NeverSet" Arg3="" />
 
-	<!-- 6.8 AddValue numbers: 2+3 -> 5 (decimal 5.0) -->
 	<AddValue Target="Global.Sum" Source1="2" Source2="3" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddValue_num" Arg2="Global.Sum" Arg3="5" />
+	<Execute Target="AssertEqual" Arg1="AddValue_num" Arg2="Global.Sum" Arg3="5" />
 
-	<!-- 1+1 -> 2.0 decimals -->
 	<AddValue Target="Global.Two" Source1="1" Source2="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddValue_decimal" Arg2="Global.Two" Arg3="2" />
+	<Execute Target="AssertEqual" Arg1="AddValue_decimal" Arg2="Global.Two" Arg3="2" />
 
-	<!-- AddValue concatenates when either side is text -->
 	<AddValue Target="Global.DroneName" Source1="Wing" Source2="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddValue_concat" Arg2="Global.DroneName" Arg3="Wing1" />
+	<Execute Target="AssertEqual" Arg1="AddValue_concat" Arg2="Global.DroneName" Arg3="Wing1" />
 
 	<SubValue Target="Global.Diff" Source1="10" Source2="4" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SubValue" Arg2="Global.Diff" Arg3="6" />
+	<Execute Target="AssertEqual" Arg1="SubValue" Arg2="Global.Diff" Arg3="6" />
 
 	<MulValue Target="Global.Prod" Source1="3" Source2="4" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="MulValue" Arg2="Global.Prod" Arg3="12" />
+	<Execute Target="AssertEqual" Arg1="MulValue" Arg2="Global.Prod" Arg3="12" />
 
 	<DivValue Target="Global.Ratio" Source1="10" Source2="4" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DivValue" Arg2="Global.Ratio" Arg3="2.5" />
+	<Execute Target="AssertEqual" Arg1="DivValue" Arg2="Global.Ratio" Arg3="2.5" />
 
 	<MinValue Target="Global.Lo" Source1="4" Source2="9" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="MinValue" Arg2="Global.Lo" Arg3="4" />
+	<Execute Target="AssertEqual" Arg1="MinValue" Arg2="Global.Lo" Arg3="4" />
 
 	<MaxValue Target="Global.Hi" Source1="4" Source2="9" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="MaxValue" Arg2="Global.Hi" Arg3="9" />
+	<Execute Target="AssertEqual" Arg1="MaxValue" Arg2="Global.Hi" Arg3="9" />
 
 	<NegValue Target="Global.Neg" Source="5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="NegValue" Arg2="Global.Neg" Arg3="-5" />
+	<Execute Target="AssertEqual" Arg1="NegValue" Arg2="Global.Neg" Arg3="-5" />
 
 	<AbsValue Target="Global.Abs" Source="-3" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AbsValue" Arg2="Global.Abs" Arg3="3" />
+	<Execute Target="AssertEqual" Arg1="AbsValue" Arg2="Global.Abs" Arg3="3" />
 
 	<ClampValue Target="Global.ClampedHigh" Source="1.5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ClampValue_high" Arg2="Global.ClampedHigh" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="ClampValue_high" Arg2="Global.ClampedHigh" Arg3="1" />
 
 	<ClampValue Target="Global.ClampedLow" Source="-0.5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ClampValue_low" Arg2="Global.ClampedLow" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="ClampValue_low" Arg2="Global.ClampedLow" Arg3="0" />
 
 	<PowValue Target="Global.Pow" Source1="2" Source2="3" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="PowValue" Arg2="Global.Pow" Arg3="8" />
+	<Execute Target="AssertEqual" Arg1="PowValue" Arg2="Global.Pow" Arg3="8" />
 
 	<ModValue Target="Global.Mod" Source1="5" Source2="2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ModValue" Arg2="Global.Mod" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="ModValue" Arg2="Global.Mod" Arg3="1" />
 
 	<TruncateValue Target="Global.Trunc" Source="3.14159" Digits="2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="TruncateValue" Arg2="Global.Trunc" Arg3="3.14" />
+	<Execute Target="AssertEqual" Arg1="TruncateValue" Arg2="Global.Trunc" Arg3="3.14" />
 
 	<RandomValue Target="Global.RandSame" Source1="7" Source2="7" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="RandomValue_same" Arg2="Global.RandSame" Arg3="7" />
+	<Execute Target="AssertEqual" Arg1="RandomValue_same" Arg2="Global.RandSame" Arg3="7" />
 
-	<!-- AddRandomIntValue on text concatenates a random 1 or 2 -->
 	<AddRandomIntValue Target="Global.TmpKey" Source="Server_T1_Event_PlayerLowDamage" Min="1" Max="2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddRandomIntValue_text" Arg2="Global.TmpKey" Arg3="PlayerLowDamage1or2" />
+	<Execute Target="AssertIn" Arg1="AddRandomIntValue_text" Arg2="Global.TmpKey" Arg3="Server_T1_Event_PlayerLowDamage1;Server_T1_Event_PlayerLowDamage2" />
 
 	<AddRandomIntValue Target="Global.RandInt" Source="10" Min="0" Max="0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddRandomIntValue_num" Arg2="Global.RandInt" Arg3="10" />
+	<Execute Target="AssertEqual" Arg1="AddRandomIntValue_num" Arg2="Global.RandInt" Arg3="10" />
 
-	<!-- 4.3 / 4.4 vectors and components -->
 	<SetValue Target="Global.A" Source="[1, 0, 0]" />
 	<SetValue Target="Global.B" Source="[0, 1, 0]" />
 	<AddValue Target="Global.VecSum" Source1="Global.A" Source2="Global.B" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AddValue_vec" Arg2="Global.VecSum" Arg3="[1,1,0]" />
+	<Execute Target="AssertVec3" Arg1="AddValue_vec" Arg2="Global.VecSum" Arg3="[1, 1, 0]" />
 
 	<SetValue Target="Actor:PlayerActor.Position" Source="[8.4, -0.2, 5.2]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Position" Arg2="Actor:PlayerActor.Position" Arg3="[8.4,-0.2,5.2]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Position_Y" Arg2="Actor:PlayerActor.Position.Y" Arg3="-0.2" />
+	<Execute Target="AssertVec3" Arg1="Position" Arg2="Actor:PlayerActor.Position" Arg3="[8.4, -0.2, 5.2]" />
+	<Execute Target="AssertEqual" Arg1="Position_Y" Arg2="Actor:PlayerActor.Position.Y" Arg3="-0.2" />
 
-	<!-- Writing a component leaves the others -->
 	<SetValue Target="Actor:PlayerActor.Position.Y" Source="2.0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Position_Y_write" Arg2="Actor:PlayerActor.Position" Arg3="[8.4,2,5.2]" />
+	<Execute Target="AssertVec3" Arg1="Position_Y_write" Arg2="Actor:PlayerActor.Position" Arg3="[8.4, 2, 5.2]" />
 
 	<NormalizeValue Target="Global.Unit" Source="[0, 0, 10]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="NormalizeValue" Arg2="Global.Unit" Arg3="[0,0,1]" />
+	<Execute Target="AssertVec3" Arg1="NormalizeValue" Arg2="Global.Unit" Arg3="[0, 0, 1]" />
 
 	<DotValue Target="Global.Dot" Source1="[1, 0, 0]" Source2="[1, 0, 0]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DotValue_parallel" Arg2="Global.Dot" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="DotValue_parallel" Arg2="Global.Dot" Arg3="1" />
 
 	<DotValue Target="Global.Dot0" Source1="[1, 0, 0]" Source2="[0, 1, 0]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DotValue_ortho" Arg2="Global.Dot0" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="DotValue_ortho" Arg2="Global.Dot0" Arg3="0" />
 
 	<CrossValue Target="Global.Cross" Source1="[1, 0, 0]" Source2="[0, 1, 0]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="CrossValue" Arg2="Global.Cross" Arg3="[0,0,1]" />
+	<Execute Target="AssertVec3" Arg1="CrossValue" Arg2="Global.Cross" Arg3="[0, 0, 1]" />
 
 	<AngleValue Target="Global.Ang0" Source1="[0, 0, 1]" Source2="[0, 0, 1]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AngleValue_same" Arg2="Global.Ang0" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="AngleValue_same" Arg2="Global.Ang0" Arg3="0" />
 
 	<AngleValue Target="Global.Ang90" Source1="[0, 0, 1]" Source2="[1, 0, 0]" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AngleValue_90" Arg2="Global.Ang90" Arg3="90" />
+	<Execute Target="AssertNear" Arg1="AngleValue_90" Arg2="Global.Ang90" Arg3="90" />
 
-	<!-- Distance between two actors -->
 	<CreateActor Name="Outpost" Class="Marker" TeamID="255" DisplayName="Outpost" />
 	<SetPosition Target="Outpost" X="10" Y="0" Z="0" />
 	<SetValue Target="Actor:PlayerActor.Position" Source="[0, 0, 0]" />
 	<DistanceValue Target="Global.Dist" Source1="Actor:PlayerActor.Position" Source2="Actor:Outpost.Position" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DistanceValue" Arg2="Global.Dist" Arg3="10" />
+	<Execute Target="AssertEqual" Arg1="DistanceValue" Arg2="Global.Dist" Arg3="10" />
 
-	<!-- 4.7 TransformValue: 200 m behind PlayerActor in world coords -->
 	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
 	<SetValue Target="Actor:PlayerActor.Position" Source="[0, 0, 0]" />
 	<TransformValue Target="Global.Behind" Source="[0, 0, -0.2]" From="Actor:PlayerActor" To="" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="TransformValue_behind" Arg2="Global.Behind" Arg3="[0,0,-0.2]" />
+	<Execute Target="AssertVec3" Arg1="TransformValue_behind" Arg2="Global.Behind" Arg3="[0, 0, -0.2]" />
 
 	<TransformValue Target="Global.AheadDir" Source="[0, 0, 1]" From="Actor:PlayerActor" To="" IsDirection="true" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="TransformValue_dir" Arg2="Global.AheadDir" Arg3="[0,0,1]" />
+	<Execute Target="AssertVec3" Arg1="TransformValue_dir" Arg2="Global.AheadDir" Arg3="[0, 0, 1]" />
 
-	<!-- 4.8 collections -->
 	<CreateActor Name="H1" Group="Hostiles" Class="Interceptor" TeamID="0" DisplayName="H1" />
 	<CreateActor Name="H2" Group="Hostiles" Class="Bomber" TeamID="0" DisplayName="H2" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Actors_Hostiles" Arg2="Actors:Hostiles" Arg3="list_of_ids" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Actor_Hostiles_firstClass" Arg2="Actor:Hostiles.ActorClassName" Arg3="Interceptor" />
+	<Execute Target="AssertNotEqual" Arg1="Actors_Hostiles" Arg2="Actors:Hostiles" Arg3="" />
+	<Execute Target="AssertEqual" Arg1="Actor_Hostiles_firstClass" Arg2="Actor:Hostiles.ActorClassName" Arg3="Interceptor" />
 
-	<!-- 6.8 Overlap -->
 	<SetPosition Target="H1" X="0" Y="0" Z="0" />
 	<SetPosition Target="H2" X="1" Y="0" Z="0" />
 	<Overlap Target="Global.NbOverlaps" Actors="Actors" Position="Actor:H1.Position" Radius="3.0" Excluded="Actor:H1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Overlap_near" Arg2="Global.NbOverlaps" Arg3="gte1" />
+	<Execute Target="AssertHigherEqual" Arg1="Overlap_near" Arg2="Global.NbOverlaps" Arg3="1" />
 
 	<Overlap Target="Global.NbFar" Actors="Actors:Hostiles" Position="[1000, 0, 0]" Radius="1.0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Overlap_far" Arg2="Global.NbFar" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="Overlap_far" Arg2="Global.NbFar" Arg3="0" />
 
-	<!-- 4.5 writable actor params -->
 	<SetValue Target="Actor:PlayerActor.HitPointsRatio" Source="0.5" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="HitPointsRatio" Arg2="Actor:PlayerActor.HitPointsRatio" Arg3="0.5" />
+	<Execute Target="AssertEqual" Arg1="HitPointsRatio" Arg2="Actor:PlayerActor.HitPointsRatio" Arg3="0.5" />
 
 	<SetValue Target="Actor:PlayerActor.TeamID" Source="0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="TeamID" Arg2="Actor:PlayerActor.TeamID" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="TeamID" Arg2="Actor:PlayerActor.TeamID" Arg3="0" />
 
 	<SetValue Target="Actor:PlayerActor.DisplayName" Source="Cadet" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DisplayName" Arg2="Actor:PlayerActor.DisplayName" Arg3="Cadet" />
+	<Execute Target="AssertEqual" Arg1="DisplayName" Arg2="Actor:PlayerActor.DisplayName" Arg3="Cadet" />
 
 	<SetValue Target="Actor:PlayerActor.Ghost" Source="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Ghost" Arg2="Actor:PlayerActor.Ghost" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Ghost" Arg2="Actor:PlayerActor.Ghost" Arg3="1" />
 
 	<SetValue Target="Actor:PlayerActor.DamageScale" Source="0.0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="DamageScale" Arg2="Actor:PlayerActor.DamageScale" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="DamageScale" Arg2="Actor:PlayerActor.DamageScale" Arg3="0" />
 
 	<SetValue Target="Actor:PlayerActor.Undetectable" Source="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Undetectable" Arg2="Actor:PlayerActor.Undetectable" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Undetectable" Arg2="Actor:PlayerActor.Undetectable" Arg3="1" />
 
-	<!-- 4.5 server settings -->
 	<SetValue Target="Server.FrameTimeScale" Source="1" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="FrameTimeScale" Arg2="Server.FrameTimeScale" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="FrameTimeScale" Arg2="Server.FrameTimeScale" Arg3="1" />
 
 	<SetValue Target="Server.AllowSwitchTeam" Source="0" />
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AllowSwitchTeam" Arg2="Server.AllowSwitchTeam" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="AllowSwitchTeam" Arg2="Server.AllowSwitchTeam" Arg3="0" />
 
-	<!-- 5.11 style Log of actor velocity/speed (placeholder ship, not a joined player) -->
-	<Log Text="Player velocity = $(Arg1) Speed = $(Arg2)" Arg1="Actor:PlayerActor_Velocity" Arg2="Actor:PlayerActor.Speed" />
+	<Execute Target="AssertEqual" Arg1="PlayerActor_Speed" Arg2="Actor:PlayerActor.Speed" Arg3="0" />
 
-	<!-- Unknown action is skipped and logged -->
 	<NotARealAction Comment="expect Invalid action found in runtime log" />
 
-	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_01_Values" Arg3="ok" />
+	<Execute Target="AssertDone" />
 </Mission>
