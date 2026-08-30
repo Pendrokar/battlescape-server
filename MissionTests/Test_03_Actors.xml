@@ -1,0 +1,100 @@
+<Mission ID="903" Category="Workshop" Title="Test_03_Actors" Descr="PDF 6.2 actor and scene examples" Tags="TEST" GameMode="Custom">
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_03_Actors" Arg3="ok" />
+
+	<!-- 6.2 CreateActor examples (no planet: keep the dedicated server light) -->
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" DisplayName="PlayerActor" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="CreateActor_PlayerActor" Arg2="Actor:PlayerActor.ActorClassName" Arg3="Interceptor" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="CreateActor_TeamID" Arg2="Actor:PlayerActor.TeamID" Arg3="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="CreateActor_Type" Arg2="Actor:PlayerActor.ActorType" Arg3="Ship" />
+
+	<CreateActor Name="Instructor" Class="Corvette" TeamID="1" Loadout="Default" AI="false" DisplayName="Instructor" IndicatorFlags="NamePermanent" />
+	<SetPosition Target="Instructor" X="-11.696" Y="-3.615" Z="-14.728" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Instructor_Class" Arg2="Actor:Instructor.ActorClassName" Arg3="Corvette" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Instructor_DisplayName" Arg2="Actor:Instructor.DisplayName" Arg3="Instructor" />
+
+	<CreateActor Name="Drone1" Group="StaticDrone" Class="Interceptor" TeamID="0" DisplayName="Drone #1" Loadout="Default" />
+	<CreateActor Name="Drone2" Group="StaticDrone" Class="Interceptor" TeamID="0" DisplayName="Drone #2" Loadout="Default" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Group_StaticDrone" Arg2="Actors:StaticDrone" Arg3="two_ids" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Group_first" Arg2="Actor:StaticDrone.DisplayName" Arg3="Drone #1" />
+
+	<CreateActor Name="Marker1" Class="Marker" TeamID="255" DisplayName=" " Visible="false" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Marker_Class" Arg2="Actor:Marker1.ActorClassName" Arg3="Marker" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Marker_TeamID" Arg2="Actor:Marker1.TeamID" Arg3="-1" />
+
+	<!-- SetPosition / SetRotation / SetVelocity / SetRotVelocity (fixed numbers) -->
+	<SetPosition Target="Instructor" X="10" Y="0" Z="5" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetPosition" Arg2="Actor:Instructor.Position" Arg3="[10,0,5]" />
+
+	<SetRotation Target="Instructor" X="0" Y="0" Z="0" W="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetRotation" Arg2="Actor:Instructor.Rotation" Arg3="[0,0,0,1]" />
+
+	<SetVelocity Target="Instructor" X="0" Y="0" Z="0.3" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetVelocity" Arg2="Actor:Instructor.Velocity" Arg3="[0,0,0.3]" />
+
+	<SetRotVelocity Target="Instructor" X="0" Y="0" Z="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetRotVelocity" Arg2="Actor:Instructor.AngularVelocity" Arg3="[0,0,0]" />
+
+	<!-- Parent frame: 1 km ahead of PlayerActor -->
+	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
+	<SetValue Target="Actor:PlayerActor.Position" Source="[0, 0, 0]" />
+	<CreateActor Name="TestProbe" Class="Interceptor" TeamID="1" Loadout="None" AI="false" />
+	<SetPosition Target="TestProbe" X="0" Y="0" Z="1" Parent="PlayerActor" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetPosition_Parent" Arg2="Actor:TestProbe.Position" Arg3="[0,0,1]" />
+
+	<!-- Line a wing up behind PlayerActor (PDF Parent=Player adapted) -->
+	<CreateActor Name="Wing1" Group="Wing" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<CreateActor Name="Wing2" Group="Wing" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<SetPosition Target="Wing1" X="-0.3" Y="0" Z="-0.5" Parent="PlayerActor" />
+	<SetPosition Target="Wing2" X="0.3" Y="0" Z="-0.5" Parent="PlayerActor" />
+	<SetValue Target="Actors:Wing.Rotation" Source="Actor:PlayerActor.Rotation" />
+	<SetValue Target="Actors:Wing.Velocity" Source="Actor:PlayerActor.Velocity" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wing1_Pos" Arg2="Actor:Wing1.Position" Arg3="[-0.3,0,-0.5]" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wing2_Pos" Arg2="Actor:Wing2.Position" Arg3="[0.3,0,-0.5]" />
+
+	<!-- SetVelocity Normalize + Scale -->
+	<SetVelocity Target="TestProbe" X="0" Y="0" Z="4" Normalize="true" Scale="0.5" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetVelocity_Normalize" Arg2="Actor:TestProbe.Velocity" Arg3="[0,0,0.5]" />
+
+	<!-- SetVisible -->
+	<CreateActor Name="Crate1" Class="SupplyCrate" TeamID="255" />
+	<SetPosition Target="Crate1" X="2" Y="0" Z="0" />
+	<SetVisible Target="Crate1" Visible="true" Physics="true" Collisions="false" />
+	<SetVisible Target="Marker1" Visible="false" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Crate1_Class" Arg2="Actor:Crate1.ActorClassName" Arg3="SupplyCrate" />
+
+	<!-- Spawn a wing of 3 AI interceptors 15 km ahead (PDF loop; From=PlayerActor) -->
+	<Loop Target="Global.i" Start="1" Count="4">
+		<AddValue Target="Global.DroneName" Source1="Wing" Source2="Global.i" />
+		<CreateActor Name="Global.DroneName" Group="FwdWing" Class="Interceptor" TeamID="0" DisplayName="Global.DroneName" />
+		<MulValue Target="Global.Offset" Source1="[0.1, 0, 0]" Source2="Global.i" />
+		<AddValue Target="Global.Offset" Source1="Global.Offset" Source2="[0, 0, 15]" />
+		<TransformValue Target="Actor:Global.DroneName.Position" Source="Global.Offset" From="Actor:PlayerActor" />
+	</Loop>
+	<SetAIState Target="Actors:FwdWing" HasAI="true" Rank="2" Objective="Battle" AllowFiring="false" />
+	<SetValue Target="Global.FwdCount" Source="0" />
+	<Loop Target="Actors:FwdWing">
+		<AddValue Target="Global.FwdCount" Source1="Global.FwdCount" Source2="1" />
+	</Loop>
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="FwdWing_Count" Arg2="Global.FwdCount" Arg3="3" />
+
+	<!-- DeleteActor / KillActor: removal is next tick (Wait), ActorDestroyed is in Test_05 -->
+	<CreateActor Name="ToDelete" Class="Interceptor" TeamID="0" Loadout="None" AI="false" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ToDelete_before" Arg2="Actor:ToDelete.ActorClassName" Arg3="Interceptor" />
+	<DeleteActor Target="ToDelete" />
+	<Wait Duration="0.3" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ToDelete_after" Arg2="Actor:ToDelete.ActorClassName" Arg3="empty" />
+
+	<CreateActor Name="ToKill" Class="Interceptor" TeamID="0" Loadout="None" AI="false" />
+	<KillActor Target="ToKill" />
+	<Wait Duration="3.5" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ToKill_after" Arg2="Actor:ToKill.ActorClassName" Arg3="empty" />
+
+	<!-- Rename out of a group (chapter 8) -->
+	<SetValue Target="Actor:Drone1.Name" Source="Dummy" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Rename_Dummy" Arg2="Actor:Dummy.ActorClassName" Arg3="Interceptor" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Rename_oldName" Arg2="Actor:Drone1.ActorClassName" Arg3="empty_or_Drone2" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_03_Actors" Arg3="ok" />
+</Mission>

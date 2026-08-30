@@ -1,0 +1,123 @@
+<Mission ID="905" Category="Workshop" Title="Test_05_Triggers" Descr="PDF ch.3 and ch.7 actor-side trigger examples" Tags="TEST" GameMode="Custom">
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_05_Triggers" Arg3="ok" />
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
+	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
+
+	<!-- 7.5 ActorCreated: Name/Group are assigned after spawn, so Target=Actors -->
+	<CreateTrigger Name="AnySpawned" Type="ActorCreated" Target="Actors">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorCreated" Arg2="Actor.ActorClassName" Arg3="Actor.ActorID" />
+	</CreateTrigger>
+	<CreateActor Name="SpawnedShip" Class="Bomber" TeamID="0" Loadout="None" AI="false" DisplayName="SpawnedShip" />
+	<SetPosition Target="SpawnedShip" X="3" Y="0" Z="0" />
+
+	<!-- 7.4 ActorDestroyed: fires the tick after DeleteActor / KillActor -->
+	<CreateTrigger Name="DroneDestroyed" Type="ActorDestroyed" Target="Actor:TestDrone">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorDestroyed" Arg2="Actor.Name" Arg3="TestDrone" />
+		<AddValue Target="Global.KillCount" Source1="Global.KillCount" Source2="1" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorDestroyed_KillCount" Arg2="Global.KillCount" Arg3="1" />
+	</CreateTrigger>
+	<SetValue Target="Global.KillCount" Source="0" />
+	<CreateActor Name="TestDrone" Class="Interceptor" TeamID="0" Loadout="None" AI="false" />
+	<SetPosition Target="TestDrone" X="5" Y="0" Z="0" />
+	<KillActor Target="TestDrone" />
+
+	<!-- 7.9 ActorProperty -->
+	<CreateTrigger Name="PowerShipUp" Type="ActorProperty" Target="Actor:PlayerActor" Properties="PowerState" Value="0" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorProperty_PowerState" Arg2="Actor:PlayerActor.PowerState" Arg3="0" />
+		<SetValue Target="Global.PowerTrigger" Source="1" />
+	</CreateTrigger>
+	<SetValue Target="Actor:PlayerActor.PowerState" Source="0" />
+
+	<CreateTrigger Name="HitPointsChanged" Type="ActorProperty" Target="Actor:PlayerActor" Properties="HitPoints" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorProperty_HitPoints" Arg2="Actor:PlayerActor.HitPointsRatio" Arg3="0.25" />
+	</CreateTrigger>
+	<SetValue Target="Actor:PlayerActor.HitPointsRatio" Source="0.25" />
+
+	<!-- 7.13 Timer about an actor (Target=Players would not fire with nobody in game) -->
+	<CreateTrigger Name="ActorTick" Type="Timer" Target="Actor:PlayerActor" Duration="0.4" Once="true" AutoDelete="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Timer" Arg2="Trigger.Elapsed" Arg3="fired" />
+		<SetValue Target="Global.TimerFired" Source="1" />
+	</CreateTrigger>
+
+	<!-- 7.14 ActorRange: edge on entering. Start far, then move in. -->
+	<CreateActor Name="Outpost" Class="Marker" TeamID="255" DisplayName="Outpost" />
+	<SetPosition Target="Outpost" X="0" Y="0" Z="0" />
+	<CreateActor Name="Ranger" Group="Movers" Class="Interceptor" TeamID="1" Loadout="None" AI="false" />
+	<SetPosition Target="Ranger" X="50" Y="0" Z="0" />
+	<CreateTrigger Name="CloseToOutpost" Type="ActorRange" Target="Actors:Movers" Actor="Outpost" Range="2.0" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorRange_enter" Arg2="Actor.Name" Arg3="Outpost" />
+		<SetValue Target="Global.RangeEnter" Source="1" />
+	</CreateTrigger>
+	<Wait Duration="0.3" />
+	<SetPosition Target="Ranger" X="0.5" Y="0" Z="0" />
+
+	<!-- Swap=true: fire on leaving -->
+	<CreateActor Name="Leaver" Group="Leavers" Class="Interceptor" TeamID="1" Loadout="None" AI="false" />
+	<SetPosition Target="Leaver" X="0.2" Y="0" Z="0" />
+	<CreateTrigger Name="LeavingOutpost" Type="ActorRange" Target="Actors:Leavers" Actor="Outpost" Range="2.0" Swap="true" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorRange_leave" Arg2="Actor.Name" Arg3="Outpost" />
+		<SetValue Target="Global.RangeLeave" Source="1" />
+	</CreateTrigger>
+	<Wait Duration="0.3" />
+	<SetPosition Target="Leaver" X="20" Y="0" Z="0" />
+
+	<!-- 7.15 ActorLookAt: PlayerActor nose toward LookTarget -->
+	<CreateActor Name="LookTarget" Class="Marker" TeamID="255" DisplayName="LookTarget" />
+	<SetPosition Target="LookTarget" X="0" Y="0" Z="10" />
+	<SetValue Target="Actor:PlayerActor.Direction" Source="[1, 0, 0]" />
+	<CreateTrigger Name="LookingAtMarker" Type="ActorLookAt" Target="Actors" Actor="LookTarget" Angle="15" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorLookAt" Arg2="Actor.Name" Arg3="LookTarget" />
+		<SetValue Target="Global.LookAt" Source="1" />
+	</CreateTrigger>
+	<Wait Duration="0.3" />
+	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
+
+	<!-- 7.16 Condition on Global, Target=PlayerActor so it evaluates without a joined player -->
+	<CreateTrigger Name="WaveCompleted" Type="Condition" Target="Actor:PlayerActor" Left1="Global.WaveKills" Comp1="HigherEqual" Right1="3" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ConditionTrigger" Arg2="Global.WaveKills" Arg3="3" />
+		<SetValue Target="Global.WaveDone" Source="1" />
+	</CreateTrigger>
+	<SetValue Target="Global.WaveKills" Source="3" />
+
+	<!-- Unique: second create of the same name is ignored -->
+	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="30" Unique="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="UniqueTick" Arg2="SHOULD_NOT_FIRE" Arg3="fail" />
+	</CreateTrigger>
+	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="30" Unique="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="UniqueTick_dup" Arg2="SHOULD_NOT_EXIST" Arg3="fail" />
+	</CreateTrigger>
+
+	<!-- DeleteTrigger: body of a long timer must not run -->
+	<CreateTrigger Name="WillBeDeleted" Type="Timer" Target="Actor:PlayerActor" Duration="10" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="WillBeDeleted" Arg2="SHOULD_NOT_FIRE" Arg3="fail" />
+	</CreateTrigger>
+	<DeleteTrigger Target="WillBeDeleted" />
+
+	<!-- ResetTrigger: Once trigger can fire again after reset -->
+	<SetValue Target="Global.ResetCount" Source="0" />
+	<CreateTrigger Name="Resetable" Type="Condition" Target="Actor:PlayerActor" Left1="Global.ResetFlag" Comp1="Equal" Right1="1" Once="true">
+		<AddValue Target="Global.ResetCount" Source1="Global.ResetCount" Source2="1" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ResetTrigger_fire" Arg2="Global.ResetCount" Arg3="count" />
+		<SetValue Target="Global.ResetFlag" Source="0" />
+	</CreateTrigger>
+	<SetValue Target="Global.ResetFlag" Source="1" />
+
+	<Wait Duration="0.6" />
+	<ResetTrigger Target="Resetable" />
+	<SetValue Target="Global.ResetFlag" Source="1" />
+	<Wait Duration="3.5" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="PowerTrigger" Arg2="Global.PowerTrigger" Arg3="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="TimerFired" Arg2="Global.TimerFired" Arg3="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="RangeEnter" Arg2="Global.RangeEnter" Arg3="empty_without_joined_player" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="RangeLeave" Arg2="Global.RangeLeave" Arg3="empty_without_joined_player" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="LookAt" Arg2="Global.LookAt" Arg3="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="WaveDone" Arg2="Global.WaveDone" Arg3="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ResetCount" Arg2="Global.ResetCount" Arg3="2" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="KillCount" Arg2="Global.KillCount" Arg3="1" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_05_Triggers" Arg3="ok" />
+</Mission>

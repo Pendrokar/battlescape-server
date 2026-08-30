@@ -1,7 +1,11 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
 
-call "%~dp0ib_env.bat"
+REM Capture this script's directory before any SHIFT. After SHIFT, %~dp0
+REM becomes the next argument (e.g. the mission path).
+set "IB_SCRIPTS=%~dp0"
+
+call "%IB_SCRIPTS%ib_env.bat"
 if errorlevel 1 exit /b 1
 
 set "USE_STEAM=1"
@@ -133,7 +137,7 @@ if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
 if "%SERVER_MODE%"=="public" (set "IB_LAUNCH_MODE=-dedicated -public") else (set "IB_LAUNCH_MODE=-dedicated -private")
 set "IB_LAUNCH_REBOOT="
 if "%USE_REBOOT%"=="1" set "IB_LAUNCH_REBOOT=-reboot"
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%IB_SCRIPTS%ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
 
 if not exist "%IB_SERVER_PID_FILE%" (
     echo ERROR: Failed to start the server process.
@@ -155,7 +159,7 @@ if errorlevel 1 (
 )
 
 echo Waiting for ServerStarted ^(client splash poll needs this signaled^)...
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_wait_event.ps1" -Name ServerStarted -TimeoutSec 30
+powershell -NoProfile -ExecutionPolicy Bypass -File "%IB_SCRIPTS%ib_wait_event.ps1" -Name ServerStarted -TimeoutSec 30
 if errorlevel 1 (
     echo WARNING: Server process is up but ServerStarted was not signaled.
     echo A -shared client will not LocalPlayer-join.

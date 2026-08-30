@@ -1,0 +1,50 @@
+<Mission ID="907" Category="Workshop" Title="Test_07_Persistence" Descr="PDF 6.10 SaveToDB LoadFromDB and server settings" Tags="TEST" GameMode="Custom">
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_07_Persistence" Arg3="ok" />
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+
+	<!-- 6.10 Persistence: write then read back in the same run -->
+	<SaveToDB Key="MissionTest_PersistKey" Value="42" />
+	<LoadFromDB Value="Global.Loaded" Key="MissionTest_PersistKey" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="LoadFromDB" Arg2="Global.Loaded" Arg3="42" />
+
+	<!-- Missing key reads as 0 -->
+	<LoadFromDB Value="Global.Missing" Key="MissionTest_NoSuchKey_ZZZ" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="LoadFromDB_missing" Arg2="Global.Missing" Arg3="0" />
+
+	<!-- PDF pattern: grant progress once -->
+	<LoadFromDB Value="Global.T1_State" Key="MissionTest_T1_State" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="T1_State_before" Arg2="Global.T1_State" Arg3="0or1" />
+	<Condition Left1="Global.T1_State" Comp1="Equal" Right1="0">
+		<SaveToDB Key="MissionTest_T1_State" Value="1" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="T1_State_saved" Arg2="1" Arg3="ok" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="T1_State_already" Arg2="Global.T1_State" Arg3="1" />
+	</Else>
+	<LoadFromDB Value="Global.T1_State2" Key="MissionTest_T1_State" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="T1_State_after" Arg2="Global.T1_State2" Arg3="1" />
+
+	<!-- Reset the one-shot key so the test is repeatable -->
+	<SaveToDB Key="MissionTest_T1_State" Value="0" />
+	<SaveToDB Key="MissionTest_PersistKey" Value="0" />
+
+	<!-- 4.5 / 6.x Server settings from the manual -->
+	<SetValue Target="Server.FrameTimeScale" Source="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Server_FrameTimeScale" Arg2="Server.FrameTimeScale" Arg3="1" />
+
+	<SetValue Target="Server.AllowSwitchTeam" Source="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Server_AllowSwitchTeam" Arg2="Server.AllowSwitchTeam" Arg3="0" />
+
+	<SetValue Target="Server.DamageScale" Source="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Server_DamageScale" Arg2="Server.DamageScale" Arg3="1" />
+
+	<SetValue Target="Server.MatchLoop" Source="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Server_MatchLoop" Arg2="Server.MatchLoop" Arg3="0" />
+
+	<SetValue Target="Server.AllowShipClass.0" Source="1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Server_AllowShipClass_0" Arg2="Server.AllowShipClass.0" Arg3="1" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_07_Persistence" Arg3="ok" />
+</Mission>

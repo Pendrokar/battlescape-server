@@ -1,0 +1,63 @@
+<Mission ID="906" Category="Workshop" Title="Test_06_Hardpoints" Descr="PDF 6.4 weapons systems abilities" Tags="TEST" GameMode="Custom">
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_06_Hardpoints" Arg3="ok" />
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<CreateActor Name="StealthShip" Class="Interceptor" TeamID="1" Loadout="StealthInterceptor" AI="false" />
+	<SetPosition Target="StealthShip" X="1" Y="0" Z="0" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+	<SetValue Target="Actor:PlayerActor.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
+	<Wait Duration="0.8" />
+
+	<!-- GetHardpointStatus on MissilePod -->
+	<GetHardpointStatus Target="Actor:PlayerActor" Names="MissilePod" OutTotalValue="Global.HPTotal" OutUsableValue="Global.HPUsable" OutUsingValue="Global.HPUsing" OutDamagedValue="Global.HPDamaged" OutAmmoRatioValue="Global.HPAmmo" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_MissilePod_Total" Arg2="Global.HPTotal" Arg3="gte0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_MissilePod_Usable" Arg2="Global.HPUsable" Arg3="gte0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_MissilePod_Damaged" Arg2="Global.HPDamaged" Arg3="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_MissilePod_Ammo" Arg2="Global.HPAmmo" Arg3="ratio" />
+
+	<GetHardpointStatus Target="Actor:PlayerActor" Names="GimbalGunMK1;GimbalBlasterMK1" OutTotalValue="Global.GunTotal" OutUsableValue="Global.GunUsable" OutDamagedValue="Global.GunDamaged" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_Guns_Total" Arg2="Global.GunTotal" Arg3="gte1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="GetHP_Guns_Usable" Arg2="Global.GunUsable" Arg3="gte1" />
+
+	<!-- SetHardpointStatus Damaged=true then recount -->
+	<SetHardpointStatus Target="Actor:PlayerActor" Names="GimbalGunMK1;GimbalBlasterMK1" Damaged="true" />
+	<GetHardpointStatus Target="Actor:PlayerActor" Names="GimbalGunMK1;GimbalBlasterMK1" OutTotalValue="Global.GunTotal2" OutUsableValue="Global.GunUsable2" OutDamagedValue="Global.GunDamaged2" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetHP_Damaged_Total" Arg2="Global.GunTotal2" Arg3="same" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetHP_Damaged_Damaged" Arg2="Global.GunDamaged2" Arg3="gte1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetHP_Damaged_Usable" Arg2="Global.GunUsable2" Arg3="lt_before" />
+
+	<SetHardpointStatus Target="Actor:PlayerActor" Names="GimbalGunMK1;GimbalBlasterMK1" Damaged="false" />
+	<GetHardpointStatus Target="Actor:PlayerActor" Names="GimbalGunMK1;GimbalBlasterMK1" OutTotalValue="Global.GunTotal3" OutUsableValue="Global.GunUsable3" OutDamagedValue="Global.GunDamaged3" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetHP_Repaired_Damaged" Arg2="Global.GunDamaged3" Arg3="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SetHP_Repaired_Usable" Arg2="Global.GunUsable3" Arg3="gte1" />
+
+	<!-- StartAbility / StopAbility Stealth (StealthInterceptor loadout) -->
+	<StartAbility Target="Actor:StealthShip" Abilities="Stealth" MaxCount="2" OutValue="Global.StealthCount" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StartAbility_Stealth" Arg2="Global.StealthCount" Arg3="gte0" />
+
+	<StopAbility Target="Actor:StealthShip" Abilities="Stealth" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopAbility_Stealth" Arg2="done" Arg3="ok" />
+
+	<!-- 7.10 ActorStartAbility on this ship -->
+	<CreateTrigger Name="WentStealth" Type="ActorStartAbility" Target="Actor:StealthShip" Abilities="Stealth" Once="true">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorStartAbility" Arg2="Stealth" Arg3="fired" />
+		<SetValue Target="Global.StealthTrigger" Source="1" />
+	</CreateTrigger>
+	<StartAbility Target="Actor:StealthShip" Abilities="Stealth" />
+	<Wait Duration="0.4" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="ActorStartAbility_flag" Arg2="Global.StealthTrigger" Arg3="empty_without_joined_player" />
+
+	<!-- AmmoUsageRatio resupply -->
+	<SetValue Target="Actor:PlayerActor.AmmoUsageRatio" Source="1.0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="AmmoUsageRatio" Arg2="Actor:PlayerActor.AmmoUsageRatio" Arg3="1" />
+
+	<CreateActor Name="Drone11" Class="Interceptor" TeamID="0" Loadout="Default" AI="false" />
+	<SetPosition Target="Drone11" X="2" Y="0" Z="0" />
+	<SetHardpointStatus Target="Actor:Drone11" Names="GimbalGunMK1;GimbalBlasterMK1" Damaged="true" />
+	<GetHardpointStatus Target="Actor:Drone11" Names="GimbalGunMK1;GimbalBlasterMK1" OutDamagedValue="Global.DroneDamaged" OutTotalValue="Global.DroneGuns" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Drone11_GunsDamaged" Arg2="Global.DroneDamaged" Arg3="gte1" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Drone11_GunsTotal" Arg2="Global.DroneGuns" Arg3="gte1" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_06_Hardpoints" Arg3="ok" />
+</Mission>

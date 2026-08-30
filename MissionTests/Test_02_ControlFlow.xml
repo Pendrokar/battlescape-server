@@ -1,0 +1,142 @@
+<Mission ID="902" Category="Workshop" Title="Test_02_ControlFlow" Descr="PDF ch.5 control-flow examples" Tags="TEST" GameMode="Custom">
+	<EntryPoint Name="Trial" Text="UI_Trial" Hidden="false" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_02_ControlFlow" Arg3="ok" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Main" />
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+
+	<!-- 5.8 Include: top-level actions run here; groups become callable -->
+	<Include Target="$Current/Test_02_Include_Fragment.xml" />
+	<Execute Target="FromFragment" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Include_Global" Arg2="Global.FromInclude" Arg3="yes" />
+
+	<!-- 2.5 / 5.1 Execute group with Arg1..Arg7 as Local.ArgN -->
+	<Actions Name="SpawnDrone">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg1" Arg2="Local.Arg1" Arg3="class" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg2" Arg2="Local.Arg2" Arg3="display" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_Arg3" Arg2="Local.Arg3" Arg3="team" />
+		<CreateActor Name="Drone" Group="Drones" Class="Local.Arg1" DisplayName="Local.Arg2" TeamID="Local.Arg3" Loadout="Default" />
+		<SetAIState Target="Drone" HasAI="true" Rank="0" Objective="Battle" AllowFiring="false" />
+	</Actions>
+
+	<Execute Target="SpawnDrone" Arg1="Interceptor" Arg2="Drone #1" Arg3="0" />
+	<Execute Target="SpawnDrone" Arg1="Bomber" Arg2="Drone #2" Arg3="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="SpawnDrone_group" Arg2="Actors:Drones" Arg3="two_ids" />
+
+	<!-- Execute Target from memory -->
+	<SetValue Target="Global.Checkpoint" Source="LogCheckpoint" />
+	<Actions Name="LogCheckpoint">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Execute_memory" Arg2="Global.Checkpoint" Arg3="LogCheckpoint" />
+	</Actions>
+	<Execute Target="Global.Checkpoint" />
+
+	<!-- 5.1 EntryPoint filter: default launch is Main, so Trial group is skipped -->
+	<Actions Name="OnlyTrial">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="OnlyTrial" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+	</Actions>
+	<Actions Name="OnlyMain">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="OnlyMain" Arg2="ran" Arg3="ok" />
+	</Actions>
+	<Execute Target="OnlyTrial" EntryPoint="Trial" />
+	<Execute Target="OnlyMain" EntryPoint="Main" />
+
+	<!-- 5.1 Replace: remaining actions of the caller are abandoned -->
+	<Actions Name="ReplacedInto">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Replace" Arg2="ReplacedInto" Arg3="ok" />
+	</Actions>
+	<Actions Name="ReplaceDemo">
+		<Execute Target="ReplacedInto" Replace="true" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Replace" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+	</Actions>
+	<Execute Target="ReplaceDemo" />
+
+	<!-- Missing group is skipped with a log line -->
+	<Execute Target="NoSuchGroup" />
+
+	<!-- 5.2 Wait: pause this sequence only -->
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wait" Arg2="before" Arg3="ok" />
+	<Wait Duration="0.5" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Wait" Arg2="after" Arg3="ok" />
+
+	<!-- 5.3 counter Loop -->
+	<SetValue Target="Global.LoopSum" Source="0" />
+	<Loop Target="Global.Index" Start="0" Count="4">
+		<AddValue Target="Global.LoopSum" Source1="Global.LoopSum" Source2="Global.Index" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_Index" Arg2="Global.Index" Arg3="0to3" />
+	</Loop>
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_Sum" Arg2="Global.LoopSum" Arg3="6" />
+
+	<!-- Loop over actor collection -->
+	<SetValue Target="Global.Count" Source="0" />
+	<Loop Target="Actors:Drones">
+		<AddValue Target="Global.Count" Source1="Global.Count" Source2="1" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_DroneClass" Arg2="Actor.ActorClassName" Arg3="InterceptorOrBomber" />
+	</Loop>
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Loop_DroneCount" Arg2="Global.Count" Arg3="2" />
+
+	<!-- Break leaves the innermost loop -->
+	<SetValue Target="Global.BreakAt" Source="none" />
+	<Loop Target="Global.J" Start="0" Count="5">
+		<Condition Left1="Global.J" Comp1="Equal" Right1="2">
+			<SetValue Target="Global.BreakAt" Source="Global.J" />
+			<Break />
+		</Condition>
+		<SetValue Target="Global.LastJ" Source="Global.J" />
+	</Loop>
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Break_BreakAt" Arg2="Global.BreakAt" Arg3="2" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Break_LastJ" Arg2="Global.LastJ" Arg3="2" />
+
+	<!-- 5.4 Condition / Else -->
+	<Condition Left1="3" Comp1="Higher" Right1="0.3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Higher" Arg2="true" Arg3="ok" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Higher" Arg2="ELSE_SHOULD_NOT" Arg3="fail" />
+	</Else>
+
+	<Condition Left1="1" Comp1="Equal" Right1="2">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_EqualFalse" Arg2="THEN_SHOULD_NOT" Arg3="fail" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_EqualFalse" Arg2="else" Arg3="ok" />
+	</Else>
+
+	<!-- NotEqual, LowerEqual, In, NotIn -->
+	<Condition Left1="A" Comp1="NotEqual" Right1="B">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_NotEqual" Arg2="true" Arg3="ok" />
+	</Condition>
+
+	<Condition Left1="Interceptor" Comp1="In" Right1="Interceptor;Bomber;Corvette">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InText" Arg2="true" Arg3="ok" />
+	</Condition>
+
+	<Condition Left1="Actor:H_missing.ActorID" Comp1="In" Right1="Actors:Drones">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InList" Arg2="THEN_SHOULD_NOT" Arg3="fail" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_InList" Arg2="else" Arg3="ok" />
+	</Else>
+
+	<!-- OR chain: AndN=false on every segment -->
+	<Condition Left1="0" Comp1="Equal" Right1="1" And1="false" Left2="2" Comp2="Equal" Right2="2" And2="false">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_Or" Arg2="true" Arg3="ok" />
+	</Condition>
+
+	<!-- AND chain (default): both must hold -->
+	<Condition Left1="5" Comp1="HigherEqual" Right1="1" And1="true" Left2="5" Comp2="LowerEqual" Right2="10">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Condition_And" Arg2="true" Arg3="ok" />
+	</Condition>
+
+	<!-- 5.5 Stop inside a group: remaining group actions do not run; caller continues -->
+	<Actions Name="StopEarly">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="before" Arg3="ok" />
+		<Stop Group="StopEarly" />
+		<Wait Duration="0.2" />
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="SHOULD_NOT_RUN" Arg3="fail" />
+	</Actions>
+	<Execute Target="StopEarly" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StopEarly" Arg2="caller_continued" Arg3="ok" />
+
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Test_02_ControlFlow" Arg3="ok" />
+</Mission>
