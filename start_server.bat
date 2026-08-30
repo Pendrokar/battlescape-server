@@ -4,7 +4,7 @@ setlocal EnableExtensions EnableDelayedExpansion
 call "%~dp0ib_env.bat"
 if errorlevel 1 exit /b 1
 
-set "USE_STEAM=0"
+set "USE_STEAM=1"
 set "SERVER_MODE=private"
 set "USE_REBOOT=1"
 set "MISSION=%IB_MISSION_DEFAULT%"
@@ -130,7 +130,7 @@ if exist "%IB_DOCS_SERVER%\%SERVERCONFIG%" (
 REM Launch outside the parent job so the server keeps running after this window closes.
 set "IB_LAUNCH_EXTRA="
 if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
-if "%SERVER_MODE%"=="public" (set "IB_LAUNCH_MODE=-dedicated -public") else (set "IB_LAUNCH_MODE=-shared -private")
+if "%SERVER_MODE%"=="public" (set "IB_LAUNCH_MODE=-dedicated -public") else (set "IB_LAUNCH_MODE=-dedicated -private")
 set "IB_LAUNCH_REBOOT="
 if "%USE_REBOOT%"=="1" set "IB_LAUNCH_REBOOT=-reboot"
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
@@ -182,7 +182,7 @@ echo.
 echo Options:
 echo   steam              Add -steam
 echo   nosteam            Do not add -steam ^(default^)
-echo   private            -shared -private ^(default, matches notes^)
+echo   private            -dedicated -private ^(default^)
 echo   public             -dedicated -public instead
 echo   reboot             Do not load DB ^(default, -reboot^)
 echo   db                 Load DB ^(omit -reboot^)

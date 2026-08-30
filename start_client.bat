@@ -5,11 +5,13 @@ call "%~dp0ib_env.bat"
 if errorlevel 1 exit /b 1
 
 set "USE_STEAM=1"
-set "USE_OFFLINE=0"
-set "USE_AUTH=0"
+set "USE_JOIN=1"
+set "USE_OFFLINE=1"
+set "USE_AUTH=1"
 set "USE_PASSWORD=0"
-set "USE_SHARED=1"
-set "USE_DIRECT=0"
+set "USE_SHARED=0"
+set "USE_DIRECT=1"
+set "USE_NOPRELOAD=1"
 set "AUTH_TOKEN="
 set "HOST=%IB_HOST%"
 set "PORT=%IB_PORT%"
@@ -32,6 +34,11 @@ if /i "%~1"=="steam" (
 )
 if /i "%~1"=="nosteam" (
     set "USE_STEAM=0"
+    shift
+    goto :parse
+)
+if /i "%~1"=="join" (
+    set "USE_JOIN=1"
     shift
     goto :parse
 )
@@ -60,6 +67,11 @@ if /i "%~1"=="direct" (
     shift
     goto :parse
 )
+if /i "%~1"=="nopreload(
+    set "USE_NOPRELOAD=1"
+    shift
+    goto :parse
+)
 if /i "%~1"=="nodirect" (
     set "USE_DIRECT=0"
     shift
@@ -79,6 +91,7 @@ if /i "%~1"=="auth" (
     )
     if /i "%~2"=="steam" (shift & goto :parse)
     if /i "%~2"=="nosteam" (shift & goto :parse)
+    if /i "%~2"=="join" (shift & goto :parse)
     if /i "%~2"=="offline" (shift & goto :parse)
     if /i "%~2"=="nooffline" (shift & goto :parse)
     if /i "%~2"=="shared" (shift & goto :parse)
@@ -244,8 +257,10 @@ if "%USE_SHARED%"=="1" (
 REM Launch outside the parent job so the game keeps running after this window closes.
 set "IB_LAUNCH_EXTRA="
 if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
+if "%USE_JOIN%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -join"
 if "%USE_OFFLINE%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -offline"
 if "%USE_SHARED%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -shared"
+if "%USE_NOPRELOAD%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -nopreload"
 set "IB_LAUNCH_AUTH="
 if "%USE_AUTH%"=="1" (
     if defined AUTH_TOKEN (set "IB_LAUNCH_AUTH=-auth %AUTH_TOKEN%") else (set "IB_LAUNCH_AUTH=-auth")
@@ -304,6 +319,7 @@ echo   shared                Add -shared and wait for ServerStarted ^(default^)
 echo   noshared              Omit -shared
 echo   direct                Also add -direct/-host/-port ^(browser list; local reject^)
 echo   nodirect              Omit -direct ^(default^)
+echo   nopreload             Add -nopreload ^(default^)
 echo   offline               Add -offline
 echo   nooffline             Omit -offline ^(default^)
 echo   auth [token]          Add -auth, optionally with a token

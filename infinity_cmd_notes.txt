@@ -19,13 +19,13 @@ IB command line arguments:
 -shared = Unknown; Server privately shared?
 -private = Unknown; Server accessable only with correct IP, token or password?
 -public = Unknown; Server viewable in server browser?
--offline
+-offline = Client only
 -reboot = Unknown; Do not load DB?
 -mission <xml> = Server-only. Mission XML file run by the dedicated server. Irrelevant to client login/auth.
 -steam = Tells the Game that it is launched from Steam (User check when clicking Multiplayer)
 -launcher = Configure the game launcher
--direct <ip> = Adds that IP to the multiplayer server browser list only. Does not connect.
--join = Boolean parsed by the exe; does not auto-connect. User still has to click the listed server.
+-direct <ip> = Adds that IP to the multiplayer server browser list only. Does not automatically connect.
+-join = Boolean parsed by the exe; Client immediately attempts to connect to the server specified with -direct argument
 -spawn = Boolean parsed by the exe; purpose unknown
 -auth <?token> = Server-browser listing/join token for official/public servers. Not used by local dedicated servers.
 -offline = Sets local login name to "default". Does not auto-connect to a running dedicated server.
@@ -37,6 +37,7 @@ IB command line arguments:
 -username <name>
 -instance
 -entrypoint <string> = changes the value of the global variable `Global.EntryPoint` to use in Mission Scripts
+-nopreload = Client skips caching assets from ActorList.xml and loads them only on demand
 
 IB SteamGameId = 1079620
 
@@ -69,6 +70,8 @@ ALMOST WORKS:
 
 (Client connects to server, but server denies client due to an invalid "token or password")
 "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
+
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -join -offline -nopreload -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
 
 WORKS (client started server, in-game Empty, 2026-08-16 16:26 and 17:20):
 Client: -steam

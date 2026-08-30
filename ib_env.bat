@@ -15,7 +15,7 @@ if not exist "%IB_DOCS_SERVER%" set "IB_DOCS_SERVER=%USERPROFILE%\Documents\I-No
 
 REM Match the working in-game local-mission launch (client-spawned server).
 set "IB_MISSION_DEFAULT=%IB_DOCS_CLIENT%\Workshop\Empty.xml"
-set "IB_SERVERCONFIG=LocalServerConfig.xml"
+set "IB_SERVERCONFIG=PrivateSharedServerConfig.xml"
 
 set "IB_HOST=127.0.0.1"
 set "IB_PORT=7778"
