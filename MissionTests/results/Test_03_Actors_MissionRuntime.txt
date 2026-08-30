@@ -1,0 +1,111 @@
+[  0.001 s,  477 / 3482] Server Mission Runtime Log
+[  0.002 s,  477 / 3481] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_03_Actors.xml'
+[  0.004 s,  477 / 3481] Mission runtime successfully loaded
+[  0.020 s,  478 / 3481] Test: BEGIN Test_03_Actors ok
+[  0.022 s,  478 / 3481] Action 2:0:Log
+[  0.022 s,  479 / 3481] Action 2:1:CreateActor
+[  0.023 s,  479 / 3481] Action 2:2:SetPosition
+[  0.023 s,  479 / 3481] Action 2:3:SetValue
+[  0.023 s,  479 / 3481] Test: CreateActor_PlayerActor Interceptor Interceptor
+[  0.024 s,  479 / 3481] Action 2:4:Log
+[  0.024 s,  479 / 3481] Test: CreateActor_TeamID 1 1
+[  0.025 s,  479 / 3481] Action 2:5:Log
+[  0.025 s,  479 / 3481] Test: CreateActor_Type Ship Ship
+[  0.027 s,  479 / 3481] Action 2:6:Log
+[  0.027 s,  479 / 3481] Action 2:7:CreateActor
+[  0.027 s,  479 / 3481] Action 2:8:SetPosition
+[  0.027 s,  479 / 3481] Test: Instructor_Class Corvette Corvette
+[  0.028 s,  479 / 3481] Action 2:9:Log
+[  0.028 s,  479 / 3481] Test: Instructor_DisplayName Instructor Instructor
+[  0.030 s,  479 / 3481] Action 2:10:Log
+[  0.030 s,  479 / 3481] Action 2:11:CreateActor
+[  0.030 s,  479 / 3481] Action 2:12:CreateActor
+[  0.030 s,  479 / 3481] Test: Group_StaticDrone [12, 13] two_ids
+[  0.031 s,  479 / 3481] Action 2:13:Log
+[  0.031 s,  479 / 3481] Test: Group_first Drone #1 Drone #1
+[  0.033 s,  479 / 3481] Action 2:14:Log
+[  0.033 s,  479 / 3481] Action 2:15:CreateActor
+[  0.033 s,  479 / 3481] Test: Marker_Class Marker Marker
+[  0.034 s,  479 / 3481] Action 2:16:Log
+[  0.034 s,  479 / 3481] Test: Marker_TeamID -1 -1
+[  0.035 s,  479 / 3481] Action 2:17:Log
+[  0.035 s,  479 / 3481] Action 2:18:SetPosition
+[  0.035 s,  479 / 3481] Test: SetPosition [10.0000000000000000, 0.0000000000000000, 5.0000000000000000, 0.0000000000000000] [10,0,5]
+[  0.037 s,  479 / 3481] Action 2:19:Log
+[  0.037 s,  479 / 3481] Action 2:20:SetRotation
+[  0.037 s,  479 / 3481] Test: SetRotation [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 1.0000000000000000] [0,0,0,1]
+[  0.038 s,  479 / 3481] Action 2:21:Log
+[  0.038 s,  479 / 3481] Action 2:22:SetVelocity
+[  0.038 s,  479 / 3481] Test: SetVelocity [0.0000000000000000, 0.0000000000000000, 0.3000000000000000, 0.0000000000000000] [0,0,0.3]
+[  0.039 s,  479 / 3481] Action 2:23:Log
+[  0.039 s,  479 / 3481] Action 2:24:SetRotVelocity
+[  0.039 s,  479 / 3481] Test: SetRotVelocity [0.0000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000] [0,0,0]
+[  0.040 s,  479 / 3481] Action 2:25:Log
+[  0.040 s,  479 / 3481] Action 2:26:SetValue
+[  0.040 s,  479 / 3481] Action 2:27:SetValue
+[  0.041 s,  479 / 3481] Action 2:28:CreateActor
+[  0.041 s,  479 / 3481] Action 2:29:SetPosition
+[  0.041 s,  479 / 3481] Test: SetPosition_Parent [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000] [0,0,1]
+[  0.042 s,  479 / 3481] Action 2:30:Log
+[  0.042 s,  479 / 3481] Action 2:31:CreateActor
+[  0.043 s,  479 / 3479] Action 2:32:CreateActor
+[  0.043 s,  479 / 3479] Action 2:33:SetPosition
+[  0.043 s,  479 / 3479] Action 2:34:SetPosition
+[  0.043 s,  479 / 3478] Action 2:35:SetValue
+[  0.043 s,  479 / 3478] Action 2:36:SetValue
+[  0.043 s,  479 / 3478] Test: Wing1_Pos [-0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000] [-0.3,0,-0.5]
+[  0.044 s,  479 / 3478] Action 2:37:Log
+[  0.044 s,  479 / 3478] Test: Wing2_Pos [0.3000000000000000, 0.0000000000000000, -0.5000000000000000, 0.0000000000000000] [0.3,0,-0.5]
+[  0.045 s,  479 / 3478] Action 2:38:Log
+[  0.045 s,  479 / 3478] Action 2:39:SetVelocity
+[  0.045 s,  479 / 3478] Test: SetVelocity_Normalize [0.0000000000000000, 0.0000000000000000, 0.5000000000000000, 0.0000000000000000] [0,0,0.5]
+[  0.046 s,  479 / 3478] Action 2:40:Log
+[  0.046 s,  479 / 3478] Action 2:41:CreateActor
+[  0.046 s,  479 / 3478] Action 2:42:SetPosition
+[  0.046 s,  479 / 3478] Action 2:43:SetVisible
+[  0.046 s,  479 / 3478] Action 2:44:SetVisible
+[  0.047 s,  479 / 3478] Test: Crate1_Class SupplyCrate SupplyCrate
+[  0.048 s,  479 / 3478] Action 2:45:Log
+[  0.048 s,  479 / 3478] Action 0:0:AddValue
+[  0.048 s,  479 / 3478] Action 0:1:CreateActor
+[  0.048 s,  479 / 3478] Action 0:2:MulValue
+[  0.048 s,  479 / 3478] Action 0:3:AddValue
+[  0.048 s,  479 / 3478] Action 0:4:TransformValue
+[  0.052 s,  480 / 3478] Action 0:0:AddValue
+[  0.052 s,  480 / 3478] Action 0:1:CreateActor
+[  0.052 s,  480 / 3478] Action 0:2:MulValue
+[  0.052 s,  480 / 3478] Action 0:3:AddValue
+[  0.052 s,  480 / 3478] Action 0:4:TransformValue
+[  0.064 s,  480 / 3478] Action 0:0:AddValue
+[  0.065 s,  480 / 3478] Action 0:1:CreateActor
+[  0.065 s,  480 / 3478] Action 0:2:MulValue
+[  0.065 s,  480 / 3478] Action 0:3:AddValue
+[  0.065 s,  480 / 3478] Action 0:4:TransformValue
+[  0.080 s,  480 / 3478] Action 2:46:Loop
+[  0.080 s,  480 / 3478] Action 2:47:SetAIState
+[  0.080 s,  480 / 3478] Action 2:48:SetValue
+[  0.080 s,  480 / 3478] Action 1:0:AddValue
+[  0.080 s,  480 / 3478] Action 1:0:AddValue
+[  0.080 s,  480 / 3478] Action 1:0:AddValue
+[  0.080 s,  480 / 3478] Action 2:49:Loop
+[  0.080 s,  480 / 3478] Test: FwdWing_Count 3.0 3
+[  0.081 s,  480 / 3478] Action 2:50:Log
+[  0.082 s,  480 / 3476] Action 2:51:CreateActor
+[  0.082 s,  480 / 3476] Test: ToDelete_before Interceptor Interceptor
+[  0.083 s,  480 / 3476] Action 2:52:Log
+[  0.083 s,  480 / 3476] Action 2:53:DeleteActor
+[  0.372 s,  480 / 3505] Action 2:54:Wait
+[  0.372 s,  480 / 3505] Test: ToDelete_after  empty
+[  0.374 s,  480 / 3505] Action 2:55:Log
+[  0.374 s,  480 / 3505] Action 2:56:CreateActor
+[  0.374 s,  480 / 3505] Action 2:57:KillActor
+[  3.861 s,  481 / 3578] Action 2:58:Wait
+[  3.861 s,  481 / 3578] Test: ToKill_after  empty
+[  3.863 s,  481 / 3578] Action 2:59:Log
+[  3.863 s,  481 / 3578] Action 2:60:SetValue
+[  3.863 s,  481 / 3578] Test: Rename_Dummy Interceptor Interceptor
+[  3.864 s,  481 / 3578] Action 2:61:Log
+[  3.864 s,  481 / 3578] Test: Rename_oldName  empty_or_Drone2
+[  3.865 s,  481 / 3578] Action 2:62:Log
+[  3.865 s,  481 / 3578] Test: COMPLETE Test_03_Actors ok
+[  3.866 s,  481 / 3578] Action 2:63:Log

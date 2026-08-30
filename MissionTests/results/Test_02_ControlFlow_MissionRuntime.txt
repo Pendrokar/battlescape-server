@@ -1,0 +1,139 @@
+[  0.001 s,  477 / 3517] Server Mission Runtime Log
+[  0.002 s,  477 / 3517] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_02_ControlFlow.xml'
+[  0.003 s,  477 / 3517] Mission runtime successfully loaded
+[  0.013 s,  478 / 3516] Action 23:0:EntryPoint
+[  0.013 s,  478 / 3516] Test: BEGIN Test_02_ControlFlow ok
+[  0.015 s,  478 / 3516] Action 23:1:Log
+[  0.015 s,  478 / 3516] Test: EntryPoint Main Main
+[  0.017 s,  478 / 3516] Action 23:2:Log
+[  0.017 s,  479 / 3516] Action 23:3:CreateActor
+[  0.017 s,  479 / 3516] Action 23:4:SetPosition
+[  0.017 s,  479 / 3516] Test: Include toplevel ran
+[  0.019 s,  479 / 3516] Action 1:0:Log
+[  0.019 s,  479 / 3516] Action 23:5:Include
+[  0.019 s,  479 / 3516] Action 23:6:Execute: executing action group FromFragment..
+[  0.019 s,  479 / 3516] Test: Include FromFragment ran
+[  0.020 s,  479 / 3516] Action 0:0:Log
+[  0.020 s,  479 / 3516] Action 0:1:SetValue
+[  0.020 s,  479 / 3516] Action 23:6:Execute
+[  0.020 s,  479 / 3516] Test: Include_Global yes yes
+[  0.022 s,  479 / 3516] Action 23:7:Log
+[  0.022 s,  479 / 3516] Action 23:8:Execute: executing action group SpawnDrone..
+[  0.022 s,  479 / 3516] Test: SpawnDrone_Arg1 Interceptor class
+[  0.023 s,  479 / 3516] Action 2:0:Log
+[  0.023 s,  479 / 3516] Test: SpawnDrone_Arg2 Drone #1 display
+[  0.024 s,  479 / 3516] Action 2:1:Log
+[  0.024 s,  479 / 3516] Test: SpawnDrone_Arg3 0 team
+[  0.026 s,  479 / 3516] Action 2:2:Log
+[  0.026 s,  479 / 3516] Action 2:3:CreateActor
+[  0.026 s,  479 / 3516] Action 2:4:SetAIState
+[  0.026 s,  479 / 3516] Action 23:8:Execute
+[  0.026 s,  479 / 3516] Action 23:9:Execute: executing action group SpawnDrone..
+[  0.026 s,  479 / 3516] Test: SpawnDrone_Arg1 Bomber class
+[  0.027 s,  479 / 3516] Action 2:0:Log
+[  0.028 s,  479 / 3516] Test: SpawnDrone_Arg2 Drone #2 display
+[  0.029 s,  479 / 3514] Action 2:1:Log
+[  0.029 s,  479 / 3514] Test: SpawnDrone_Arg3 0 team
+[  0.031 s,  479 / 3514] Action 2:2:Log
+[  0.032 s,  479 / 3514] Action 2:3:CreateActor
+[  0.032 s,  479 / 3514] Action 2:4:SetAIState
+[  0.032 s,  479 / 3514] Action 23:9:Execute
+[  0.032 s,  479 / 3514] Test: SpawnDrone_group [11, 12] two_ids
+[  0.034 s,  479 / 3514] Action 23:10:Log
+[  0.034 s,  479 / 3514] Action 23:11:SetValue
+[  0.034 s,  479 / 3514] Action 23:12:Execute: executing action group LogCheckpoint..
+[  0.034 s,  479 / 3514] Test: Execute_memory LogCheckpoint LogCheckpoint
+[  0.036 s,  479 / 3514] Action 3:0:Log
+[  0.036 s,  479 / 3514] Action 23:12:Execute
+[  0.036 s,  479 / 3514] Skipping action 23:13:Execute: entry point not matching for action group OnlyTrial..
+[  0.036 s,  479 / 3514] Action 23:13:Execute
+[  0.036 s,  479 / 3514] Action 23:14:Execute: executing action group OnlyMain..
+[  0.036 s,  479 / 3514] Test: OnlyMain ran ok
+[  0.037 s,  479 / 3514] Action 5:0:Log
+[  0.037 s,  479 / 3514] Action 23:14:Execute
+[  0.037 s,  479 / 3514] Action 23:15:Execute: executing action group ReplaceDemo..
+[  0.037 s,  479 / 3514] Action 6:-1:Execute: executing action group ReplacedInto..
+[  0.037 s,  479 / 3514] Action 6:-1:Execute
+[  0.037 s,  479 / 3514] Test: Replace ReplacedInto ok
+[  0.038 s,  479 / 3514] Action 6:0:Log
+[  0.038 s,  479 / 3514] Action 23:15:Execute
+[  0.038 s,  479 / 3514] Skipping action 23:16:Execute: no target group named NoSuchGroup..
+[  0.038 s,  479 / 3514] Action 23:16:Execute
+[  0.038 s,  479 / 3514] Test: Wait before ok
+[  0.040 s,  479 / 3514] Action 23:17:Log
+[  0.557 s,  479 / 3522] Action 23:18:Wait
+[  0.557 s,  479 / 3522] Test: Wait after ok
+[  0.559 s,  479 / 3522] Action 23:19:Log
+[  0.559 s,  479 / 3522] Action 23:20:SetValue
+[  0.559 s,  479 / 3522] Action 8:0:AddValue
+[  0.559 s,  479 / 3522] Test: Loop_Index 0 0to3
+[  0.561 s,  479 / 3522] Action 8:1:Log
+[  0.571 s,  479 / 3522] Action 8:0:AddValue
+[  0.571 s,  479 / 3522] Test: Loop_Index 1 0to3
+[  0.572 s,  479 / 3522] Action 8:1:Log
+[  0.586 s,  479 / 3522] Action 8:0:AddValue
+[  0.586 s,  479 / 3522] Test: Loop_Index 2 0to3
+[  0.587 s,  479 / 3522] Action 8:1:Log
+[  0.602 s,  479 / 3522] Action 8:0:AddValue
+[  0.602 s,  479 / 3522] Test: Loop_Index 3 0to3
+[  0.603 s,  479 / 3522] Action 8:1:Log
+[  0.617 s,  479 / 3522] Action 23:21:Loop
+[  0.617 s,  479 / 3522] Test: Loop_Sum 6.0 6
+[  0.619 s,  479 / 3522] Action 23:22:Log
+[  0.619 s,  479 / 3522] Action 23:23:SetValue
+[  0.619 s,  479 / 3522] Action 9:0:AddValue
+[  0.619 s,  479 / 3522] Test: Loop_DroneClass Interceptor InterceptorOrBomber
+[  0.620 s,  479 / 3522] Action 9:1:Log
+[  0.620 s,  479 / 3522] Action 9:0:AddValue
+[  0.620 s,  479 / 3522] Test: Loop_DroneClass Bomber InterceptorOrBomber
+[  0.622 s,  479 / 3522] Action 9:1:Log
+[  0.622 s,  479 / 3522] Action 23:24:Loop
+[  0.622 s,  479 / 3522] Test: Loop_DroneCount 2.0 2
+[  0.623 s,  479 / 3522] Action 23:25:Log
+[  0.623 s,  479 / 3522] Action 23:26:SetValue
+[  0.623 s,  479 / 3522] Action 11:0:Condition
+[  0.623 s,  479 / 3522] Action 11:1:SetValue
+[  0.634 s,  479 / 3522] Action 11:0:Condition
+[  0.634 s,  479 / 3522] Action 11:1:SetValue
+[  0.650 s,  479 / 3522] Action 10:0:SetValue
+[  0.650 s,  479 / 3522] Action 10:1:Break
+[  0.650 s,  479 / 3522] Action 11:0:Condition
+[  0.650 s,  479 / 3522] Action 11:1:SetValue
+[  0.664 s,  479 / 3522] Action 23:27:Loop
+[  0.664 s,  479 / 3522] Test: Break_BreakAt 2 2
+[  0.666 s,  479 / 3522] Action 23:28:Log
+[  0.666 s,  479 / 3522] Test: Break_LastJ 2 2
+[  0.667 s,  479 / 3522] Action 23:29:Log
+[  0.667 s,  479 / 3522] Test: Condition_Higher true ok
+[  0.669 s,  479 / 3522] Action 12:0:Log
+[  0.669 s,  479 / 3522] Action 23:30:Condition
+[  0.669 s,  479 / 3522] Action 23:31:Else
+[  0.669 s,  479 / 3522] Action 23:32:Condition
+[  0.669 s,  479 / 3522] Test: Condition_EqualFalse else ok
+[  0.671 s,  479 / 3522] Action 15:0:Log
+[  0.671 s,  479 / 3522] Action 23:33:Else
+[  0.671 s,  479 / 3522] Test: Condition_NotEqual true ok
+[  0.672 s,  479 / 3522] Action 16:0:Log
+[  0.672 s,  479 / 3522] Action 23:34:Condition
+[  0.672 s,  479 / 3522] Test: Condition_InText true ok
+[  0.674 s,  479 / 3522] Action 17:0:Log
+[  0.674 s,  479 / 3522] Action 23:35:Condition
+[  0.674 s,  479 / 3522] Action 23:36:Condition
+[  0.674 s,  479 / 3522] Test: Condition_InList else ok
+[  0.676 s,  479 / 3522] Action 19:0:Log
+[  0.676 s,  479 / 3522] Action 23:37:Else
+[  0.676 s,  479 / 3522] Test: Condition_Or true ok
+[  0.677 s,  479 / 3522] Action 20:0:Log
+[  0.677 s,  479 / 3522] Action 23:38:Condition
+[  0.677 s,  479 / 3522] Test: Condition_And true ok
+[  0.678 s,  479 / 3522] Action 21:0:Log
+[  0.678 s,  479 / 3522] Action 23:39:Condition
+[  0.678 s,  479 / 3522] Action 23:40:Execute: executing action group StopEarly..
+[  0.678 s,  479 / 3522] Test: StopEarly before ok
+[  0.680 s,  479 / 3522] Action 22:0:Log
+[  0.680 s,  479 / 3522] Action -1:-1:Stop
+[  0.680 s,  479 / 3522] Action 23:40:Execute
+[  0.680 s,  479 / 3522] Test: StopEarly caller_continued ok
+[  0.681 s,  479 / 3522] Action 23:41:Log
+[  0.681 s,  479 / 3522] Test: COMPLETE Test_02_ControlFlow ok
+[  0.682 s,  479 / 3522] Action 23:42:Log

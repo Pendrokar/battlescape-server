@@ -1,0 +1,164 @@
+[  0.000 s,  477 / 3455] Server Mission Runtime Log
+[  0.002 s,  477 / 3455] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_01_Values.xml'
+[  0.003 s,  477 / 3455] Invalid action found: NotARealAction (), ignoring..
+[  0.003 s,  477 / 3455] Mission runtime successfully loaded
+[  0.014 s,  478 / 3455] Test: BEGIN Test_01_Values ok
+[  0.016 s,  478 / 3455] Action 0:0:Log
+[  0.016 s,  478 / 3455] Test: EntryPoint Main Main
+[  0.017 s,  478 / 3455] Action 0:1:Log
+[  0.018 s,  479 / 3454] Action 0:2:CreateActor
+[  0.018 s,  479 / 3454] Action 0:3:SetPosition
+[  0.018 s,  479 / 3454] Action 0:4:SetValue
+[  0.018 s,  479 / 3454] Test: PlayerActor_Class Interceptor Interceptor
+[  0.019 s,  479 / 3454] Action 0:5:Log
+[  0.019 s,  479 / 3454] Test: PlayerActor_PowerState 1 1
+[  0.021 s,  479 / 3454] Action 0:6:Log
+[  0.021 s,  479 / 3454] Action 0:7:SetValue
+[  0.021 s,  479 / 3454] Test: SetValue_Checkpoint BasicCourse BasicCourse
+[  0.022 s,  479 / 3454] Action 0:8:Log
+[  0.022 s,  479 / 3454] Action 0:9:SetValue
+[  0.022 s,  479 / 3454] Test: SetValue_Wave 3 3
+[  0.023 s,  479 / 3454] Action 0:10:Log
+[  0.023 s,  479 / 3454] Test: Unwritten  empty
+[  0.024 s,  479 / 3454] Action 0:11:Log
+[  0.024 s,  479 / 3454] Action 0:12:AddValue
+[  0.024 s,  479 / 3454] Test: AddValue_num 5.0 5
+[  0.026 s,  479 / 3454] Action 0:13:Log
+[  0.026 s,  479 / 3454] Action 0:14:AddValue
+[  0.026 s,  479 / 3454] Test: AddValue_decimal 2.0 2
+[  0.027 s,  479 / 3454] Action 0:15:Log
+[  0.027 s,  479 / 3454] Action 0:16:AddValue
+[  0.027 s,  479 / 3454] Test: AddValue_concat Wing1 Wing1
+[  0.028 s,  479 / 3454] Action 0:17:Log
+[  0.028 s,  479 / 3454] Action 0:18:SubValue
+[  0.028 s,  479 / 3454] Test: SubValue 6.0 6
+[  0.029 s,  479 / 3454] Action 0:19:Log
+[  0.029 s,  479 / 3454] Action 0:20:MulValue
+[  0.029 s,  479 / 3454] Test: MulValue 12.0 12
+[  0.030 s,  479 / 3454] Action 0:21:Log
+[  0.031 s,  479 / 3454] Action 0:22:DivValue
+[  0.031 s,  479 / 3454] Test: DivValue 2.5 2.5
+[  0.032 s,  479 / 3454] Action 0:23:Log
+[  0.032 s,  479 / 3454] Action 0:24:MinValue
+[  0.032 s,  479 / 3454] Test: MinValue 4.0 4
+[  0.033 s,  479 / 3454] Action 0:25:Log
+[  0.033 s,  479 / 3454] Action 0:26:MaxValue
+[  0.033 s,  479 / 3454] Test: MaxValue 9.0 9
+[  0.034 s,  479 / 3454] Action 0:27:Log
+[  0.034 s,  479 / 3454] Action 0:28:NegValue
+[  0.034 s,  479 / 3454] Test: NegValue -5.0 -5
+[  0.035 s,  479 / 3454] Action 0:29:Log
+[  0.035 s,  479 / 3454] Action 0:30:AbsValue
+[  0.035 s,  479 / 3454] Test: AbsValue 3.0 3
+[  0.037 s,  479 / 3454] Action 0:31:Log
+[  0.037 s,  479 / 3454] Action 0:32:ClampValue
+[  0.037 s,  479 / 3454] Test: ClampValue_high 1.0 1
+[  0.038 s,  479 / 3454] Action 0:33:Log
+[  0.038 s,  479 / 3454] Action 0:34:ClampValue
+[  0.038 s,  479 / 3454] Test: ClampValue_low 0.0 0
+[  0.039 s,  479 / 3454] Action 0:35:Log
+[  0.039 s,  479 / 3454] Action 0:36:PowValue
+[  0.039 s,  479 / 3454] Test: PowValue 8.0 8
+[  0.040 s,  479 / 3454] Action 0:37:Log
+[  0.040 s,  479 / 3454] Action 0:38:ModValue
+[  0.040 s,  479 / 3454] Test: ModValue 1.0 1
+[  0.042 s,  479 / 3454] Action 0:39:Log
+[  0.042 s,  479 / 3454] Action 0:40:TruncateValue
+[  0.042 s,  479 / 3454] Test: TruncateValue 3.14 3.14
+[  0.043 s,  479 / 3454] Action 0:41:Log
+[  0.043 s,  479 / 3454] Action 0:42:RandomValue
+[  0.043 s,  479 / 3454] Test: RandomValue_same 7.0 7
+[  0.044 s,  479 / 3454] Action 0:43:Log
+[  0.044 s,  479 / 3454] Action 0:44:AddRandomIntValue
+[  0.044 s,  479 / 3454] Test: AddRandomIntValue_text Server_T1_Event_PlayerLowDamage2 PlayerLowDamage1or2
+[  0.045 s,  479 / 3454] Action 0:45:Log
+[  0.045 s,  479 / 3454] Action 0:46:AddRandomIntValue
+[  0.045 s,  479 / 3454] Test: AddRandomIntValue_num 10.0 10
+[  0.046 s,  479 / 3454] Action 0:47:Log
+[  0.046 s,  479 / 3454] Action 0:48:SetValue
+[  0.046 s,  479 / 3454] Action 0:49:SetValue
+[  0.046 s,  479 / 3454] Action 0:50:AddValue
+[  0.046 s,  479 / 3454] Test: AddValue_vec [1.0000000000000000, 1.0000000000000000, 0.0000000000000000, 0.0000000000000000] [1,1,0]
+[  0.048 s,  479 / 3454] Action 0:51:Log
+[  0.048 s,  479 / 3454] Action 0:52:SetValue
+[  0.048 s,  479 / 3454] Test: Position [8.4000000000000004, -0.2000000000000000, 5.2000000000000002, 0.0000000000000000] [8.4,-0.2,5.2]
+[  0.049 s,  479 / 3454] Action 0:53:Log
+[  0.049 s,  479 / 3454] Test: Position_Y -0.2 -0.2
+[  0.050 s,  479 / 3454] Action 0:54:Log
+[  0.050 s,  479 / 3454] Action 0:55:SetValue
+[  0.050 s,  479 / 3454] Test: Position_Y_write [8.4000000000000004, 2.0000000000000000, 5.2000000000000002, 0.0000000000000000] [8.4,2,5.2]
+[  0.051 s,  479 / 3454] Action 0:56:Log
+[  0.051 s,  479 / 3454] Action 0:57:NormalizeValue
+[  0.051 s,  479 / 3454] Test: NormalizeValue [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000] [0,0,1]
+[  0.053 s,  479 / 3454] Action 0:58:Log
+[  0.053 s,  479 / 3454] Action 0:59:DotValue
+[  0.053 s,  479 / 3454] Test: DotValue_parallel 1.0 1
+[  0.054 s,  479 / 3454] Action 0:60:Log
+[  0.054 s,  479 / 3454] Action 0:61:DotValue
+[  0.054 s,  479 / 3454] Test: DotValue_ortho 0.0 0
+[  0.055 s,  479 / 3454] Action 0:62:Log
+[  0.055 s,  479 / 3454] Action 0:63:CrossValue
+[  0.055 s,  479 / 3454] Test: CrossValue [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000] [0,0,1]
+[  0.056 s,  479 / 3454] Action 0:64:Log
+[  0.056 s,  479 / 3454] Action 0:65:AngleValue
+[  0.056 s,  479 / 3454] Test: AngleValue_same 0.0 0
+[  0.058 s,  479 / 3454] Action 0:66:Log
+[  0.058 s,  479 / 3454] Action 0:67:AngleValue
+[  0.058 s,  479 / 3454] Test: AngleValue_90 90.00000105055241 90
+[  0.059 s,  479 / 3454] Action 0:68:Log
+[  0.059 s,  479 / 3454] Action 0:69:CreateActor
+[  0.059 s,  479 / 3454] Action 0:70:SetPosition
+[  0.059 s,  479 / 3454] Action 0:71:SetValue
+[  0.059 s,  479 / 3454] Action 0:72:DistanceValue
+[  0.059 s,  479 / 3454] Test: DistanceValue 10.0 10
+[  0.060 s,  479 / 3454] Action 0:73:Log
+[  0.060 s,  479 / 3454] Action 0:74:SetValue
+[  0.060 s,  479 / 3454] Action 0:75:SetValue
+[  0.060 s,  479 / 3454] Action 0:76:TransformValue
+[  0.060 s,  479 / 3454] Test: TransformValue_behind [0.0000000000000000, 0.0000000000000000, -0.2000000000000000, 0.0000000000000000] [0,0,-0.2]
+[  0.062 s,  479 / 3454] Action 0:77:Log
+[  0.062 s,  479 / 3454] Action 0:78:TransformValue
+[  0.062 s,  479 / 3454] Test: TransformValue_dir [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000] [0,0,1]
+[  0.063 s,  479 / 3454] Action 0:79:Log
+[  0.063 s,  479 / 3454] Action 0:80:CreateActor
+[  0.064 s,  479 / 3454] Action 0:81:CreateActor
+[  0.064 s,  479 / 3454] Test: Actors_Hostiles [12, 13] list_of_ids
+[  0.065 s,  479 / 3454] Action 0:82:Log
+[  0.065 s,  479 / 3454] Test: Actor_Hostiles_firstClass Interceptor Interceptor
+[  0.066 s,  479 / 3454] Action 0:83:Log
+[  0.066 s,  479 / 3454] Action 0:84:SetPosition
+[  0.066 s,  479 / 3454] Action 0:85:SetPosition
+[  0.066 s,  479 / 3454] Action 0:86:Overlap
+[  0.066 s,  479 / 3454] Test: Overlap_near 2 gte1
+[  0.067 s,  479 / 3454] Action 0:87:Log
+[  0.067 s,  479 / 3454] Action 0:88:Overlap
+[  0.067 s,  479 / 3454] Test: Overlap_far 0 0
+[  0.069 s,  479 / 3454] Action 0:89:Log
+[  0.069 s,  479 / 3454] Action 0:90:SetValue
+[  0.069 s,  479 / 3454] Test: HitPointsRatio 0.5 0.5
+[  0.071 s,  479 / 3454] Action 0:91:Log
+[  0.071 s,  479 / 3454] Action 0:92:SetValue
+[  0.071 s,  479 / 3454] Test: TeamID 0 0
+[  0.072 s,  479 / 3454] Action 0:93:Log
+[  0.072 s,  479 / 3454] Action 0:94:SetValue
+[  0.072 s,  479 / 3454] Test: DisplayName Cadet Cadet
+[  0.073 s,  479 / 3454] Action 0:95:Log
+[  0.073 s,  479 / 3454] Action 0:96:SetValue
+[  0.073 s,  479 / 3454] Test: Ghost 1 1
+[  0.075 s,  479 / 3454] Action 0:97:Log
+[  0.075 s,  479 / 3454] Action 0:98:SetValue
+[  0.075 s,  479 / 3454] Test: DamageScale 0.0 0
+[  0.076 s,  479 / 3454] Action 0:99:Log
+[  0.076 s,  479 / 3454] Action 0:100:SetValue
+[  0.076 s,  479 / 3454] Test: Undetectable 1 1
+[  0.077 s,  479 / 3454] Action 0:101:Log
+[  0.077 s,  479 / 3454] Action 0:102:SetValue
+[  0.077 s,  479 / 3454] Test: FrameTimeScale 1.0 1
+[  0.078 s,  479 / 3454] Action 0:103:Log
+[  0.078 s,  479 / 3454] Action 0:104:SetValue
+[  0.078 s,  479 / 3454] Test: AllowSwitchTeam 0 0
+[  0.080 s,  479 / 3454] Action 0:105:Log
+[  0.080 s,  479 / 3454] Player velocity =  Speed = 0.0
+[  0.081 s,  479 / 3454] Action 0:106:Log
+[  0.081 s,  479 / 3454] Test: COMPLETE Test_01_Values ok
+[  0.082 s,  479 / 3454] Action 0:107:Log

@@ -1,0 +1,65 @@
+[  0.000 s,  477 / 3474] Server Mission Runtime Log
+[  0.002 s,  478 / 3474] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_06_Hardpoints.xml'
+[  0.003 s,  478 / 3474] Mission runtime successfully loaded
+[  0.019 s,  479 / 3467] Test: BEGIN Test_06_Hardpoints ok
+[  0.021 s,  479 / 3467] Action 1:0:Log
+[  0.021 s,  479 / 3467] Action 1:1:CreateActor
+[  0.021 s,  479 / 3467] Action 1:2:CreateActor
+[  0.021 s,  479 / 3467] Action 1:3:SetPosition
+[  0.021 s,  479 / 3467] Action 1:4:SetPosition
+[  0.021 s,  479 / 3467] Action 1:5:SetValue
+[  0.021 s,  479 / 3467] Action 1:6:SetValue
+[  0.839 s,  480 / 3478] Action 1:7:Wait
+[  0.839 s,  480 / 3478] Action 1:8:GetHardpointStatus
+[  0.839 s,  480 / 3478] Test: GetHP_MissilePod_Total 2 gte0
+[  0.841 s,  480 / 3479] Action 1:9:Log
+[  0.841 s,  480 / 3479] Test: GetHP_MissilePod_Usable 0 gte0
+[  0.842 s,  480 / 3478] Action 1:10:Log
+[  0.842 s,  480 / 3478] Test: GetHP_MissilePod_Damaged 0 0
+[  0.843 s,  480 / 3478] Action 1:11:Log
+[  0.843 s,  480 / 3479] Test: GetHP_MissilePod_Ammo 1.0 ratio
+[  0.845 s,  480 / 3478] Action 1:12:Log
+[  0.845 s,  480 / 3478] Action 1:13:GetHardpointStatus
+[  0.845 s,  480 / 3478] Test: GetHP_Guns_Total 4 gte1
+[  0.846 s,  480 / 3478] Action 1:14:Log
+[  0.846 s,  480 / 3478] Test: GetHP_Guns_Usable 2 gte1
+[  0.847 s,  480 / 3478] Action 1:15:Log
+[  0.847 s,  480 / 3478] Action 1:16:SetHardpointStatus
+[  0.847 s,  480 / 3478] Action 1:17:GetHardpointStatus
+[  0.847 s,  480 / 3478] Test: SetHP_Damaged_Total 4 same
+[  0.848 s,  480 / 3478] Action 1:18:Log
+[  0.848 s,  480 / 3478] Test: SetHP_Damaged_Damaged 4 gte1
+[  0.850 s,  480 / 3479] Action 1:19:Log
+[  0.850 s,  480 / 3478] Test: SetHP_Damaged_Usable 2 lt_before
+[  0.851 s,  480 / 3478] Action 1:20:Log
+[  0.851 s,  480 / 3479] Action 1:21:SetHardpointStatus
+[  0.851 s,  480 / 3479] Action 1:22:GetHardpointStatus
+[  0.851 s,  480 / 3479] Test: SetHP_Repaired_Damaged 0 0
+[  0.852 s,  480 / 3478] Action 1:23:Log
+[  0.852 s,  480 / 3478] Test: SetHP_Repaired_Usable 2 gte1
+[  0.853 s,  480 / 3479] Action 1:24:Log
+[  0.853 s,  480 / 3479] Action 1:25:StartAbility
+[  0.853 s,  480 / 3479] Test: StartAbility_Stealth 0 gte0
+[  0.855 s,  480 / 3479] Action 1:26:Log
+[  0.855 s,  480 / 3479] Action 1:27:StopAbility
+[  0.855 s,  480 / 3479] Test: StopAbility_Stealth done ok
+[  0.856 s,  480 / 3479] Action 1:28:Log
+[  0.856 s,  480 / 3479] Created trigger 0 (WentStealth) for action group 0..
+[  0.856 s,  480 / 3479] Action 1:29:CreateTrigger
+[  0.856 s,  480 / 3479] Action 1:30:StartAbility
+[  1.236 s,  480 / 3467] Action 1:31:Wait
+[  1.236 s,  480 / 3467] Test: ActorStartAbility_flag  1
+[  1.237 s,  480 / 3467] Action 1:32:Log
+[  1.237 s,  480 / 3467] Action 1:33:SetValue
+[  1.237 s,  480 / 3467] Test: AmmoUsageRatio 1.0 1
+[  1.239 s,  480 / 3467] Action 1:34:Log
+[  1.239 s,  480 / 3467] Action 1:35:CreateActor
+[  1.239 s,  480 / 3467] Action 1:36:SetPosition
+[  1.239 s,  480 / 3467] Action 1:37:SetHardpointStatus
+[  1.239 s,  480 / 3467] Action 1:38:GetHardpointStatus
+[  1.239 s,  480 / 3467] Test: Drone11_GunsDamaged 4 gte1
+[  1.240 s,  480 / 3468] Action 1:39:Log
+[  1.240 s,  480 / 3468] Test: Drone11_GunsTotal 4 gte1
+[  1.242 s,  480 / 3468] Action 1:40:Log
+[  1.242 s,  480 / 3468] Test: COMPLETE Test_06_Hardpoints ok
+[  1.243 s,  480 / 3467] Action 1:41:Log

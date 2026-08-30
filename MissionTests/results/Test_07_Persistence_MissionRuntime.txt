@@ -1,0 +1,44 @@
+[  0.000 s,  477 / 3540] Server Mission Runtime Log
+[  0.002 s,  478 / 3540] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_07_Persistence.xml'
+[  0.003 s,  478 / 3540] Mission runtime successfully loaded
+[  0.020 s,  479 / 3539] Test: BEGIN Test_07_Persistence ok
+[  0.022 s,  479 / 3539] Action 2:0:Log
+[  0.022 s,  479 / 3539] Action 2:1:CreateActor
+[  0.022 s,  479 / 3539] Action 2:2:SetPosition
+[  0.023 s,  479 / 3539] Action 2:3:SaveToDB
+[  0.023 s,  479 / 3539] Action 2:4:LoadFromDB
+[  0.023 s,  479 / 3539] Test: LoadFromDB 42 42
+[  0.025 s,  479 / 3539] Action 2:5:Log
+[  0.025 s,  479 / 3539] Action 2:6:LoadFromDB
+[  0.025 s,  479 / 3539] Test: LoadFromDB_missing 0 0
+[  0.026 s,  479 / 3539] Action 2:7:Log
+[  0.026 s,  479 / 3539] Action 2:8:LoadFromDB
+[  0.026 s,  479 / 3539] Test: T1_State_before 0 0or1
+[  0.028 s,  479 / 3539] Action 2:9:Log
+[  0.029 s,  479 / 3539] Action 0:0:SaveToDB
+[  0.029 s,  479 / 3539] Test: T1_State_saved 1 ok
+[  0.030 s,  479 / 3539] Action 0:1:Log
+[  0.030 s,  479 / 3539] Action 2:10:Condition
+[  0.030 s,  479 / 3539] Action 2:11:Else
+[  0.030 s,  479 / 3539] Action 2:12:LoadFromDB
+[  0.030 s,  479 / 3539] Test: T1_State_after 1 1
+[  0.031 s,  479 / 3539] Action 2:13:Log
+[  0.032 s,  479 / 3539] Action 2:14:SaveToDB
+[  0.033 s,  479 / 3539] Action 2:15:SaveToDB
+[  0.033 s,  479 / 3539] Action 2:16:SetValue
+[  0.033 s,  479 / 3539] Test: Server_FrameTimeScale 1.0 1
+[  0.035 s,  479 / 3539] Action 2:17:Log
+[  0.035 s,  479 / 3539] Action 2:18:SetValue
+[  0.035 s,  479 / 3539] Test: Server_AllowSwitchTeam 0 0
+[  0.036 s,  479 / 3539] Action 2:19:Log
+[  0.036 s,  479 / 3539] Action 2:20:SetValue
+[  0.036 s,  479 / 3539] Test: Server_DamageScale 1.0 1
+[  0.037 s,  479 / 3539] Action 2:21:Log
+[  0.037 s,  479 / 3539] Action 2:22:SetValue
+[  0.037 s,  479 / 3539] Test: Server_MatchLoop 0 0
+[  0.038 s,  479 / 3539] Action 2:23:Log
+[  0.038 s,  479 / 3539] Action 2:24:SetValue
+[  0.038 s,  479 / 3539] Test: Server_AllowShipClass_0 1 1
+[  0.040 s,  479 / 3539] Action 2:25:Log
+[  0.040 s,  479 / 3539] Test: COMPLETE Test_07_Persistence ok
+[  0.041 s,  479 / 3539] Action 2:26:Log
