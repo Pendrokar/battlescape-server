@@ -1,0 +1,83 @@
+<Actions Name="AssertEqual">
+	<Condition Left1="Local.Arg2" Comp1="Equal" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertNotEqual">
+	<Condition Left1="Local.Arg2" Comp1="NotEqual" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertHigherEqual">
+	<Condition Left1="Local.Arg2" Comp1="HigherEqual" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertLowerEqual">
+	<Condition Left1="Local.Arg2" Comp1="LowerEqual" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertHigher">
+	<Condition Left1="Local.Arg2" Comp1="Higher" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertIn">
+	<Condition Left1="Local.Arg2" Comp1="In" Right1="Local.Arg3">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertNear">
+	<SubValue Target="Local.Delta" Source1="Local.Arg2" Source2="Local.Arg3" />
+	<AbsValue Target="Local.AbsDelta" Source="Local.Delta" />
+	<Condition Left1="Local.AbsDelta" Comp1="LowerEqual" Right1="0.01">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertVec3">
+	<DistanceValue Target="Local.Dist" Source1="Local.Arg2" Source2="Local.Arg3" />
+	<Condition Left1="Local.Dist" Comp1="LowerEqual" Right1="0.01">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Pass" Arg3="Local.Arg2" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Failure" Arg3="Local.Arg2" />
+		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
+	</Else>
+</Actions>
+<Actions Name="AssertDone">
+	<Condition Left1="Global.FailCount" Comp1="Equal" Right1="0">
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Pass" Arg3="Global.FailCount" />
+	</Condition>
+	<Else>
+		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Failure" Arg3="Global.FailCount" />
+	</Else>
+</Actions>
