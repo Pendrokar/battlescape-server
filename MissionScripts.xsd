@@ -400,7 +400,6 @@
 			<xs:element ref="SetObjective" />
 			<xs:element ref="SetPlayerState" />
 			<xs:element ref="SetPosition" />
-			<xs:element ref="SetPositoistn" />
 			<xs:element ref="SetRotation" />
 			<xs:element ref="SetRotVelocity" />
 			<xs:element ref="SetTip" />
@@ -717,16 +716,6 @@
 		<xs:annotation>
 			<xs:documentation>Fixed X/Y/Z (km). Parent makes them relative to that actor. For computed positions use SetValue on Position.</xs:documentation>
 		</xs:annotation>
-		<xs:complexType>
-			<xs:attributeGroup ref="TargetAttr" />
-			<xs:attributeGroup ref="XYZ" />
-			<xs:attribute name="Parent" type="StringExpr" />
-			<xs:attributeGroup ref="ArgPlaceholders" />
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Typo present in corpus; kept so those scripts still validate. Runtime skips unknown action names. -->
-	<xs:element name="SetPositoistn">
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attributeGroup ref="XYZ" />
