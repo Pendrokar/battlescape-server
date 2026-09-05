@@ -20,7 +20,8 @@
 		  and uses the canonical names from the manual.
 		- Unknown action names are skipped and logged; unknown arguments are ignored.
 		- Value arguments accept literals or expressions (Actor:..., Global.X, [0,1,0], ...).
-		- Fixed arguments are literals read when the file is loaded.
+		- Typed value arguments use BoolExpr / NumberExpr / IntegerExpr / VectorExpr (literal or expression).
+		- Fixed arguments are literals read when the file is loaded (Boolish, enumerations, NumberLiteral).
 		- Booleans: true/false (also 1/0). Comment="..." is a documented annotation convention.
 		- Execute receives Arg1..Arg7 as Local.ArgN. Log substitutes $(Arg1)..$(Arg8).
 		- Conditions have up to 16 LeftN/CompN/RightN/AndN segments.
@@ -177,6 +178,330 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="NumberLiteral">
+		<xs:annotation>
+			<xs:documentation>Numeric literal: 3, -0.25, 1e3, 1.396. Empty is the same as omitting the argument.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((-?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][+-]?[0-9]+)?))?" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="IntegerLiteral">
+		<xs:annotation>
+			<xs:documentation>Whole-number literal, including negative (e.g. TeamID 255, -1). Empty is the same as omitting the argument.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(-?[0-9]+)?" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="VectorLiteral">
+		<xs:annotation>
+			<xs:documentation>Vector literal [x, y, z] or [x, y, z, w] (manual 1.8).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\[[^\]]*\]" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BoolExpr">
+		<xs:annotation>
+			<xs:documentation>
+				Boolean value argument: true/false/1/0, or a value expression that evaluates to one
+				(e.g. Local.Arg6). Manual 2.3: value arguments are evaluated each time the action runs.
+				Use Boolish for fixed flags read when the file is loaded (Once, Wait, Parallel, ...).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="Boolish StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="NumberExpr">
+		<xs:annotation>
+			<xs:documentation>
+				A number (seconds, km, degrees, scale, ...) or a value expression that evaluates to one
+				(e.g. Global.Countdown, Player.Timer). Empty is the same as omitting the argument.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NumberLiteral StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="IntegerExpr">
+		<xs:annotation>
+			<xs:documentation>
+				A whole number or a value expression that evaluates to one (e.g. Local.Arg4, Global.MaxCount).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="IntegerLiteral StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="VectorExpr">
+		<xs:annotation>
+			<xs:documentation>
+				A vector [x, y, z] / [x, y, z, w], or a value expression that evaluates to one
+				(e.g. Player.Rotation, Actor:Name.Position, [0, 0, 1]).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="VectorLiteral StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="AIObjective">
+		<xs:annotation>
+			<xs:documentation>Manual 6.3 SetAIState Objective. Defense appears in scripts (PDF name: Defend).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Stranded" />
+			<xs:enumeration value="Battle" />
+			<xs:enumeration value="Bombard" />
+			<xs:enumeration value="Path" />
+			<xs:enumeration value="Retreat" />
+			<xs:enumeration value="Defend" />
+			<xs:enumeration value="Defense" />
+			<xs:enumeration value="Waypoints" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AIObjectiveExpr">
+		<xs:union memberTypes="AIObjective StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="AIBehavior">
+		<xs:annotation>
+			<xs:documentation>Manual 6.3 SetAIState Behavior.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="RandomFlight" />
+			<xs:enumeration value="Attack" />
+			<xs:enumeration value="RandomHunt" />
+			<xs:enumeration value="WarpIn" />
+			<xs:enumeration value="WarpOut" />
+			<xs:enumeration value="Debug" />
+			<xs:enumeration value="Path" />
+			<xs:enumeration value="Waypoints" />
+			<xs:enumeration value="MissileFrenzy" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="AIBehaviorExpr">
+		<xs:union memberTypes="AIBehavior StringExpr" />
+	</xs:simpleType>
+
+	<xs:simpleType name="AIPathMode">
+		<xs:annotation>
+			<xs:documentation>Manual 6.3 SetAIPath Mode (fixed): Sequential, Closest, SequentialClosest.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Sequential" />
+			<xs:enumeration value="Closest" />
+			<xs:enumeration value="SequentialClosest" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BattlescapeSize">
+		<xs:annotation>
+			<xs:documentation>Manual 6.11 GenerateBattlescape Size: Small, Medium, Large.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Small" />
+			<xs:enumeration value="Medium" />
+			<xs:enumeration value="Large" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MissionGenType">
+		<xs:annotation>
+			<xs:documentation>Manual 6.11 GenerateMission Type: 0 SpaceAssault, 1 LandAssault, 2 RogueBattle, 3 Kill, 4 Collect, 5 Repair, 6 Nemesis, 7 Bounty, 8 Stranded, 9 Custom.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0" />
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+			<xs:enumeration value="5" />
+			<xs:enumeration value="6" />
+			<xs:enumeration value="7" />
+			<xs:enumeration value="8" />
+			<xs:enumeration value="9" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MissionGenState">
+		<xs:annotation>
+			<xs:documentation>Manual 6.11 GenerateMission State: 0 starting, 1 running, 2 ending.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0" />
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MusicType">
+		<xs:annotation>
+			<xs:documentation>Manual Appendix A / 6.9 PlayMusic Type. Empty releases music to the game director.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="Menu" />
+			<xs:enumeration value="Space_Ambient" />
+			<xs:enumeration value="Space_Exploration" />
+			<xs:enumeration value="Battle" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NotificationCategory">
+		<xs:annotation>
+			<xs:documentation>Manual 6.5 SendNotification Category.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Information" />
+			<xs:enumeration value="Critical" />
+			<xs:enumeration value="Chat" />
+			<xs:enumeration value="Warning" />
+			<xs:enumeration value="Squad" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NotificationPriority">
+		<xs:annotation>
+			<xs:documentation>Manual 6.5 SendNotification Priority.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Info" />
+			<xs:enumeration value="Low" />
+			<xs:enumeration value="Medium" />
+			<xs:enumeration value="High" />
+			<xs:enumeration value="Critical" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PopupCategory">
+		<xs:annotation>
+			<xs:documentation>Manual 6.5 SendPopup Category. Empty is neutral. Unkown appears in a shipped script.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="VictoryPopup" />
+			<xs:enumeration value="DefeatPopup" />
+			<xs:enumeration value="VictoryMatch" />
+			<xs:enumeration value="DefeatMatch" />
+			<xs:enumeration value="RankUp" />
+			<xs:enumeration value="MissionSuccess" />
+			<xs:enumeration value="MissionFailure" />
+			<xs:enumeration value="Unkown" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ObjectiveClass">
+		<xs:annotation>
+			<xs:documentation>Manual 6.6 AddObjective Class. Checkbox is not a class (it becomes a plain line) but appears in scripts.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="Text" />
+			<xs:enumeration value="Title" />
+			<xs:enumeration value="Primary" />
+			<xs:enumeration value="Secondary" />
+			<xs:enumeration value="Order" />
+			<xs:enumeration value="ProgressBar" />
+			<xs:enumeration value="Countdown" />
+			<xs:enumeration value="Timer" />
+			<xs:enumeration value="Checkbox" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ObjectiveType">
+		<xs:annotation>
+			<xs:documentation>Manual 6.6 AddObjective Type. Scripts mostly drive lines with None; Timer appears in files.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="None" />
+			<xs:enumeration value="FlyTo" />
+			<xs:enumeration value="DestroyTarget" />
+			<xs:enumeration value="DestroyTargets" />
+			<xs:enumeration value="DestroyModulesByClass" />
+			<xs:enumeration value="ProtectTarget" />
+			<xs:enumeration value="ProtectTargets" />
+			<xs:enumeration value="ProtectModulesByClass" />
+			<xs:enumeration value="HackModule" />
+			<xs:enumeration value="CollectItems" />
+			<xs:enumeration value="StatusTarget" />
+			<xs:enumeration value="RepairTarget" />
+			<xs:enumeration value="RepairModulesByClass" />
+			<xs:enumeration value="DetectHostilesInRange" />
+			<xs:enumeration value="Timer" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ObjectiveModule">
+		<xs:annotation>
+			<xs:documentation>Manual 6.6 AddObjective Module for the ...ByClass types.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="Defense" />
+			<xs:enumeration value="OrbitalCanon" />
+			<xs:enumeration value="CoreReactor" />
+			<xs:enumeration value="SatPowerPlant" />
+			<xs:enumeration value="CorePowerPlant" />
+			<xs:enumeration value="WarpInterdiction" />
+			<xs:enumeration value="ShieldGenerator" />
+			<xs:enumeration value="HangarSpawn" />
+			<xs:enumeration value="DockingSpawn" />
+			<xs:enumeration value="SupplyBay" />
+			<xs:enumeration value="Indestructible" />
+			<xs:enumeration value="CarrierSpawn" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="HighlightState">
+		<xs:annotation>
+			<xs:documentation>Manual 6.5 Highlight State: the screen the element is on.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None" />
+			<xs:enumeration value="Map" />
+			<xs:enumeration value="Ship" />
+			<xs:enumeration value="Team" />
+			<xs:enumeration value="Mission" />
+			<xs:enumeration value="Social" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MainMenu">
+		<xs:annotation>
+			<xs:documentation>Manual 5.9 Exit MainMenu.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Training" />
+			<xs:enumeration value="Workshop" />
+			<xs:enumeration value="Challenges" />
+			<xs:enumeration value="Campaign" />
+			<xs:enumeration value="Sandbox" />
+			<xs:enumeration value="Multiplayer" />
+			<xs:enumeration value="ServerBrowser" />
+			<xs:enumeration value="Root" />
+			<xs:enumeration value="Options" />
+			<xs:enumeration value="Credits" />
+			<xs:enumeration value="None" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="IndicatorFlags">
+		<xs:annotation>
+			<xs:documentation>Manual 6.2 CreateActor IndicatorFlags. Empty for none.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="NamePermanent" />
+		</xs:restriction>
+	</xs:simpleType>
+
 	<!-- ========== Common attribute groups ========== -->
 
 	<xs:attributeGroup name="ArgPlaceholders">
@@ -203,28 +528,28 @@
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="XYZ">
-		<xs:attribute name="X" type="StringExpr" />
-		<xs:attribute name="Y" type="StringExpr" />
-		<xs:attribute name="Z" type="StringExpr" />
+		<xs:attribute name="X" type="NumberExpr" />
+		<xs:attribute name="Y" type="NumberExpr" />
+		<xs:attribute name="Z" type="NumberExpr" />
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="Quat">
-		<xs:attribute name="RX" type="StringExpr" />
-		<xs:attribute name="RY" type="StringExpr" />
-		<xs:attribute name="RZ" type="StringExpr" />
-		<xs:attribute name="RW" type="StringExpr" />
+		<xs:attribute name="RX" type="NumberExpr" />
+		<xs:attribute name="RY" type="NumberExpr" />
+		<xs:attribute name="RZ" type="NumberExpr" />
+		<xs:attribute name="RW" type="NumberExpr" />
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="LookXYZ">
-		<xs:attribute name="LX" type="StringExpr" />
-		<xs:attribute name="LY" type="StringExpr" />
-		<xs:attribute name="LZ" type="StringExpr" />
+		<xs:attribute name="LX" type="NumberExpr" />
+		<xs:attribute name="LY" type="NumberExpr" />
+		<xs:attribute name="LZ" type="NumberExpr" />
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="VelXYZ">
-		<xs:attribute name="VX" type="StringExpr" />
-		<xs:attribute name="VY" type="StringExpr" />
-		<xs:attribute name="VZ" type="StringExpr" />
+		<xs:attribute name="VX" type="NumberExpr" />
+		<xs:attribute name="VY" type="NumberExpr" />
+		<xs:attribute name="VZ" type="NumberExpr" />
 	</xs:attributeGroup>
 
 	<xs:attributeGroup name="SourceTarget">
@@ -245,67 +570,67 @@
 		<xs:attribute name="Left1" type="StringExpr" />
 		<xs:attribute name="Comp1" type="ComparisonOp" />
 		<xs:attribute name="Right1" type="StringExpr" />
-		<xs:attribute name="And1" type="StringExpr" />
+		<xs:attribute name="And1" type="BoolExpr" />
 		<xs:attribute name="Left2" type="StringExpr" />
 		<xs:attribute name="Comp2" type="ComparisonOp" />
 		<xs:attribute name="Right2" type="StringExpr" />
-		<xs:attribute name="And2" type="StringExpr" />
+		<xs:attribute name="And2" type="BoolExpr" />
 		<xs:attribute name="Left3" type="StringExpr" />
 		<xs:attribute name="Comp3" type="ComparisonOp" />
 		<xs:attribute name="Right3" type="StringExpr" />
-		<xs:attribute name="And3" type="StringExpr" />
+		<xs:attribute name="And3" type="BoolExpr" />
 		<xs:attribute name="Left4" type="StringExpr" />
 		<xs:attribute name="Comp4" type="ComparisonOp" />
 		<xs:attribute name="Right4" type="StringExpr" />
-		<xs:attribute name="And4" type="StringExpr" />
+		<xs:attribute name="And4" type="BoolExpr" />
 		<xs:attribute name="Left5" type="StringExpr" />
 		<xs:attribute name="Comp5" type="ComparisonOp" />
 		<xs:attribute name="Right5" type="StringExpr" />
-		<xs:attribute name="And5" type="StringExpr" />
+		<xs:attribute name="And5" type="BoolExpr" />
 		<xs:attribute name="Left6" type="StringExpr" />
 		<xs:attribute name="Comp6" type="ComparisonOp" />
 		<xs:attribute name="Right6" type="StringExpr" />
-		<xs:attribute name="And6" type="StringExpr" />
+		<xs:attribute name="And6" type="BoolExpr" />
 		<xs:attribute name="Left7" type="StringExpr" />
 		<xs:attribute name="Comp7" type="ComparisonOp" />
 		<xs:attribute name="Right7" type="StringExpr" />
-		<xs:attribute name="And7" type="StringExpr" />
+		<xs:attribute name="And7" type="BoolExpr" />
 		<xs:attribute name="Left8" type="StringExpr" />
 		<xs:attribute name="Comp8" type="ComparisonOp" />
 		<xs:attribute name="Right8" type="StringExpr" />
-		<xs:attribute name="And8" type="StringExpr" />
+		<xs:attribute name="And8" type="BoolExpr" />
 		<xs:attribute name="Left9" type="StringExpr" />
 		<xs:attribute name="Comp9" type="ComparisonOp" />
 		<xs:attribute name="Right9" type="StringExpr" />
-		<xs:attribute name="And9" type="StringExpr" />
+		<xs:attribute name="And9" type="BoolExpr" />
 		<xs:attribute name="Left10" type="StringExpr" />
 		<xs:attribute name="Comp10" type="ComparisonOp" />
 		<xs:attribute name="Right10" type="StringExpr" />
-		<xs:attribute name="And10" type="StringExpr" />
+		<xs:attribute name="And10" type="BoolExpr" />
 		<xs:attribute name="Left11" type="StringExpr" />
 		<xs:attribute name="Comp11" type="ComparisonOp" />
 		<xs:attribute name="Right11" type="StringExpr" />
-		<xs:attribute name="And11" type="StringExpr" />
+		<xs:attribute name="And11" type="BoolExpr" />
 		<xs:attribute name="Left12" type="StringExpr" />
 		<xs:attribute name="Comp12" type="ComparisonOp" />
 		<xs:attribute name="Right12" type="StringExpr" />
-		<xs:attribute name="And12" type="StringExpr" />
+		<xs:attribute name="And12" type="BoolExpr" />
 		<xs:attribute name="Left13" type="StringExpr" />
 		<xs:attribute name="Comp13" type="ComparisonOp" />
 		<xs:attribute name="Right13" type="StringExpr" />
-		<xs:attribute name="And13" type="StringExpr" />
+		<xs:attribute name="And13" type="BoolExpr" />
 		<xs:attribute name="Left14" type="StringExpr" />
 		<xs:attribute name="Comp14" type="ComparisonOp" />
 		<xs:attribute name="Right14" type="StringExpr" />
-		<xs:attribute name="And14" type="StringExpr" />
+		<xs:attribute name="And14" type="BoolExpr" />
 		<xs:attribute name="Left15" type="StringExpr" />
 		<xs:attribute name="Comp15" type="ComparisonOp" />
 		<xs:attribute name="Right15" type="StringExpr" />
-		<xs:attribute name="And15" type="StringExpr" />
+		<xs:attribute name="And15" type="BoolExpr" />
 		<xs:attribute name="Left16" type="StringExpr" />
 		<xs:attribute name="Comp16" type="ComparisonOp" />
 		<xs:attribute name="Right16" type="StringExpr" />
-		<xs:attribute name="And16" type="StringExpr" />
+		<xs:attribute name="And16" type="BoolExpr" />
 	</xs:attributeGroup>
 
 	<!-- ========== Shared script statement content ========== -->
@@ -452,7 +777,7 @@
 				<xs:element ref="GameMode" />
 				<xs:group ref="ScriptStatement" />
 			</xs:choice>
-			<xs:attribute name="ID" type="StringExpr">
+			<xs:attribute name="ID" type="IntegerExpr">
 				<xs:annotation>
 					<xs:documentation>Menu sort order (lower first).</xs:documentation>
 				</xs:annotation>
@@ -474,7 +799,7 @@
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="IsLocked" type="Boolish" />
-			<xs:attribute name="State" type="StringExpr">
+			<xs:attribute name="State" type="Boolish">
 				<xs:annotation>
 					<xs:documentation>false removes the mission from the menu (manual 1.3).</xs:documentation>
 				</xs:annotation>
@@ -522,10 +847,10 @@
 			<xs:documentation>Manual 6.11. Size: Small, Medium, Large. Seed default 1234. NbBattlescapes default 1.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="Size" type="StringExpr" />
-			<xs:attribute name="Seed" type="StringExpr" />
-			<xs:attribute name="NbBattlescapes" type="StringExpr" />
-			<xs:attribute name="NbBattles" type="StringExpr" />
+			<xs:attribute name="Size" type="BattlescapeSize" />
+			<xs:attribute name="Seed" type="IntegerExpr" />
+			<xs:attribute name="NbBattlescapes" type="IntegerExpr" />
+			<xs:attribute name="NbBattles" type="IntegerExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -539,14 +864,14 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Type" type="StringExpr" />
-			<xs:attribute name="State" type="StringExpr" />
+			<xs:attribute name="Type" type="MissionGenType" />
+			<xs:attribute name="State" type="MissionGenState" />
 			<xs:attribute name="Objective" type="StringExpr" />
-			<xs:attribute name="Team" type="StringExpr" />
+			<xs:attribute name="Team" type="IntegerExpr" />
 			<xs:attribute name="Player" type="StringExpr" />
-			<xs:attribute name="Difficulty" type="StringExpr" />
-			<xs:attribute name="AutoStart" type="StringExpr" />
-			<xs:attribute name="AutoEnd" type="StringExpr" />
+			<xs:attribute name="Difficulty" type="IntegerExpr" />
+			<xs:attribute name="AutoStart" type="BoolExpr" />
+			<xs:attribute name="AutoEnd" type="BoolExpr" />
 			<xs:attribute name="Source" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -598,17 +923,17 @@
 					<xs:attribute name="Parent" type="StringExpr" />
 					<xs:attribute name="Source" type="StringExpr" />
 					<xs:attribute name="Value" type="StringExpr" />
-					<xs:attribute name="Duration" type="StringExpr" />
-					<xs:attribute name="StartTime" type="StringExpr" />
-					<xs:attribute name="Range" type="StringExpr" />
-					<xs:attribute name="Angle" type="StringExpr" />
+					<xs:attribute name="Duration" type="NumberExpr" />
+					<xs:attribute name="StartTime" type="NumberExpr" />
+					<xs:attribute name="Range" type="NumberExpr" />
+					<xs:attribute name="Angle" type="NumberExpr" />
 					<xs:attribute name="Events" type="StringExpr" />
 					<xs:attribute name="Properties" type="StringExpr" />
 					<xs:attribute name="Waypoint" type="StringExpr" />
-					<xs:attribute name="Hardpoint" type="StringExpr" />
-					<xs:attribute name="Module" type="StringExpr" />
+					<xs:attribute name="Hardpoint" type="IntegerExpr" />
+					<xs:attribute name="Module" type="IntegerExpr" />
 					<xs:attribute name="Abilities" type="StringExpr" />
-					<xs:attribute name="MaxDamage" type="StringExpr" />
+					<xs:attribute name="MaxDamage" type="NumberExpr" />
 					<xs:attributeGroup ref="ConditionTriple" />
 					<xs:attributeGroup ref="XYZ" />
 				</xs:extension>
@@ -641,9 +966,9 @@
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="ScriptBlock">
-					<xs:attribute name="Count" type="StringExpr" />
-					<xs:attribute name="Start" type="StringExpr" />
-					<xs:attribute name="Step" type="StringExpr" />
+					<xs:attribute name="Count" type="IntegerExpr" />
+					<xs:attribute name="Start" type="IntegerExpr" />
+					<xs:attribute name="Step" type="IntegerExpr" />
 					<xs:attribute name="Source" type="StringExpr" />
 					<xs:attribute name="Target" type="StringExpr" />
 					<xs:attribute name="Parallel" type="Boolish" />
@@ -681,8 +1006,8 @@
 		<xs:complexType>
 			<xs:attribute name="Name" type="StringExpr" />
 			<xs:attribute name="Class" type="StringExpr" />
-			<xs:attribute name="TeamID" type="StringExpr" />
-			<xs:attribute name="TeamId" type="StringExpr">
+			<xs:attribute name="TeamID" type="IntegerExpr" />
+			<xs:attribute name="TeamId" type="IntegerExpr">
 				<xs:annotation>
 					<xs:documentation>Alternate casing observed in some files. Runtime argument names are case-insensitive.</xs:documentation>
 				</xs:annotation>
@@ -690,10 +1015,10 @@
 			<xs:attribute name="DisplayName" type="StringExpr" />
 			<xs:attribute name="Group" type="StringExpr" />
 			<xs:attribute name="Loadout" type="StringExpr" />
-			<xs:attribute name="AI" type="StringExpr" />
-			<xs:attribute name="IndicatorFlags" type="StringExpr" />
+			<xs:attribute name="AI" type="BoolExpr" />
+			<xs:attribute name="IndicatorFlags" type="IndicatorFlags" />
 			<xs:attribute name="Skin" type="StringExpr" />
-			<xs:attribute name="Visible" type="StringExpr" />
+			<xs:attribute name="Visible" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -728,7 +1053,7 @@
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attributeGroup ref="XYZ" />
-			<xs:attribute name="W" type="StringExpr" />
+			<xs:attribute name="W" type="NumberExpr" />
 			<xs:attribute name="Type" type="RotationType" />
 			<xs:attribute name="Parent" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
@@ -750,7 +1075,7 @@
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attributeGroup ref="XYZ" />
 			<xs:attribute name="Source" type="StringExpr" />
-			<xs:attribute name="Scale" type="StringExpr" />
+			<xs:attribute name="Scale" type="NumberExpr" />
 			<xs:attribute name="Normalize" type="Boolish" />
 			<xs:attribute name="Parent" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
@@ -760,9 +1085,9 @@
 	<xs:element name="SetVisible">
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
-			<xs:attribute name="Visible" type="StringExpr" />
-			<xs:attribute name="Physics" type="StringExpr" />
-			<xs:attribute name="Collisions" type="StringExpr" />
+			<xs:attribute name="Visible" type="BoolExpr" />
+			<xs:attribute name="Physics" type="BoolExpr" />
+			<xs:attribute name="Collisions" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -793,17 +1118,17 @@
 	<xs:element name="SetAIState">
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
-			<xs:attribute name="HasAI" type="StringExpr" />
-			<xs:attribute name="Behavior" type="StringExpr" />
-			<xs:attribute name="Objective" type="StringExpr" />
-			<xs:attribute name="Rank" type="StringExpr" />
-			<xs:attribute name="IsElite" type="StringExpr" />
-			<xs:attribute name="AllowFiring" type="StringExpr" />
-			<xs:attribute name="AllowMissiles" type="StringExpr" />
-			<xs:attribute name="AllowChaffs" type="StringExpr" />
-			<xs:attribute name="AutoWarpOut" type="StringExpr" />
-			<xs:attribute name="Retaliate" type="StringExpr" />
-			<xs:attribute name="Position" type="StringExpr" />
+			<xs:attribute name="HasAI" type="BoolExpr" />
+			<xs:attribute name="Behavior" type="AIBehaviorExpr" />
+			<xs:attribute name="Objective" type="AIObjectiveExpr" />
+			<xs:attribute name="Rank" type="IntegerExpr" />
+			<xs:attribute name="IsElite" type="BoolExpr" />
+			<xs:attribute name="AllowFiring" type="BoolExpr" />
+			<xs:attribute name="AllowMissiles" type="BoolExpr" />
+			<xs:attribute name="AllowChaffs" type="BoolExpr" />
+			<xs:attribute name="AutoWarpOut" type="BoolExpr" />
+			<xs:attribute name="Retaliate" type="BoolExpr" />
+			<xs:attribute name="Position" type="VectorExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -812,11 +1137,11 @@
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attribute name="Path" type="StringExpr" />
-			<xs:attribute name="Mode" type="StringExpr" />
-			<xs:attribute name="MinSpeed" type="StringExpr" />
-			<xs:attribute name="MaxSpeed" type="StringExpr" />
-			<xs:attribute name="Looping" type="StringExpr" />
-			<xs:attribute name="Retaliate" type="StringExpr" />
+			<xs:attribute name="Mode" type="AIPathMode" />
+			<xs:attribute name="MinSpeed" type="NumberExpr" />
+			<xs:attribute name="MaxSpeed" type="NumberExpr" />
+			<xs:attribute name="Looping" type="BoolExpr" />
+			<xs:attribute name="Retaliate" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -851,14 +1176,14 @@
 			<xs:attributeGroup ref="Quat" />
 			<xs:attributeGroup ref="LookXYZ" />
 			<xs:attributeGroup ref="VelXYZ" />
-			<xs:attribute name="Position" type="StringExpr" />
-			<xs:attribute name="Rotation" type="StringExpr" />
-			<xs:attribute name="Velocity" type="StringExpr" />
-			<xs:attribute name="LookAt" type="StringExpr" />
+			<xs:attribute name="Position" type="VectorExpr" />
+			<xs:attribute name="Rotation" type="VectorExpr" />
+			<xs:attribute name="Velocity" type="VectorExpr" />
+			<xs:attribute name="LookAt" type="VectorExpr" />
 			<xs:attribute name="Type" type="RotationType" />
 			<xs:attribute name="Parent" type="StringExpr" />
-			<xs:attribute name="MinSpeed" type="StringExpr" />
-			<xs:attribute name="MaxSpeed" type="StringExpr" />
+			<xs:attribute name="MinSpeed" type="NumberExpr" />
+			<xs:attribute name="MaxSpeed" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -874,7 +1199,7 @@
 					<xs:documentation>Older spelling. The documented argument is Abilities.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="MaxCount" type="StringExpr" />
+			<xs:attribute name="MaxCount" type="NumberExpr" />
 			<xs:attribute name="OutValue" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -885,7 +1210,7 @@
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attribute name="Abilities" type="StringExpr" />
 			<xs:attribute name="AbilityAction" type="StringExpr" />
-			<xs:attribute name="MaxCount" type="StringExpr" />
+			<xs:attribute name="MaxCount" type="NumberExpr" />
 			<xs:attribute name="OutValue" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -895,7 +1220,7 @@
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
 			<xs:attribute name="Names" type="StringExpr" />
-			<xs:attribute name="Damaged" type="StringExpr" />
+			<xs:attribute name="Damaged" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -916,7 +1241,7 @@
 	<xs:element name="SetLookAround">
 		<xs:complexType>
 			<xs:attributeGroup ref="TargetAttr" />
-			<xs:attribute name="State" type="StringExpr" />
+			<xs:attribute name="State" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -925,8 +1250,8 @@
 		<xs:complexType>
 			<xs:attribute name="Actors" type="StringExpr" />
 			<xs:attribute name="Excluded" type="StringExpr" />
-			<xs:attribute name="Position" type="StringExpr" />
-			<xs:attribute name="Radius" type="StringExpr" />
+			<xs:attribute name="Position" type="VectorExpr" />
+			<xs:attribute name="Radius" type="NumberExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attributeGroup ref="XYZ" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
@@ -1028,7 +1353,7 @@
 	<xs:element name="TruncateValue">
 		<xs:complexType>
 			<xs:attributeGroup ref="SourceTarget" />
-			<xs:attribute name="Digits" type="StringExpr" />
+			<xs:attribute name="Digits" type="IntegerExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1056,8 +1381,8 @@
 
 	<xs:element name="AddRandomIntValue">
 		<xs:complexType>
-			<xs:attribute name="Min" type="StringExpr" />
-			<xs:attribute name="Max" type="StringExpr" />
+			<xs:attribute name="Min" type="IntegerExpr" />
+			<xs:attribute name="Max" type="IntegerExpr" />
 			<xs:attribute name="Source" type="StringExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
@@ -1084,7 +1409,7 @@
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attribute name="From" type="StringExpr" />
 			<xs:attribute name="To" type="StringExpr" />
-			<xs:attribute name="IsDirection" type="StringExpr" />
+			<xs:attribute name="IsDirection" type="BoolExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1132,7 +1457,7 @@
 		<xs:complexType>
 			<xs:attribute name="Name" type="StringExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Range" type="StringExpr" />
+			<xs:attribute name="Range" type="NumberExpr" />
 			<xs:attributeGroup ref="XYZ" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -1168,16 +1493,16 @@
 			<xs:attribute name="Name" type="StringExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attribute name="Text" type="StringExpr" />
-			<xs:attribute name="Class" type="StringExpr" />
-			<xs:attribute name="Type" type="StringExpr" />
-			<xs:attribute name="Count" type="StringExpr" />
-			<xs:attribute name="MaxCount" type="StringExpr" />
-			<xs:attribute name="Countdown" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Class" type="ObjectiveClass" />
+			<xs:attribute name="Type" type="ObjectiveType" />
+			<xs:attribute name="Count" type="NumberExpr" />
+			<xs:attribute name="MaxCount" type="NumberExpr" />
+			<xs:attribute name="Countdown" type="NumberExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attribute name="Flags" type="StringExpr" />
 			<xs:attribute name="AddToUI" type="Boolish" />
 			<xs:attribute name="Actor" type="StringExpr" />
-			<xs:attribute name="Module" type="StringExpr" />
+			<xs:attribute name="Module" type="ObjectiveModule" />
 			<xs:attribute name="Icon" type="StringExpr" />
 			<xs:attribute name="UpdatedSound" type="StringExpr" />
 			<xs:attribute name="CompletedSound" type="StringExpr" />
@@ -1189,10 +1514,10 @@
 		<xs:complexType>
 			<xs:attribute name="Name" type="StringExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Count" type="StringExpr" />
-			<xs:attribute name="MaxCount" type="StringExpr" />
-			<xs:attribute name="Countdown" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Count" type="NumberExpr" />
+			<xs:attribute name="MaxCount" type="NumberExpr" />
+			<xs:attribute name="Countdown" type="NumberExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1217,10 +1542,10 @@
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attribute name="Sound" type="StringExpr" />
 			<xs:attribute name="Success" type="Boolish" />
-			<xs:attribute name="ObjScore" type="StringExpr" />
-			<xs:attribute name="XP" type="StringExpr" />
-			<xs:attribute name="Credits" type="StringExpr" />
-			<xs:attribute name="Support" type="StringExpr" />
+			<xs:attribute name="ObjScore" type="IntegerExpr" />
+			<xs:attribute name="XP" type="IntegerExpr" />
+			<xs:attribute name="Credits" type="IntegerExpr" />
+			<xs:attribute name="Support" type="IntegerExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1232,14 +1557,14 @@
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attribute name="Element" type="StringExpr" />
 			<xs:attribute name="Description" type="StringExpr" />
-			<xs:attribute name="State" type="StringExpr" />
+			<xs:attribute name="State" type="HighlightState" />
 			<xs:attribute name="Actor" type="StringExpr" />
-			<xs:attribute name="Darken" type="StringExpr" />
+			<xs:attribute name="Darken" type="NumberExpr" />
 			<xs:attribute name="Wait" type="Boolish" />
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
-			<xs:attribute name="W" type="StringExpr" />
-			<xs:attribute name="H" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
+			<xs:attribute name="W" type="NumberExpr" />
+			<xs:attribute name="H" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1250,7 +1575,7 @@
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attribute name="Event" type="StringExpr" />
 			<xs:attribute name="Fallback" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1309,7 +1634,7 @@
 			<xs:attribute name="Icon" type="StringExpr" />
 			<xs:attribute name="Voice" type="StringExpr" />
 			<xs:attribute name="Flags" type="StringExpr" />
-			<xs:attribute name="Delay" type="StringExpr" />
+			<xs:attribute name="Delay" type="NumberExpr" />
 			<xs:attribute name="Wait" type="Boolish" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -1335,11 +1660,11 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Category" type="StringExpr" />
-			<xs:attribute name="Priority" type="StringExpr" />
+			<xs:attribute name="Category" type="NotificationCategory" />
+			<xs:attribute name="Priority" type="NotificationPriority" />
 			<xs:attribute name="Text" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
-			<xs:attribute name="AudioDelay" type="StringExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
+			<xs:attribute name="AudioDelay" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1353,10 +1678,10 @@
 			<xs:attribute name="TextArg" type="StringExpr" />
 			<xs:attribute name="Footer" type="StringExpr" />
 			<xs:attribute name="FooterArg" type="StringExpr" />
-			<xs:attribute name="Category" type="StringExpr" />
+			<xs:attribute name="Category" type="PopupCategory" />
 			<xs:attribute name="Icon" type="StringExpr" />
-			<xs:attribute name="Lifetime" type="StringExpr" />
-			<xs:attribute name="Team" type="StringExpr" />
+			<xs:attribute name="Lifetime" type="NumberExpr" />
+			<xs:attribute name="Team" type="IntegerExpr" />
 			<xs:attribute name="Exclude" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -1374,11 +1699,11 @@
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="Is3D" type="Boolish" />
-			<xs:attribute name="Delay" type="StringExpr" />
-			<xs:attribute name="Gain" type="StringExpr" />
+			<xs:attribute name="Delay" type="NumberExpr" />
+			<xs:attribute name="Gain" type="NumberExpr" />
 			<xs:attribute name="Flags" type="StringExpr" />
-			<xs:attribute name="VolScale" type="StringExpr" />
-			<xs:attribute name="RangeScale" type="StringExpr" />
+			<xs:attribute name="VolScale" type="NumberExpr" />
+			<xs:attribute name="RangeScale" type="NumberExpr" />
 			<xs:attributeGroup ref="XYZ" />
 			<xs:attributeGroup ref="VelXYZ" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
@@ -1388,7 +1713,7 @@
 	<xs:element name="PlayMusic">
 		<xs:complexType>
 			<xs:attribute name="Name" type="StringExpr" />
-			<xs:attribute name="Type" type="StringExpr" />
+			<xs:attribute name="Type" type="MusicType" />
 			<xs:attribute name="Target" type="StringExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
@@ -1398,13 +1723,13 @@
 		<xs:complexType>
 			<xs:attribute name="Name" type="StringExpr" />
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Scale" type="StringExpr" />
-			<xs:attribute name="AttachToNode" type="StringExpr" />
-			<xs:attribute name="Position" type="StringExpr" />
-			<xs:attribute name="Rotation" type="StringExpr" />
-			<xs:attribute name="Velocity" type="StringExpr" />
-			<xs:attribute name="Delay" type="StringExpr" />
-			<xs:attribute name="Gain" type="StringExpr" />
+			<xs:attribute name="Scale" type="NumberExpr" />
+			<xs:attribute name="AttachToNode" type="BoolExpr" />
+			<xs:attribute name="Position" type="VectorExpr" />
+			<xs:attribute name="Rotation" type="VectorExpr" />
+			<xs:attribute name="Velocity" type="VectorExpr" />
+			<xs:attribute name="Delay" type="NumberExpr" />
+			<xs:attribute name="Gain" type="NumberExpr" />
 			<xs:attribute name="Flags" type="StringExpr" />
 			<xs:attributeGroup ref="XYZ" />
 			<xs:attributeGroup ref="Quat" />
@@ -1429,7 +1754,7 @@
 
 	<xs:element name="Wait">
 		<xs:complexType>
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1439,7 +1764,7 @@
 			<xs:documentation>MainMenu: Training, Workshop, Challenges, Campaign, Sandbox, Multiplayer, ServerBrowser, Root, Options, Credits, None.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
-			<xs:attribute name="MainMenu" type="StringExpr" />
+			<xs:attribute name="MainMenu" type="MainMenu" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1476,7 +1801,7 @@
 	<xs:element name="FadeIn">
 		<xs:complexType>
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1484,7 +1809,7 @@
 	<xs:element name="FadeOut">
 		<xs:complexType>
 			<xs:attribute name="Target" type="StringExpr" />
-			<xs:attribute name="Duration" type="StringExpr" />
+			<xs:attribute name="Duration" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1526,34 +1851,34 @@
 				<xs:element ref="Key" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute name="Name" type="StringExpr" use="required" />
-			<xs:attribute name="TimeScale" type="StringExpr" />
+			<xs:attribute name="TimeScale" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="Key">
 		<xs:complexType>
-			<xs:attribute name="T" type="StringExpr" />
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
-			<xs:attribute name="Z" type="StringExpr" />
-			<xs:attribute name="TX" type="StringExpr" />
-			<xs:attribute name="TY" type="StringExpr" />
-			<xs:attribute name="TZ" type="StringExpr" />
-			<xs:attribute name="UX" type="StringExpr" />
-			<xs:attribute name="UY" type="StringExpr" />
-			<xs:attribute name="UZ" type="StringExpr" />
-			<xs:attribute name="FOV" type="StringExpr" />
-			<xs:attribute name="FOVTan" type="StringExpr" />
-			<xs:attribute name="FOVTAN" type="StringExpr">
+			<xs:attribute name="T" type="NumberExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
+			<xs:attribute name="Z" type="NumberExpr" />
+			<xs:attribute name="TX" type="NumberExpr" />
+			<xs:attribute name="TY" type="NumberExpr" />
+			<xs:attribute name="TZ" type="NumberExpr" />
+			<xs:attribute name="UX" type="NumberExpr" />
+			<xs:attribute name="UY" type="NumberExpr" />
+			<xs:attribute name="UZ" type="NumberExpr" />
+			<xs:attribute name="FOV" type="NumberExpr" />
+			<xs:attribute name="FOVTan" type="NumberExpr" />
+			<xs:attribute name="FOVTAN" type="NumberExpr">
 				<xs:annotation>
 					<xs:documentation>Casing used in shipped camera paths. Documented name is FOVTan.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="RX" type="StringExpr" />
-			<xs:attribute name="RY" type="StringExpr" />
-			<xs:attribute name="RZ" type="StringExpr" />
-			<xs:attribute name="RW" type="StringExpr" />
+			<xs:attribute name="RX" type="NumberExpr" />
+			<xs:attribute name="RY" type="NumberExpr" />
+			<xs:attribute name="RZ" type="NumberExpr" />
+			<xs:attribute name="RW" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1642,15 +1967,15 @@
 				<xs:element ref="Installation" />
 			</xs:choice>
 			<xs:attribute name="ClassName" type="StringExpr" />
-			<xs:attribute name="Radius" type="StringExpr" />
+			<xs:attribute name="Radius" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="DistToSun">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1658,9 +1983,9 @@
 	<xs:element name="Ring">
 		<xs:complexType>
 			<xs:attribute name="State" type="Boolish" />
-			<xs:attribute name="MinDist" type="StringExpr" />
-			<xs:attribute name="MaxDist" type="StringExpr" />
-			<xs:attribute name="Thickness" type="StringExpr" />
+			<xs:attribute name="MinDist" type="NumberExpr" />
+			<xs:attribute name="MaxDist" type="NumberExpr" />
+			<xs:attribute name="Thickness" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1681,9 +2006,9 @@
 			</xs:choice>
 			<xs:attribute name="Type" type="StringExpr" />
 			<xs:attribute name="Class" type="StringExpr" />
-			<xs:attribute name="TeamID" type="StringExpr" />
-			<xs:attribute name="AltMin" type="StringExpr" />
-			<xs:attribute name="AltMax" type="StringExpr" />
+			<xs:attribute name="TeamID" type="IntegerExpr" />
+			<xs:attribute name="AltMin" type="NumberExpr" />
+			<xs:attribute name="AltMax" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1697,16 +2022,16 @@
 
 	<xs:element name="Angle">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="Elevation">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1760,24 +2085,24 @@
 
 	<xs:element name="Distance">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="Inclination">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="Roll">
 		<xs:complexType>
-			<xs:attribute name="X" type="StringExpr" />
-			<xs:attribute name="Y" type="StringExpr" />
+			<xs:attribute name="X" type="NumberExpr" />
+			<xs:attribute name="Y" type="NumberExpr" />
 			<xs:attributeGroup ref="ArgPlaceholders" />
 		</xs:complexType>
 	</xs:element>
@@ -1786,7 +2111,7 @@
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="xs:string">
-					<xs:attribute name="Proba" type="StringExpr" />
+					<xs:attribute name="Proba" type="NumberExpr" />
 					<xs:attributeGroup ref="ArgPlaceholders" />
 				</xs:extension>
 			</xs:simpleContent>
