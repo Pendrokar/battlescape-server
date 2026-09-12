@@ -1,0 +1,17 @@
+<Loadout Version="0.0.0.1">
+	<Name>MissionTest_Detonate</Name>
+	<DisplayName>TEST DETONATE</DisplayName>
+	<ShortDescr>UI_Ship_Interceptor_Descr</ShortDescr>
+	<Actor>Interceptor</Actor>
+	<IsMain>false</IsMain>
+	<IsNonPlayable>true</IsNonPlayable>
+	<LayoutFile>$Config/Ships/Layouts/InterceptorLayout.xml</LayoutFile>
+	<Mount HardpointName="s_gun_left" Weapon="GimbalGunMK1" GroupID="0" />
+	<Mount HardpointName="s_gun_right" Weapon="GimbalGunMK1" GroupID="0" />
+	<Mount HardpointName="s_gun_pod_left" Weapon="GimbalBlasterMK1" GroupID="1" />
+	<Mount HardpointName="s_gun_pod_right" Weapon="GimbalBlasterMK1" GroupID="1" />
+	<Mount HardpointName="s_missile_left" Weapon="MissilePod" GroupID="2" />
+	<Mount HardpointName="s_missile_right" Weapon="MissilePod" GroupID="2" />
+	<Mount HardpointName="s_mod_electronics1" System="FlightAssist" />
+	<Mount HardpointName="s_mod_electronics3" System="Detonate" GroupID="3" />
+</Loadout>

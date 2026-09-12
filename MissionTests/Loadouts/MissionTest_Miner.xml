@@ -1,0 +1,32 @@
+<Loadout Version="0.0.0.1">
+	<Name>MissionTest_Miner</Name>
+	<DisplayName>TEST MINER</DisplayName>
+	<ShortDescr>UI_Ship_Destroyer_Descr</ShortDescr>
+	<Actor>Destroyer</Actor>
+	<IsMain>false</IsMain>
+	<IsNonPlayable>true</IsNonPlayable>
+	<LayoutFile>$Config/Ships/Layouts/DestroyerLayout.xml</LayoutFile>
+	<Mount HardpointName="s_mk4_bot_left_center" Weapon="LaserAMSMK3" GroupID="0" />
+	<Mount HardpointName="s_mk4_bot_left_forward" Weapon="TurretFlakMK4" GroupID="1" />
+	<Mount HardpointName="s_mk4_bot_right_center" Weapon="LaserAMSMK3" GroupID="0" />
+	<Mount HardpointName="s_mk4_bot_right_forward" Weapon="TurretFlakMK4" GroupID="1" />
+	<Mount HardpointName="s_mk4_top_left_center" Weapon="TurretFlakMK4" GroupID="1" />
+	<Mount HardpointName="s_mk4_top_left_forward" Weapon="LaserAMSMK3" GroupID="0" />
+	<Mount HardpointName="s_mk4_top_right_center" Weapon="TurretFlakMK4" GroupID="1" />
+	<Mount HardpointName="s_mk4_top_right_forward" Weapon="LaserAMSMK3" GroupID="0" />
+	<Mount HardpointName="s_mk5_bot_left" Weapon="TurretGunMK5" GroupID="2" />
+	<Mount HardpointName="s_mk5_bot_right" Weapon="TurretBlasterMK5" GroupID="3" />
+	<Mount HardpointName="s_mk5_center_top" Weapon="TurretGunMK5" GroupID="2" />
+	<Mount HardpointName="s_mk5_top_left" Weapon="TurretBlasterMK5" GroupID="3" />
+	<Mount HardpointName="s_mk5_top_right" Weapon="TurretGunMK5" GroupID="2" />
+	<Mount HardpointName="s_mk6_bot" Weapon="TurretGunMK6" GroupID="4" />
+	<Mount HardpointName="s_mk6_left" Weapon="TurretGunMK6" GroupID="4" />
+	<Mount HardpointName="s_mk6_right" Weapon="TurretGunMK6" GroupID="4" />
+	<Mount HardpointName="s_mk6_top" Weapon="TurretGunMK6" GroupID="4" />
+	<Mount HardpointName="s_mko_missile" Weapon="MissileLauncherMK3" GroupID="5" />
+	<Mount HardpointName="s_mko_missile2" Weapon="MissileLauncherMK3" GroupID="5" />
+	<Mount HardpointName="s_mod_electronics1" System="FlightAssist" />
+	<Mount HardpointName="s_mod_electronics2" System="Detonate" GroupID="8" />
+	<Mount HardpointName="s_mod_electronics3" System="WarpJam1" GroupID="7" />
+	<Mount HardpointName="s_minepod_mine" System="MineLauncher" GroupID="6" />
+</Loadout>

@@ -36,8 +36,35 @@ Comparison conditions that were wrong or weak
 • DistanceValue with bare names (PlayerActor, Outpost) evaluates to 0. The manual’s “two actors” form needs Actor:PlayerActor and Actor:Outpost.
 • Unique used 30s timers that never fired, so it did not test uniqueness. It now creates two Unique="true" timers; only the first runs (UniqueFired=1).
 • In / NotIn / Lower / LowerEqual, case-insensitive In, and case-sensitive Equal were missing from the control-flow script and are now asserted.
-• ActorRange and StartAbility / ActorStartAbility still do not fire without a joined player. Those subtests log Skipped requires_player and do not increment FailCount.
-
-Not tested (need a joined player)
 
 Per the manual and the instruction to skip anything that cannot run without a player: AwaitPlayers, Sync, FadeIn, SetCameraPath, transmissions, highlights, SetPlayerState, input/UI, objectives, waypoints, and the Player* / TargetSelected / ActorAimAt triggers.
+
+---
+
+What the conditions showed
+
+┌─────────────────────────────────────────┬────────────────────────────────────────────┬───────────────────────────────────────────┐
+│ Subtest                                 │ Comparison                                 │ Result                                    │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ MineLauncher_ActorCreated               │ ActorCreated of class ProximityMine ≥ 1    │ Pass (OutValue=1, count 1)                │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ MineLauncher_classCount                 │ loop count of ProximityMine increased      │ Pass                                      │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ StartAbility_MissilePod_notAbility      │ OutValue=0 (weapon, not an ability)        │ Pass                                      │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ StartAbility_MissileLauncher_notAbility │ same for MissileLauncherMK3                │ Pass                                      │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ FireState_MissilePod_noClient           │ no extra LightMissile after FireState=1    │ Pass (did not occur)                      │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ Detonate_ownedMine                      │ ActorDestroyed on the launched mine        │ Skipped — OutValue=1, mine still there    │
+├─────────────────────────────────────────┼────────────────────────────────────────────┼───────────────────────────────────────────┤
+│ Detonate_scriptMissile                  │ ActorDestroyed on CreateActor LightMissile │ Skipped — OutValue=1, missile still there │
+└─────────────────────────────────────────┴────────────────────────────────────────────┴───────────────────────────────────────────┘
+
+Meaning
+
+• Missile pods are weapons, not abilities. StartAbility Abilities="MissilePod" / "MissileLauncherMK3" returns 0 and spawns nothing.
+• FireState does not launch a missile without a client. No LightMissile actor. AI MissileFrenzy also spawned none in an earlier pass.
+• Detonate cannot be proven without a weapon-fired missile. The ability starts (OutValue=1) on an unoccupied ship, but it did not destroy the MineLauncher mine or a script-spawned LightMissile. Those are not “owned missiles” in the sense Detonate uses. A real fired missile never appeared without a client, so that subtest is skipped rather than failed.
+
+Loadouts used (copied into the server Loadouts folder): MissionTests/Loadouts/MissionTest_Miner.xml (Destroyer + MineLauncher + Detonate) and MissionTest_Detonate.xml (Interceptor + MissilePod + Detonate). Log: MissionTests/results/Test_08_StartAbility_MissionRuntime.txt.

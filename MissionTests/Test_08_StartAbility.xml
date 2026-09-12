@@ -1,0 +1,175 @@
+<Mission ID="908" Category="Workshop" Title="Test_08_StartAbility" Descr="PDF 6.4 StartAbility actor-creating abilities without a joined player" Tags="TEST" GameMode="Custom">
+	<Include Target="$Current/Test_Assert.xml" />
+	<SetValue Target="Global.FailCount" Source="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_08_StartAbility" Arg3="ok" />
+
+	<Actions Name="CountByClass">
+		<SetValue Target="Global.CountTmp" Source="0" />
+		<Loop Target="Actors">
+			<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="Local.Arg1">
+				<AddValue Target="Global.CountTmp" Source1="Global.CountTmp" Source2="1" />
+			</Condition>
+		</Loop>
+	</Actions>
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" DisplayName="PlayerActor" />
+	<SetPosition Target="PlayerActor" X="-8" Y="0" Z="0" />
+	<SetValue Target="Actor:PlayerActor.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
+
+	<CreateActor Name="Miner" Class="Destroyer" TeamID="1" Loadout="MissionTest_Miner" AI="false" DisplayName="Miner" />
+	<SetPosition Target="Miner" X="30" Y="0" Z="0" />
+	<SetValue Target="Actor:Miner.Direction" Source="[0, 0, 1]" />
+	<SetValue Target="Actor:Miner.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:Miner.PowerState" Source="1" />
+	<SetValue Target="Actor:Miner.AmmoUsageRatio" Source="1.0" />
+
+	<CreateActor Name="Gunner" Class="Interceptor" TeamID="1" Loadout="MissionTest_Detonate" AI="false" DisplayName="Gunner" />
+	<SetPosition Target="Gunner" X="0" Y="0" Z="0" />
+	<SetValue Target="Actor:Gunner.Direction" Source="[0, 0, 1]" />
+	<SetValue Target="Actor:Gunner.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:Gunner.PowerState" Source="1" />
+	<SetValue Target="Actor:Gunner.AmmoUsageRatio" Source="1.0" />
+	<SetValue Target="Actor:Gunner.SensorPower" Source="10.0" />
+
+	<CreateActor Name="DummyTarget" Class="Interceptor" TeamID="0" Loadout="None" AI="false" DisplayName="DummyTarget" />
+	<SetPosition Target="DummyTarget" X="0" Y="0" Z="8" />
+	<SetValue Target="Actor:DummyTarget.DamageScale" Source="0.0" />
+	<SetValue Target="Actor:DummyTarget.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:DummyTarget.PowerState" Source="1" />
+
+	<Wait Duration="1.0" />
+
+	<SetValue Target="Actor:Gunner.SelectedTarget" Source="Actor:DummyTarget.ActorID" />
+	<SetValue Target="Actor:Gunner.AIActorTarget" Source="Actor:DummyTarget.ActorID" />
+
+	<SetValue Target="Global.MineSpawned" Source="0" />
+	<CreateTrigger Name="MineCreated" Type="ActorCreated" Target="Actors">
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="ProximityMine">
+			<AddValue Target="Global.MineSpawned" Source1="Global.MineSpawned" Source2="1" />
+			<SetValue Target="Actor.Name" Source="DroppedMine" />
+		</Condition>
+	</CreateTrigger>
+
+	<SetValue Target="Global.MineDead" Source="0" />
+	<CreateTrigger Name="MineDestroyed" Type="ActorDestroyed" Target="Actors">
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="ProximityMine">
+			<AddValue Target="Global.MineDead" Source1="Global.MineDead" Source2="1" />
+		</Condition>
+	</CreateTrigger>
+
+	<SetValue Target="Global.MissileSpawned" Source="0" />
+	<CreateTrigger Name="MissileCreated" Type="ActorCreated" Target="Actors">
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="LightMissile">
+			<AddValue Target="Global.MissileSpawned" Source1="Global.MissileSpawned" Source2="1" />
+			<SetValue Target="Actor.Name" Source="OwnedMissile" />
+		</Condition>
+	</CreateTrigger>
+
+	<SetValue Target="Global.HeavyMissileSpawned" Source="0" />
+	<CreateTrigger Name="HeavyMissileCreated" Type="ActorCreated" Target="Actors">
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="HeavyMissile">
+			<AddValue Target="Global.HeavyMissileSpawned" Source1="Global.HeavyMissileSpawned" Source2="1" />
+		</Condition>
+	</CreateTrigger>
+
+	<GetHardpointStatus Target="Actor:Miner" Names="MineLauncher" OutTotalValue="Global.MineHPTotal" OutUsableValue="Global.MineHPUsable" />
+	<Execute Target="AssertHigherEqual" Arg1="MineLauncher_equipped" Arg2="Global.MineHPTotal" Arg3="1" />
+
+	<GetHardpointStatus Target="Actor:Miner" Names="Detonate" OutTotalValue="Global.MinerDetonateTotal" />
+	<Execute Target="AssertHigherEqual" Arg1="Miner_Detonate_equipped" Arg2="Global.MinerDetonateTotal" Arg3="1" />
+
+	<GetHardpointStatus Target="Actor:Gunner" Names="MissilePod" OutTotalValue="Global.PodTotal" />
+	<Execute Target="AssertHigherEqual" Arg1="MissilePod_equipped" Arg2="Global.PodTotal" Arg3="1" />
+
+	<Execute Target="CountByClass" Arg1="ProximityMine" />
+	<SetValue Target="Global.MinesBefore" Source="Global.CountTmp" />
+	<StartAbility Target="Actor:Miner" Abilities="MineLauncher" MaxCount="1" OutValue="Global.MineStarted" />
+	<Wait Duration="0.8" />
+	<Execute Target="CountByClass" Arg1="ProximityMine" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="MineLauncher_OutValue" Arg2="Global.MineStarted" Arg3="Global.MineSpawned" />
+	<Execute Target="AssertHigherEqual" Arg1="MineLauncher_ActorCreated" Arg2="Global.MineSpawned" Arg3="1" />
+	<Execute Target="AssertHigher" Arg1="MineLauncher_classCount" Arg2="Global.CountTmp" Arg3="Global.MinesBefore" />
+
+	<SetValue Target="Global.MissileDead" Source="0" />
+	<CreateTrigger Name="MissileDestroyed" Type="ActorDestroyed" Target="Actors">
+		<Condition Left1="Actor.ActorClassName" Comp1="Equal" Right1="LightMissile">
+			<AddValue Target="Global.MissileDead" Source1="Global.MissileDead" Source2="1" />
+		</Condition>
+	</CreateTrigger>
+
+	<SetValue Target="Global.DeadBeforeDetonate" Source="Global.MineDead" />
+	<StartAbility Target="Actor:Miner" Abilities="Detonate" MaxCount="1" OutValue="Global.DetonateStarted" />
+	<Wait Duration="2.0" />
+	<Execute Target="CountByClass" Arg1="ProximityMine" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Detonate_mine_OutValue" Arg2="Global.DetonateStarted" Arg3="Global.MineDead" />
+	<Condition Left1="Global.MineDead" Comp1="Higher" Right1="Global.DeadBeforeDetonate">
+		<Execute Target="AssertHigher" Arg1="Detonate_ownedMine" Arg2="Global.MineDead" Arg3="Global.DeadBeforeDetonate" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="Detonate_ownedMine" Arg2="mine_not_detonated" />
+	</Else>
+
+	<CreateActor Name="ScriptMissile" Class="LightMissile" TeamID="1" />
+	<SetPosition Target="ScriptMissile" X="0" Y="0" Z="1" />
+	<SetValue Target="Actor:ScriptMissile.MaxMissileLife" Source="30" />
+	<Wait Duration="0.3" />
+	<SetValue Target="Global.DeadBeforeScriptDetonate" Source="Global.MissileDead" />
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<Execute Target="AssertHigherEqual" Arg1="ScriptMissile_created" Arg2="Global.CountTmp" Arg3="1" />
+	<StartAbility Target="Actor:Gunner" Abilities="Detonate" MaxCount="1" OutValue="Global.ScriptDetonateStarted" />
+	<Wait Duration="2.0" />
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Detonate_scriptMissile_OutValue" Arg2="Global.ScriptDetonateStarted" Arg3="Global.MissileDead" />
+	<Condition Left1="Global.MissileDead" Comp1="Higher" Right1="Global.DeadBeforeScriptDetonate">
+		<Execute Target="AssertHigher" Arg1="Detonate_scriptMissile" Arg2="Global.MissileDead" Arg3="Global.DeadBeforeScriptDetonate" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="Detonate_scriptMissile" Arg2="not_weapon_fired" />
+	</Else>
+
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<SetValue Target="Global.MissilesBeforeAbility" Source="Global.CountTmp" />
+	<StartAbility Target="Actor:Gunner" Abilities="MissilePod" MaxCount="2" OutValue="Global.PodStarted" />
+	<Wait Duration="0.6" />
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StartAbility_MissilePod_OutValue" Arg2="Global.PodStarted" Arg3="Global.MissileSpawned" />
+	<Condition Left1="Global.CountTmp" Comp1="Higher" Right1="Global.MissilesBeforeAbility">
+		<Execute Target="AssertHigher" Arg1="StartAbility_MissilePod_spawn" Arg2="Global.CountTmp" Arg3="Global.MissilesBeforeAbility" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertEqual" Arg1="StartAbility_MissilePod_notAbility" Arg2="Global.PodStarted" Arg3="0" />
+	</Else>
+
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<SetValue Target="Global.MissilesBeforeFire" Source="Global.CountTmp" />
+	<SetValue Target="Global.SpawnedBeforeFire" Source="Global.MissileSpawned" />
+	<SetValue Target="Actor:Gunner.ActiveWeaponGroupName" Source="MissilePod" />
+	<SetValue Target="Actor:Gunner.FireState" Source="1" />
+	<Wait Duration="3.2" />
+	<SetValue Target="Actor:Gunner.FireState" Source="0" />
+	<Wait Duration="0.4" />
+	<Execute Target="CountByClass" Arg1="LightMissile" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="FireState_Missile_counts" Arg2="Global.CountTmp" Arg3="Global.MissileSpawned" />
+	<Condition Left1="Global.MissileSpawned" Comp1="Higher" Right1="Global.SpawnedBeforeFire">
+		<Execute Target="AssertHigher" Arg1="FireState_MissilePod_spawn" Arg2="Global.MissileSpawned" Arg3="Global.SpawnedBeforeFire" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertEqual" Arg1="FireState_MissilePod_noClient" Arg2="Global.MissileSpawned" Arg3="Global.SpawnedBeforeFire" />
+	</Else>
+
+	<Execute Target="CountByClass" Arg1="HeavyMissile" />
+	<SetValue Target="Global.HeavyBefore" Source="Global.CountTmp" />
+	<StartAbility Target="Actor:Miner" Abilities="MissileLauncherMK3" MaxCount="2" OutValue="Global.HeavyStarted" />
+	<Wait Duration="0.6" />
+	<Execute Target="CountByClass" Arg1="HeavyMissile" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="StartAbility_MissileLauncher_OutValue" Arg2="Global.HeavyStarted" Arg3="Global.HeavyMissileSpawned" />
+	<Condition Left1="Global.HeavyMissileSpawned" Comp1="HigherEqual" Right1="1">
+		<Execute Target="AssertHigherEqual" Arg1="StartAbility_MissileLauncher_spawn" Arg2="Global.HeavyMissileSpawned" Arg3="1" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertEqual" Arg1="StartAbility_MissileLauncher_notAbility" Arg2="Global.HeavyStarted" Arg3="0" />
+	</Else>
+
+	<Execute Target="AssertDone" />
+</Mission>

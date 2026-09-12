@@ -1,0 +1,305 @@
+[  0.000 s,  520 / 2706] Server Mission Runtime Log
+[  0.002 s,  520 / 2706] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_08_StartAbility.xml'
+[  0.003 s,  520 / 2706] Mission runtime successfully loaded
+[  0.020 s,  522 / 2706] Action 52:0:Include
+[  0.020 s,  522 / 2706] Action 52:1:SetValue
+[  0.020 s,  522 / 2706] Test: BEGIN Test_08_StartAbility ok
+[  0.022 s,  522 / 2706] Action 52:2:Log
+[  0.022 s,  522 / 2706] Action 52:3:CreateActor
+[  0.022 s,  522 / 2706] Action 52:4:SetPosition
+[  0.022 s,  522 / 2706] Action 52:5:SetValue
+[  0.022 s,  522 / 2706] Action 52:6:SetValue
+[  0.023 s,  522 / 2706] Action 52:7:CreateActor
+[  0.023 s,  522 / 2706] Action 52:8:SetPosition
+[  0.023 s,  522 / 2706] Action 52:9:SetValue
+[  0.023 s,  522 / 2706] Action 52:10:SetValue
+[  0.023 s,  522 / 2706] Action 52:11:SetValue
+[  0.023 s,  522 / 2706] Action 52:12:SetValue
+[  0.023 s,  522 / 2706] Action 52:13:CreateActor
+[  0.023 s,  522 / 2706] Action 52:14:SetPosition
+[  0.023 s,  522 / 2706] Action 52:15:SetValue
+[  0.023 s,  522 / 2706] Action 52:16:SetValue
+[  0.023 s,  522 / 2706] Action 52:17:SetValue
+[  0.023 s,  522 / 2706] Action 52:18:SetValue
+[  0.023 s,  522 / 2706] Action 52:19:SetValue
+[  0.023 s,  522 / 2706] Action 52:20:CreateActor
+[  0.023 s,  522 / 2706] Action 52:21:SetPosition
+[  0.023 s,  522 / 2706] Action 52:22:SetValue
+[  0.023 s,  522 / 2706] Action 52:23:SetValue
+[  0.023 s,  522 / 2706] Action 52:24:SetValue
+[  1.053 s,  522 / 2720] Action 52:25:Wait
+[  1.053 s,  523 / 2720] Action 52:26:SetValue
+[  1.053 s,  523 / 2720] Action 52:27:SetValue
+[  1.053 s,  523 / 2720] Action 52:28:SetValue
+[  1.053 s,  523 / 2720] Created trigger 0 (MineCreated) for action group 33..
+[  1.053 s,  523 / 2720] Action 52:29:CreateTrigger
+[  1.053 s,  523 / 2720] Action 52:30:SetValue
+[  1.053 s,  523 / 2720] Created trigger 1 (MineDestroyed) for action group 35..
+[  1.053 s,  523 / 2720] Action 52:31:CreateTrigger
+[  1.053 s,  523 / 2720] Action 52:32:SetValue
+[  1.053 s,  523 / 2720] Created trigger 2 (MissileCreated) for action group 37..
+[  1.053 s,  523 / 2720] Action 52:33:CreateTrigger
+[  1.053 s,  523 / 2720] Action 52:34:SetValue
+[  1.054 s,  523 / 2720] Created trigger 3 (HeavyMissileCreated) for action group 39..
+[  1.054 s,  523 / 2720] Action 52:35:CreateTrigger
+[  1.054 s,  523 / 2720] Action 52:36:GetHardpointStatus
+[  1.054 s,  523 / 2720] Action 52:37:Execute: executing action group AssertHigherEqual..
+[  1.054 s,  523 / 2720] Test: MineLauncher_equipped Pass 1
+[  1.055 s,  523 / 2720] Action 6:0:Log
+[  1.055 s,  523 / 2720] Action 8:0:Condition
+[  1.055 s,  523 / 2720] Action 8:1:Else
+[  1.055 s,  523 / 2720] Action 52:37:Execute
+[  1.055 s,  523 / 2720] Action 52:38:GetHardpointStatus
+[  1.055 s,  523 / 2720] Action 52:39:Execute: executing action group AssertHigherEqual..
+[  1.055 s,  523 / 2720] Test: Miner_Detonate_equipped Pass 1
+[  1.056 s,  523 / 2720] Action 6:0:Log
+[  1.056 s,  523 / 2720] Action 8:0:Condition
+[  1.056 s,  523 / 2720] Action 8:1:Else
+[  1.056 s,  523 / 2720] Action 52:39:Execute
+[  1.056 s,  523 / 2720] Action 52:40:GetHardpointStatus
+[  1.056 s,  523 / 2720] Action 52:41:Execute: executing action group AssertHigherEqual..
+[  1.056 s,  523 / 2720] Test: MissilePod_equipped Pass 2
+[  1.058 s,  523 / 2719] Action 6:0:Log
+[  1.058 s,  523 / 2719] Action 8:0:Condition
+[  1.058 s,  523 / 2719] Action 8:1:Else
+[  1.058 s,  523 / 2719] Action 52:41:Execute
+[  1.058 s,  523 / 2719] Action 52:42:Execute: executing action group CountByClass..
+[  1.058 s,  523 / 2719] Action 31:0:SetValue
+[  1.058 s,  523 / 2719] Action 30:0:Condition
+[  1.058 s,  523 / 2719] Action 30:0:Condition
+[  1.058 s,  523 / 2719] Action 30:0:Condition
+[  1.058 s,  523 / 2719] Action 30:0:Condition
+[  1.058 s,  523 / 2719] Action 31:1:Loop
+[  1.058 s,  523 / 2719] Action 52:42:Execute
+[  1.058 s,  523 / 2719] Action 52:43:SetValue
+[  1.058 s,  523 / 2719] Action 52:44:StartAbility
+[  1.069 s,  523 / 2720] Trigger 0:MineCreated:ActorCreated starting
+[  1.069 s,  523 / 2720] Action 32:0:AddValue
+[  1.069 s,  523 / 2720] Action 32:1:SetValue
+[  1.069 s,  523 / 2720] Action 33:0:Condition
+[  1.069 s,  523 / 2720] Trigger 0:MineCreated:ActorCreated finished
+[  1.069 s,  523 / 2720] Trigger 2:MissileCreated:ActorCreated starting
+[  1.069 s,  523 / 2720] Action 37:0:Condition
+[  1.069 s,  523 / 2720] Trigger 2:MissileCreated:ActorCreated finished
+[  1.069 s,  523 / 2720] Trigger 3:HeavyMissileCreated:ActorCreated starting
+[  1.069 s,  523 / 2720] Action 39:0:Condition
+[  1.069 s,  523 / 2720] Trigger 3:HeavyMissileCreated:ActorCreated finished
+[  1.846 s,  523 / 2722] Action 52:45:Wait
+[  1.846 s,  523 / 2722] Action 52:46:Execute: executing action group CountByClass..
+[  1.846 s,  523 / 2722] Action 31:0:SetValue
+[  1.846 s,  523 / 2722] Action 30:0:Condition
+[  1.846 s,  523 / 2722] Action 30:0:Condition
+[  1.846 s,  523 / 2722] Action 30:0:Condition
+[  1.846 s,  523 / 2722] Action 30:0:Condition
+[  1.846 s,  523 / 2722] Action 29:0:AddValue
+[  1.846 s,  523 / 2722] Action 30:0:Condition
+[  1.846 s,  523 / 2722] Action 31:1:Loop
+[  1.846 s,  523 / 2722] Action 52:46:Execute
+[  1.846 s,  523 / 2722] Test: MineLauncher_OutValue 1 1.0
+[  1.847 s,  523 / 2722] Action 52:47:Log
+[  1.847 s,  523 / 2722] Action 52:48:Execute: executing action group AssertHigherEqual..
+[  1.847 s,  523 / 2722] Test: MineLauncher_ActorCreated Pass 1.0
+[  1.849 s,  523 / 2722] Action 6:0:Log
+[  1.849 s,  523 / 2722] Action 8:0:Condition
+[  1.849 s,  523 / 2722] Action 8:1:Else
+[  1.849 s,  523 / 2722] Action 52:48:Execute
+[  1.849 s,  523 / 2722] Action 52:49:Execute: executing action group AssertHigher..
+[  1.849 s,  523 / 2722] Test: MineLauncher_classCount Pass 1.0
+[  1.850 s,  523 / 2722] Action 12:0:Log
+[  1.850 s,  523 / 2722] Action 14:0:Condition
+[  1.850 s,  523 / 2722] Action 14:1:Else
+[  1.850 s,  523 / 2722] Action 52:49:Execute
+[  1.850 s,  523 / 2722] Action 52:50:SetValue
+[  1.850 s,  523 / 2722] Created trigger 4 (MissileDestroyed) for action group 41..
+[  1.850 s,  523 / 2722] Action 52:51:CreateTrigger
+[  1.850 s,  523 / 2722] Action 52:52:SetValue
+[  1.850 s,  523 / 2722] Action 52:53:StartAbility
+[  3.843 s,  523 / 2721] Action 52:54:Wait
+[  3.843 s,  523 / 2721] Action 52:55:Execute: executing action group CountByClass..
+[  3.843 s,  523 / 2721] Action 31:0:SetValue
+[  3.843 s,  523 / 2721] Action 30:0:Condition
+[  3.843 s,  523 / 2721] Action 30:0:Condition
+[  3.843 s,  523 / 2721] Action 30:0:Condition
+[  3.843 s,  523 / 2721] Action 30:0:Condition
+[  3.843 s,  523 / 2721] Action 29:0:AddValue
+[  3.843 s,  523 / 2721] Action 30:0:Condition
+[  3.843 s,  523 / 2721] Action 31:1:Loop
+[  3.843 s,  523 / 2721] Action 52:55:Execute
+[  3.843 s,  523 / 2721] Test: Detonate_mine_OutValue 1 0
+[  3.845 s,  523 / 2721] Action 52:56:Log
+[  3.845 s,  523 / 2721] Action 52:57:Condition
+[  3.845 s,  523 / 2721] Action 43:0:Execute: executing action group AssertSkipped..
+[  3.845 s,  523 / 2721] Test: Detonate_ownedMine Skipped mine_not_detonated
+[  3.846 s,  523 / 2720] Action 24:0:Log
+[  3.846 s,  523 / 2720] Action 43:0:Execute
+[  3.846 s,  523 / 2720] Action 52:58:Else
+[  3.846 s,  523 / 2720] Trigger 0:MineCreated:ActorCreated starting
+[  3.846 s,  523 / 2720] Action 33:0:Condition
+[  3.846 s,  523 / 2720] Trigger 0:MineCreated:ActorCreated finished
+[  3.846 s,  523 / 2720] Trigger 2:MissileCreated:ActorCreated starting
+[  3.846 s,  523 / 2720] Action 36:0:AddValue
+[  3.846 s,  523 / 2720] Action 36:1:SetValue
+[  3.846 s,  523 / 2720] Action 37:0:Condition
+[  3.846 s,  523 / 2720] Trigger 2:MissileCreated:ActorCreated finished
+[  3.846 s,  523 / 2720] Trigger 3:HeavyMissileCreated:ActorCreated starting
+[  3.846 s,  523 / 2720] Action 39:0:Condition
+[  3.846 s,  523 / 2720] Trigger 3:HeavyMissileCreated:ActorCreated finished
+[  3.846 s,  523 / 2720] Action 52:59:CreateActor
+[  3.846 s,  523 / 2720] Action 52:60:SetPosition
+[  3.846 s,  523 / 2720] Action 52:61:SetValue
+[  4.139 s,  523 / 2721] Action 52:62:Wait
+[  4.139 s,  523 / 2721] Action 52:63:SetValue
+[  4.139 s,  523 / 2721] Action 52:64:Execute: executing action group CountByClass..
+[  4.139 s,  523 / 2721] Action 31:0:SetValue
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 29:0:AddValue
+[  4.139 s,  523 / 2721] Action 30:0:Condition
+[  4.139 s,  523 / 2721] Action 31:1:Loop
+[  4.139 s,  523 / 2721] Action 52:64:Execute
+[  4.139 s,  523 / 2721] Action 52:65:Execute: executing action group AssertHigherEqual..
+[  4.139 s,  523 / 2721] Test: ScriptMissile_created Pass 1.0
+[  4.141 s,  523 / 2721] Action 6:0:Log
+[  4.141 s,  523 / 2721] Action 8:0:Condition
+[  4.141 s,  523 / 2721] Action 8:1:Else
+[  4.141 s,  523 / 2721] Action 52:65:Execute
+[  4.141 s,  523 / 2721] Action 52:66:StartAbility
+[  6.132 s,  523 / 2720] Action 52:67:Wait
+[  6.132 s,  523 / 2720] Action 52:68:Execute: executing action group CountByClass..
+[  6.132 s,  523 / 2720] Action 31:0:SetValue
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 29:0:AddValue
+[  6.132 s,  523 / 2720] Action 30:0:Condition
+[  6.132 s,  523 / 2720] Action 31:1:Loop
+[  6.133 s,  523 / 2720] Action 52:68:Execute
+[  6.133 s,  523 / 2720] Test: Detonate_scriptMissile_OutValue 1 0
+[  6.134 s,  523 / 2720] Action 52:69:Log
+[  6.134 s,  523 / 2720] Action 52:70:Condition
+[  6.134 s,  523 / 2720] Action 45:0:Execute: executing action group AssertSkipped..
+[  6.134 s,  523 / 2720] Test: Detonate_scriptMissile Skipped not_weapon_fired
+[  6.135 s,  523 / 2720] Action 24:0:Log
+[  6.135 s,  523 / 2720] Action 45:0:Execute
+[  6.135 s,  523 / 2720] Action 52:71:Else
+[  6.135 s,  523 / 2720] Action 52:72:Execute: executing action group CountByClass..
+[  6.135 s,  523 / 2720] Action 31:0:SetValue
+[  6.135 s,  523 / 2720] Action 30:0:Condition
+[  6.135 s,  523 / 2720] Action 30:0:Condition
+[  6.135 s,  523 / 2720] Action 30:0:Condition
+[  6.135 s,  523 / 2720] Action 30:0:Condition
+[  6.135 s,  523 / 2720] Action 30:0:Condition
+[  6.135 s,  523 / 2720] Action 29:0:AddValue
+[  6.136 s,  523 / 2720] Action 30:0:Condition
+[  6.136 s,  523 / 2720] Action 31:1:Loop
+[  6.136 s,  523 / 2720] Action 52:72:Execute
+[  6.136 s,  523 / 2720] Action 52:73:SetValue
+[  6.136 s,  523 / 2720] Action 52:74:StartAbility
+[  6.725 s,  523 / 2724] Action 52:75:Wait
+[  6.726 s,  523 / 2724] Action 52:76:Execute: executing action group CountByClass..
+[  6.726 s,  523 / 2724] Action 31:0:SetValue
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 29:0:AddValue
+[  6.726 s,  523 / 2724] Action 30:0:Condition
+[  6.726 s,  523 / 2724] Action 31:1:Loop
+[  6.726 s,  523 / 2724] Action 52:76:Execute
+[  6.726 s,  523 / 2724] Test: StartAbility_MissilePod_OutValue 0 1.0
+[  6.727 s,  523 / 2724] Action 52:77:Log
+[  6.727 s,  523 / 2724] Action 52:78:Condition
+[  6.727 s,  523 / 2724] Action 47:0:Execute: executing action group AssertEqual..
+[  6.727 s,  523 / 2724] Test: StartAbility_MissilePod_notAbility Pass 0
+[  6.728 s,  523 / 2724] Action 0:0:Log
+[  6.728 s,  523 / 2724] Action 2:0:Condition
+[  6.729 s,  523 / 2724] Action 2:1:Else
+[  6.729 s,  523 / 2724] Action 47:0:Execute
+[  6.729 s,  523 / 2724] Action 52:79:Else
+[  6.729 s,  523 / 2724] Action 52:80:Execute: executing action group CountByClass..
+[  6.729 s,  523 / 2724] Action 31:0:SetValue
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 29:0:AddValue
+[  6.729 s,  523 / 2724] Action 30:0:Condition
+[  6.729 s,  523 / 2724] Action 31:1:Loop
+[  6.729 s,  523 / 2724] Action 52:80:Execute
+[  6.729 s,  523 / 2724] Action 52:81:SetValue
+[  6.729 s,  523 / 2724] Action 52:82:SetValue
+[  6.729 s,  523 / 2724] Action 52:83:SetValue
+[  6.729 s,  523 / 2724] Action 52:84:SetValue
+[  8.875 s,  523 / 2726] Trigger 1:MineDestroyed:ActorDestroyed starting
+[  8.875 s,  523 / 2726] Action 35:0:Condition
+[  8.875 s,  523 / 2726] Trigger 1:MineDestroyed:ActorDestroyed finished
+[  8.875 s,  523 / 2726] Trigger 4:MissileDestroyed:ActorDestroyed starting
+[  8.875 s,  523 / 2726] Action 40:0:AddValue
+[  8.875 s,  523 / 2726] Action 41:0:Condition
+[  8.875 s,  523 / 2726] Trigger 4:MissileDestroyed:ActorDestroyed finished
+[  9.921 s,  523 / 2711] Action 52:85:Wait
+[  9.921 s,  523 / 2711] Action 52:86:SetValue
+[ 10.312 s,  523 / 2711] Action 52:87:Wait
+[ 10.312 s,  523 / 2711] Action 52:88:Execute: executing action group CountByClass..
+[ 10.312 s,  523 / 2711] Action 31:0:SetValue
+[ 10.312 s,  523 / 2711] Action 30:0:Condition
+[ 10.312 s,  523 / 2711] Action 30:0:Condition
+[ 10.312 s,  523 / 2711] Action 30:0:Condition
+[ 10.312 s,  523 / 2711] Action 30:0:Condition
+[ 10.312 s,  523 / 2711] Action 30:0:Condition
+[ 10.312 s,  523 / 2711] Action 31:1:Loop
+[ 10.312 s,  523 / 2711] Action 52:88:Execute
+[ 10.312 s,  523 / 2711] Test: FireState_Missile_counts 0 1.0
+[ 10.314 s,  523 / 2711] Action 52:89:Log
+[ 10.314 s,  523 / 2711] Action 52:90:Condition
+[ 10.314 s,  523 / 2711] Action 49:0:Execute: executing action group AssertEqual..
+[ 10.314 s,  523 / 2711] Test: FireState_MissilePod_noClient Pass 1.0
+[ 10.316 s,  523 / 2711] Action 0:0:Log
+[ 10.316 s,  523 / 2711] Action 2:0:Condition
+[ 10.316 s,  523 / 2711] Action 2:1:Else
+[ 10.316 s,  523 / 2711] Action 49:0:Execute
+[ 10.316 s,  523 / 2711] Action 52:91:Else
+[ 10.316 s,  523 / 2711] Action 52:92:Execute: executing action group CountByClass..
+[ 10.316 s,  523 / 2711] Action 31:0:SetValue
+[ 10.316 s,  523 / 2711] Action 30:0:Condition
+[ 10.316 s,  523 / 2711] Action 30:0:Condition
+[ 10.316 s,  523 / 2711] Action 30:0:Condition
+[ 10.316 s,  523 / 2711] Action 30:0:Condition
+[ 10.316 s,  523 / 2711] Action 30:0:Condition
+[ 10.316 s,  523 / 2711] Action 31:1:Loop
+[ 10.316 s,  523 / 2711] Action 52:92:Execute
+[ 10.316 s,  523 / 2711] Action 52:93:SetValue
+[ 10.316 s,  523 / 2711] Action 52:94:StartAbility
+[ 10.899 s,  523 / 2712] Action 52:95:Wait
+[ 10.899 s,  523 / 2712] Action 52:96:Execute: executing action group CountByClass..
+[ 10.899 s,  523 / 2712] Action 31:0:SetValue
+[ 10.899 s,  523 / 2712] Action 30:0:Condition
+[ 10.899 s,  523 / 2712] Action 30:0:Condition
+[ 10.899 s,  523 / 2712] Action 30:0:Condition
+[ 10.899 s,  523 / 2712] Action 30:0:Condition
+[ 10.899 s,  523 / 2712] Action 30:0:Condition
+[ 10.899 s,  523 / 2712] Action 31:1:Loop
+[ 10.899 s,  523 / 2712] Action 52:96:Execute
+[ 10.899 s,  523 / 2712] Test: StartAbility_MissileLauncher_OutValue 0 0
+[ 10.900 s,  523 / 2712] Action 52:97:Log
+[ 10.900 s,  523 / 2712] Action 52:98:Condition
+[ 10.900 s,  523 / 2712] Action 51:0:Execute: executing action group AssertEqual..
+[ 10.900 s,  523 / 2712] Test: StartAbility_MissileLauncher_notAbility Pass 0
+[ 10.902 s,  523 / 2712] Action 0:0:Log
+[ 10.902 s,  523 / 2712] Action 2:0:Condition
+[ 10.902 s,  523 / 2712] Action 2:1:Else
+[ 10.902 s,  523 / 2712] Action 51:0:Execute
+[ 10.902 s,  523 / 2712] Action 52:99:Else
+[ 10.902 s,  523 / 2712] Action 52:100:Execute: executing action group AssertDone..
+[ 10.902 s,  523 / 2712] Test: COMPLETE Pass 0
+[ 10.903 s,  523 / 2712] Action 25:0:Log
+[ 10.903 s,  523 / 2712] Action 27:0:Condition
+[ 10.903 s,  523 / 2712] Action 27:1:Else
+[ 10.903 s,  523 / 2712] Action 52:100:Execute
