@@ -30,6 +30,17 @@
 	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg1b" Arg2="Global.LastDroneClass" Arg3="Bomber" />
 	<Execute Target="AssertEqual" Arg1="SpawnDrone_Arg2b" Arg2="Global.LastDroneName" Arg3="Drone #2" />
 
+	<Actions Name="TakeSeven">
+		<SetValue Target="Global.A4" Source="Local.Arg4" />
+		<SetValue Target="Global.A7" Source="Local.Arg7" />
+		<SetValue Target="Global.SawCallerLocal" Source="Local.Hidden" />
+	</Actions>
+	<SetValue Target="Local.Hidden" Source="secret" />
+	<Execute Target="TakeSeven" Arg1="1" Arg2="2" Arg3="3" Arg4="4" Arg5="5" Arg6="6" Arg7="7" />
+	<Execute Target="AssertEqual" Arg1="Execute_Arg4" Arg2="Global.A4" Arg3="4" />
+	<Execute Target="AssertEqual" Arg1="Execute_Arg7" Arg2="Global.A7" Arg3="7" />
+	<Execute Target="AssertEqual" Arg1="Local_isolated" Arg2="Global.SawCallerLocal" Arg3="" />
+
 	<SetValue Target="Global.DroneCount" Source="0" />
 	<Loop Target="Actors:Drones">
 		<AddValue Target="Global.DroneCount" Source1="Global.DroneCount" Source2="1" />
@@ -82,6 +93,12 @@
 		<AddValue Target="Global.LoopSum" Source1="Global.LoopSum" Source2="Global.Index" />
 	</Loop>
 	<Execute Target="AssertEqual" Arg1="Loop_Sum" Arg2="Global.LoopSum" Arg3="6" />
+
+	<SetValue Target="Global.StepSum" Source="0" />
+	<Loop Target="Global.K" Start="0" Count="5" Step="2">
+		<AddValue Target="Global.StepSum" Source1="Global.StepSum" Source2="Global.K" />
+	</Loop>
+	<Execute Target="AssertEqual" Arg1="Loop_Step" Arg2="Global.StepSum" Arg3="6" />
 
 	<SetValue Target="Global.Count" Source="0" />
 	<SetValue Target="Global.SawInterceptor" Source="0" />
@@ -152,6 +169,56 @@
 		<SetValue Target="Global.CondInList" Source="1" />
 	</Else>
 	<Execute Target="AssertEqual" Arg1="Condition_InList" Arg2="Global.CondInList" Arg3="1" />
+
+	<SetValue Target="Global.CondInListTrue" Source="0" />
+	<Condition Left1="Actor:Drone.ActorID" Comp1="In" Right1="Actors:Drones">
+		<SetValue Target="Global.CondInListTrue" Source="1" />
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_InListTrue" Arg2="Global.CondInListTrue" Arg3="1" />
+
+	<SetValue Target="Global.CondInCase" Source="0" />
+	<Condition Left1="interceptor" Comp1="In" Right1="Interceptor;Bomber;Corvette">
+		<SetValue Target="Global.CondInCase" Source="1" />
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_InCaseInsensitive" Arg2="Global.CondInCase" Arg3="1" />
+
+	<SetValue Target="Global.CondEqCase" Source="0" />
+	<Condition Left1="Interceptor" Comp1="Equal" Right1="interceptor">
+		<SetValue Target="Global.CondEqCase" Source="-1" />
+	</Condition>
+	<Else>
+		<SetValue Target="Global.CondEqCase" Source="1" />
+	</Else>
+	<Execute Target="AssertEqual" Arg1="Condition_EqualCaseSensitive" Arg2="Global.CondEqCase" Arg3="1" />
+
+	<SetValue Target="Global.CondNotIn" Source="0" />
+	<Condition Left1="Hauler" Comp1="NotIn" Right1="Interceptor;Bomber;Corvette">
+		<SetValue Target="Global.CondNotIn" Source="1" />
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_NotIn" Arg2="Global.CondNotIn" Arg3="1" />
+
+	<SetValue Target="Global.CondLower" Source="0" />
+	<Condition Left1="0.3" Comp1="Lower" Right1="3">
+		<SetValue Target="Global.CondLower" Source="1" />
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_Lower" Arg2="Global.CondLower" Arg3="1" />
+
+	<SetValue Target="Global.CondLowerEqual" Source="0" />
+	<Condition Left1="160" Comp1="LowerEqual" Right1="160">
+		<SetValue Target="Global.CondLowerEqual" Source="1" />
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_LowerEqual" Arg2="Global.CondLowerEqual" Arg3="1" />
+
+	<SetValue Target="Global.Nested" Source="0" />
+	<Condition Left1="1" Comp1="Equal" Right1="1">
+		<Condition Left1="2" Comp1="Equal" Right1="3">
+			<SetValue Target="Global.Nested" Source="-1" />
+		</Condition>
+		<Else>
+			<SetValue Target="Global.Nested" Source="1" />
+		</Else>
+	</Condition>
+	<Execute Target="AssertEqual" Arg1="Condition_NestedElse" Arg2="Global.Nested" Arg3="1" />
 
 	<SetValue Target="Global.CondOr" Source="0" />
 	<Condition Left1="0" Comp1="Equal" Right1="1" And1="false" Left2="2" Comp2="Equal" Right2="2" And2="false">

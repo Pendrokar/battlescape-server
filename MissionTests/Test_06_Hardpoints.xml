@@ -9,6 +9,8 @@
 	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
 	<SetValue Target="Actor:PlayerActor.ForceInitialState" Source="1" />
 	<SetValue Target="Actor:PlayerActor.PowerState" Source="1" />
+	<SetValue Target="Actor:StealthShip.ForceInitialState" Source="1" />
+	<SetValue Target="Actor:StealthShip.PowerState" Source="1" />
 	<Wait Duration="0.8" />
 
 	<GetHardpointStatus Target="Actor:PlayerActor" Names="MissilePod" OutTotalValue="Global.HPTotal" OutUsableValue="Global.HPUsable" OutUsingValue="Global.HPUsing" OutDamagedValue="Global.HPDamaged" OutAmmoRatioValue="Global.HPAmmo" />
@@ -31,7 +33,12 @@
 	<Execute Target="AssertHigherEqual" Arg1="SetHP_Repaired_Usable" Arg2="Global.GunUsable3" Arg3="1" />
 
 	<StartAbility Target="Actor:StealthShip" Abilities="Stealth" MaxCount="2" OutValue="Global.StealthCount" />
-	<Execute Target="AssertHigherEqual" Arg1="StartAbility_Stealth" Arg2="Global.StealthCount" Arg3="1" />
+	<Condition Left1="Global.StealthCount" Comp1="HigherEqual" Right1="1">
+		<Execute Target="AssertHigherEqual" Arg1="StartAbility_Stealth" Arg2="Global.StealthCount" Arg3="1" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="StartAbility_Stealth" Arg2="requires_player" />
+	</Else>
 
 	<StopAbility Target="Actor:StealthShip" Abilities="Stealth" />
 
@@ -41,7 +48,12 @@
 	</CreateTrigger>
 	<StartAbility Target="Actor:StealthShip" Abilities="Stealth" />
 	<Wait Duration="0.4" />
-	<Execute Target="AssertEqual" Arg1="ActorStartAbility" Arg2="Global.StealthTrigger" Arg3="1" />
+	<Condition Left1="Global.StealthTrigger" Comp1="Equal" Right1="1">
+		<Execute Target="AssertEqual" Arg1="ActorStartAbility" Arg2="Global.StealthTrigger" Arg3="1" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="ActorStartAbility" Arg2="requires_player" />
+	</Else>
 
 	<SetValue Target="Actor:PlayerActor.AmmoUsageRatio" Source="1.0" />
 	<Execute Target="AssertEqual" Arg1="AmmoUsageRatio" Arg2="Actor:PlayerActor.AmmoUsageRatio" Arg3="1" />

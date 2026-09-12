@@ -1,305 +1,406 @@
-[  0.000 s,  476 / 3569] Server Mission Runtime Log
-[  0.002 s,  477 / 3569] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_02_ControlFlow.xml'
-[  0.005 s,  477 / 3569] Mission runtime successfully loaded
-[  0.021 s,  478 / 3566] Action 55:0:EntryPoint
-[  0.021 s,  478 / 3566] Action 55:1:Include
-[  0.021 s,  478 / 3566] Action 55:2:SetValue
-[  0.021 s,  478 / 3566] Test: BEGIN Test_02_ControlFlow ok
-[  0.023 s,  478 / 3566] Action 55:3:Log
-[  0.023 s,  478 / 3566] Action 55:4:CreateActor
-[  0.023 s,  478 / 3566] Action 55:5:SetPosition
-[  0.024 s,  478 / 3566] Action 55:6:Execute: executing action group AssertEqual..
-[  0.024 s,  478 / 3566] Test: EntryPoint Pass Main
-[  0.025 s,  478 / 3566] Action 0:0:Log
-[  0.025 s,  478 / 3566] Action 2:0:Condition
-[  0.025 s,  478 / 3566] Action 2:1:Else
-[  0.025 s,  478 / 3566] Action 55:6:Execute
-[  0.025 s,  478 / 3566] Action 29:0:SetValue
-[  0.025 s,  478 / 3566] Action 55:7:Include
-[  0.025 s,  478 / 3566] Action 55:8:Execute: executing action group FromFragment..
-[  0.025 s,  478 / 3566] Action 28:0:SetValue
-[  0.025 s,  478 / 3566] Action 55:8:Execute
-[  0.025 s,  478 / 3566] Action 55:9:Execute: executing action group AssertEqual..
-[  0.025 s,  478 / 3566] Test: Include_toplevel Pass 1
-[  0.026 s,  478 / 3566] Action 0:0:Log
-[  0.026 s,  478 / 3566] Action 2:0:Condition
-[  0.026 s,  478 / 3566] Action 2:1:Else
-[  0.026 s,  478 / 3566] Action 55:9:Execute
-[  0.026 s,  478 / 3566] Action 55:10:Execute: executing action group AssertEqual..
-[  0.026 s,  478 / 3566] Test: Include_group Pass yes
-[  0.028 s,  478 / 3566] Action 0:0:Log
-[  0.028 s,  478 / 3566] Action 2:0:Condition
-[  0.028 s,  478 / 3566] Action 2:1:Else
-[  0.028 s,  478 / 3566] Action 55:10:Execute
-[  0.028 s,  478 / 3566] Action 55:11:Execute: executing action group SpawnDrone..
-[  0.028 s,  478 / 3566] Action 30:0:CreateActor
-[  0.028 s,  478 / 3566] Action 30:1:SetAIState
-[  0.028 s,  478 / 3566] Action 30:2:SetValue
-[  0.028 s,  478 / 3566] Action 30:3:SetValue
-[  0.028 s,  478 / 3566] Action 30:4:SetValue
-[  0.028 s,  478 / 3566] Action 55:11:Execute
-[  0.028 s,  478 / 3566] Action 55:12:Execute: executing action group AssertEqual..
-[  0.028 s,  478 / 3566] Test: SpawnDrone_Arg1 Pass Interceptor
-[  0.029 s,  478 / 3566] Action 0:0:Log
-[  0.029 s,  478 / 3566] Action 2:0:Condition
-[  0.029 s,  478 / 3566] Action 2:1:Else
-[  0.029 s,  478 / 3566] Action 55:12:Execute
-[  0.029 s,  478 / 3566] Action 55:13:Execute: executing action group AssertEqual..
-[  0.029 s,  478 / 3566] Test: SpawnDrone_Arg2 Pass Drone #1
-[  0.030 s,  478 / 3566] Action 0:0:Log
-[  0.030 s,  478 / 3566] Action 2:0:Condition
-[  0.031 s,  478 / 3566] Action 2:1:Else
-[  0.031 s,  478 / 3566] Action 55:13:Execute
-[  0.031 s,  478 / 3566] Action 55:14:Execute: executing action group AssertEqual..
-[  0.031 s,  478 / 3566] Test: SpawnDrone_Arg3 Pass 0
-[  0.032 s,  478 / 3566] Action 0:0:Log
-[  0.032 s,  478 / 3566] Action 2:0:Condition
-[  0.032 s,  478 / 3566] Action 2:1:Else
-[  0.032 s,  478 / 3566] Action 55:14:Execute
-[  0.032 s,  478 / 3566] Action 55:15:Execute: executing action group SpawnDrone..
-[  0.032 s,  478 / 3566] Action 30:0:CreateActor
-[  0.032 s,  478 / 3566] Action 30:1:SetAIState
-[  0.032 s,  478 / 3566] Action 30:2:SetValue
-[  0.032 s,  478 / 3566] Action 30:3:SetValue
-[  0.032 s,  478 / 3566] Action 30:4:SetValue
-[  0.032 s,  478 / 3566] Action 55:15:Execute
-[  0.032 s,  478 / 3566] Action 55:16:Execute: executing action group AssertEqual..
-[  0.032 s,  478 / 3566] Test: SpawnDrone_Arg1b Pass Bomber
-[  0.033 s,  478 / 3566] Action 0:0:Log
-[  0.033 s,  478 / 3566] Action 2:0:Condition
-[  0.033 s,  478 / 3566] Action 2:1:Else
-[  0.033 s,  478 / 3566] Action 55:16:Execute
-[  0.033 s,  478 / 3566] Action 55:17:Execute: executing action group AssertEqual..
-[  0.033 s,  478 / 3566] Test: SpawnDrone_Arg2b Pass Drone #2
-[  0.035 s,  478 / 3566] Action 0:0:Log
-[  0.035 s,  478 / 3566] Action 2:0:Condition
-[  0.035 s,  478 / 3566] Action 2:1:Else
-[  0.035 s,  478 / 3566] Action 55:17:Execute
-[  0.035 s,  478 / 3566] Action 55:18:SetValue
-[  0.035 s,  478 / 3566] Action 31:0:AddValue
-[  0.035 s,  478 / 3566] Action 31:0:AddValue
-[  0.035 s,  478 / 3566] Action 55:19:Loop
-[  0.035 s,  478 / 3566] Action 55:20:Execute: executing action group AssertEqual..
-[  0.035 s,  478 / 3566] Test: SpawnDrone_count Pass 2.0
-[  0.036 s,  478 / 3566] Action 0:0:Log
-[  0.036 s,  478 / 3566] Action 2:0:Condition
-[  0.036 s,  478 / 3566] Action 2:1:Else
-[  0.036 s,  478 / 3566] Action 55:20:Execute
-[  0.036 s,  478 / 3566] Action 55:21:SetValue
-[  0.036 s,  478 / 3566] Action 55:22:SetValue
-[  0.036 s,  478 / 3566] Action 55:23:Execute: executing action group LogCheckpoint..
-[  0.036 s,  478 / 3566] Action 32:0:SetValue
-[  0.036 s,  478 / 3566] Action 55:23:Execute
-[  0.036 s,  478 / 3566] Action 55:24:Execute: executing action group AssertEqual..
-[  0.036 s,  478 / 3566] Test: Execute_memory Pass 1
-[  0.037 s,  478 / 3566] Action 0:0:Log
-[  0.037 s,  478 / 3566] Action 2:0:Condition
-[  0.037 s,  478 / 3566] Action 2:1:Else
-[  0.037 s,  478 / 3566] Action 55:24:Execute
-[  0.037 s,  478 / 3566] Action 55:25:SetValue
-[  0.037 s,  478 / 3566] Action 55:26:SetValue
-[  0.037 s,  478 / 3566] Skipping action 55:27:Execute: entry point not matching for action group OnlyTrial..
-[  0.037 s,  478 / 3566] Action 55:27:Execute
-[  0.037 s,  478 / 3566] Action 55:28:Execute: executing action group OnlyMain..
-[  0.037 s,  478 / 3566] Action 34:0:SetValue
-[  0.037 s,  478 / 3566] Action 55:28:Execute
-[  0.038 s,  478 / 3566] Action 55:29:Execute: executing action group AssertEqual..
-[  0.038 s,  478 / 3566] Test: OnlyTrial_skipped Pass 0
-[  0.039 s,  478 / 3566] Action 0:0:Log
-[  0.039 s,  478 / 3566] Action 2:0:Condition
-[  0.039 s,  478 / 3566] Action 2:1:Else
-[  0.039 s,  478 / 3566] Action 55:29:Execute
-[  0.039 s,  478 / 3566] Action 55:30:Execute: executing action group AssertEqual..
-[  0.039 s,  478 / 3566] Test: OnlyMain_ran Pass 1
-[  0.040 s,  478 / 3566] Action 0:0:Log
-[  0.040 s,  478 / 3566] Action 2:0:Condition
-[  0.040 s,  478 / 3566] Action 2:1:Else
-[  0.040 s,  478 / 3566] Action 55:30:Execute
-[  0.040 s,  478 / 3566] Action 55:31:SetValue
-[  0.040 s,  478 / 3566] Action 55:32:SetValue
-[  0.040 s,  478 / 3566] Action 55:33:Execute: executing action group ReplaceDemo..
-[  0.040 s,  478 / 3566] Action 35:-1:Execute: executing action group ReplacedInto..
-[  0.040 s,  478 / 3566] Action 35:-1:Execute
-[  0.040 s,  478 / 3566] Action 35:0:SetValue
-[  0.040 s,  478 / 3566] Action 55:33:Execute
-[  0.040 s,  478 / 3566] Action 55:34:Execute: executing action group AssertEqual..
-[  0.040 s,  478 / 3566] Test: Replace_into Pass 1
-[  0.041 s,  478 / 3566] Action 0:0:Log
-[  0.041 s,  478 / 3566] Action 2:0:Condition
-[  0.041 s,  478 / 3566] Action 2:1:Else
-[  0.041 s,  478 / 3566] Action 55:34:Execute
-[  0.041 s,  478 / 3566] Action 55:35:Execute: executing action group AssertEqual..
-[  0.041 s,  478 / 3566] Test: Replace_rest_skipped Pass 0
-[  0.043 s,  478 / 3566] Action 0:0:Log
-[  0.043 s,  478 / 3566] Action 2:0:Condition
-[  0.043 s,  478 / 3566] Action 2:1:Else
-[  0.043 s,  478 / 3566] Action 55:35:Execute
-[  0.043 s,  478 / 3566] Skipping action 55:36:Execute: no target group named NoSuchGroup..
-[  0.043 s,  478 / 3566] Action 55:36:Execute
-[  0.043 s,  478 / 3566] Action 55:37:SetValue
-[  0.573 s,  479 / 3575] Action 55:38:Wait
-[  0.573 s,  479 / 3575] Action 55:39:SetValue
-[  0.573 s,  479 / 3575] Action 55:40:Execute: executing action group AssertEqual..
-[  0.573 s,  479 / 3575] Test: Wait_after Pass 1
-[  0.575 s,  479 / 3575] Action 0:0:Log
-[  0.575 s,  479 / 3575] Action 2:0:Condition
-[  0.575 s,  479 / 3575] Action 2:1:Else
-[  0.575 s,  479 / 3575] Action 55:40:Execute
-[  0.575 s,  479 / 3575] Action 55:41:SetValue
-[  0.575 s,  479 / 3575] Action 37:0:AddValue
-[  0.589 s,  479 / 3575] Action 37:0:AddValue
-[  0.604 s,  479 / 3575] Action 37:0:AddValue
-[  0.619 s,  479 / 3575] Action 37:0:AddValue
-[  0.635 s,  479 / 3575] Action 55:42:Loop
-[  0.635 s,  479 / 3575] Action 55:43:Execute: executing action group AssertEqual..
-[  0.635 s,  479 / 3575] Test: Loop_Sum Pass 6.0
-[  0.636 s,  479 / 3575] Action 0:0:Log
-[  0.636 s,  479 / 3575] Action 2:0:Condition
-[  0.637 s,  479 / 3575] Action 2:1:Else
-[  0.637 s,  479 / 3575] Action 55:43:Execute
-[  0.637 s,  479 / 3575] Action 55:44:SetValue
-[  0.637 s,  479 / 3575] Action 55:45:SetValue
-[  0.637 s,  479 / 3575] Action 55:46:SetValue
-[  0.637 s,  479 / 3575] Action 40:0:AddValue
-[  0.637 s,  479 / 3575] Action 38:0:SetValue
-[  0.637 s,  479 / 3575] Action 40:1:Condition
-[  0.637 s,  479 / 3575] Action 40:2:Condition
-[  0.637 s,  479 / 3575] Action 40:0:AddValue
-[  0.637 s,  479 / 3575] Action 40:1:Condition
-[  0.637 s,  479 / 3575] Action 39:0:SetValue
-[  0.637 s,  479 / 3575] Action 40:2:Condition
-[  0.637 s,  479 / 3575] Action 55:47:Loop
-[  0.637 s,  479 / 3575] Action 55:48:Execute: executing action group AssertEqual..
-[  0.637 s,  479 / 3575] Test: Loop_DroneCount Pass 2.0
-[  0.638 s,  479 / 3575] Action 0:0:Log
-[  0.638 s,  479 / 3575] Action 2:0:Condition
-[  0.638 s,  479 / 3575] Action 2:1:Else
-[  0.638 s,  479 / 3575] Action 55:48:Execute
-[  0.638 s,  479 / 3575] Action 55:49:Execute: executing action group AssertEqual..
-[  0.638 s,  479 / 3575] Test: Loop_SawInterceptor Pass 1
-[  0.639 s,  479 / 3575] Action 0:0:Log
-[  0.639 s,  479 / 3575] Action 2:0:Condition
-[  0.639 s,  479 / 3575] Action 2:1:Else
-[  0.639 s,  479 / 3575] Action 55:49:Execute
-[  0.639 s,  479 / 3575] Action 55:50:Execute: executing action group AssertEqual..
-[  0.639 s,  479 / 3575] Test: Loop_SawBomber Pass 1
-[  0.640 s,  479 / 3575] Action 0:0:Log
-[  0.640 s,  479 / 3575] Action 2:0:Condition
-[  0.640 s,  479 / 3575] Action 2:1:Else
-[  0.640 s,  479 / 3575] Action 55:50:Execute
-[  0.640 s,  479 / 3575] Action 55:51:SetValue
-[  0.640 s,  479 / 3575] Action 55:52:SetValue
-[  0.640 s,  479 / 3575] Action 43:0:Condition
-[  0.641 s,  479 / 3575] Action 43:1:Condition
-[  0.641 s,  479 / 3575] Action 43:2:SetValue
-[  0.650 s,  479 / 3575] Action 43:0:Condition
-[  0.650 s,  479 / 3575] Action 43:1:Condition
-[  0.650 s,  479 / 3575] Action 43:2:SetValue
-[  0.665 s,  479 / 3575] Action 41:0:SetValue
-[  0.665 s,  479 / 3575] Action 41:1:Break
-[  0.665 s,  479 / 3575] Action 43:0:Condition
-[  0.665 s,  479 / 3575] Action 43:1:Condition
-[  0.665 s,  479 / 3575] Action 43:2:SetValue
-[  0.681 s,  479 / 3575] Action 55:53:Loop
-[  0.681 s,  479 / 3575] Action 55:54:Execute: executing action group AssertEqual..
-[  0.681 s,  479 / 3575] Test: Break_BreakAt Pass 2
-[  0.683 s,  479 / 3575] Action 0:0:Log
-[  0.683 s,  479 / 3575] Action 2:0:Condition
-[  0.683 s,  479 / 3575] Action 2:1:Else
-[  0.683 s,  479 / 3575] Action 55:54:Execute
-[  0.683 s,  479 / 3575] Action 55:55:Execute: executing action group AssertEqual..
-[  0.683 s,  479 / 3575] Test: Break_no_further_iter Pass 0
-[  0.684 s,  479 / 3575] Action 0:0:Log
-[  0.684 s,  479 / 3575] Action 2:0:Condition
-[  0.684 s,  479 / 3575] Action 2:1:Else
-[  0.684 s,  479 / 3575] Action 55:55:Execute
-[  0.684 s,  479 / 3575] Action 55:56:SetValue
-[  0.684 s,  479 / 3575] Action 44:0:SetValue
-[  0.684 s,  479 / 3575] Action 55:57:Condition
-[  0.684 s,  479 / 3575] Action 55:58:Else
-[  0.684 s,  479 / 3575] Action 55:59:Execute: executing action group AssertEqual..
-[  0.684 s,  479 / 3575] Test: Condition_Higher Pass 1
-[  0.685 s,  479 / 3575] Action 0:0:Log
-[  0.685 s,  479 / 3575] Action 2:0:Condition
-[  0.685 s,  479 / 3575] Action 2:1:Else
-[  0.685 s,  479 / 3575] Action 55:59:Execute
-[  0.685 s,  479 / 3575] Action 55:60:SetValue
-[  0.685 s,  479 / 3575] Action 55:61:Condition
-[  0.685 s,  479 / 3575] Action 47:0:SetValue
-[  0.685 s,  479 / 3575] Action 55:62:Else
-[  0.685 s,  479 / 3575] Action 55:63:Execute: executing action group AssertEqual..
-[  0.685 s,  479 / 3575] Test: Condition_EqualFalse Pass 1
-[  0.687 s,  479 / 3575] Action 0:0:Log
-[  0.687 s,  479 / 3575] Action 2:0:Condition
-[  0.687 s,  479 / 3575] Action 2:1:Else
-[  0.687 s,  479 / 3575] Action 55:63:Execute
-[  0.687 s,  479 / 3575] Action 55:64:SetValue
-[  0.687 s,  479 / 3575] Action 48:0:SetValue
-[  0.687 s,  479 / 3575] Action 55:65:Condition
-[  0.687 s,  479 / 3575] Action 55:66:Execute: executing action group AssertEqual..
-[  0.687 s,  479 / 3575] Test: Condition_NotEqual Pass 1
-[  0.688 s,  479 / 3575] Action 0:0:Log
-[  0.688 s,  479 / 3575] Action 2:0:Condition
-[  0.688 s,  479 / 3575] Action 2:1:Else
-[  0.688 s,  479 / 3575] Action 55:66:Execute
-[  0.688 s,  479 / 3575] Action 55:67:SetValue
-[  0.688 s,  479 / 3575] Action 49:0:SetValue
-[  0.688 s,  479 / 3575] Action 55:68:Condition
-[  0.688 s,  479 / 3575] Action 55:69:Execute: executing action group AssertEqual..
-[  0.688 s,  479 / 3575] Test: Condition_InText Pass 1
-[  0.689 s,  479 / 3575] Action 0:0:Log
-[  0.689 s,  479 / 3575] Action 2:0:Condition
-[  0.689 s,  479 / 3575] Action 2:1:Else
-[  0.689 s,  479 / 3575] Action 55:69:Execute
-[  0.689 s,  479 / 3575] Action 55:70:SetValue
-[  0.689 s,  479 / 3575] Action 55:71:Condition
-[  0.689 s,  479 / 3575] Action 51:0:SetValue
-[  0.689 s,  479 / 3575] Action 55:72:Else
-[  0.689 s,  479 / 3575] Action 55:73:Execute: executing action group AssertEqual..
-[  0.689 s,  479 / 3575] Test: Condition_InList Pass 1
-[  0.690 s,  479 / 3575] Action 0:0:Log
-[  0.690 s,  479 / 3575] Action 2:0:Condition
-[  0.690 s,  479 / 3575] Action 2:1:Else
-[  0.691 s,  479 / 3575] Action 55:73:Execute
-[  0.691 s,  479 / 3575] Action 55:74:SetValue
-[  0.691 s,  479 / 3575] Action 52:0:SetValue
-[  0.691 s,  479 / 3575] Action 55:75:Condition
-[  0.691 s,  479 / 3575] Action 55:76:Execute: executing action group AssertEqual..
-[  0.691 s,  479 / 3575] Test: Condition_Or Pass 1
-[  0.692 s,  479 / 3575] Action 0:0:Log
-[  0.692 s,  479 / 3575] Action 2:0:Condition
-[  0.692 s,  479 / 3575] Action 2:1:Else
-[  0.692 s,  479 / 3575] Action 55:76:Execute
-[  0.692 s,  479 / 3575] Action 55:77:SetValue
-[  0.692 s,  479 / 3575] Action 53:0:SetValue
-[  0.692 s,  479 / 3575] Action 55:78:Condition
-[  0.692 s,  479 / 3575] Action 55:79:Execute: executing action group AssertEqual..
-[  0.692 s,  479 / 3575] Test: Condition_And Pass 1
-[  0.693 s,  479 / 3575] Action 0:0:Log
-[  0.693 s,  479 / 3575] Action 2:0:Condition
-[  0.693 s,  479 / 3575] Action 2:1:Else
-[  0.693 s,  479 / 3575] Action 55:79:Execute
-[  0.693 s,  479 / 3575] Action 55:80:SetValue
-[  0.693 s,  479 / 3575] Action 55:81:SetValue
-[  0.693 s,  479 / 3575] Action 55:82:Execute: executing action group StopEarly..
-[  0.693 s,  479 / 3575] Action 54:0:SetValue
-[  0.693 s,  479 / 3575] Action -1:-1:Stop
-[  0.693 s,  479 / 3575] Action 55:82:Execute
-[  0.693 s,  479 / 3575] Action 55:83:Execute: executing action group AssertEqual..
-[  0.693 s,  479 / 3575] Test: StopEarly_before Pass 1
-[  0.695 s,  479 / 3575] Action 0:0:Log
-[  0.695 s,  479 / 3575] Action 2:0:Condition
-[  0.695 s,  479 / 3575] Action 2:1:Else
-[  0.695 s,  479 / 3575] Action 55:83:Execute
-[  0.695 s,  479 / 3575] Action 55:84:Execute: executing action group AssertEqual..
-[  0.695 s,  479 / 3575] Test: StopEarly_after_skipped Pass 0
-[  0.696 s,  479 / 3575] Action 0:0:Log
-[  0.696 s,  479 / 3575] Action 2:0:Condition
-[  0.696 s,  479 / 3575] Action 2:1:Else
-[  0.696 s,  479 / 3575] Action 55:84:Execute
-[  0.696 s,  479 / 3575] Action 55:85:Execute: executing action group AssertDone..
-[  0.696 s,  479 / 3575] Test: COMPLETE Pass 0
-[  0.697 s,  479 / 3575] Action 24:0:Log
-[  0.697 s,  479 / 3575] Action 26:0:Condition
-[  0.697 s,  479 / 3575] Action 26:1:Else
-[  0.697 s,  479 / 3575] Action 55:85:Execute
+[  0.000 s,  520 / 3759] Server Mission Runtime Log
+[  0.002 s,  520 / 3759] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_02_ControlFlow.xml'
+[  0.004 s,  520 / 3759] Mission runtime successfully loaded
+[  0.013 s,  521 / 3759] Action 68:0:EntryPoint
+[  0.013 s,  521 / 3759] Action 68:1:Include
+[  0.013 s,  521 / 3759] Action 68:2:SetValue
+[  0.013 s,  521 / 3759] Test: BEGIN Test_02_ControlFlow ok
+[  0.015 s,  521 / 3759] Action 68:3:Log
+[  0.015 s,  522 / 3758] Action 68:4:CreateActor
+[  0.015 s,  522 / 3758] Action 68:5:SetPosition
+[  0.015 s,  522 / 3758] Action 68:6:Execute: executing action group AssertEqual..
+[  0.015 s,  522 / 3758] Test: EntryPoint Pass Main
+[  0.017 s,  522 / 3758] Action 0:0:Log
+[  0.017 s,  522 / 3758] Action 2:0:Condition
+[  0.017 s,  522 / 3758] Action 2:1:Else
+[  0.017 s,  522 / 3758] Action 68:6:Execute
+[  0.017 s,  522 / 3758] Action 30:0:SetValue
+[  0.017 s,  522 / 3758] Action 68:7:Include
+[  0.017 s,  522 / 3758] Action 68:8:Execute: executing action group FromFragment..
+[  0.017 s,  522 / 3758] Action 29:0:SetValue
+[  0.017 s,  522 / 3758] Action 68:8:Execute
+[  0.017 s,  522 / 3758] Action 68:9:Execute: executing action group AssertEqual..
+[  0.017 s,  522 / 3758] Test: Include_toplevel Pass 1
+[  0.018 s,  522 / 3758] Action 0:0:Log
+[  0.018 s,  522 / 3758] Action 2:0:Condition
+[  0.018 s,  522 / 3758] Action 2:1:Else
+[  0.018 s,  522 / 3758] Action 68:9:Execute
+[  0.018 s,  522 / 3758] Action 68:10:Execute: executing action group AssertEqual..
+[  0.018 s,  522 / 3758] Test: Include_group Pass yes
+[  0.019 s,  522 / 3758] Action 0:0:Log
+[  0.019 s,  522 / 3758] Action 2:0:Condition
+[  0.019 s,  522 / 3758] Action 2:1:Else
+[  0.019 s,  522 / 3758] Action 68:10:Execute
+[  0.019 s,  522 / 3758] Action 68:11:Execute: executing action group SpawnDrone..
+[  0.019 s,  522 / 3758] Action 31:0:CreateActor
+[  0.020 s,  522 / 3758] Action 31:1:SetAIState
+[  0.020 s,  522 / 3758] Action 31:2:SetValue
+[  0.020 s,  522 / 3758] Action 31:3:SetValue
+[  0.020 s,  522 / 3758] Action 31:4:SetValue
+[  0.020 s,  522 / 3758] Action 68:11:Execute
+[  0.020 s,  522 / 3758] Action 68:12:Execute: executing action group AssertEqual..
+[  0.020 s,  522 / 3758] Test: SpawnDrone_Arg1 Pass Interceptor
+[  0.021 s,  522 / 3758] Action 0:0:Log
+[  0.021 s,  522 / 3758] Action 2:0:Condition
+[  0.021 s,  522 / 3758] Action 2:1:Else
+[  0.021 s,  522 / 3758] Action 68:12:Execute
+[  0.021 s,  522 / 3758] Action 68:13:Execute: executing action group AssertEqual..
+[  0.021 s,  522 / 3758] Test: SpawnDrone_Arg2 Pass Drone #1
+[  0.022 s,  522 / 3758] Action 0:0:Log
+[  0.022 s,  522 / 3758] Action 2:0:Condition
+[  0.022 s,  522 / 3758] Action 2:1:Else
+[  0.022 s,  522 / 3758] Action 68:13:Execute
+[  0.022 s,  522 / 3758] Action 68:14:Execute: executing action group AssertEqual..
+[  0.022 s,  522 / 3758] Test: SpawnDrone_Arg3 Pass 0
+[  0.024 s,  522 / 3758] Action 0:0:Log
+[  0.024 s,  522 / 3758] Action 2:0:Condition
+[  0.024 s,  522 / 3758] Action 2:1:Else
+[  0.024 s,  522 / 3758] Action 68:14:Execute
+[  0.024 s,  522 / 3758] Action 68:15:Execute: executing action group SpawnDrone..
+[  0.024 s,  522 / 3758] Action 31:0:CreateActor
+[  0.024 s,  522 / 3758] Action 31:1:SetAIState
+[  0.024 s,  522 / 3758] Action 31:2:SetValue
+[  0.024 s,  522 / 3758] Action 31:3:SetValue
+[  0.024 s,  522 / 3758] Action 31:4:SetValue
+[  0.024 s,  522 / 3758] Action 68:15:Execute
+[  0.024 s,  522 / 3758] Action 68:16:Execute: executing action group AssertEqual..
+[  0.024 s,  522 / 3758] Test: SpawnDrone_Arg1b Pass Bomber
+[  0.025 s,  522 / 3758] Action 0:0:Log
+[  0.025 s,  522 / 3758] Action 2:0:Condition
+[  0.025 s,  522 / 3758] Action 2:1:Else
+[  0.025 s,  522 / 3758] Action 68:16:Execute
+[  0.025 s,  522 / 3758] Action 68:17:Execute: executing action group AssertEqual..
+[  0.025 s,  522 / 3758] Test: SpawnDrone_Arg2b Pass Drone #2
+[  0.027 s,  522 / 3758] Action 0:0:Log
+[  0.027 s,  522 / 3758] Action 2:0:Condition
+[  0.027 s,  522 / 3758] Action 2:1:Else
+[  0.027 s,  522 / 3758] Action 68:17:Execute
+[  0.027 s,  522 / 3758] Action 68:18:SetValue
+[  0.027 s,  522 / 3758] Action 68:19:Execute: executing action group TakeSeven..
+[  0.027 s,  522 / 3758] Action 32:0:SetValue
+[  0.027 s,  522 / 3758] Action 32:1:SetValue
+[  0.027 s,  522 / 3758] Action 32:2:SetValue
+[  0.027 s,  522 / 3758] Action 68:19:Execute
+[  0.027 s,  522 / 3758] Action 68:20:Execute: executing action group AssertEqual..
+[  0.027 s,  522 / 3758] Test: Execute_Arg4 Pass 4
+[  0.028 s,  522 / 3758] Action 0:0:Log
+[  0.028 s,  522 / 3758] Action 2:0:Condition
+[  0.028 s,  522 / 3758] Action 2:1:Else
+[  0.028 s,  522 / 3758] Action 68:20:Execute
+[  0.028 s,  522 / 3758] Action 68:21:Execute: executing action group AssertEqual..
+[  0.028 s,  522 / 3758] Test: Execute_Arg7 Pass 7
+[  0.029 s,  522 / 3758] Action 0:0:Log
+[  0.029 s,  522 / 3758] Action 2:0:Condition
+[  0.029 s,  522 / 3758] Action 2:1:Else
+[  0.029 s,  522 / 3758] Action 68:21:Execute
+[  0.029 s,  522 / 3758] Action 68:22:Execute: executing action group AssertEqual..
+[  0.029 s,  522 / 3758] Test: Local_isolated Pass 
+[  0.031 s,  522 / 3758] Action 0:0:Log
+[  0.031 s,  522 / 3758] Action 2:0:Condition
+[  0.031 s,  522 / 3758] Action 2:1:Else
+[  0.031 s,  522 / 3758] Action 68:22:Execute
+[  0.031 s,  522 / 3758] Action 68:23:SetValue
+[  0.031 s,  522 / 3758] Action 33:0:AddValue
+[  0.031 s,  522 / 3758] Action 33:0:AddValue
+[  0.031 s,  522 / 3758] Action 68:24:Loop
+[  0.031 s,  522 / 3758] Action 68:25:Execute: executing action group AssertEqual..
+[  0.031 s,  522 / 3758] Test: SpawnDrone_count Pass 2.0
+[  0.032 s,  522 / 3758] Action 0:0:Log
+[  0.032 s,  522 / 3758] Action 2:0:Condition
+[  0.032 s,  522 / 3758] Action 2:1:Else
+[  0.032 s,  522 / 3758] Action 68:25:Execute
+[  0.032 s,  522 / 3758] Action 68:26:SetValue
+[  0.032 s,  522 / 3758] Action 68:27:SetValue
+[  0.032 s,  522 / 3758] Action 68:28:Execute: executing action group LogCheckpoint..
+[  0.032 s,  522 / 3758] Action 34:0:SetValue
+[  0.032 s,  522 / 3758] Action 68:28:Execute
+[  0.032 s,  522 / 3758] Action 68:29:Execute: executing action group AssertEqual..
+[  0.032 s,  522 / 3758] Test: Execute_memory Pass 1
+[  0.033 s,  522 / 3758] Action 0:0:Log
+[  0.033 s,  522 / 3758] Action 2:0:Condition
+[  0.033 s,  522 / 3758] Action 2:1:Else
+[  0.033 s,  522 / 3758] Action 68:29:Execute
+[  0.033 s,  522 / 3758] Action 68:30:SetValue
+[  0.033 s,  522 / 3758] Action 68:31:SetValue
+[  0.033 s,  522 / 3758] Skipping action 68:32:Execute: entry point not matching for action group OnlyTrial..
+[  0.033 s,  522 / 3758] Action 68:32:Execute
+[  0.033 s,  522 / 3758] Action 68:33:Execute: executing action group OnlyMain..
+[  0.033 s,  522 / 3758] Action 36:0:SetValue
+[  0.033 s,  522 / 3758] Action 68:33:Execute
+[  0.033 s,  522 / 3758] Action 68:34:Execute: executing action group AssertEqual..
+[  0.033 s,  522 / 3758] Test: OnlyTrial_skipped Pass 0
+[  0.035 s,  522 / 3758] Action 0:0:Log
+[  0.035 s,  522 / 3758] Action 2:0:Condition
+[  0.035 s,  522 / 3758] Action 2:1:Else
+[  0.035 s,  522 / 3758] Action 68:34:Execute
+[  0.035 s,  522 / 3758] Action 68:35:Execute: executing action group AssertEqual..
+[  0.035 s,  522 / 3758] Test: OnlyMain_ran Pass 1
+[  0.036 s,  522 / 3758] Action 0:0:Log
+[  0.036 s,  522 / 3758] Action 2:0:Condition
+[  0.036 s,  522 / 3758] Action 2:1:Else
+[  0.036 s,  522 / 3758] Action 68:35:Execute
+[  0.036 s,  522 / 3758] Action 68:36:SetValue
+[  0.036 s,  522 / 3758] Action 68:37:SetValue
+[  0.036 s,  522 / 3758] Action 68:38:Execute: executing action group ReplaceDemo..
+[  0.036 s,  522 / 3758] Action 37:-1:Execute: executing action group ReplacedInto..
+[  0.036 s,  522 / 3758] Action 37:-1:Execute
+[  0.036 s,  522 / 3758] Action 37:0:SetValue
+[  0.036 s,  522 / 3758] Action 68:38:Execute
+[  0.036 s,  522 / 3758] Action 68:39:Execute: executing action group AssertEqual..
+[  0.036 s,  522 / 3758] Test: Replace_into Pass 1
+[  0.037 s,  522 / 3758] Action 0:0:Log
+[  0.037 s,  522 / 3758] Action 2:0:Condition
+[  0.037 s,  522 / 3758] Action 2:1:Else
+[  0.037 s,  522 / 3758] Action 68:39:Execute
+[  0.037 s,  522 / 3758] Action 68:40:Execute: executing action group AssertEqual..
+[  0.037 s,  522 / 3758] Test: Replace_rest_skipped Pass 0
+[  0.038 s,  522 / 3758] Action 0:0:Log
+[  0.039 s,  522 / 3758] Action 2:0:Condition
+[  0.039 s,  522 / 3758] Action 2:1:Else
+[  0.039 s,  522 / 3758] Action 68:40:Execute
+[  0.039 s,  522 / 3758] Skipping action 68:41:Execute: no target group named NoSuchGroup..
+[  0.039 s,  522 / 3758] Action 68:41:Execute
+[  0.039 s,  522 / 3758] Action 68:42:SetValue
+[  0.566 s,  522 / 3780] Action 68:43:Wait
+[  0.566 s,  522 / 3780] Action 68:44:SetValue
+[  0.566 s,  522 / 3780] Action 68:45:Execute: executing action group AssertEqual..
+[  0.566 s,  522 / 3780] Test: Wait_after Pass 1
+[  0.568 s,  522 / 3780] Action 0:0:Log
+[  0.568 s,  522 / 3780] Action 2:0:Condition
+[  0.568 s,  522 / 3780] Action 2:1:Else
+[  0.568 s,  522 / 3780] Action 68:45:Execute
+[  0.568 s,  522 / 3780] Action 68:46:SetValue
+[  0.568 s,  522 / 3780] Action 39:0:AddValue
+[  0.581 s,  522 / 3780] Action 39:0:AddValue
+[  0.598 s,  522 / 3780] Action 39:0:AddValue
+[  0.613 s,  522 / 3782] Action 39:0:AddValue
+[  0.629 s,  522 / 3782] Action 68:47:Loop
+[  0.629 s,  522 / 3782] Action 68:48:Execute: executing action group AssertEqual..
+[  0.629 s,  522 / 3782] Test: Loop_Sum Pass 6.0
+[  0.630 s,  522 / 3782] Action 0:0:Log
+[  0.630 s,  522 / 3782] Action 2:0:Condition
+[  0.630 s,  522 / 3782] Action 2:1:Else
+[  0.630 s,  522 / 3782] Action 68:48:Execute
+[  0.630 s,  522 / 3782] Action 68:49:SetValue
+[  0.630 s,  522 / 3782] Action 40:0:AddValue
+[  0.645 s,  522 / 3782] Action 40:0:AddValue
+[  0.662 s,  522 / 3782] Action 40:0:AddValue
+[  0.677 s,  522 / 3782] Action 68:50:Loop
+[  0.677 s,  522 / 3782] Action 68:51:Execute: executing action group AssertEqual..
+[  0.677 s,  522 / 3782] Test: Loop_Step Pass 6.0
+[  0.678 s,  522 / 3782] Action 0:0:Log
+[  0.678 s,  522 / 3782] Action 2:0:Condition
+[  0.678 s,  522 / 3782] Action 2:1:Else
+[  0.678 s,  522 / 3782] Action 68:51:Execute
+[  0.678 s,  522 / 3782] Action 68:52:SetValue
+[  0.678 s,  522 / 3782] Action 68:53:SetValue
+[  0.678 s,  522 / 3782] Action 68:54:SetValue
+[  0.678 s,  522 / 3782] Action 43:0:AddValue
+[  0.678 s,  522 / 3782] Action 41:0:SetValue
+[  0.678 s,  522 / 3782] Action 43:1:Condition
+[  0.678 s,  522 / 3782] Action 43:2:Condition
+[  0.678 s,  522 / 3782] Action 43:0:AddValue
+[  0.678 s,  522 / 3782] Action 43:1:Condition
+[  0.678 s,  522 / 3782] Action 42:0:SetValue
+[  0.678 s,  522 / 3782] Action 43:2:Condition
+[  0.678 s,  522 / 3782] Action 68:55:Loop
+[  0.678 s,  522 / 3782] Action 68:56:Execute: executing action group AssertEqual..
+[  0.678 s,  522 / 3782] Test: Loop_DroneCount Pass 2.0
+[  0.680 s,  522 / 3782] Action 0:0:Log
+[  0.680 s,  522 / 3782] Action 2:0:Condition
+[  0.680 s,  522 / 3782] Action 2:1:Else
+[  0.680 s,  522 / 3782] Action 68:56:Execute
+[  0.680 s,  522 / 3782] Action 68:57:Execute: executing action group AssertEqual..
+[  0.680 s,  522 / 3782] Test: Loop_SawInterceptor Pass 1
+[  0.681 s,  522 / 3782] Action 0:0:Log
+[  0.681 s,  522 / 3782] Action 2:0:Condition
+[  0.681 s,  522 / 3782] Action 2:1:Else
+[  0.681 s,  522 / 3782] Action 68:57:Execute
+[  0.681 s,  522 / 3782] Action 68:58:Execute: executing action group AssertEqual..
+[  0.681 s,  522 / 3782] Test: Loop_SawBomber Pass 1
+[  0.682 s,  522 / 3782] Action 0:0:Log
+[  0.682 s,  522 / 3782] Action 2:0:Condition
+[  0.682 s,  522 / 3782] Action 2:1:Else
+[  0.682 s,  522 / 3782] Action 68:58:Execute
+[  0.682 s,  522 / 3782] Action 68:59:SetValue
+[  0.682 s,  522 / 3782] Action 68:60:SetValue
+[  0.682 s,  522 / 3782] Action 46:0:Condition
+[  0.682 s,  522 / 3782] Action 46:1:Condition
+[  0.682 s,  522 / 3782] Action 46:2:SetValue
+[  0.692 s,  522 / 3782] Action 46:0:Condition
+[  0.692 s,  522 / 3782] Action 46:1:Condition
+[  0.692 s,  522 / 3782] Action 46:2:SetValue
+[  0.708 s,  522 / 3782] Action 44:0:SetValue
+[  0.708 s,  522 / 3782] Action 44:1:Break
+[  0.708 s,  522 / 3782] Action 46:0:Condition
+[  0.708 s,  522 / 3782] Action 46:1:Condition
+[  0.708 s,  522 / 3782] Action 46:2:SetValue
+[  0.724 s,  522 / 3783] Action 68:61:Loop
+[  0.724 s,  522 / 3783] Action 68:62:Execute: executing action group AssertEqual..
+[  0.724 s,  522 / 3783] Test: Break_BreakAt Pass 2
+[  0.725 s,  522 / 3783] Action 0:0:Log
+[  0.725 s,  522 / 3783] Action 2:0:Condition
+[  0.725 s,  522 / 3783] Action 2:1:Else
+[  0.725 s,  522 / 3783] Action 68:62:Execute
+[  0.725 s,  522 / 3783] Action 68:63:Execute: executing action group AssertEqual..
+[  0.725 s,  522 / 3783] Test: Break_no_further_iter Pass 0
+[  0.726 s,  522 / 3783] Action 0:0:Log
+[  0.726 s,  522 / 3783] Action 2:0:Condition
+[  0.726 s,  522 / 3783] Action 2:1:Else
+[  0.726 s,  522 / 3783] Action 68:63:Execute
+[  0.726 s,  522 / 3783] Action 68:64:SetValue
+[  0.726 s,  522 / 3783] Action 47:0:SetValue
+[  0.726 s,  522 / 3783] Action 68:65:Condition
+[  0.726 s,  522 / 3783] Action 68:66:Else
+[  0.726 s,  522 / 3783] Action 68:67:Execute: executing action group AssertEqual..
+[  0.726 s,  522 / 3783] Test: Condition_Higher Pass 1
+[  0.728 s,  522 / 3783] Action 0:0:Log
+[  0.728 s,  522 / 3783] Action 2:0:Condition
+[  0.728 s,  522 / 3783] Action 2:1:Else
+[  0.728 s,  522 / 3783] Action 68:67:Execute
+[  0.728 s,  522 / 3783] Action 68:68:SetValue
+[  0.728 s,  522 / 3783] Action 68:69:Condition
+[  0.728 s,  522 / 3783] Action 50:0:SetValue
+[  0.728 s,  522 / 3783] Action 68:70:Else
+[  0.728 s,  522 / 3783] Action 68:71:Execute: executing action group AssertEqual..
+[  0.728 s,  522 / 3783] Test: Condition_EqualFalse Pass 1
+[  0.729 s,  522 / 3783] Action 0:0:Log
+[  0.729 s,  522 / 3783] Action 2:0:Condition
+[  0.729 s,  522 / 3783] Action 2:1:Else
+[  0.729 s,  522 / 3783] Action 68:71:Execute
+[  0.729 s,  522 / 3783] Action 68:72:SetValue
+[  0.729 s,  522 / 3783] Action 51:0:SetValue
+[  0.729 s,  522 / 3783] Action 68:73:Condition
+[  0.729 s,  522 / 3783] Action 68:74:Execute: executing action group AssertEqual..
+[  0.729 s,  522 / 3783] Test: Condition_NotEqual Pass 1
+[  0.730 s,  522 / 3783] Action 0:0:Log
+[  0.730 s,  522 / 3783] Action 2:0:Condition
+[  0.730 s,  522 / 3783] Action 2:1:Else
+[  0.730 s,  522 / 3783] Action 68:74:Execute
+[  0.730 s,  522 / 3783] Action 68:75:SetValue
+[  0.730 s,  522 / 3783] Action 52:0:SetValue
+[  0.730 s,  522 / 3783] Action 68:76:Condition
+[  0.730 s,  522 / 3783] Action 68:77:Execute: executing action group AssertEqual..
+[  0.730 s,  522 / 3783] Test: Condition_InText Pass 1
+[  0.732 s,  522 / 3783] Action 0:0:Log
+[  0.732 s,  522 / 3783] Action 2:0:Condition
+[  0.732 s,  522 / 3783] Action 2:1:Else
+[  0.732 s,  522 / 3783] Action 68:77:Execute
+[  0.732 s,  522 / 3783] Action 68:78:SetValue
+[  0.732 s,  522 / 3783] Action 68:79:Condition
+[  0.732 s,  522 / 3783] Action 54:0:SetValue
+[  0.732 s,  522 / 3783] Action 68:80:Else
+[  0.732 s,  522 / 3783] Action 68:81:Execute: executing action group AssertEqual..
+[  0.732 s,  522 / 3783] Test: Condition_InList Pass 1
+[  0.733 s,  522 / 3783] Action 0:0:Log
+[  0.733 s,  522 / 3783] Action 2:0:Condition
+[  0.733 s,  522 / 3783] Action 2:1:Else
+[  0.733 s,  522 / 3783] Action 68:81:Execute
+[  0.733 s,  522 / 3783] Action 68:82:SetValue
+[  0.733 s,  522 / 3783] Action 55:0:SetValue
+[  0.733 s,  522 / 3783] Action 68:83:Condition
+[  0.733 s,  522 / 3783] Action 68:84:Execute: executing action group AssertEqual..
+[  0.733 s,  522 / 3783] Test: Condition_InListTrue Pass 1
+[  0.734 s,  522 / 3783] Action 0:0:Log
+[  0.734 s,  522 / 3783] Action 2:0:Condition
+[  0.734 s,  522 / 3783] Action 2:1:Else
+[  0.734 s,  522 / 3783] Action 68:84:Execute
+[  0.734 s,  522 / 3783] Action 68:85:SetValue
+[  0.734 s,  522 / 3783] Action 56:0:SetValue
+[  0.734 s,  522 / 3783] Action 68:86:Condition
+[  0.734 s,  522 / 3783] Action 68:87:Execute: executing action group AssertEqual..
+[  0.734 s,  522 / 3783] Test: Condition_InCaseInsensitive Pass 1
+[  0.736 s,  522 / 3783] Action 0:0:Log
+[  0.736 s,  522 / 3783] Action 2:0:Condition
+[  0.736 s,  522 / 3783] Action 2:1:Else
+[  0.736 s,  522 / 3783] Action 68:87:Execute
+[  0.736 s,  522 / 3783] Action 68:88:SetValue
+[  0.736 s,  522 / 3783] Action 68:89:Condition
+[  0.736 s,  522 / 3783] Action 58:0:SetValue
+[  0.736 s,  522 / 3783] Action 68:90:Else
+[  0.736 s,  522 / 3783] Action 68:91:Execute: executing action group AssertEqual..
+[  0.736 s,  522 / 3783] Test: Condition_EqualCaseSensitive Pass 1
+[  0.737 s,  522 / 3783] Action 0:0:Log
+[  0.737 s,  522 / 3783] Action 2:0:Condition
+[  0.737 s,  522 / 3783] Action 2:1:Else
+[  0.737 s,  522 / 3783] Action 68:91:Execute
+[  0.737 s,  522 / 3783] Action 68:92:SetValue
+[  0.737 s,  522 / 3783] Action 59:0:SetValue
+[  0.737 s,  522 / 3783] Action 68:93:Condition
+[  0.737 s,  522 / 3783] Action 68:94:Execute: executing action group AssertEqual..
+[  0.737 s,  522 / 3783] Test: Condition_NotIn Pass 1
+[  0.738 s,  522 / 3783] Action 0:0:Log
+[  0.738 s,  522 / 3783] Action 2:0:Condition
+[  0.738 s,  522 / 3783] Action 2:1:Else
+[  0.738 s,  522 / 3783] Action 68:94:Execute
+[  0.738 s,  522 / 3783] Action 68:95:SetValue
+[  0.738 s,  522 / 3783] Action 60:0:SetValue
+[  0.738 s,  522 / 3783] Action 68:96:Condition
+[  0.738 s,  522 / 3783] Action 68:97:Execute: executing action group AssertEqual..
+[  0.738 s,  522 / 3783] Test: Condition_Lower Pass 1
+[  0.739 s,  522 / 3783] Action 0:0:Log
+[  0.739 s,  522 / 3783] Action 2:0:Condition
+[  0.739 s,  522 / 3783] Action 2:1:Else
+[  0.740 s,  522 / 3783] Action 68:97:Execute
+[  0.740 s,  522 / 3783] Action 68:98:SetValue
+[  0.740 s,  522 / 3783] Action 61:0:SetValue
+[  0.740 s,  522 / 3783] Action 68:99:Condition
+[  0.740 s,  522 / 3783] Action 68:100:Execute: executing action group AssertEqual..
+[  0.740 s,  522 / 3783] Test: Condition_LowerEqual Pass 1
+[  0.741 s,  522 / 3783] Action 0:0:Log
+[  0.741 s,  522 / 3783] Action 2:0:Condition
+[  0.741 s,  522 / 3783] Action 2:1:Else
+[  0.741 s,  522 / 3783] Action 68:100:Execute
+[  0.741 s,  522 / 3783] Action 68:101:SetValue
+[  0.741 s,  522 / 3783] Action 64:0:Condition
+[  0.741 s,  522 / 3783] Action 63:0:SetValue
+[  0.741 s,  522 / 3783] Action 64:1:Else
+[  0.741 s,  522 / 3783] Action 68:102:Condition
+[  0.741 s,  522 / 3783] Action 68:103:Execute: executing action group AssertEqual..
+[  0.741 s,  522 / 3783] Test: Condition_NestedElse Pass 1
+[  0.742 s,  522 / 3783] Action 0:0:Log
+[  0.742 s,  522 / 3783] Action 2:0:Condition
+[  0.742 s,  522 / 3783] Action 2:1:Else
+[  0.742 s,  522 / 3783] Action 68:103:Execute
+[  0.742 s,  522 / 3783] Action 68:104:SetValue
+[  0.742 s,  522 / 3783] Action 65:0:SetValue
+[  0.742 s,  522 / 3783] Action 68:105:Condition
+[  0.742 s,  522 / 3783] Action 68:106:Execute: executing action group AssertEqual..
+[  0.742 s,  522 / 3783] Test: Condition_Or Pass 1
+[  0.743 s,  522 / 3783] Action 0:0:Log
+[  0.743 s,  522 / 3783] Action 2:0:Condition
+[  0.743 s,  522 / 3783] Action 2:1:Else
+[  0.743 s,  522 / 3783] Action 68:106:Execute
+[  0.743 s,  522 / 3783] Action 68:107:SetValue
+[  0.743 s,  522 / 3783] Action 66:0:SetValue
+[  0.743 s,  522 / 3783] Action 68:108:Condition
+[  0.743 s,  522 / 3783] Action 68:109:Execute: executing action group AssertEqual..
+[  0.743 s,  522 / 3783] Test: Condition_And Pass 1
+[  0.745 s,  522 / 3783] Action 0:0:Log
+[  0.745 s,  522 / 3783] Action 2:0:Condition
+[  0.745 s,  522 / 3783] Action 2:1:Else
+[  0.745 s,  522 / 3783] Action 68:109:Execute
+[  0.745 s,  522 / 3783] Action 68:110:SetValue
+[  0.745 s,  522 / 3783] Action 68:111:SetValue
+[  0.745 s,  522 / 3783] Action 68:112:Execute: executing action group StopEarly..
+[  0.745 s,  522 / 3783] Action 67:0:SetValue
+[  0.745 s,  522 / 3783] Action -1:-1:Stop
+[  0.745 s,  522 / 3783] Action 68:112:Execute
+[  0.745 s,  522 / 3783] Action 68:113:Execute: executing action group AssertEqual..
+[  0.745 s,  522 / 3783] Test: StopEarly_before Pass 1
+[  0.746 s,  522 / 3783] Action 0:0:Log
+[  0.746 s,  522 / 3783] Action 2:0:Condition
+[  0.746 s,  522 / 3783] Action 2:1:Else
+[  0.746 s,  522 / 3783] Action 68:113:Execute
+[  0.746 s,  522 / 3783] Action 68:114:Execute: executing action group AssertEqual..
+[  0.746 s,  522 / 3783] Test: StopEarly_after_skipped Pass 0
+[  0.747 s,  522 / 3783] Action 0:0:Log
+[  0.747 s,  522 / 3783] Action 2:0:Condition
+[  0.747 s,  522 / 3783] Action 2:1:Else
+[  0.747 s,  522 / 3783] Action 68:114:Execute
+[  0.747 s,  522 / 3783] Action 68:115:Execute: executing action group AssertDone..
+[  0.747 s,  522 / 3783] Test: COMPLETE Pass 0
+[  0.748 s,  522 / 3783] Action 25:0:Log
+[  0.748 s,  522 / 3783] Action 27:0:Condition
+[  0.748 s,  522 / 3783] Action 27:1:Else
+[  0.748 s,  522 / 3783] Action 68:115:Execute

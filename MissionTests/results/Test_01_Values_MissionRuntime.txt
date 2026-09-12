@@ -1,379 +1,483 @@
-[  0.000 s,  476 / 3666] Server Mission Runtime Log
-[  0.002 s,  477 / 3665] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_01_Values.xml'
-[  0.003 s,  477 / 3665] Invalid action found: NotARealAction (), ignoring..
-[  0.003 s,  477 / 3665] Mission runtime successfully loaded
-[  0.013 s,  478 / 3659] Action 28:0:Include
-[  0.013 s,  478 / 3659] Action 28:1:SetValue
-[  0.013 s,  478 / 3659] Test: BEGIN Test_01_Values ok
-[  0.015 s,  478 / 3659] Action 28:2:Log
-[  0.016 s,  478 / 3659] Action 28:3:CreateActor
-[  0.016 s,  478 / 3659] Action 28:4:SetPosition
-[  0.016 s,  478 / 3659] Action 28:5:SetValue
-[  0.016 s,  478 / 3659] Action 28:6:Execute: executing action group AssertEqual..
-[  0.016 s,  478 / 3659] Test: EntryPoint Pass Main
-[  0.017 s,  478 / 3659] Action 0:0:Log
-[  0.017 s,  478 / 3659] Action 2:0:Condition
-[  0.017 s,  478 / 3659] Action 2:1:Else
-[  0.017 s,  478 / 3659] Action 28:6:Execute
-[  0.017 s,  478 / 3659] Action 28:7:Execute: executing action group AssertEqual..
-[  0.017 s,  478 / 3659] Test: PlayerActor_Class Pass Interceptor
-[  0.019 s,  478 / 3659] Action 0:0:Log
-[  0.019 s,  478 / 3659] Action 2:0:Condition
-[  0.019 s,  478 / 3659] Action 2:1:Else
-[  0.019 s,  478 / 3659] Action 28:7:Execute
-[  0.019 s,  478 / 3659] Action 28:8:Execute: executing action group AssertEqual..
-[  0.019 s,  478 / 3659] Test: PlayerActor_PowerState Pass 1
-[  0.020 s,  478 / 3659] Action 0:0:Log
-[  0.020 s,  478 / 3659] Action 2:0:Condition
-[  0.020 s,  478 / 3659] Action 2:1:Else
-[  0.020 s,  478 / 3659] Action 28:8:Execute
-[  0.020 s,  478 / 3659] Action 28:9:SetValue
-[  0.020 s,  478 / 3659] Action 28:10:Execute: executing action group AssertEqual..
-[  0.020 s,  478 / 3659] Test: SetValue_Checkpoint Pass BasicCourse
-[  0.021 s,  478 / 3659] Action 0:0:Log
-[  0.021 s,  478 / 3659] Action 2:0:Condition
-[  0.021 s,  478 / 3659] Action 2:1:Else
-[  0.021 s,  478 / 3659] Action 28:10:Execute
-[  0.021 s,  478 / 3659] Action 28:11:SetValue
-[  0.021 s,  478 / 3659] Action 28:12:Execute: executing action group AssertEqual..
-[  0.021 s,  478 / 3659] Test: SetValue_Wave Pass 3
-[  0.023 s,  478 / 3659] Action 0:0:Log
-[  0.023 s,  478 / 3659] Action 2:0:Condition
-[  0.023 s,  478 / 3659] Action 2:1:Else
-[  0.023 s,  478 / 3659] Action 28:12:Execute
-[  0.023 s,  478 / 3659] Action 28:13:Execute: executing action group AssertEqual..
-[  0.023 s,  478 / 3659] Test: Unwritten Pass 
-[  0.024 s,  478 / 3659] Action 0:0:Log
-[  0.024 s,  478 / 3659] Action 2:0:Condition
-[  0.024 s,  478 / 3659] Action 2:1:Else
-[  0.024 s,  478 / 3659] Action 28:13:Execute
-[  0.024 s,  478 / 3659] Action 28:14:AddValue
-[  0.024 s,  478 / 3659] Action 28:15:Execute: executing action group AssertEqual..
-[  0.024 s,  478 / 3659] Test: AddValue_num Pass 5.0
-[  0.025 s,  478 / 3659] Action 0:0:Log
-[  0.025 s,  478 / 3659] Action 2:0:Condition
-[  0.025 s,  478 / 3659] Action 2:1:Else
-[  0.025 s,  478 / 3659] Action 28:15:Execute
-[  0.025 s,  478 / 3659] Action 28:16:AddValue
-[  0.025 s,  478 / 3659] Action 28:17:Execute: executing action group AssertEqual..
-[  0.025 s,  478 / 3659] Test: AddValue_decimal Pass 2.0
-[  0.026 s,  478 / 3659] Action 0:0:Log
-[  0.026 s,  478 / 3659] Action 2:0:Condition
-[  0.026 s,  478 / 3659] Action 2:1:Else
-[  0.026 s,  478 / 3659] Action 28:17:Execute
-[  0.026 s,  478 / 3659] Action 28:18:AddValue
-[  0.026 s,  478 / 3659] Action 28:19:Execute: executing action group AssertEqual..
-[  0.026 s,  478 / 3659] Test: AddValue_concat Pass Wing1
-[  0.028 s,  478 / 3658] Action 0:0:Log
-[  0.028 s,  478 / 3658] Action 2:0:Condition
-[  0.028 s,  478 / 3658] Action 2:1:Else
-[  0.028 s,  478 / 3658] Action 28:19:Execute
-[  0.028 s,  478 / 3658] Action 28:20:SubValue
-[  0.028 s,  478 / 3658] Action 28:21:Execute: executing action group AssertEqual..
-[  0.028 s,  478 / 3658] Test: SubValue Pass 6.0
-[  0.029 s,  478 / 3658] Action 0:0:Log
-[  0.029 s,  478 / 3658] Action 2:0:Condition
-[  0.029 s,  478 / 3658] Action 2:1:Else
-[  0.029 s,  478 / 3658] Action 28:21:Execute
-[  0.029 s,  478 / 3658] Action 28:22:MulValue
-[  0.029 s,  478 / 3658] Action 28:23:Execute: executing action group AssertEqual..
-[  0.029 s,  478 / 3658] Test: MulValue Pass 12.0
-[  0.030 s,  478 / 3658] Action 0:0:Log
-[  0.030 s,  478 / 3658] Action 2:0:Condition
-[  0.030 s,  478 / 3658] Action 2:1:Else
-[  0.030 s,  478 / 3658] Action 28:23:Execute
-[  0.030 s,  478 / 3658] Action 28:24:DivValue
-[  0.031 s,  478 / 3658] Action 28:25:Execute: executing action group AssertEqual..
-[  0.031 s,  478 / 3658] Test: DivValue Pass 2.5
-[  0.032 s,  478 / 3658] Action 0:0:Log
-[  0.032 s,  478 / 3658] Action 2:0:Condition
-[  0.032 s,  478 / 3658] Action 2:1:Else
-[  0.032 s,  478 / 3658] Action 28:25:Execute
-[  0.032 s,  478 / 3658] Action 28:26:MinValue
-[  0.032 s,  478 / 3658] Action 28:27:Execute: executing action group AssertEqual..
-[  0.032 s,  478 / 3658] Test: MinValue Pass 4.0
-[  0.033 s,  478 / 3658] Action 0:0:Log
-[  0.033 s,  478 / 3658] Action 2:0:Condition
-[  0.033 s,  478 / 3658] Action 2:1:Else
-[  0.033 s,  478 / 3658] Action 28:27:Execute
-[  0.033 s,  478 / 3658] Action 28:28:MaxValue
-[  0.033 s,  478 / 3658] Action 28:29:Execute: executing action group AssertEqual..
-[  0.033 s,  478 / 3658] Test: MaxValue Pass 9.0
-[  0.034 s,  478 / 3658] Action 0:0:Log
-[  0.034 s,  478 / 3658] Action 2:0:Condition
-[  0.034 s,  478 / 3658] Action 2:1:Else
-[  0.034 s,  478 / 3658] Action 28:29:Execute
-[  0.034 s,  478 / 3658] Action 28:30:NegValue
-[  0.034 s,  478 / 3658] Action 28:31:Execute: executing action group AssertEqual..
-[  0.034 s,  478 / 3658] Test: NegValue Pass -5.0
-[  0.036 s,  478 / 3658] Action 0:0:Log
-[  0.036 s,  478 / 3658] Action 2:0:Condition
-[  0.036 s,  478 / 3658] Action 2:1:Else
-[  0.036 s,  478 / 3658] Action 28:31:Execute
-[  0.036 s,  478 / 3658] Action 28:32:AbsValue
-[  0.036 s,  478 / 3658] Action 28:33:Execute: executing action group AssertEqual..
-[  0.036 s,  478 / 3658] Test: AbsValue Pass 3.0
-[  0.037 s,  478 / 3658] Action 0:0:Log
-[  0.037 s,  478 / 3658] Action 2:0:Condition
-[  0.037 s,  478 / 3658] Action 2:1:Else
-[  0.037 s,  478 / 3658] Action 28:33:Execute
-[  0.037 s,  478 / 3658] Action 28:34:ClampValue
-[  0.037 s,  478 / 3658] Action 28:35:Execute: executing action group AssertEqual..
-[  0.037 s,  478 / 3658] Test: ClampValue_high Pass 1.0
-[  0.038 s,  478 / 3658] Action 0:0:Log
-[  0.038 s,  478 / 3658] Action 2:0:Condition
-[  0.038 s,  478 / 3658] Action 2:1:Else
-[  0.038 s,  478 / 3658] Action 28:35:Execute
-[  0.038 s,  478 / 3658] Action 28:36:ClampValue
-[  0.038 s,  478 / 3658] Action 28:37:Execute: executing action group AssertEqual..
-[  0.038 s,  478 / 3658] Test: ClampValue_low Pass 0.0
-[  0.040 s,  478 / 3658] Action 0:0:Log
-[  0.040 s,  478 / 3658] Action 2:0:Condition
-[  0.040 s,  478 / 3658] Action 2:1:Else
-[  0.040 s,  478 / 3658] Action 28:37:Execute
-[  0.040 s,  478 / 3658] Action 28:38:PowValue
-[  0.040 s,  478 / 3658] Action 28:39:Execute: executing action group AssertEqual..
-[  0.040 s,  478 / 3658] Test: PowValue Pass 8.0
-[  0.041 s,  478 / 3658] Action 0:0:Log
-[  0.041 s,  478 / 3658] Action 2:0:Condition
-[  0.041 s,  478 / 3658] Action 2:1:Else
-[  0.041 s,  478 / 3658] Action 28:39:Execute
-[  0.041 s,  478 / 3658] Action 28:40:ModValue
-[  0.041 s,  478 / 3658] Action 28:41:Execute: executing action group AssertEqual..
-[  0.041 s,  478 / 3658] Test: ModValue Pass 1.0
-[  0.042 s,  478 / 3658] Action 0:0:Log
-[  0.042 s,  478 / 3658] Action 2:0:Condition
-[  0.042 s,  478 / 3658] Action 2:1:Else
-[  0.042 s,  478 / 3658] Action 28:41:Execute
-[  0.042 s,  478 / 3658] Action 28:42:TruncateValue
-[  0.042 s,  478 / 3658] Action 28:43:Execute: executing action group AssertEqual..
-[  0.042 s,  478 / 3658] Test: TruncateValue Pass 3.14
-[  0.044 s,  478 / 3658] Action 0:0:Log
-[  0.044 s,  478 / 3658] Action 2:0:Condition
-[  0.044 s,  478 / 3658] Action 2:1:Else
-[  0.044 s,  478 / 3658] Action 28:43:Execute
-[  0.044 s,  478 / 3658] Action 28:44:RandomValue
-[  0.044 s,  478 / 3658] Action 28:45:Execute: executing action group AssertEqual..
-[  0.044 s,  478 / 3658] Test: RandomValue_same Pass 7.0
-[  0.045 s,  478 / 3658] Action 0:0:Log
-[  0.045 s,  478 / 3658] Action 2:0:Condition
-[  0.045 s,  478 / 3658] Action 2:1:Else
-[  0.045 s,  478 / 3658] Action 28:45:Execute
-[  0.045 s,  478 / 3658] Action 28:46:AddRandomIntValue
-[  0.045 s,  478 / 3658] Action 28:47:Execute: executing action group AssertIn..
-[  0.045 s,  478 / 3658] Test: AddRandomIntValue_text Pass Server_T1_Event_PlayerLowDamage2
-[  0.046 s,  478 / 3658] Action 15:0:Log
-[  0.046 s,  478 / 3658] Action 17:0:Condition
-[  0.046 s,  478 / 3658] Action 17:1:Else
-[  0.046 s,  478 / 3658] Action 28:47:Execute
-[  0.046 s,  478 / 3658] Action 28:48:AddRandomIntValue
-[  0.046 s,  478 / 3658] Action 28:49:Execute: executing action group AssertEqual..
-[  0.046 s,  478 / 3658] Test: AddRandomIntValue_num Pass 10.0
-[  0.048 s,  478 / 3658] Action 0:0:Log
-[  0.048 s,  478 / 3658] Action 2:0:Condition
-[  0.048 s,  478 / 3658] Action 2:1:Else
-[  0.048 s,  478 / 3658] Action 28:49:Execute
-[  0.048 s,  478 / 3658] Action 28:50:SetValue
-[  0.048 s,  478 / 3658] Action 28:51:SetValue
-[  0.048 s,  478 / 3658] Action 28:52:AddValue
-[  0.048 s,  478 / 3658] Action 28:53:Execute: executing action group AssertVec3..
-[  0.048 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.048 s,  478 / 3658] Test: AddValue_vec Pass [1.0000000000000000, 1.0000000000000000, 0.0000000000000000, 0.0000000000000000]
-[  0.049 s,  478 / 3658] Action 21:0:Log
-[  0.049 s,  478 / 3658] Action 23:1:Condition
-[  0.049 s,  478 / 3658] Action 23:2:Else
-[  0.049 s,  478 / 3658] Action 28:53:Execute
-[  0.049 s,  478 / 3658] Action 28:54:SetValue
-[  0.049 s,  478 / 3658] Action 28:55:Execute: executing action group AssertVec3..
-[  0.049 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.049 s,  478 / 3658] Test: Position Pass [8.4000000000000004, -0.2000000000000000, 5.2000000000000002, 0.0000000000000000]
-[  0.050 s,  478 / 3658] Action 21:0:Log
-[  0.050 s,  478 / 3658] Action 23:1:Condition
-[  0.050 s,  478 / 3658] Action 23:2:Else
-[  0.050 s,  478 / 3658] Action 28:55:Execute
-[  0.050 s,  478 / 3658] Action 28:56:Execute: executing action group AssertEqual..
-[  0.050 s,  478 / 3658] Test: Position_Y Pass -0.2
-[  0.052 s,  478 / 3658] Action 0:0:Log
-[  0.052 s,  478 / 3658] Action 2:0:Condition
-[  0.052 s,  478 / 3658] Action 2:1:Else
-[  0.052 s,  478 / 3658] Action 28:56:Execute
-[  0.052 s,  478 / 3658] Action 28:57:SetValue
-[  0.052 s,  478 / 3658] Action 28:58:Execute: executing action group AssertVec3..
-[  0.052 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.052 s,  478 / 3658] Test: Position_Y_write Pass [8.4000000000000004, 2.0000000000000000, 5.2000000000000002, 0.0000000000000000]
-[  0.053 s,  478 / 3658] Action 21:0:Log
-[  0.053 s,  478 / 3658] Action 23:1:Condition
-[  0.053 s,  478 / 3658] Action 23:2:Else
-[  0.053 s,  478 / 3658] Action 28:58:Execute
-[  0.053 s,  478 / 3658] Action 28:59:NormalizeValue
-[  0.053 s,  478 / 3658] Action 28:60:Execute: executing action group AssertVec3..
-[  0.053 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.053 s,  478 / 3658] Test: NormalizeValue Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
-[  0.054 s,  478 / 3658] Action 21:0:Log
-[  0.054 s,  478 / 3658] Action 23:1:Condition
-[  0.054 s,  478 / 3658] Action 23:2:Else
-[  0.054 s,  478 / 3658] Action 28:60:Execute
-[  0.054 s,  478 / 3658] Action 28:61:DotValue
-[  0.054 s,  478 / 3658] Action 28:62:Execute: executing action group AssertEqual..
-[  0.054 s,  478 / 3658] Test: DotValue_parallel Pass 1.0
-[  0.056 s,  478 / 3658] Action 0:0:Log
-[  0.056 s,  478 / 3658] Action 2:0:Condition
-[  0.056 s,  478 / 3658] Action 2:1:Else
-[  0.056 s,  478 / 3658] Action 28:62:Execute
-[  0.056 s,  478 / 3658] Action 28:63:DotValue
-[  0.056 s,  478 / 3658] Action 28:64:Execute: executing action group AssertEqual..
-[  0.056 s,  478 / 3658] Test: DotValue_ortho Pass 0.0
-[  0.057 s,  478 / 3658] Action 0:0:Log
-[  0.057 s,  478 / 3658] Action 2:0:Condition
-[  0.057 s,  478 / 3658] Action 2:1:Else
-[  0.057 s,  478 / 3658] Action 28:64:Execute
-[  0.057 s,  478 / 3658] Action 28:65:CrossValue
-[  0.057 s,  478 / 3658] Action 28:66:Execute: executing action group AssertVec3..
-[  0.057 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.057 s,  478 / 3658] Test: CrossValue Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
-[  0.058 s,  478 / 3658] Action 21:0:Log
-[  0.058 s,  478 / 3658] Action 23:1:Condition
-[  0.058 s,  478 / 3658] Action 23:2:Else
-[  0.058 s,  478 / 3658] Action 28:66:Execute
-[  0.058 s,  478 / 3658] Action 28:67:AngleValue
-[  0.058 s,  478 / 3658] Action 28:68:Execute: executing action group AssertEqual..
-[  0.058 s,  478 / 3658] Test: AngleValue_same Pass 0.0
-[  0.060 s,  478 / 3658] Action 0:0:Log
-[  0.060 s,  478 / 3658] Action 2:0:Condition
-[  0.060 s,  478 / 3658] Action 2:1:Else
-[  0.060 s,  478 / 3658] Action 28:68:Execute
-[  0.060 s,  478 / 3658] Action 28:69:AngleValue
-[  0.060 s,  478 / 3658] Action 28:70:Execute: executing action group AssertNear..
-[  0.060 s,  478 / 3658] Action 20:0:SubValue
-[  0.060 s,  478 / 3658] Action 20:1:AbsValue
-[  0.060 s,  478 / 3658] Test: AngleValue_90 Pass 90.00000105055241
-[  0.061 s,  478 / 3658] Action 18:0:Log
-[  0.061 s,  478 / 3658] Action 20:2:Condition
-[  0.061 s,  478 / 3658] Action 20:3:Else
-[  0.061 s,  478 / 3658] Action 28:70:Execute
-[  0.061 s,  478 / 3658] Action 28:71:CreateActor
-[  0.061 s,  478 / 3658] Action 28:72:SetPosition
-[  0.061 s,  478 / 3658] Action 28:73:SetValue
-[  0.061 s,  478 / 3658] Action 28:74:DistanceValue
-[  0.061 s,  478 / 3658] Action 28:75:Execute: executing action group AssertEqual..
-[  0.061 s,  478 / 3658] Test: DistanceValue Pass 10.0
-[  0.062 s,  478 / 3658] Action 0:0:Log
-[  0.062 s,  478 / 3658] Action 2:0:Condition
-[  0.062 s,  478 / 3658] Action 2:1:Else
-[  0.062 s,  478 / 3658] Action 28:75:Execute
-[  0.062 s,  478 / 3658] Action 28:76:SetValue
-[  0.062 s,  478 / 3658] Action 28:77:SetValue
-[  0.062 s,  478 / 3658] Action 28:78:TransformValue
-[  0.062 s,  478 / 3658] Action 28:79:Execute: executing action group AssertVec3..
-[  0.062 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.062 s,  478 / 3658] Test: TransformValue_behind Pass [0.0000000000000000, 0.0000000000000000, -0.2000000000000000, 0.0000000000000000]
-[  0.064 s,  478 / 3658] Action 21:0:Log
-[  0.064 s,  478 / 3658] Action 23:1:Condition
-[  0.064 s,  478 / 3658] Action 23:2:Else
-[  0.064 s,  478 / 3658] Action 28:79:Execute
-[  0.064 s,  478 / 3658] Action 28:80:TransformValue
-[  0.064 s,  478 / 3658] Action 28:81:Execute: executing action group AssertVec3..
-[  0.064 s,  478 / 3658] Action 23:0:DistanceValue
-[  0.064 s,  478 / 3658] Test: TransformValue_dir Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
-[  0.065 s,  478 / 3658] Action 21:0:Log
-[  0.065 s,  478 / 3658] Action 23:1:Condition
-[  0.065 s,  478 / 3658] Action 23:2:Else
-[  0.065 s,  478 / 3658] Action 28:81:Execute
-[  0.065 s,  478 / 3658] Action 28:82:CreateActor
-[  0.065 s,  478 / 3658] Action 28:83:CreateActor
-[  0.065 s,  478 / 3658] Action 28:84:Execute: executing action group AssertNotEqual..
-[  0.065 s,  478 / 3658] Test: Actors_Hostiles Pass [12, 13]
-[  0.067 s,  478 / 3658] Action 3:0:Log
-[  0.067 s,  478 / 3658] Action 5:0:Condition
-[  0.067 s,  478 / 3658] Action 5:1:Else
-[  0.067 s,  478 / 3658] Action 28:84:Execute
-[  0.067 s,  478 / 3658] Action 28:85:Execute: executing action group AssertEqual..
-[  0.067 s,  478 / 3658] Test: Actor_Hostiles_firstClass Pass Interceptor
-[  0.068 s,  478 / 3658] Action 0:0:Log
-[  0.068 s,  478 / 3658] Action 2:0:Condition
-[  0.068 s,  478 / 3658] Action 2:1:Else
-[  0.068 s,  478 / 3658] Action 28:85:Execute
-[  0.068 s,  478 / 3658] Action 28:86:SetPosition
-[  0.068 s,  478 / 3658] Action 28:87:SetPosition
-[  0.068 s,  478 / 3658] Action 28:88:Overlap
-[  0.068 s,  478 / 3658] Action 28:89:Execute: executing action group AssertHigherEqual..
-[  0.068 s,  478 / 3658] Test: Overlap_near Pass 2
-[  0.069 s,  478 / 3658] Action 6:0:Log
-[  0.069 s,  478 / 3658] Action 8:0:Condition
-[  0.069 s,  478 / 3658] Action 8:1:Else
-[  0.069 s,  478 / 3658] Action 28:89:Execute
-[  0.069 s,  478 / 3658] Action 28:90:Overlap
-[  0.069 s,  478 / 3658] Action 28:91:Execute: executing action group AssertEqual..
-[  0.069 s,  478 / 3658] Test: Overlap_far Pass 0
-[  0.071 s,  478 / 3658] Action 0:0:Log
-[  0.071 s,  478 / 3658] Action 2:0:Condition
-[  0.071 s,  478 / 3658] Action 2:1:Else
-[  0.071 s,  478 / 3658] Action 28:91:Execute
-[  0.071 s,  478 / 3658] Action 28:92:SetValue
-[  0.071 s,  478 / 3658] Action 28:93:Execute: executing action group AssertEqual..
-[  0.071 s,  478 / 3658] Test: HitPointsRatio Pass 0.5
-[  0.072 s,  478 / 3658] Action 0:0:Log
-[  0.072 s,  478 / 3658] Action 2:0:Condition
-[  0.072 s,  478 / 3658] Action 2:1:Else
-[  0.072 s,  478 / 3658] Action 28:93:Execute
-[  0.072 s,  478 / 3658] Action 28:94:SetValue
-[  0.072 s,  478 / 3658] Action 28:95:Execute: executing action group AssertEqual..
-[  0.072 s,  478 / 3658] Test: TeamID Pass 0
-[  0.073 s,  478 / 3658] Action 0:0:Log
-[  0.073 s,  478 / 3658] Action 2:0:Condition
-[  0.073 s,  478 / 3658] Action 2:1:Else
-[  0.073 s,  478 / 3658] Action 28:95:Execute
-[  0.073 s,  478 / 3658] Action 28:96:SetValue
-[  0.073 s,  478 / 3658] Action 28:97:Execute: executing action group AssertEqual..
-[  0.073 s,  478 / 3658] Test: DisplayName Pass Cadet
-[  0.075 s,  478 / 3658] Action 0:0:Log
-[  0.075 s,  478 / 3658] Action 2:0:Condition
-[  0.075 s,  478 / 3658] Action 2:1:Else
-[  0.075 s,  478 / 3658] Action 28:97:Execute
-[  0.075 s,  478 / 3658] Action 28:98:SetValue
-[  0.075 s,  478 / 3658] Action 28:99:Execute: executing action group AssertEqual..
-[  0.075 s,  478 / 3658] Test: Ghost Pass 1
-[  0.076 s,  478 / 3658] Action 0:0:Log
-[  0.076 s,  478 / 3658] Action 2:0:Condition
-[  0.076 s,  478 / 3658] Action 2:1:Else
-[  0.076 s,  478 / 3658] Action 28:99:Execute
-[  0.076 s,  478 / 3658] Action 28:100:SetValue
-[  0.076 s,  478 / 3658] Action 28:101:Execute: executing action group AssertEqual..
-[  0.076 s,  478 / 3658] Test: DamageScale Pass 0.0
-[  0.077 s,  478 / 3658] Action 0:0:Log
-[  0.077 s,  478 / 3658] Action 2:0:Condition
-[  0.077 s,  478 / 3658] Action 2:1:Else
-[  0.077 s,  478 / 3658] Action 28:101:Execute
-[  0.077 s,  478 / 3658] Action 28:102:SetValue
-[  0.077 s,  478 / 3658] Action 28:103:Execute: executing action group AssertEqual..
-[  0.077 s,  478 / 3658] Test: Undetectable Pass 1
-[  0.078 s,  478 / 3658] Action 0:0:Log
-[  0.078 s,  478 / 3658] Action 2:0:Condition
-[  0.078 s,  478 / 3658] Action 2:1:Else
-[  0.078 s,  478 / 3658] Action 28:103:Execute
-[  0.078 s,  478 / 3658] Action 28:104:SetValue
-[  0.078 s,  478 / 3658] Action 28:105:Execute: executing action group AssertEqual..
-[  0.079 s,  478 / 3658] Test: FrameTimeScale Pass 1.0
-[  0.080 s,  478 / 3658] Action 0:0:Log
-[  0.080 s,  478 / 3658] Action 2:0:Condition
-[  0.080 s,  478 / 3658] Action 2:1:Else
-[  0.080 s,  478 / 3658] Action 28:105:Execute
-[  0.080 s,  478 / 3658] Action 28:106:SetValue
-[  0.080 s,  478 / 3658] Action 28:107:Execute: executing action group AssertEqual..
-[  0.080 s,  478 / 3658] Test: AllowSwitchTeam Pass 0
-[  0.081 s,  478 / 3658] Action 0:0:Log
-[  0.081 s,  478 / 3658] Action 2:0:Condition
-[  0.081 s,  478 / 3658] Action 2:1:Else
-[  0.081 s,  478 / 3658] Action 28:107:Execute
-[  0.081 s,  478 / 3658] Action 28:108:Execute: executing action group AssertEqual..
-[  0.081 s,  478 / 3658] Test: PlayerActor_Speed Pass 0.0
-[  0.082 s,  478 / 3658] Action 0:0:Log
-[  0.082 s,  478 / 3658] Action 2:0:Condition
-[  0.082 s,  478 / 3658] Action 2:1:Else
-[  0.082 s,  478 / 3658] Action 28:108:Execute
-[  0.082 s,  478 / 3658] Action 28:109:Execute: executing action group AssertDone..
-[  0.082 s,  478 / 3658] Test: COMPLETE Pass 0
-[  0.084 s,  478 / 3658] Action 24:0:Log
-[  0.084 s,  478 / 3658] Action 26:0:Condition
-[  0.084 s,  478 / 3658] Action 26:1:Else
-[  0.084 s,  478 / 3658] Action 28:109:Execute
+[  0.000 s,  519 / 3743] Server Mission Runtime Log
+[  0.002 s,  520 / 3743] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_01_Values.xml'
+[  0.003 s,  520 / 3743] Invalid action found: NotARealAction (), ignoring..
+[  0.003 s,  520 / 3743] Mission runtime successfully loaded
+[  0.014 s,  521 / 3742] Action 29:0:Include
+[  0.014 s,  521 / 3742] Action 29:1:SetValue
+[  0.014 s,  521 / 3742] Test: BEGIN Test_01_Values ok
+[  0.017 s,  521 / 3742] Action 29:2:Log
+[  0.017 s,  521 / 3742] Action 29:3:CreateActor
+[  0.017 s,  521 / 3742] Action 29:4:SetPosition
+[  0.017 s,  521 / 3742] Action 29:5:SetValue
+[  0.017 s,  521 / 3742] Action 29:6:Execute: executing action group AssertEqual..
+[  0.017 s,  521 / 3742] Test: EntryPoint Pass Main
+[  0.018 s,  521 / 3742] Action 0:0:Log
+[  0.018 s,  521 / 3742] Action 2:0:Condition
+[  0.018 s,  521 / 3742] Action 2:1:Else
+[  0.018 s,  521 / 3742] Action 29:6:Execute
+[  0.019 s,  521 / 3742] Action 29:7:Execute: executing action group AssertEqual..
+[  0.019 s,  521 / 3742] Test: PlayerActor_Class Pass Interceptor
+[  0.020 s,  521 / 3742] Action 0:0:Log
+[  0.020 s,  521 / 3742] Action 2:0:Condition
+[  0.020 s,  521 / 3742] Action 2:1:Else
+[  0.020 s,  521 / 3742] Action 29:7:Execute
+[  0.020 s,  521 / 3742] Action 29:8:Execute: executing action group AssertEqual..
+[  0.020 s,  521 / 3742] Test: PlayerActor_PowerState Pass 1
+[  0.021 s,  521 / 3742] Action 0:0:Log
+[  0.021 s,  521 / 3742] Action 2:0:Condition
+[  0.021 s,  521 / 3742] Action 2:1:Else
+[  0.021 s,  521 / 3742] Action 29:8:Execute
+[  0.021 s,  521 / 3742] Action 29:9:SetValue
+[  0.021 s,  521 / 3742] Action 29:10:Execute: executing action group AssertEqual..
+[  0.021 s,  521 / 3742] Test: SetValue_Checkpoint Pass BasicCourse
+[  0.022 s,  521 / 3742] Action 0:0:Log
+[  0.022 s,  521 / 3742] Action 2:0:Condition
+[  0.022 s,  521 / 3742] Action 2:1:Else
+[  0.022 s,  521 / 3742] Action 29:10:Execute
+[  0.022 s,  521 / 3742] Action 29:11:SetValue
+[  0.022 s,  521 / 3742] Action 29:12:Execute: executing action group AssertEqual..
+[  0.022 s,  521 / 3742] Test: SetValue_Wave Pass 3
+[  0.023 s,  521 / 3742] Action 0:0:Log
+[  0.023 s,  521 / 3742] Action 2:0:Condition
+[  0.024 s,  521 / 3742] Action 2:1:Else
+[  0.024 s,  521 / 3742] Action 29:12:Execute
+[  0.024 s,  521 / 3742] Action 29:13:Execute: executing action group AssertEqual..
+[  0.024 s,  521 / 3742] Test: Unwritten Pass 
+[  0.025 s,  521 / 3742] Action 0:0:Log
+[  0.025 s,  521 / 3742] Action 2:0:Condition
+[  0.025 s,  521 / 3742] Action 2:1:Else
+[  0.025 s,  521 / 3742] Action 29:13:Execute
+[  0.025 s,  521 / 3742] Action 29:14:AddValue
+[  0.025 s,  521 / 3742] Action 29:15:Execute: executing action group AssertEqual..
+[  0.025 s,  521 / 3742] Test: AddValue_num Pass 5.0
+[  0.026 s,  521 / 3742] Action 0:0:Log
+[  0.026 s,  521 / 3742] Action 2:0:Condition
+[  0.026 s,  521 / 3742] Action 2:1:Else
+[  0.026 s,  521 / 3742] Action 29:15:Execute
+[  0.026 s,  521 / 3742] Action 29:16:AddValue
+[  0.026 s,  521 / 3742] Action 29:17:Execute: executing action group AssertEqual..
+[  0.026 s,  521 / 3742] Test: AddValue_decimal Pass 2.0
+[  0.027 s,  521 / 3742] Action 0:0:Log
+[  0.027 s,  521 / 3742] Action 2:0:Condition
+[  0.027 s,  521 / 3742] Action 2:1:Else
+[  0.027 s,  521 / 3742] Action 29:17:Execute
+[  0.027 s,  521 / 3742] Action 29:18:AddValue
+[  0.027 s,  521 / 3742] Action 29:19:Execute: executing action group AssertEqual..
+[  0.027 s,  521 / 3742] Test: AddValue_concat Pass Wing1
+[  0.029 s,  521 / 3742] Action 0:0:Log
+[  0.029 s,  521 / 3742] Action 2:0:Condition
+[  0.029 s,  521 / 3742] Action 2:1:Else
+[  0.029 s,  521 / 3742] Action 29:19:Execute
+[  0.029 s,  521 / 3742] Action 29:20:SubValue
+[  0.029 s,  521 / 3742] Action 29:21:Execute: executing action group AssertEqual..
+[  0.029 s,  521 / 3742] Test: SubValue Pass 6.0
+[  0.030 s,  521 / 3742] Action 0:0:Log
+[  0.030 s,  521 / 3742] Action 2:0:Condition
+[  0.030 s,  521 / 3742] Action 2:1:Else
+[  0.030 s,  521 / 3742] Action 29:21:Execute
+[  0.030 s,  521 / 3742] Action 29:22:MulValue
+[  0.030 s,  521 / 3742] Action 29:23:Execute: executing action group AssertEqual..
+[  0.030 s,  521 / 3742] Test: MulValue Pass 12.0
+[  0.031 s,  521 / 3742] Action 0:0:Log
+[  0.031 s,  521 / 3742] Action 2:0:Condition
+[  0.031 s,  521 / 3742] Action 2:1:Else
+[  0.031 s,  521 / 3742] Action 29:23:Execute
+[  0.031 s,  521 / 3742] Action 29:24:DivValue
+[  0.031 s,  521 / 3742] Action 29:25:Execute: executing action group AssertEqual..
+[  0.031 s,  521 / 3742] Test: DivValue Pass 2.5
+[  0.032 s,  521 / 3742] Action 0:0:Log
+[  0.032 s,  521 / 3742] Action 2:0:Condition
+[  0.032 s,  521 / 3742] Action 2:1:Else
+[  0.032 s,  521 / 3742] Action 29:25:Execute
+[  0.032 s,  521 / 3742] Action 29:26:MinValue
+[  0.032 s,  521 / 3742] Action 29:27:Execute: executing action group AssertEqual..
+[  0.032 s,  521 / 3742] Test: MinValue Pass 4.0
+[  0.034 s,  521 / 3742] Action 0:0:Log
+[  0.034 s,  521 / 3742] Action 2:0:Condition
+[  0.034 s,  521 / 3742] Action 2:1:Else
+[  0.034 s,  521 / 3742] Action 29:27:Execute
+[  0.034 s,  521 / 3742] Action 29:28:MaxValue
+[  0.034 s,  521 / 3742] Action 29:29:Execute: executing action group AssertEqual..
+[  0.034 s,  521 / 3742] Test: MaxValue Pass 9.0
+[  0.035 s,  521 / 3742] Action 0:0:Log
+[  0.035 s,  521 / 3742] Action 2:0:Condition
+[  0.035 s,  521 / 3742] Action 2:1:Else
+[  0.035 s,  521 / 3742] Action 29:29:Execute
+[  0.035 s,  521 / 3742] Action 29:30:NegValue
+[  0.035 s,  521 / 3742] Action 29:31:Execute: executing action group AssertEqual..
+[  0.035 s,  521 / 3742] Test: NegValue Pass -5.0
+[  0.036 s,  521 / 3742] Action 0:0:Log
+[  0.036 s,  521 / 3742] Action 2:0:Condition
+[  0.036 s,  521 / 3742] Action 2:1:Else
+[  0.036 s,  521 / 3742] Action 29:31:Execute
+[  0.036 s,  521 / 3742] Action 29:32:AbsValue
+[  0.036 s,  521 / 3742] Action 29:33:Execute: executing action group AssertEqual..
+[  0.036 s,  521 / 3742] Test: AbsValue Pass 3.0
+[  0.037 s,  521 / 3742] Action 0:0:Log
+[  0.037 s,  521 / 3742] Action 2:0:Condition
+[  0.037 s,  521 / 3742] Action 2:1:Else
+[  0.037 s,  521 / 3742] Action 29:33:Execute
+[  0.037 s,  521 / 3742] Action 29:34:ClampValue
+[  0.037 s,  521 / 3742] Action 29:35:Execute: executing action group AssertEqual..
+[  0.037 s,  521 / 3742] Test: ClampValue_high Pass 1.0
+[  0.039 s,  521 / 3742] Action 0:0:Log
+[  0.039 s,  521 / 3742] Action 2:0:Condition
+[  0.039 s,  521 / 3742] Action 2:1:Else
+[  0.039 s,  521 / 3742] Action 29:35:Execute
+[  0.039 s,  521 / 3742] Action 29:36:ClampValue
+[  0.039 s,  521 / 3742] Action 29:37:Execute: executing action group AssertEqual..
+[  0.039 s,  521 / 3742] Test: ClampValue_low Pass 0.0
+[  0.040 s,  521 / 3742] Action 0:0:Log
+[  0.040 s,  521 / 3742] Action 2:0:Condition
+[  0.040 s,  521 / 3742] Action 2:1:Else
+[  0.040 s,  521 / 3742] Action 29:37:Execute
+[  0.040 s,  521 / 3742] Action 29:38:ClampValue
+[  0.040 s,  521 / 3742] Action 29:39:Execute: executing action group AssertEqual..
+[  0.040 s,  521 / 3742] Test: ClampValue_mid Pass 0.5
+[  0.041 s,  521 / 3742] Action 0:0:Log
+[  0.041 s,  521 / 3742] Action 2:0:Condition
+[  0.041 s,  521 / 3742] Action 2:1:Else
+[  0.041 s,  521 / 3742] Action 29:39:Execute
+[  0.041 s,  521 / 3742] Action 29:40:PowValue
+[  0.041 s,  521 / 3742] Action 29:41:Execute: executing action group AssertEqual..
+[  0.041 s,  521 / 3742] Test: PowValue Pass 8.0
+[  0.042 s,  521 / 3742] Action 0:0:Log
+[  0.042 s,  521 / 3742] Action 2:0:Condition
+[  0.042 s,  521 / 3742] Action 2:1:Else
+[  0.042 s,  521 / 3742] Action 29:41:Execute
+[  0.042 s,  521 / 3742] Action 29:42:ModValue
+[  0.042 s,  521 / 3742] Action 29:43:Execute: executing action group AssertEqual..
+[  0.042 s,  521 / 3742] Test: ModValue Pass 1.0
+[  0.044 s,  521 / 3742] Action 0:0:Log
+[  0.044 s,  521 / 3742] Action 2:0:Condition
+[  0.044 s,  521 / 3742] Action 2:1:Else
+[  0.044 s,  521 / 3742] Action 29:43:Execute
+[  0.044 s,  521 / 3742] Action 29:44:TruncateValue
+[  0.044 s,  521 / 3742] Action 29:45:Execute: executing action group AssertEqual..
+[  0.044 s,  521 / 3742] Test: TruncateValue Pass 3.14
+[  0.045 s,  521 / 3742] Action 0:0:Log
+[  0.045 s,  521 / 3742] Action 2:0:Condition
+[  0.045 s,  521 / 3742] Action 2:1:Else
+[  0.045 s,  521 / 3742] Action 29:45:Execute
+[  0.045 s,  521 / 3742] Action 29:46:TruncateValue
+[  0.045 s,  521 / 3742] Action 29:47:Execute: executing action group AssertEqual..
+[  0.045 s,  521 / 3742] Test: TruncateValue_default Pass 3
+[  0.046 s,  521 / 3742] Action 0:0:Log
+[  0.046 s,  521 / 3742] Action 2:0:Condition
+[  0.046 s,  521 / 3742] Action 2:1:Else
+[  0.046 s,  521 / 3742] Action 29:47:Execute
+[  0.046 s,  521 / 3742] Action 29:48:RandomValue
+[  0.046 s,  521 / 3742] Action 29:49:Execute: executing action group AssertEqual..
+[  0.046 s,  521 / 3742] Test: RandomValue_same Pass 7.0
+[  0.047 s,  521 / 3742] Action 0:0:Log
+[  0.048 s,  521 / 3742] Action 2:0:Condition
+[  0.048 s,  521 / 3742] Action 2:1:Else
+[  0.048 s,  521 / 3742] Action 29:49:Execute
+[  0.048 s,  521 / 3742] Action 29:50:AddRandomIntValue
+[  0.048 s,  521 / 3742] Action 29:51:Execute: executing action group AssertIn..
+[  0.048 s,  521 / 3742] Test: AddRandomIntValue_text Pass Server_T1_Event_PlayerLowDamage2
+[  0.049 s,  521 / 3742] Action 15:0:Log
+[  0.049 s,  521 / 3742] Action 17:0:Condition
+[  0.049 s,  521 / 3742] Action 17:1:Else
+[  0.049 s,  521 / 3742] Action 29:51:Execute
+[  0.049 s,  521 / 3742] Action 29:52:AddRandomIntValue
+[  0.049 s,  521 / 3742] Action 29:53:Execute: executing action group AssertEqual..
+[  0.049 s,  521 / 3742] Test: AddRandomIntValue_num Pass 10.0
+[  0.050 s,  521 / 3742] Action 0:0:Log
+[  0.050 s,  521 / 3742] Action 2:0:Condition
+[  0.050 s,  521 / 3742] Action 2:1:Else
+[  0.050 s,  521 / 3742] Action 29:53:Execute
+[  0.050 s,  521 / 3742] Action 29:54:SetValue
+[  0.050 s,  521 / 3742] Action 29:55:SetValue
+[  0.050 s,  521 / 3742] Action 29:56:AddValue
+[  0.050 s,  521 / 3742] Action 29:57:Execute: executing action group AssertVec3..
+[  0.050 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.050 s,  521 / 3742] Test: AddValue_vec Pass [1.0000000000000000, 1.0000000000000000, 0.0000000000000000, 0.0000000000000000]
+[  0.052 s,  521 / 3742] Action 21:0:Log
+[  0.052 s,  521 / 3742] Action 23:1:Condition
+[  0.052 s,  521 / 3742] Action 23:2:Else
+[  0.052 s,  521 / 3742] Action 29:57:Execute
+[  0.052 s,  521 / 3742] Action 29:58:SubValue
+[  0.052 s,  521 / 3742] Action 29:59:Execute: executing action group AssertVec3..
+[  0.052 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.052 s,  521 / 3742] Test: SubValue_vec Pass [2.0000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000]
+[  0.053 s,  521 / 3742] Action 21:0:Log
+[  0.053 s,  521 / 3742] Action 23:1:Condition
+[  0.053 s,  521 / 3742] Action 23:2:Else
+[  0.053 s,  521 / 3742] Action 29:59:Execute
+[  0.053 s,  521 / 3742] Action 29:60:MulValue
+[  0.053 s,  521 / 3742] Action 29:61:Execute: executing action group AssertVec3..
+[  0.053 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.053 s,  521 / 3742] Test: MulValue_vec Pass [2.0000000000000000, 4.0000000000000000, 6.0000000000000000, 0.0000000000000000]
+[  0.054 s,  521 / 3742] Action 21:0:Log
+[  0.054 s,  521 / 3742] Action 23:1:Condition
+[  0.054 s,  521 / 3742] Action 23:2:Else
+[  0.054 s,  521 / 3742] Action 29:61:Execute
+[  0.054 s,  521 / 3742] Action 29:62:SetValue
+[  0.054 s,  521 / 3742] Action 29:63:Execute: executing action group AssertVec3..
+[  0.054 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.054 s,  521 / 3742] Test: Position Pass [8.4000000000000004, -0.2000000000000000, 5.2000000000000002, 0.0000000000000000]
+[  0.055 s,  521 / 3742] Action 21:0:Log
+[  0.055 s,  521 / 3742] Action 23:1:Condition
+[  0.055 s,  521 / 3742] Action 23:2:Else
+[  0.055 s,  521 / 3742] Action 29:63:Execute
+[  0.055 s,  521 / 3742] Action 29:64:Execute: executing action group AssertEqual..
+[  0.056 s,  521 / 3742] Test: Position_Y Pass -0.2
+[  0.057 s,  521 / 3742] Action 0:0:Log
+[  0.057 s,  521 / 3742] Action 2:0:Condition
+[  0.057 s,  521 / 3742] Action 2:1:Else
+[  0.057 s,  521 / 3742] Action 29:64:Execute
+[  0.057 s,  521 / 3742] Action 29:65:SetValue
+[  0.057 s,  521 / 3742] Action 29:66:Execute: executing action group AssertVec3..
+[  0.057 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.057 s,  521 / 3742] Test: Position_Y_write Pass [8.4000000000000004, 2.0000000000000000, 5.2000000000000002, 0.0000000000000000]
+[  0.058 s,  521 / 3742] Action 21:0:Log
+[  0.058 s,  521 / 3742] Action 23:1:Condition
+[  0.058 s,  521 / 3742] Action 23:2:Else
+[  0.058 s,  521 / 3742] Action 29:66:Execute
+[  0.058 s,  521 / 3742] Action 29:67:NormalizeValue
+[  0.058 s,  521 / 3742] Action 29:68:Execute: executing action group AssertVec3..
+[  0.058 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.058 s,  521 / 3742] Test: NormalizeValue Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
+[  0.059 s,  521 / 3742] Action 21:0:Log
+[  0.059 s,  521 / 3742] Action 23:1:Condition
+[  0.059 s,  521 / 3742] Action 23:2:Else
+[  0.059 s,  521 / 3742] Action 29:68:Execute
+[  0.059 s,  521 / 3742] Action 29:69:DotValue
+[  0.059 s,  521 / 3742] Action 29:70:Execute: executing action group AssertEqual..
+[  0.059 s,  521 / 3742] Test: DotValue_parallel Pass 1.0
+[  0.061 s,  521 / 3742] Action 0:0:Log
+[  0.061 s,  521 / 3742] Action 2:0:Condition
+[  0.061 s,  521 / 3742] Action 2:1:Else
+[  0.061 s,  521 / 3742] Action 29:70:Execute
+[  0.061 s,  521 / 3742] Action 29:71:DotValue
+[  0.061 s,  521 / 3742] Action 29:72:Execute: executing action group AssertEqual..
+[  0.061 s,  521 / 3742] Test: DotValue_ortho Pass 0.0
+[  0.062 s,  521 / 3742] Action 0:0:Log
+[  0.062 s,  521 / 3742] Action 2:0:Condition
+[  0.062 s,  521 / 3742] Action 2:1:Else
+[  0.062 s,  521 / 3742] Action 29:72:Execute
+[  0.062 s,  521 / 3742] Action 29:73:CrossValue
+[  0.062 s,  521 / 3742] Action 29:74:Execute: executing action group AssertVec3..
+[  0.062 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.062 s,  521 / 3742] Test: CrossValue Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
+[  0.063 s,  521 / 3742] Action 21:0:Log
+[  0.063 s,  521 / 3742] Action 23:1:Condition
+[  0.063 s,  521 / 3742] Action 23:2:Else
+[  0.063 s,  521 / 3742] Action 29:74:Execute
+[  0.063 s,  521 / 3742] Action 29:75:AngleValue
+[  0.063 s,  521 / 3742] Action 29:76:Execute: executing action group AssertEqual..
+[  0.063 s,  521 / 3742] Test: AngleValue_same Pass 0.0
+[  0.065 s,  521 / 3742] Action 0:0:Log
+[  0.065 s,  521 / 3742] Action 2:0:Condition
+[  0.065 s,  521 / 3742] Action 2:1:Else
+[  0.065 s,  521 / 3742] Action 29:76:Execute
+[  0.065 s,  521 / 3742] Action 29:77:AngleValue
+[  0.065 s,  521 / 3742] Action 29:78:Execute: executing action group AssertNear..
+[  0.065 s,  521 / 3742] Action 20:0:SubValue
+[  0.065 s,  521 / 3742] Action 20:1:AbsValue
+[  0.065 s,  521 / 3742] Test: AngleValue_90 Pass 90.00000105055241
+[  0.066 s,  521 / 3742] Action 18:0:Log
+[  0.066 s,  521 / 3742] Action 20:2:Condition
+[  0.066 s,  521 / 3742] Action 20:3:Else
+[  0.066 s,  521 / 3742] Action 29:78:Execute
+[  0.066 s,  521 / 3742] Action 29:79:CreateActor
+[  0.066 s,  521 / 3742] Action 29:80:SetPosition
+[  0.066 s,  521 / 3742] Action 29:81:SetValue
+[  0.066 s,  521 / 3742] Action 29:82:DistanceValue
+[  0.066 s,  521 / 3742] Action 29:83:Execute: executing action group AssertEqual..
+[  0.066 s,  521 / 3742] Test: DistanceValue Pass 10.0
+[  0.067 s,  521 / 3742] Action 0:0:Log
+[  0.067 s,  521 / 3742] Action 2:0:Condition
+[  0.067 s,  521 / 3742] Action 2:1:Else
+[  0.067 s,  521 / 3742] Action 29:83:Execute
+[  0.067 s,  521 / 3742] Action 29:84:DistanceValue
+[  0.067 s,  521 / 3742] Action 29:85:Execute: executing action group AssertEqual..
+[  0.067 s,  521 / 3742] Test: DistanceValue_actors Pass 10.0
+[  0.068 s,  521 / 3742] Action 0:0:Log
+[  0.068 s,  521 / 3742] Action 2:0:Condition
+[  0.068 s,  521 / 3742] Action 2:1:Else
+[  0.068 s,  521 / 3742] Action 29:85:Execute
+[  0.068 s,  521 / 3742] Action 29:86:SetValue
+[  0.068 s,  521 / 3742] Action 29:87:SetValue
+[  0.068 s,  521 / 3742] Action 29:88:TransformValue
+[  0.068 s,  521 / 3742] Action 29:89:Execute: executing action group AssertVec3..
+[  0.068 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.069 s,  521 / 3742] Test: TransformValue_behind Pass [0.0000000000000000, 0.0000000000000000, -0.2000000000000000, 0.0000000000000000]
+[  0.070 s,  521 / 3742] Action 21:0:Log
+[  0.070 s,  521 / 3742] Action 23:1:Condition
+[  0.070 s,  521 / 3742] Action 23:2:Else
+[  0.070 s,  521 / 3742] Action 29:89:Execute
+[  0.070 s,  521 / 3742] Action 29:90:TransformValue
+[  0.070 s,  521 / 3742] Action 29:91:Execute: executing action group AssertVec3..
+[  0.070 s,  521 / 3742] Action 23:0:DistanceValue
+[  0.070 s,  521 / 3742] Test: TransformValue_dir Pass [0.0000000000000000, 0.0000000000000000, 1.0000000000000000, 0.0000000000000000]
+[  0.071 s,  521 / 3742] Action 21:0:Log
+[  0.071 s,  521 / 3742] Action 23:1:Condition
+[  0.071 s,  521 / 3742] Action 23:2:Else
+[  0.071 s,  521 / 3742] Action 29:91:Execute
+[  0.071 s,  521 / 3742] Action 29:92:CreateActor
+[  0.072 s,  521 / 3742] Action 29:93:CreateActor
+[  0.072 s,  521 / 3742] Action 29:94:Execute: executing action group AssertNotEqual..
+[  0.072 s,  521 / 3742] Test: Actors_Hostiles Pass [12, 13]
+[  0.073 s,  521 / 3742] Action 3:0:Log
+[  0.073 s,  521 / 3742] Action 5:0:Condition
+[  0.073 s,  521 / 3742] Action 5:1:Else
+[  0.073 s,  521 / 3742] Action 29:94:Execute
+[  0.073 s,  521 / 3742] Action 29:95:Execute: executing action group AssertEqual..
+[  0.073 s,  521 / 3742] Test: Actor_Hostiles_firstClass Pass Interceptor
+[  0.074 s,  521 / 3742] Action 0:0:Log
+[  0.074 s,  521 / 3742] Action 2:0:Condition
+[  0.074 s,  521 / 3742] Action 2:1:Else
+[  0.074 s,  521 / 3742] Action 29:95:Execute
+[  0.074 s,  521 / 3742] Action 29:96:Execute: executing action group AssertIn..
+[  0.074 s,  521 / 3742] Test: Hostiles_ID_in_list Pass 12
+[  0.075 s,  521 / 3742] Action 15:0:Log
+[  0.075 s,  521 / 3742] Action 17:0:Condition
+[  0.075 s,  521 / 3742] Action 17:1:Else
+[  0.075 s,  521 / 3742] Action 29:96:Execute
+[  0.075 s,  521 / 3742] Action 29:97:SetPosition
+[  0.075 s,  521 / 3742] Action 29:98:SetPosition
+[  0.075 s,  521 / 3742] Action 29:99:Overlap
+[  0.075 s,  521 / 3742] Action 29:100:Execute: executing action group AssertHigherEqual..
+[  0.075 s,  521 / 3742] Test: Overlap_near Pass 2
+[  0.077 s,  521 / 3742] Action 6:0:Log
+[  0.077 s,  521 / 3742] Action 8:0:Condition
+[  0.077 s,  521 / 3742] Action 8:1:Else
+[  0.077 s,  521 / 3742] Action 29:100:Execute
+[  0.077 s,  521 / 3742] Action 29:101:Overlap
+[  0.077 s,  521 / 3742] Action 29:102:Execute: executing action group AssertEqual..
+[  0.077 s,  521 / 3742] Test: Overlap_far Pass 0
+[  0.078 s,  521 / 3742] Action 0:0:Log
+[  0.078 s,  521 / 3742] Action 2:0:Condition
+[  0.078 s,  521 / 3742] Action 2:1:Else
+[  0.078 s,  521 / 3742] Action 29:102:Execute
+[  0.078 s,  521 / 3742] Action 29:103:SetValue
+[  0.078 s,  521 / 3742] Action 29:104:Execute: executing action group AssertEqual..
+[  0.078 s,  521 / 3742] Test: HitPointsRatio Pass 0.5
+[  0.079 s,  521 / 3742] Action 0:0:Log
+[  0.079 s,  521 / 3742] Action 2:0:Condition
+[  0.079 s,  521 / 3742] Action 2:1:Else
+[  0.079 s,  521 / 3742] Action 29:104:Execute
+[  0.079 s,  521 / 3742] Action 29:105:SetValue
+[  0.079 s,  521 / 3742] Action 29:106:Execute: executing action group AssertEqual..
+[  0.079 s,  521 / 3742] Test: ShieldPointsRatio Pass 0.5
+[  0.081 s,  521 / 3742] Action 0:0:Log
+[  0.081 s,  521 / 3742] Action 2:0:Condition
+[  0.081 s,  521 / 3742] Action 2:1:Else
+[  0.081 s,  521 / 3742] Action 29:106:Execute
+[  0.081 s,  521 / 3742] Action 29:107:SetValue
+[  0.081 s,  521 / 3742] Action 29:108:Execute: executing action group AssertEqual..
+[  0.081 s,  521 / 3742] Test: FlightAssist Pass 1
+[  0.082 s,  521 / 3742] Action 0:0:Log
+[  0.082 s,  521 / 3742] Action 2:0:Condition
+[  0.082 s,  521 / 3742] Action 2:1:Else
+[  0.082 s,  521 / 3742] Action 29:108:Execute
+[  0.082 s,  521 / 3742] Action 29:109:SetValue
+[  0.082 s,  521 / 3742] Action 29:110:Execute: executing action group AssertEqual..
+[  0.082 s,  521 / 3742] Test: SensorPower Pass 10.0
+[  0.083 s,  521 / 3742] Action 0:0:Log
+[  0.083 s,  521 / 3742] Action 2:0:Condition
+[  0.083 s,  521 / 3742] Action 2:1:Else
+[  0.083 s,  521 / 3742] Action 29:110:Execute
+[  0.083 s,  521 / 3742] Action 29:111:SetValue
+[  0.083 s,  521 / 3742] Action 29:112:Execute: executing action group AssertEqual..
+[  0.083 s,  521 / 3742] Test: MaxLifeTime Pass 60.0
+[  0.085 s,  521 / 3742] Action 0:0:Log
+[  0.085 s,  521 / 3742] Action 2:0:Condition
+[  0.085 s,  521 / 3742] Action 2:1:Else
+[  0.085 s,  521 / 3742] Action 29:112:Execute
+[  0.085 s,  521 / 3742] Action 29:113:SetValue
+[  0.085 s,  521 / 3742] Action 29:114:Execute: executing action group AssertEqual..
+[  0.085 s,  521 / 3742] Test: TargetIndicator Pass SmallShip
+[  0.086 s,  521 / 3742] Action 0:0:Log
+[  0.086 s,  521 / 3742] Action 2:0:Condition
+[  0.086 s,  521 / 3742] Action 2:1:Else
+[  0.086 s,  521 / 3742] Action 29:114:Execute
+[  0.086 s,  521 / 3742] Action 29:115:SetValue
+[  0.086 s,  521 / 3742] Action 29:116:Execute: executing action group AssertEqual..
+[  0.086 s,  521 / 3742] Test: Status_powerBit Pass 8
+[  0.087 s,  521 / 3742] Action 0:0:Log
+[  0.087 s,  521 / 3742] Action 2:0:Condition
+[  0.087 s,  521 / 3742] Action 2:1:Else
+[  0.087 s,  521 / 3742] Action 29:116:Execute
+[  0.087 s,  521 / 3742] Action 29:117:SetValue
+[  0.087 s,  521 / 3742] Action 29:118:Execute: executing action group AssertEqual..
+[  0.087 s,  521 / 3742] Test: ShieldPowerState Pass 0
+[  0.088 s,  521 / 3742] Action 0:0:Log
+[  0.089 s,  521 / 3742] Action 2:0:Condition
+[  0.089 s,  521 / 3742] Action 2:1:Else
+[  0.089 s,  521 / 3742] Action 29:118:Execute
+[  0.089 s,  521 / 3742] Action 29:119:Execute: executing action group AssertHigher..
+[  0.089 s,  521 / 3742] Test: WorldSize Pass 0.02074469029907
+[  0.090 s,  521 / 3742] Action 12:0:Log
+[  0.090 s,  521 / 3742] Action 14:0:Condition
+[  0.090 s,  521 / 3742] Action 14:1:Else
+[  0.090 s,  521 / 3742] Action 29:119:Execute
+[  0.090 s,  521 / 3742] Action 29:120:Execute: executing action group AssertNotEqual..
+[  0.090 s,  521 / 3742] Test: ActorID Pass 10
+[  0.091 s,  521 / 3742] Action 3:0:Log
+[  0.091 s,  521 / 3742] Action 5:0:Condition
+[  0.091 s,  521 / 3742] Action 5:1:Else
+[  0.091 s,  521 / 3742] Action 29:120:Execute
+[  0.091 s,  521 / 3742] Action 29:121:SetValue
+[  0.091 s,  521 / 3742] Action 29:122:Execute: executing action group AssertEqual..
+[  0.091 s,  521 / 3742] Test: TeamID Pass 0
+[  0.092 s,  521 / 3742] Action 0:0:Log
+[  0.092 s,  521 / 3742] Action 2:0:Condition
+[  0.092 s,  521 / 3742] Action 2:1:Else
+[  0.092 s,  521 / 3742] Action 29:122:Execute
+[  0.092 s,  521 / 3742] Action 29:123:SetValue
+[  0.092 s,  521 / 3742] Action 29:124:Execute: executing action group AssertEqual..
+[  0.092 s,  521 / 3742] Test: DisplayName Pass Cadet
+[  0.094 s,  521 / 3742] Action 0:0:Log
+[  0.094 s,  521 / 3742] Action 2:0:Condition
+[  0.094 s,  521 / 3742] Action 2:1:Else
+[  0.094 s,  521 / 3742] Action 29:124:Execute
+[  0.094 s,  521 / 3742] Action 29:125:SetValue
+[  0.094 s,  521 / 3742] Action 29:126:Execute: executing action group AssertEqual..
+[  0.094 s,  521 / 3742] Test: Ghost Pass 1
+[  0.095 s,  521 / 3742] Action 0:0:Log
+[  0.095 s,  521 / 3742] Action 2:0:Condition
+[  0.095 s,  521 / 3742] Action 2:1:Else
+[  0.095 s,  521 / 3742] Action 29:126:Execute
+[  0.095 s,  521 / 3742] Action 29:127:SetValue
+[  0.095 s,  521 / 3742] Action 29:128:Execute: executing action group AssertEqual..
+[  0.095 s,  521 / 3742] Test: DamageScale Pass 0.0
+[  0.096 s,  521 / 3742] Action 0:0:Log
+[  0.096 s,  521 / 3742] Action 2:0:Condition
+[  0.096 s,  521 / 3742] Action 2:1:Else
+[  0.096 s,  521 / 3742] Action 29:128:Execute
+[  0.096 s,  521 / 3742] Action 29:129:SetValue
+[  0.096 s,  521 / 3742] Action 29:130:Execute: executing action group AssertEqual..
+[  0.096 s,  521 / 3742] Test: Undetectable Pass 1
+[  0.097 s,  521 / 3742] Action 0:0:Log
+[  0.097 s,  521 / 3742] Action 2:0:Condition
+[  0.097 s,  521 / 3742] Action 2:1:Else
+[  0.097 s,  521 / 3742] Action 29:130:Execute
+[  0.097 s,  521 / 3742] Action 29:131:SetValue
+[  0.098 s,  521 / 3742] Action 29:132:Execute: executing action group AssertEqual..
+[  0.098 s,  521 / 3742] Test: FrameTimeScale Pass 1.0
+[  0.099 s,  521 / 3742] Action 0:0:Log
+[  0.099 s,  521 / 3742] Action 2:0:Condition
+[  0.099 s,  521 / 3742] Action 2:1:Else
+[  0.099 s,  521 / 3742] Action 29:132:Execute
+[  0.099 s,  521 / 3742] Action 29:133:SetValue
+[  0.099 s,  521 / 3742] Action 29:134:Execute: executing action group AssertEqual..
+[  0.099 s,  521 / 3742] Test: AllowSwitchTeam Pass 0
+[  0.100 s,  521 / 3742] Action 0:0:Log
+[  0.100 s,  521 / 3742] Action 2:0:Condition
+[  0.100 s,  521 / 3742] Action 2:1:Else
+[  0.100 s,  521 / 3742] Action 29:134:Execute
+[  0.100 s,  521 / 3742] Action 29:135:Execute: executing action group AssertEqual..
+[  0.100 s,  521 / 3742] Test: PlayerActor_Speed Pass 0.0
+[  0.101 s,  521 / 3742] Action 0:0:Log
+[  0.101 s,  521 / 3742] Action 2:0:Condition
+[  0.101 s,  521 / 3742] Action 2:1:Else
+[  0.101 s,  521 / 3742] Action 29:135:Execute
+[  0.101 s,  521 / 3742] Action 29:136:Execute: executing action group AssertDone..
+[  0.101 s,  521 / 3742] Test: COMPLETE Pass 0
+[  0.103 s,  521 / 3742] Action 25:0:Log
+[  0.103 s,  521 / 3742] Action 27:0:Condition
+[  0.103 s,  521 / 3742] Action 27:1:Else
+[  0.103 s,  521 / 3742] Action 29:136:Execute

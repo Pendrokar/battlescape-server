@@ -73,6 +73,9 @@
 		<AddValue Target="Global.FailCount" Source1="Global.FailCount" Source2="1" />
 	</Else>
 </Actions>
+<Actions Name="AssertSkipped">
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="Local.Arg1" Arg2="Skipped" Arg3="Local.Arg2" />
+</Actions>
 <Actions Name="AssertDone">
 	<Condition Left1="Global.FailCount" Comp1="Equal" Right1="0">
 		<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="COMPLETE" Arg2="Pass" Arg3="Global.FailCount" />

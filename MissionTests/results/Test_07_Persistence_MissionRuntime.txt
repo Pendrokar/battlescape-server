@@ -1,84 +1,84 @@
-[  0.000 s,  477 / 3585] Server Mission Runtime Log
-[  0.002 s,  477 / 3584] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_07_Persistence.xml'
-[  0.003 s,  477 / 3584] Mission runtime successfully loaded
-[  0.021 s,  478 / 3585] Action 29:0:Include
-[  0.021 s,  478 / 3585] Action 29:1:SetValue
-[  0.021 s,  478 / 3585] Test: BEGIN Test_07_Persistence ok
-[  0.023 s,  478 / 3585] Action 29:2:Log
-[  0.024 s,  479 / 3584] Action 29:3:CreateActor
-[  0.024 s,  479 / 3584] Action 29:4:SetPosition
-[  0.025 s,  479 / 3584] Action 29:5:SaveToDB
-[  0.025 s,  479 / 3584] Action 29:6:LoadFromDB
-[  0.025 s,  479 / 3584] Action 29:7:Execute: executing action group AssertEqual..
-[  0.025 s,  479 / 3584] Test: LoadFromDB Pass 42
-[  0.027 s,  479 / 3584] Action 0:0:Log
-[  0.027 s,  479 / 3584] Action 2:0:Condition
-[  0.027 s,  479 / 3584] Action 2:1:Else
-[  0.027 s,  479 / 3584] Action 29:7:Execute
-[  0.027 s,  479 / 3584] Action 29:8:LoadFromDB
-[  0.027 s,  479 / 3584] Action 29:9:Execute: executing action group AssertEqual..
-[  0.027 s,  479 / 3584] Test: LoadFromDB_missing Pass 0
-[  0.028 s,  479 / 3584] Action 0:0:Log
-[  0.028 s,  479 / 3584] Action 2:0:Condition
-[  0.028 s,  479 / 3584] Action 2:1:Else
-[  0.028 s,  479 / 3584] Action 29:9:Execute
-[  0.029 s,  479 / 3584] Action 29:10:SaveToDB
-[  0.029 s,  479 / 3584] Action 29:11:LoadFromDB
-[  0.029 s,  479 / 3584] Action 29:12:Execute: executing action group AssertEqual..
-[  0.029 s,  479 / 3584] Test: T1_State_before Pass 0
-[  0.030 s,  479 / 3584] Action 0:0:Log
-[  0.030 s,  479 / 3584] Action 2:0:Condition
-[  0.030 s,  479 / 3584] Action 2:1:Else
-[  0.030 s,  479 / 3584] Action 29:12:Execute
-[  0.031 s,  479 / 3584] Action 28:0:SaveToDB
-[  0.031 s,  479 / 3584] Action 29:13:Condition
-[  0.031 s,  479 / 3584] Action 29:14:LoadFromDB
-[  0.031 s,  479 / 3584] Action 29:15:Execute: executing action group AssertEqual..
-[  0.031 s,  479 / 3584] Test: T1_State_after Pass 1
-[  0.033 s,  479 / 3584] Action 0:0:Log
-[  0.033 s,  479 / 3584] Action 2:0:Condition
-[  0.033 s,  479 / 3584] Action 2:1:Else
-[  0.033 s,  479 / 3584] Action 29:15:Execute
-[  0.034 s,  479 / 3584] Action 29:16:SaveToDB
-[  0.035 s,  479 / 3584] Action 29:17:SaveToDB
-[  0.035 s,  479 / 3584] Action 29:18:SetValue
-[  0.035 s,  479 / 3584] Action 29:19:Execute: executing action group AssertEqual..
-[  0.035 s,  479 / 3584] Test: Server_FrameTimeScale Pass 1.0
-[  0.036 s,  479 / 3584] Action 0:0:Log
-[  0.036 s,  479 / 3584] Action 2:0:Condition
-[  0.036 s,  479 / 3584] Action 2:1:Else
-[  0.036 s,  479 / 3584] Action 29:19:Execute
-[  0.036 s,  479 / 3584] Action 29:20:SetValue
-[  0.036 s,  479 / 3584] Action 29:21:Execute: executing action group AssertEqual..
-[  0.036 s,  479 / 3584] Test: Server_AllowSwitchTeam Pass 0
-[  0.037 s,  479 / 3584] Action 0:0:Log
-[  0.037 s,  479 / 3584] Action 2:0:Condition
-[  0.037 s,  479 / 3584] Action 2:1:Else
-[  0.037 s,  479 / 3584] Action 29:21:Execute
-[  0.037 s,  479 / 3584] Action 29:22:SetValue
-[  0.037 s,  479 / 3584] Action 29:23:Execute: executing action group AssertEqual..
-[  0.037 s,  479 / 3584] Test: Server_DamageScale Pass 1.0
-[  0.039 s,  479 / 3584] Action 0:0:Log
-[  0.039 s,  479 / 3584] Action 2:0:Condition
-[  0.039 s,  479 / 3584] Action 2:1:Else
-[  0.039 s,  479 / 3584] Action 29:23:Execute
-[  0.039 s,  479 / 3584] Action 29:24:SetValue
-[  0.039 s,  479 / 3584] Action 29:25:Execute: executing action group AssertEqual..
-[  0.039 s,  479 / 3584] Test: Server_MatchLoop Pass 0
-[  0.040 s,  479 / 3584] Action 0:0:Log
-[  0.040 s,  479 / 3584] Action 2:0:Condition
-[  0.040 s,  479 / 3584] Action 2:1:Else
-[  0.040 s,  479 / 3584] Action 29:25:Execute
-[  0.040 s,  479 / 3584] Action 29:26:SetValue
-[  0.040 s,  479 / 3584] Action 29:27:Execute: executing action group AssertEqual..
-[  0.040 s,  479 / 3584] Test: Server_AllowShipClass_0 Pass 1
-[  0.041 s,  479 / 3584] Action 0:0:Log
-[  0.041 s,  479 / 3584] Action 2:0:Condition
-[  0.041 s,  479 / 3584] Action 2:1:Else
-[  0.041 s,  479 / 3584] Action 29:27:Execute
-[  0.041 s,  479 / 3584] Action 29:28:Execute: executing action group AssertDone..
-[  0.041 s,  479 / 3584] Test: COMPLETE Pass 0
-[  0.043 s,  479 / 3584] Action 24:0:Log
-[  0.043 s,  479 / 3584] Action 26:0:Condition
-[  0.043 s,  479 / 3584] Action 26:1:Else
-[  0.043 s,  479 / 3584] Action 29:28:Execute
+[  0.000 s,  519 / 3748] Server Mission Runtime Log
+[  0.002 s,  520 / 3746] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_07_Persistence.xml'
+[  0.003 s,  520 / 3746] Mission runtime successfully loaded
+[  0.012 s,  521 / 3747] Action 30:0:Include
+[  0.012 s,  521 / 3747] Action 30:1:SetValue
+[  0.012 s,  521 / 3747] Test: BEGIN Test_07_Persistence ok
+[  0.014 s,  521 / 3746] Action 30:2:Log
+[  0.015 s,  521 / 3746] Action 30:3:CreateActor
+[  0.015 s,  521 / 3746] Action 30:4:SetPosition
+[  0.015 s,  521 / 3746] Action 30:5:SaveToDB
+[  0.015 s,  521 / 3746] Action 30:6:LoadFromDB
+[  0.016 s,  521 / 3746] Action 30:7:Execute: executing action group AssertEqual..
+[  0.016 s,  521 / 3746] Test: LoadFromDB Pass 42
+[  0.017 s,  521 / 3746] Action 0:0:Log
+[  0.017 s,  521 / 3746] Action 2:0:Condition
+[  0.017 s,  521 / 3746] Action 2:1:Else
+[  0.017 s,  521 / 3746] Action 30:7:Execute
+[  0.017 s,  521 / 3746] Action 30:8:LoadFromDB
+[  0.017 s,  521 / 3746] Action 30:9:Execute: executing action group AssertEqual..
+[  0.017 s,  521 / 3746] Test: LoadFromDB_missing Pass 0
+[  0.018 s,  521 / 3746] Action 0:0:Log
+[  0.018 s,  521 / 3746] Action 2:0:Condition
+[  0.018 s,  521 / 3746] Action 2:1:Else
+[  0.018 s,  521 / 3746] Action 30:9:Execute
+[  0.019 s,  521 / 3746] Action 30:10:SaveToDB
+[  0.019 s,  521 / 3746] Action 30:11:LoadFromDB
+[  0.019 s,  521 / 3746] Action 30:12:Execute: executing action group AssertEqual..
+[  0.019 s,  521 / 3746] Test: T1_State_before Pass 0
+[  0.020 s,  521 / 3746] Action 0:0:Log
+[  0.020 s,  521 / 3746] Action 2:0:Condition
+[  0.020 s,  521 / 3746] Action 2:1:Else
+[  0.020 s,  521 / 3746] Action 30:12:Execute
+[  0.021 s,  521 / 3746] Action 29:0:SaveToDB
+[  0.021 s,  521 / 3746] Action 30:13:Condition
+[  0.021 s,  521 / 3746] Action 30:14:LoadFromDB
+[  0.021 s,  521 / 3746] Action 30:15:Execute: executing action group AssertEqual..
+[  0.021 s,  521 / 3746] Test: T1_State_after Pass 1
+[  0.022 s,  521 / 3746] Action 0:0:Log
+[  0.022 s,  521 / 3746] Action 2:0:Condition
+[  0.022 s,  521 / 3746] Action 2:1:Else
+[  0.022 s,  521 / 3746] Action 30:15:Execute
+[  0.023 s,  521 / 3746] Action 30:16:SaveToDB
+[  0.024 s,  521 / 3746] Action 30:17:SaveToDB
+[  0.024 s,  521 / 3746] Action 30:18:SetValue
+[  0.024 s,  521 / 3746] Action 30:19:Execute: executing action group AssertEqual..
+[  0.024 s,  521 / 3746] Test: Server_FrameTimeScale Pass 1.0
+[  0.025 s,  521 / 3746] Action 0:0:Log
+[  0.025 s,  521 / 3746] Action 2:0:Condition
+[  0.025 s,  521 / 3746] Action 2:1:Else
+[  0.025 s,  521 / 3746] Action 30:19:Execute
+[  0.025 s,  521 / 3746] Action 30:20:SetValue
+[  0.025 s,  521 / 3746] Action 30:21:Execute: executing action group AssertEqual..
+[  0.025 s,  521 / 3746] Test: Server_AllowSwitchTeam Pass 0
+[  0.026 s,  521 / 3746] Action 0:0:Log
+[  0.026 s,  521 / 3746] Action 2:0:Condition
+[  0.026 s,  521 / 3746] Action 2:1:Else
+[  0.026 s,  521 / 3746] Action 30:21:Execute
+[  0.026 s,  521 / 3746] Action 30:22:SetValue
+[  0.026 s,  521 / 3746] Action 30:23:Execute: executing action group AssertEqual..
+[  0.026 s,  521 / 3746] Test: Server_DamageScale Pass 1.0
+[  0.027 s,  521 / 3746] Action 0:0:Log
+[  0.027 s,  521 / 3746] Action 2:0:Condition
+[  0.027 s,  521 / 3746] Action 2:1:Else
+[  0.027 s,  521 / 3746] Action 30:23:Execute
+[  0.028 s,  521 / 3746] Action 30:24:SetValue
+[  0.028 s,  521 / 3746] Action 30:25:Execute: executing action group AssertEqual..
+[  0.028 s,  521 / 3746] Test: Server_MatchLoop Pass 0
+[  0.029 s,  521 / 3746] Action 0:0:Log
+[  0.029 s,  521 / 3746] Action 2:0:Condition
+[  0.029 s,  521 / 3746] Action 2:1:Else
+[  0.029 s,  521 / 3746] Action 30:25:Execute
+[  0.029 s,  521 / 3746] Action 30:26:SetValue
+[  0.029 s,  521 / 3746] Action 30:27:Execute: executing action group AssertEqual..
+[  0.029 s,  521 / 3746] Test: Server_AllowShipClass_0 Pass 1
+[  0.030 s,  521 / 3746] Action 0:0:Log
+[  0.030 s,  521 / 3746] Action 2:0:Condition
+[  0.031 s,  521 / 3746] Action 2:1:Else
+[  0.031 s,  521 / 3746] Action 30:27:Execute
+[  0.031 s,  521 / 3746] Action 30:28:Execute: executing action group AssertDone..
+[  0.031 s,  521 / 3746] Test: COMPLETE Pass 0
+[  0.032 s,  521 / 3746] Action 25:0:Log
+[  0.032 s,  521 / 3746] Action 27:0:Condition
+[  0.032 s,  521 / 3746] Action 27:1:Else
+[  0.032 s,  521 / 3746] Action 30:28:Execute

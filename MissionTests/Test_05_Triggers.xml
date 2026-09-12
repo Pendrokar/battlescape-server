@@ -37,6 +37,17 @@
 	</CreateTrigger>
 	<SetValue Target="Actor:PlayerActor.HitPointsRatio" Source="0.25" />
 
+	<SetValue Target="Global.TeamTrigger" Source="0" />
+	<CreateTrigger Name="TeamChanged" Type="ActorProperty" Target="Actor:PlayerActor" Properties="TeamID" Value="0" Once="true">
+		<SetValue Target="Global.TeamTrigger" Source="1" />
+	</CreateTrigger>
+	<SetValue Target="Actor:PlayerActor.TeamID" Source="0" />
+
+	<SetValue Target="Global.StartTimeZero" Source="0" />
+	<CreateTrigger Name="ImmediateTimer" Type="Timer" Target="Actor:PlayerActor" Duration="10" StartTime="0.0" Once="true">
+		<SetValue Target="Global.StartTimeZero" Source="1" />
+	</CreateTrigger>
+
 	<SetValue Target="Global.TimerFired" Source="0" />
 	<CreateTrigger Name="ActorTick" Type="Timer" Target="Actor:PlayerActor" Duration="0.4" Once="true" AutoDelete="true">
 		<SetValue Target="Global.TimerFired" Source="1" />
@@ -79,10 +90,10 @@
 	<SetValue Target="Global.WaveKills" Source="3" />
 
 	<SetValue Target="Global.UniqueFired" Source="0" />
-	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="30" Unique="true">
+	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="0.15" Once="true" Unique="true">
 		<SetValue Target="Global.UniqueFired" Source="1" />
 	</CreateTrigger>
-	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="30" Unique="true">
+	<CreateTrigger Name="UniqueTick" Type="Timer" Target="Actor:PlayerActor" Duration="0.15" Once="true" Unique="true">
 		<SetValue Target="Global.UniqueFired" Source="2" />
 	</CreateTrigger>
 
@@ -108,14 +119,44 @@
 	<Execute Target="AssertEqual" Arg1="ActorDestroyed_KillCount" Arg2="Global.KillCount" Arg3="1" />
 	<Execute Target="AssertEqual" Arg1="ActorProperty_PowerState" Arg2="Global.PowerTrigger" Arg3="1" />
 	<Execute Target="AssertEqual" Arg1="ActorProperty_HitPoints" Arg2="Global.HitPointsTrigger" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="ActorProperty_TeamID" Arg2="Global.TeamTrigger" Arg3="1" />
 	<Execute Target="AssertEqual" Arg1="Timer" Arg2="Global.TimerFired" Arg3="1" />
-	<Execute Target="AssertEqual" Arg1="ActorRange_enter" Arg2="Global.RangeEnter" Arg3="1" />
-	<Execute Target="AssertEqual" Arg1="ActorRange_leave" Arg2="Global.RangeLeave" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="Timer_StartTimeZero" Arg2="Global.StartTimeZero" Arg3="1" />
+	<Condition Left1="Global.RangeEnter" Comp1="Equal" Right1="1">
+		<Execute Target="AssertEqual" Arg1="ActorRange_enter" Arg2="Global.RangeEnter" Arg3="1" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="ActorRange_enter" Arg2="requires_player" />
+	</Else>
+	<Condition Left1="Global.RangeLeave" Comp1="Equal" Right1="1">
+		<Execute Target="AssertEqual" Arg1="ActorRange_leave" Arg2="Global.RangeLeave" Arg3="1" />
+	</Condition>
+	<Else>
+		<Execute Target="AssertSkipped" Arg1="ActorRange_leave" Arg2="requires_player" />
+	</Else>
 	<Execute Target="AssertEqual" Arg1="ActorLookAt" Arg2="Global.LookAt" Arg3="1" />
 	<Execute Target="AssertEqual" Arg1="ConditionTrigger" Arg2="Global.WaveDone" Arg3="1" />
-	<Execute Target="AssertEqual" Arg1="Unique_not_fired" Arg2="Global.UniqueFired" Arg3="0" />
+	<Execute Target="AssertEqual" Arg1="Unique_keeps_first" Arg2="Global.UniqueFired" Arg3="1" />
 	<Execute Target="AssertEqual" Arg1="DeleteTrigger_not_fired" Arg2="Global.DeletedFired" Arg3="0" />
 	<Execute Target="AssertEqual" Arg1="ResetTrigger" Arg2="Global.ResetCount" Arg3="2" />
+
+	<SetValue Target="Global.Interrupted" Source="0" />
+	<CreateTrigger Name="SlowBody" Type="Timer" Target="Actor:PlayerActor" Duration="0.1" Once="true">
+		<Wait Duration="1.5" />
+		<SetValue Target="Global.Interrupted" Source="1" />
+	</CreateTrigger>
+	<Wait Duration="0.3" />
+	<InterruptTrigger Target="SlowBody" />
+	<Wait Duration="2" />
+	<Execute Target="AssertEqual" Arg1="InterruptTrigger" Arg2="Global.Interrupted" Arg3="0" />
+
+	<SetValue Target="Global.DeletedAll" Source="0" />
+	<CreateTrigger Name="WillBeDeletedAll" Type="Timer" Target="Actor:PlayerActor" Duration="0.2" Once="true">
+		<SetValue Target="Global.DeletedAll" Source="1" />
+	</CreateTrigger>
+	<DeleteAllTriggers />
+	<Wait Duration="0.5" />
+	<Execute Target="AssertEqual" Arg1="DeleteAllTriggers" Arg2="Global.DeletedAll" Arg3="0" />
 
 	<Execute Target="AssertDone" />
 </Mission>

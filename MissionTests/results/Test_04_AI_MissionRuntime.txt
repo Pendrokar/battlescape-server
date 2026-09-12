@@ -1,123 +1,123 @@
-[  0.000 s,  477 / 3659] Server Mission Runtime Log
-[  0.002 s,  477 / 3658] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_04_AI.xml'
-[  0.004 s,  477 / 3658] Mission runtime successfully loaded
-[  0.021 s,  478 / 3659] Action 29:0:Include
-[  0.021 s,  478 / 3659] Action 29:1:SetValue
-[  0.021 s,  478 / 3659] Test: BEGIN Test_04_AI ok
-[  0.023 s,  478 / 3659] Action 29:2:Log
-[  0.023 s,  479 / 3659] Action 29:3:CreateActor
-[  0.024 s,  479 / 3659] Action 29:4:SetPosition
-[  0.024 s,  479 / 3659] Action 29:5:SetValue
-[  0.024 s,  479 / 3659] Action 29:6:SetValue
-[  0.024 s,  479 / 3659] Action 29:7:CreatePath
-[  0.024 s,  479 / 3659] Action 29:8:CreatePath
-[  0.024 s,  479 / 3659] Action 29:9:CreateActor
-[  0.024 s,  479 / 3659] Action 29:10:SetPosition
-[  0.024 s,  479 / 3659] Action 29:11:SetAIState
-[  0.024 s,  479 / 3659] Action 29:12:Execute: executing action group AssertEqual..
-[  0.024 s,  479 / 3659] Test: SetAIState_Instructor Pass Corvette
-[  0.025 s,  479 / 3659] Action 0:0:Log
-[  0.025 s,  479 / 3659] Action 2:0:Condition
-[  0.025 s,  479 / 3659] Action 2:1:Else
-[  0.025 s,  479 / 3659] Action 29:12:Execute
-[  0.025 s,  479 / 3659] Action 29:13:CreateActor
-[  0.025 s,  479 / 3659] Action 29:14:SetPosition
-[  0.025 s,  479 / 3659] Action 29:15:SetAIState
-[  0.025 s,  479 / 3659] Action 29:16:Execute: executing action group AssertNotEqual..
-[  0.025 s,  479 / 3659] Test: SetAIState_Drone11 Pass 12
-[  0.027 s,  479 / 3659] Action 3:0:Log
-[  0.027 s,  479 / 3659] Action 5:0:Condition
-[  0.027 s,  479 / 3659] Action 5:1:Else
-[  0.027 s,  479 / 3659] Action 29:16:Execute
-[  0.027 s,  479 / 3659] Action 29:17:SetAIState
-[  0.027 s,  479 / 3659] Action 29:18:Execute: executing action group AssertEqual..
-[  0.027 s,  479 / 3659] Test: SetAIState_HasAI_false Pass Corvette
-[  0.028 s,  479 / 3659] Action 0:0:Log
-[  0.028 s,  479 / 3659] Action 2:0:Condition
-[  0.028 s,  479 / 3659] Action 2:1:Else
-[  0.028 s,  479 / 3659] Action 29:18:Execute
-[  0.028 s,  479 / 3659] Action 29:19:CreateActor
-[  0.028 s,  479 / 3659] Action 29:20:TransformValue
-[  0.028 s,  479 / 3659] Action 29:21:SetValue
-[  0.028 s,  479 / 3659] Action 29:22:SetAIState
-[  0.028 s,  479 / 3659] Action 29:23:SetValue
-[  0.028 s,  479 / 3659] Action 29:24:Execute: executing action group AssertVec3..
-[  0.028 s,  479 / 3659] Action 23:0:DistanceValue
-[  0.028 s,  479 / 3659] Test: Bandit_Pos Pass [0.0000000000000000, 0.0000000000000000, -8.0000000000000000, 0.0000000000000000]
-[  0.030 s,  479 / 3659] Action 21:0:Log
-[  0.030 s,  479 / 3659] Action 23:1:Condition
-[  0.030 s,  479 / 3659] Action 23:2:Else
-[  0.030 s,  479 / 3659] Action 29:24:Execute
-[  0.030 s,  479 / 3659] Action 29:25:Execute: executing action group AssertEqual..
-[  0.030 s,  479 / 3659] Test: Bandit_AIActorTarget Pass 10
-[  0.031 s,  479 / 3659] Action 0:0:Log
-[  0.031 s,  479 / 3659] Action 2:0:Condition
-[  0.031 s,  479 / 3659] Action 2:1:Else
-[  0.031 s,  479 / 3659] Action 29:25:Execute
-[  0.031 s,  479 / 3659] Action 29:26:SetValue
-[  0.031 s,  479 / 3659] Created trigger 0 (BanditLeaves) for action group 28..
-[  0.031 s,  479 / 3659] Action 29:27:CreateTrigger
-[  0.031 s,  479 / 3659] Action 29:28:CreateActor
-[  0.031 s,  479 / 3659] Action 29:29:SetPosition
-[  0.031 s,  479 / 3659] Action 29:30:SetAIState
-[  0.031 s,  479 / 3659] Action 29:31:SetAIPath
-[  0.031 s,  479 / 3659] Action 29:32:Execute: executing action group AssertEqual..
-[  0.031 s,  479 / 3659] Test: SetAIPath Pass Interceptor
-[  0.033 s,  479 / 3659] Action 0:0:Log
-[  0.033 s,  479 / 3659] Action 2:0:Condition
-[  0.033 s,  479 / 3659] Action 2:1:Else
-[  0.033 s,  479 / 3659] Action 29:32:Execute
-[  0.033 s,  479 / 3659] Action 29:33:CreateActor
-[  0.033 s,  479 / 3659] Action 29:34:SetPosition
-[  0.033 s,  479 / 3659] Action 29:35:SetAIState
-[  0.033 s,  479 / 3659] Action 29:36:MoveAI
-[  0.033 s,  479 / 3659] Action 29:37:Execute: executing action group AssertVec3..
-[  0.033 s,  479 / 3659] Action 23:0:DistanceValue
-[  0.033 s,  479 / 3659] Test: MoveAI_issued Pass [0.5000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000]
-[  0.034 s,  479 / 3659] Action 21:0:Log
-[  0.034 s,  479 / 3659] Action 23:1:Condition
-[  0.034 s,  479 / 3659] Action 23:2:Else
-[  0.034 s,  479 / 3659] Action 29:37:Execute
-[  0.035 s,  479 / 3659] Action 29:38:CreateActor
-[  0.035 s,  479 / 3659] Action 29:39:SetActorPath
-[  0.865 s,  480 / 3697] Trigger 0:BanditLeaves:Timer starting
-[  0.865 s,  480 / 3697] Action 28:0:SetAIState
-[  0.865 s,  480 / 3697] SetValue: invalid Source value: Target=(12, -1, 0, , 255)
-[  0.865 s,  480 / 3697] Action 28:1:SetValue
-[  0.865 s,  480 / 3697] Action 28:2:SetValue
-[  0.865 s,  480 / 3697] Trigger 0:BanditLeaves:Timer finished
-[  1.251 s,  480 / 3709] Action 29:40:Wait
-[  1.251 s,  480 / 3709] Action 29:41:Execute: executing action group AssertEqual..
-[  1.251 s,  480 / 3709] Test: BanditLeaves_flag Pass 1
-[  1.253 s,  480 / 3709] Action 0:0:Log
-[  1.253 s,  480 / 3709] Action 2:0:Condition
-[  1.253 s,  480 / 3709] Action 2:1:Else
-[  1.253 s,  480 / 3709] Action 29:41:Execute
-[  1.253 s,  480 / 3709] Action 29:42:Execute: executing action group AssertVec3..
-[  1.253 s,  480 / 3709] Action 23:0:DistanceValue
-[  1.253 s,  480 / 3709] Test: SetActorPath_after Pass [1.0000000000000000, 0.0000000000000000, 2.0000000000000000, 0.0000000000000000]
-[  1.254 s,  480 / 3709] Action 21:0:Log
-[  1.254 s,  480 / 3709] Action 23:1:Condition
-[  1.254 s,  480 / 3709] Action 23:2:Else
-[  1.254 s,  480 / 3709] Action 29:42:Execute
-[  1.254 s,  480 / 3709] Action 29:43:DistanceValue
-[  1.254 s,  480 / 3709] Action 29:44:Execute: executing action group AssertHigher..
-[  1.254 s,  480 / 3709] Test: SetAIPath_after Pass 0.06375621563174
-[  1.255 s,  480 / 3709] Action 12:0:Log
-[  1.255 s,  480 / 3709] Action 14:0:Condition
-[  1.255 s,  480 / 3709] Action 14:1:Else
-[  1.255 s,  480 / 3709] Action 29:44:Execute
-[  1.255 s,  480 / 3709] Action 29:45:SetActorPath: invalid path..
-[  1.255 s,  480 / 3709] Action 29:45:SetActorPath
-[  1.255 s,  480 / 3709] Action 29:46:Execute: executing action group AssertEqual..
-[  1.255 s,  480 / 3709] Test: SetActorPath_stop Pass Interceptor
-[  1.257 s,  480 / 3709] Action 0:0:Log
-[  1.257 s,  480 / 3709] Action 2:0:Condition
-[  1.257 s,  480 / 3709] Action 2:1:Else
-[  1.257 s,  480 / 3709] Action 29:46:Execute
-[  1.257 s,  480 / 3709] Action 29:47:Execute: executing action group AssertDone..
-[  1.257 s,  480 / 3709] Test: COMPLETE Pass 0
-[  1.258 s,  480 / 3709] Action 24:0:Log
-[  1.258 s,  480 / 3709] Action 26:0:Condition
-[  1.258 s,  480 / 3709] Action 26:1:Else
-[  1.258 s,  480 / 3709] Action 29:47:Execute
+[  0.000 s,  520 / 3908] Server Mission Runtime Log
+[  0.002 s,  520 / 3907] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_04_AI.xml'
+[  0.003 s,  520 / 3907] Mission runtime successfully loaded
+[  0.012 s,  521 / 3907] Action 30:0:Include
+[  0.012 s,  521 / 3907] Action 30:1:SetValue
+[  0.012 s,  521 / 3907] Test: BEGIN Test_04_AI ok
+[  0.014 s,  521 / 3907] Action 30:2:Log
+[  0.015 s,  521 / 3907] Action 30:3:CreateActor
+[  0.015 s,  521 / 3907] Action 30:4:SetPosition
+[  0.015 s,  521 / 3907] Action 30:5:SetValue
+[  0.015 s,  521 / 3907] Action 30:6:SetValue
+[  0.015 s,  521 / 3907] Action 30:7:CreatePath
+[  0.015 s,  521 / 3907] Action 30:8:CreatePath
+[  0.015 s,  521 / 3907] Action 30:9:CreateActor
+[  0.015 s,  521 / 3907] Action 30:10:SetPosition
+[  0.015 s,  521 / 3907] Action 30:11:SetAIState
+[  0.015 s,  521 / 3907] Action 30:12:Execute: executing action group AssertEqual..
+[  0.015 s,  522 / 3907] Test: SetAIState_Instructor Pass Corvette
+[  0.017 s,  522 / 3907] Action 0:0:Log
+[  0.017 s,  522 / 3907] Action 2:0:Condition
+[  0.017 s,  522 / 3907] Action 2:1:Else
+[  0.017 s,  522 / 3907] Action 30:12:Execute
+[  0.017 s,  522 / 3907] Action 30:13:CreateActor
+[  0.017 s,  522 / 3907] Action 30:14:SetPosition
+[  0.017 s,  522 / 3907] Action 30:15:SetAIState
+[  0.017 s,  522 / 3907] Action 30:16:Execute: executing action group AssertNotEqual..
+[  0.017 s,  522 / 3907] Test: SetAIState_Drone11 Pass 12
+[  0.018 s,  522 / 3907] Action 3:0:Log
+[  0.018 s,  522 / 3907] Action 5:0:Condition
+[  0.018 s,  522 / 3907] Action 5:1:Else
+[  0.018 s,  522 / 3907] Action 30:16:Execute
+[  0.018 s,  522 / 3907] Action 30:17:SetAIState
+[  0.018 s,  522 / 3907] Action 30:18:Execute: executing action group AssertEqual..
+[  0.018 s,  522 / 3907] Test: SetAIState_HasAI_false Pass Corvette
+[  0.020 s,  522 / 3907] Action 0:0:Log
+[  0.020 s,  522 / 3907] Action 2:0:Condition
+[  0.020 s,  522 / 3907] Action 2:1:Else
+[  0.020 s,  522 / 3907] Action 30:18:Execute
+[  0.020 s,  522 / 3907] Action 30:19:CreateActor
+[  0.020 s,  522 / 3907] Action 30:20:TransformValue
+[  0.020 s,  522 / 3907] Action 30:21:SetValue
+[  0.020 s,  522 / 3907] Action 30:22:SetAIState
+[  0.020 s,  522 / 3907] Action 30:23:SetValue
+[  0.020 s,  522 / 3907] Action 30:24:Execute: executing action group AssertVec3..
+[  0.020 s,  522 / 3907] Action 23:0:DistanceValue
+[  0.020 s,  522 / 3907] Test: Bandit_Pos Pass [0.0000000000000000, 0.0000000000000000, -8.0000000000000000, 0.0000000000000000]
+[  0.021 s,  522 / 3906] Action 21:0:Log
+[  0.021 s,  522 / 3906] Action 23:1:Condition
+[  0.021 s,  522 / 3906] Action 23:2:Else
+[  0.021 s,  522 / 3906] Action 30:24:Execute
+[  0.021 s,  522 / 3906] Action 30:25:Execute: executing action group AssertEqual..
+[  0.021 s,  522 / 3906] Test: Bandit_AIActorTarget Pass 10
+[  0.023 s,  522 / 3907] Action 0:0:Log
+[  0.023 s,  522 / 3907] Action 2:0:Condition
+[  0.023 s,  522 / 3907] Action 2:1:Else
+[  0.023 s,  522 / 3907] Action 30:25:Execute
+[  0.023 s,  522 / 3907] Action 30:26:SetValue
+[  0.023 s,  522 / 3907] Created trigger 0 (BanditLeaves) for action group 29..
+[  0.023 s,  522 / 3907] Action 30:27:CreateTrigger
+[  0.023 s,  522 / 3907] Action 30:28:CreateActor
+[  0.023 s,  522 / 3907] Action 30:29:SetPosition
+[  0.023 s,  522 / 3907] Action 30:30:SetAIState
+[  0.023 s,  522 / 3907] Action 30:31:SetAIPath
+[  0.023 s,  522 / 3907] Action 30:32:Execute: executing action group AssertEqual..
+[  0.023 s,  522 / 3907] Test: SetAIPath Pass Interceptor
+[  0.025 s,  522 / 3907] Action 0:0:Log
+[  0.025 s,  522 / 3907] Action 2:0:Condition
+[  0.025 s,  522 / 3907] Action 2:1:Else
+[  0.025 s,  522 / 3907] Action 30:32:Execute
+[  0.025 s,  522 / 3907] Action 30:33:CreateActor
+[  0.025 s,  522 / 3907] Action 30:34:SetPosition
+[  0.025 s,  522 / 3907] Action 30:35:SetAIState
+[  0.025 s,  522 / 3907] Action 30:36:MoveAI
+[  0.025 s,  522 / 3907] Action 30:37:Execute: executing action group AssertVec3..
+[  0.025 s,  522 / 3907] Action 23:0:DistanceValue
+[  0.025 s,  522 / 3907] Test: MoveAI_issued Pass [0.5000000000000000, 0.0000000000000000, 0.0000000000000000, 0.0000000000000000]
+[  0.026 s,  522 / 3907] Action 21:0:Log
+[  0.026 s,  522 / 3907] Action 23:1:Condition
+[  0.026 s,  522 / 3907] Action 23:2:Else
+[  0.026 s,  522 / 3907] Action 30:37:Execute
+[  0.027 s,  522 / 3906] Action 30:38:CreateActor
+[  0.027 s,  522 / 3906] Action 30:39:SetActorPath
+[  0.850 s,  523 / 3918] Trigger 0:BanditLeaves:Timer starting
+[  0.850 s,  523 / 3918] Action 29:0:SetAIState
+[  0.850 s,  523 / 3918] SetValue: invalid Source value: Target=(12, -1, 0, , 255)
+[  0.850 s,  523 / 3918] Action 29:1:SetValue
+[  0.850 s,  523 / 3918] Action 29:2:SetValue
+[  0.850 s,  523 / 3918] Trigger 0:BanditLeaves:Timer finished
+[  1.254 s,  523 / 3918] Action 30:40:Wait
+[  1.254 s,  523 / 3918] Action 30:41:Execute: executing action group AssertEqual..
+[  1.254 s,  523 / 3918] Test: BanditLeaves_flag Pass 1
+[  1.255 s,  523 / 3918] Action 0:0:Log
+[  1.255 s,  523 / 3918] Action 2:0:Condition
+[  1.255 s,  523 / 3918] Action 2:1:Else
+[  1.255 s,  523 / 3918] Action 30:41:Execute
+[  1.256 s,  523 / 3918] Action 30:42:Execute: executing action group AssertVec3..
+[  1.256 s,  523 / 3918] Action 23:0:DistanceValue
+[  1.256 s,  523 / 3918] Test: SetActorPath_after Pass [1.0000000000000000, 0.0000000000000000, 2.0000000000000000, 0.0000000000000000]
+[  1.257 s,  523 / 3918] Action 21:0:Log
+[  1.257 s,  523 / 3918] Action 23:1:Condition
+[  1.257 s,  523 / 3918] Action 23:2:Else
+[  1.257 s,  523 / 3918] Action 30:42:Execute
+[  1.257 s,  523 / 3918] Action 30:43:DistanceValue
+[  1.257 s,  523 / 3918] Action 30:44:Execute: executing action group AssertHigher..
+[  1.257 s,  523 / 3918] Test: SetAIPath_after Pass 0.06473100108488
+[  1.258 s,  523 / 3918] Action 12:0:Log
+[  1.258 s,  523 / 3918] Action 14:0:Condition
+[  1.258 s,  523 / 3918] Action 14:1:Else
+[  1.258 s,  523 / 3918] Action 30:44:Execute
+[  1.258 s,  523 / 3918] Action 30:45:SetActorPath: invalid path..
+[  1.258 s,  523 / 3918] Action 30:45:SetActorPath
+[  1.258 s,  523 / 3918] Action 30:46:Execute: executing action group AssertEqual..
+[  1.258 s,  523 / 3918] Test: SetActorPath_stop Pass Interceptor
+[  1.259 s,  523 / 3918] Action 0:0:Log
+[  1.259 s,  523 / 3918] Action 2:0:Condition
+[  1.259 s,  523 / 3918] Action 2:1:Else
+[  1.259 s,  523 / 3918] Action 30:46:Execute
+[  1.259 s,  523 / 3918] Action 30:47:Execute: executing action group AssertDone..
+[  1.259 s,  523 / 3918] Test: COMPLETE Pass 0
+[  1.261 s,  523 / 3918] Action 25:0:Log
+[  1.261 s,  523 / 3918] Action 27:0:Condition
+[  1.261 s,  523 / 3918] Action 27:1:Else
+[  1.261 s,  523 / 3918] Action 30:47:Execute

@@ -55,6 +55,9 @@
 	<ClampValue Target="Global.ClampedLow" Source="-0.5" />
 	<Execute Target="AssertEqual" Arg1="ClampValue_low" Arg2="Global.ClampedLow" Arg3="0" />
 
+	<ClampValue Target="Global.ClampedMid" Source="0.5" />
+	<Execute Target="AssertEqual" Arg1="ClampValue_mid" Arg2="Global.ClampedMid" Arg3="0.5" />
+
 	<PowValue Target="Global.Pow" Source1="2" Source2="3" />
 	<Execute Target="AssertEqual" Arg1="PowValue" Arg2="Global.Pow" Arg3="8" />
 
@@ -63,6 +66,9 @@
 
 	<TruncateValue Target="Global.Trunc" Source="3.14159" Digits="2" />
 	<Execute Target="AssertEqual" Arg1="TruncateValue" Arg2="Global.Trunc" Arg3="3.14" />
+
+	<TruncateValue Target="Global.Trunc0" Source="3.14159" />
+	<Execute Target="AssertEqual" Arg1="TruncateValue_default" Arg2="Global.Trunc0" Arg3="3" />
 
 	<RandomValue Target="Global.RandSame" Source1="7" Source2="7" />
 	<Execute Target="AssertEqual" Arg1="RandomValue_same" Arg2="Global.RandSame" Arg3="7" />
@@ -77,6 +83,12 @@
 	<SetValue Target="Global.B" Source="[0, 1, 0]" />
 	<AddValue Target="Global.VecSum" Source1="Global.A" Source2="Global.B" />
 	<Execute Target="AssertVec3" Arg1="AddValue_vec" Arg2="Global.VecSum" Arg3="[1, 1, 0]" />
+
+	<SubValue Target="Global.VecDiff" Source1="[3, 1, 0]" Source2="[1, 1, 0]" />
+	<Execute Target="AssertVec3" Arg1="SubValue_vec" Arg2="Global.VecDiff" Arg3="[2, 0, 0]" />
+
+	<MulValue Target="Global.VecScaled" Source1="[1, 2, 3]" Source2="2" />
+	<Execute Target="AssertVec3" Arg1="MulValue_vec" Arg2="Global.VecScaled" Arg3="[2, 4, 6]" />
 
 	<SetValue Target="Actor:PlayerActor.Position" Source="[8.4, -0.2, 5.2]" />
 	<Execute Target="AssertVec3" Arg1="Position" Arg2="Actor:PlayerActor.Position" Arg3="[8.4, -0.2, 5.2]" />
@@ -109,6 +121,9 @@
 	<DistanceValue Target="Global.Dist" Source1="Actor:PlayerActor.Position" Source2="Actor:Outpost.Position" />
 	<Execute Target="AssertEqual" Arg1="DistanceValue" Arg2="Global.Dist" Arg3="10" />
 
+	<DistanceValue Target="Global.DistByName" Source1="Actor:PlayerActor" Source2="Actor:Outpost" />
+	<Execute Target="AssertEqual" Arg1="DistanceValue_actors" Arg2="Global.DistByName" Arg3="10" />
+
 	<SetValue Target="Actor:PlayerActor.Direction" Source="[0, 0, 1]" />
 	<SetValue Target="Actor:PlayerActor.Position" Source="[0, 0, 0]" />
 	<TransformValue Target="Global.Behind" Source="[0, 0, -0.2]" From="Actor:PlayerActor" To="" />
@@ -121,6 +136,7 @@
 	<CreateActor Name="H2" Group="Hostiles" Class="Bomber" TeamID="0" DisplayName="H2" />
 	<Execute Target="AssertNotEqual" Arg1="Actors_Hostiles" Arg2="Actors:Hostiles" Arg3="" />
 	<Execute Target="AssertEqual" Arg1="Actor_Hostiles_firstClass" Arg2="Actor:Hostiles.ActorClassName" Arg3="Interceptor" />
+	<Execute Target="AssertIn" Arg1="Hostiles_ID_in_list" Arg2="Actor:H1.ActorID" Arg3="Actors:Hostiles" />
 
 	<SetPosition Target="H1" X="0" Y="0" Z="0" />
 	<SetPosition Target="H2" X="1" Y="0" Z="0" />
@@ -132,6 +148,30 @@
 
 	<SetValue Target="Actor:PlayerActor.HitPointsRatio" Source="0.5" />
 	<Execute Target="AssertEqual" Arg1="HitPointsRatio" Arg2="Actor:PlayerActor.HitPointsRatio" Arg3="0.5" />
+
+	<SetValue Target="Actor:PlayerActor.ShieldPointsRatio" Source="0.5" />
+	<Execute Target="AssertEqual" Arg1="ShieldPointsRatio" Arg2="Actor:PlayerActor.ShieldPointsRatio" Arg3="0.5" />
+
+	<SetValue Target="Actor:PlayerActor.FlightAssist" Source="1" />
+	<Execute Target="AssertEqual" Arg1="FlightAssist" Arg2="Actor:PlayerActor.FlightAssist" Arg3="1" />
+
+	<SetValue Target="Actor:PlayerActor.SensorPower" Source="10.0" />
+	<Execute Target="AssertEqual" Arg1="SensorPower" Arg2="Actor:PlayerActor.SensorPower" Arg3="10" />
+
+	<SetValue Target="Actor:PlayerActor.MaxLifeTime" Source="60" />
+	<Execute Target="AssertEqual" Arg1="MaxLifeTime" Arg2="Actor:PlayerActor.MaxLifeTime" Arg3="60" />
+
+	<SetValue Target="Actor:PlayerActor.TargetIndicator" Source="SmallShip" />
+	<Execute Target="AssertEqual" Arg1="TargetIndicator" Arg2="Actor:PlayerActor.TargetIndicator" Arg3="SmallShip" />
+
+	<SetValue Target="Actor:PlayerActor.Status" Source="8" />
+	<Execute Target="AssertEqual" Arg1="Status_powerBit" Arg2="Actor:PlayerActor.Status" Arg3="8" />
+
+	<SetValue Target="Actor:PlayerActor.ShieldPowerState" Source="0" />
+	<Execute Target="AssertEqual" Arg1="ShieldPowerState" Arg2="Actor:PlayerActor.ShieldPowerState" Arg3="0" />
+
+	<Execute Target="AssertHigher" Arg1="WorldSize" Arg2="Actor:PlayerActor.WorldSize" Arg3="0" />
+	<Execute Target="AssertNotEqual" Arg1="ActorID" Arg2="Actor:PlayerActor.ActorID" Arg3="" />
 
 	<SetValue Target="Actor:PlayerActor.TeamID" Source="0" />
 	<Execute Target="AssertEqual" Arg1="TeamID" Arg2="Actor:PlayerActor.TeamID" Arg3="0" />

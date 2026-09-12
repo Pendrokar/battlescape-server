@@ -31,6 +31,10 @@
 	<Execute Target="AssertVec3" Arg1="SetRotation" Arg2="Actor:Instructor.Rotation" Arg3="[0, 0, 0]" />
 	<Execute Target="AssertEqual" Arg1="SetRotation_W" Arg2="Actor:Instructor.Rotation.W" Arg3="1" />
 
+	<SetRotation Target="Instructor" X="0" Y="0" Z="0" Type="Euler" />
+	<Execute Target="AssertVec3" Arg1="SetRotation_Euler" Arg2="Actor:Instructor.Rotation" Arg3="[0, 0, 0]" />
+	<Execute Target="AssertEqual" Arg1="SetRotation_Euler_W" Arg2="Actor:Instructor.Rotation.W" Arg3="1" />
+
 	<SetVelocity Target="Instructor" X="0" Y="0" Z="0.3" />
 	<Execute Target="AssertVec3" Arg1="SetVelocity" Arg2="Actor:Instructor.Velocity" Arg3="[0, 0, 0.3]" />
 
@@ -89,6 +93,11 @@
 	<SetValue Target="Actor:Drone1.Name" Source="Dummy" />
 	<Execute Target="AssertEqual" Arg1="Rename_Dummy" Arg2="Actor:Dummy.ActorClassName" Arg3="Interceptor" />
 	<Execute Target="AssertNotEqual" Arg1="Rename_oldName" Arg2="Actor:Drone1.ActorClassName" Arg3="Interceptor" />
+
+	<ResetEffects />
+	<DeleteAllActors />
+	<Wait Duration="0.3" />
+	<Execute Target="AssertEqual" Arg1="DeleteAllActors_Player" Arg2="Actor:PlayerActor.ActorClassName" Arg3="" />
 
 	<Execute Target="AssertDone" />
 </Mission>

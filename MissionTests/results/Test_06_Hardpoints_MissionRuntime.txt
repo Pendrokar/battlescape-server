@@ -1,124 +1,124 @@
-[  0.000 s,  476 / 3659] Server Mission Runtime Log
-[  0.002 s,  476 / 3659] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_06_Hardpoints.xml'
-[  0.003 s,  476 / 3659] Mission runtime successfully loaded
-[  0.012 s,  477 / 3659] Action 29:0:Include
-[  0.012 s,  477 / 3659] Action 29:1:SetValue
-[  0.012 s,  477 / 3659] Test: BEGIN Test_06_Hardpoints ok
-[  0.014 s,  477 / 3659] Action 29:2:Log
-[  0.014 s,  478 / 3658] Action 29:3:CreateActor
-[  0.015 s,  478 / 3658] Action 29:4:CreateActor
-[  0.015 s,  478 / 3658] Action 29:5:SetPosition
-[  0.015 s,  478 / 3658] Action 29:6:SetPosition
-[  0.015 s,  478 / 3658] Action 29:7:SetValue
-[  0.015 s,  478 / 3658] Action 29:8:SetValue
-[  0.838 s,  478 / 3620] Action 29:9:Wait
-[  0.838 s,  478 / 3620] Action 29:10:GetHardpointStatus
-[  0.838 s,  478 / 3620] Action 29:11:Execute: executing action group AssertHigherEqual..
-[  0.838 s,  478 / 3620] Test: GetHP_MissilePod_Total Pass 2
-[  0.839 s,  478 / 3620] Action 6:0:Log
-[  0.839 s,  478 / 3620] Action 8:0:Condition
-[  0.839 s,  478 / 3620] Action 8:1:Else
-[  0.839 s,  478 / 3620] Action 29:11:Execute
-[  0.839 s,  478 / 3620] Action 29:12:Execute: executing action group AssertEqual..
-[  0.839 s,  478 / 3620] Test: GetHP_MissilePod_Damaged Pass 0
-[  0.840 s,  478 / 3620] Action 0:0:Log
-[  0.840 s,  478 / 3620] Action 2:0:Condition
-[  0.840 s,  478 / 3620] Action 2:1:Else
-[  0.840 s,  478 / 3620] Action 29:12:Execute
-[  0.841 s,  478 / 3620] Action 29:13:Execute: executing action group AssertEqual..
-[  0.841 s,  478 / 3620] Test: GetHP_MissilePod_Ammo Pass 1.0
-[  0.842 s,  478 / 3620] Action 0:0:Log
-[  0.842 s,  478 / 3620] Action 2:0:Condition
-[  0.842 s,  478 / 3620] Action 2:1:Else
-[  0.842 s,  478 / 3620] Action 29:13:Execute
-[  0.842 s,  478 / 3620] Action 29:14:GetHardpointStatus
-[  0.842 s,  478 / 3620] Action 29:15:Execute: executing action group AssertHigherEqual..
-[  0.842 s,  478 / 3620] Test: GetHP_Guns_Total Pass 4
-[  0.843 s,  478 / 3620] Action 6:0:Log
-[  0.843 s,  478 / 3620] Action 8:0:Condition
-[  0.843 s,  478 / 3620] Action 8:1:Else
-[  0.843 s,  478 / 3620] Action 29:15:Execute
-[  0.843 s,  478 / 3620] Action 29:16:Execute: executing action group AssertHigherEqual..
-[  0.843 s,  478 / 3620] Test: GetHP_Guns_Usable Pass 2
-[  0.844 s,  478 / 3620] Action 6:0:Log
-[  0.844 s,  478 / 3620] Action 8:0:Condition
-[  0.844 s,  478 / 3620] Action 8:1:Else
-[  0.844 s,  478 / 3620] Action 29:16:Execute
-[  0.844 s,  478 / 3620] Action 29:17:SetHardpointStatus
-[  0.844 s,  478 / 3620] Action 29:18:GetHardpointStatus
-[  0.844 s,  478 / 3620] Action 29:19:Execute: executing action group AssertEqual..
-[  0.844 s,  478 / 3620] Test: SetHP_Damaged_Total Pass 4
-[  0.846 s,  478 / 3620] Action 0:0:Log
-[  0.846 s,  478 / 3620] Action 2:0:Condition
-[  0.846 s,  478 / 3620] Action 2:1:Else
-[  0.846 s,  478 / 3620] Action 29:19:Execute
-[  0.846 s,  478 / 3620] Action 29:20:Execute: executing action group AssertHigherEqual..
-[  0.846 s,  478 / 3620] Test: SetHP_Damaged_Damaged Pass 4
-[  0.847 s,  478 / 3620] Action 6:0:Log
-[  0.847 s,  478 / 3620] Action 8:0:Condition
-[  0.847 s,  478 / 3620] Action 8:1:Else
-[  0.847 s,  478 / 3620] Action 29:20:Execute
-[  0.847 s,  478 / 3620] Action 29:21:SetHardpointStatus
-[  0.847 s,  478 / 3620] Action 29:22:GetHardpointStatus
-[  0.847 s,  478 / 3620] Action 29:23:Execute: executing action group AssertEqual..
-[  0.847 s,  478 / 3620] Test: SetHP_Repaired_Damaged Pass 0
-[  0.848 s,  478 / 3620] Action 0:0:Log
-[  0.848 s,  478 / 3620] Action 2:0:Condition
-[  0.848 s,  478 / 3620] Action 2:1:Else
-[  0.848 s,  478 / 3620] Action 29:23:Execute
-[  0.848 s,  478 / 3620] Action 29:24:Execute: executing action group AssertHigherEqual..
-[  0.848 s,  478 / 3620] Test: SetHP_Repaired_Usable Pass 2
-[  0.849 s,  478 / 3620] Action 6:0:Log
-[  0.850 s,  478 / 3620] Action 8:0:Condition
-[  0.850 s,  478 / 3620] Action 8:1:Else
-[  0.850 s,  478 / 3620] Action 29:24:Execute
-[  0.850 s,  478 / 3620] Action 29:25:StartAbility
-[  0.850 s,  478 / 3620] Action 29:26:Execute: executing action group AssertHigherEqual..
-[  0.850 s,  478 / 3620] Action 8:0:Condition
-[  0.850 s,  478 / 3620] Test: StartAbility_Stealth Failure 0
-[  0.851 s,  478 / 3620] Action 7:0:Log
-[  0.851 s,  478 / 3620] Action 7:1:AddValue
-[  0.851 s,  478 / 3620] Action 8:1:Else
-[  0.851 s,  478 / 3620] Action 29:26:Execute
-[  0.851 s,  478 / 3620] Action 29:27:StopAbility
-[  0.851 s,  478 / 3620] Action 29:28:SetValue
-[  0.851 s,  478 / 3620] Created trigger 0 (WentStealth) for action group 28..
-[  0.851 s,  478 / 3620] Action 29:29:CreateTrigger
-[  0.851 s,  478 / 3620] Action 29:30:StartAbility
-[  1.231 s,  478 / 3621] Action 29:31:Wait
-[  1.231 s,  478 / 3621] Action 29:32:Execute: executing action group AssertEqual..
-[  1.231 s,  478 / 3621] Action 2:0:Condition
-[  1.231 s,  478 / 3621] Test: ActorStartAbility Failure 0
-[  1.233 s,  478 / 3621] Action 1:0:Log
-[  1.233 s,  478 / 3621] Action 1:1:AddValue
-[  1.233 s,  478 / 3621] Action 2:1:Else
-[  1.233 s,  478 / 3621] Action 29:32:Execute
-[  1.233 s,  478 / 3621] Action 29:33:SetValue
-[  1.233 s,  478 / 3621] Action 29:34:Execute: executing action group AssertEqual..
-[  1.233 s,  478 / 3621] Test: AmmoUsageRatio Pass 1.0
-[  1.234 s,  478 / 3621] Action 0:0:Log
-[  1.234 s,  478 / 3621] Action 2:0:Condition
-[  1.234 s,  478 / 3621] Action 2:1:Else
-[  1.234 s,  478 / 3621] Action 29:34:Execute
-[  1.234 s,  478 / 3621] Action 29:35:CreateActor
-[  1.234 s,  478 / 3621] Action 29:36:SetPosition
-[  1.234 s,  478 / 3621] Action 29:37:SetHardpointStatus
-[  1.234 s,  478 / 3621] Action 29:38:GetHardpointStatus
-[  1.234 s,  478 / 3621] Action 29:39:Execute: executing action group AssertHigherEqual..
-[  1.234 s,  478 / 3621] Test: Drone11_GunsDamaged Pass 4
-[  1.236 s,  478 / 3621] Action 6:0:Log
-[  1.236 s,  478 / 3621] Action 8:0:Condition
-[  1.236 s,  478 / 3621] Action 8:1:Else
-[  1.236 s,  478 / 3621] Action 29:39:Execute
-[  1.236 s,  478 / 3621] Action 29:40:Execute: executing action group AssertHigherEqual..
-[  1.236 s,  478 / 3621] Test: Drone11_GunsTotal Pass 4
-[  1.237 s,  478 / 3621] Action 6:0:Log
-[  1.237 s,  478 / 3621] Action 8:0:Condition
-[  1.237 s,  478 / 3621] Action 8:1:Else
-[  1.237 s,  478 / 3621] Action 29:40:Execute
-[  1.237 s,  478 / 3621] Action 29:41:Execute: executing action group AssertDone..
-[  1.237 s,  478 / 3621] Action 26:0:Condition
-[  1.237 s,  478 / 3621] Test: COMPLETE Failure 2.0
-[  1.238 s,  478 / 3621] Action 25:0:Log
-[  1.238 s,  478 / 3621] Action 26:1:Else
-[  1.238 s,  478 / 3621] Action 29:41:Execute
+[  0.000 s,  520 / 3924] Server Mission Runtime Log
+[  0.002 s,  520 / 3924] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_06_Hardpoints.xml'
+[  0.003 s,  520 / 3923] Mission runtime successfully loaded
+[  0.021 s,  521 / 3923] Action 34:0:Include
+[  0.021 s,  521 / 3923] Action 34:1:SetValue
+[  0.021 s,  521 / 3923] Test: BEGIN Test_06_Hardpoints ok
+[  0.023 s,  521 / 3923] Action 34:2:Log
+[  0.023 s,  521 / 3923] Action 34:3:CreateActor
+[  0.023 s,  521 / 3923] Action 34:4:CreateActor
+[  0.023 s,  521 / 3923] Action 34:5:SetPosition
+[  0.023 s,  521 / 3923] Action 34:6:SetPosition
+[  0.023 s,  521 / 3923] Action 34:7:SetValue
+[  0.023 s,  521 / 3923] Action 34:8:SetValue
+[  0.024 s,  521 / 3923] Action 34:9:SetValue
+[  0.024 s,  521 / 3923] Action 34:10:SetValue
+[  0.840 s,  522 / 3931] Action 34:11:Wait
+[  0.840 s,  522 / 3931] Action 34:12:GetHardpointStatus
+[  0.840 s,  522 / 3931] Action 34:13:Execute: executing action group AssertHigherEqual..
+[  0.840 s,  522 / 3931] Test: GetHP_MissilePod_Total Pass 2
+[  0.842 s,  522 / 3931] Action 6:0:Log
+[  0.842 s,  522 / 3931] Action 8:0:Condition
+[  0.842 s,  522 / 3931] Action 8:1:Else
+[  0.842 s,  522 / 3931] Action 34:13:Execute
+[  0.842 s,  522 / 3931] Action 34:14:Execute: executing action group AssertEqual..
+[  0.842 s,  522 / 3931] Test: GetHP_MissilePod_Damaged Pass 0
+[  0.843 s,  522 / 3931] Action 0:0:Log
+[  0.843 s,  522 / 3931] Action 2:0:Condition
+[  0.843 s,  522 / 3931] Action 2:1:Else
+[  0.843 s,  522 / 3931] Action 34:14:Execute
+[  0.843 s,  522 / 3931] Action 34:15:Execute: executing action group AssertEqual..
+[  0.843 s,  522 / 3931] Test: GetHP_MissilePod_Ammo Pass 1.0
+[  0.844 s,  522 / 3931] Action 0:0:Log
+[  0.844 s,  522 / 3931] Action 2:0:Condition
+[  0.844 s,  522 / 3931] Action 2:1:Else
+[  0.844 s,  522 / 3931] Action 34:15:Execute
+[  0.844 s,  522 / 3931] Action 34:16:GetHardpointStatus
+[  0.844 s,  522 / 3931] Action 34:17:Execute: executing action group AssertHigherEqual..
+[  0.844 s,  522 / 3931] Test: GetHP_Guns_Total Pass 4
+[  0.845 s,  522 / 3931] Action 6:0:Log
+[  0.845 s,  522 / 3931] Action 8:0:Condition
+[  0.845 s,  522 / 3931] Action 8:1:Else
+[  0.845 s,  522 / 3931] Action 34:17:Execute
+[  0.845 s,  522 / 3931] Action 34:18:Execute: executing action group AssertHigherEqual..
+[  0.845 s,  522 / 3931] Test: GetHP_Guns_Usable Pass 2
+[  0.847 s,  522 / 3931] Action 6:0:Log
+[  0.847 s,  522 / 3931] Action 8:0:Condition
+[  0.847 s,  522 / 3931] Action 8:1:Else
+[  0.847 s,  522 / 3931] Action 34:18:Execute
+[  0.847 s,  522 / 3931] Action 34:19:SetHardpointStatus
+[  0.847 s,  522 / 3931] Action 34:20:GetHardpointStatus
+[  0.847 s,  522 / 3931] Action 34:21:Execute: executing action group AssertEqual..
+[  0.847 s,  522 / 3931] Test: SetHP_Damaged_Total Pass 4
+[  0.848 s,  522 / 3931] Action 0:0:Log
+[  0.848 s,  522 / 3931] Action 2:0:Condition
+[  0.848 s,  522 / 3931] Action 2:1:Else
+[  0.848 s,  522 / 3931] Action 34:21:Execute
+[  0.848 s,  522 / 3931] Action 34:22:Execute: executing action group AssertHigherEqual..
+[  0.848 s,  522 / 3931] Test: SetHP_Damaged_Damaged Pass 4
+[  0.849 s,  522 / 3931] Action 6:0:Log
+[  0.849 s,  522 / 3931] Action 8:0:Condition
+[  0.849 s,  522 / 3931] Action 8:1:Else
+[  0.849 s,  522 / 3931] Action 34:22:Execute
+[  0.849 s,  522 / 3931] Action 34:23:SetHardpointStatus
+[  0.849 s,  522 / 3931] Action 34:24:GetHardpointStatus
+[  0.849 s,  522 / 3931] Action 34:25:Execute: executing action group AssertEqual..
+[  0.849 s,  522 / 3931] Test: SetHP_Repaired_Damaged Pass 0
+[  0.850 s,  522 / 3931] Action 0:0:Log
+[  0.850 s,  522 / 3931] Action 2:0:Condition
+[  0.850 s,  522 / 3931] Action 2:1:Else
+[  0.850 s,  522 / 3931] Action 34:25:Execute
+[  0.850 s,  522 / 3931] Action 34:26:Execute: executing action group AssertHigherEqual..
+[  0.850 s,  522 / 3931] Test: SetHP_Repaired_Usable Pass 2
+[  0.855 s,  522 / 3931] Action 6:0:Log
+[  0.855 s,  522 / 3931] Action 8:0:Condition
+[  0.855 s,  522 / 3931] Action 8:1:Else
+[  0.855 s,  522 / 3931] Action 34:26:Execute
+[  0.855 s,  522 / 3931] Action 34:27:StartAbility
+[  0.855 s,  522 / 3931] Action 34:28:Condition
+[  0.856 s,  522 / 3931] Action 30:0:Execute: executing action group AssertSkipped..
+[  0.856 s,  522 / 3931] Test: StartAbility_Stealth Skipped requires_player
+[  0.857 s,  522 / 3931] Action 24:0:Log
+[  0.857 s,  522 / 3931] Action 30:0:Execute
+[  0.857 s,  522 / 3931] Action 34:29:Else
+[  0.857 s,  522 / 3931] Action 34:30:StopAbility
+[  0.857 s,  522 / 3931] Action 34:31:SetValue
+[  0.857 s,  522 / 3931] Created trigger 0 (WentStealth) for action group 31..
+[  0.857 s,  522 / 3931] Action 34:32:CreateTrigger
+[  0.857 s,  522 / 3931] Action 34:33:StartAbility
+[  1.237 s,  522 / 3930] Action 34:34:Wait
+[  1.237 s,  522 / 3930] Action 34:35:Condition
+[  1.237 s,  522 / 3930] Action 33:0:Execute: executing action group AssertSkipped..
+[  1.237 s,  522 / 3930] Test: ActorStartAbility Skipped requires_player
+[  1.239 s,  522 / 3930] Action 24:0:Log
+[  1.239 s,  522 / 3930] Action 33:0:Execute
+[  1.239 s,  522 / 3930] Action 34:36:Else
+[  1.239 s,  522 / 3930] Action 34:37:SetValue
+[  1.239 s,  522 / 3930] Action 34:38:Execute: executing action group AssertEqual..
+[  1.239 s,  522 / 3930] Test: AmmoUsageRatio Pass 1.0
+[  1.240 s,  522 / 3930] Action 0:0:Log
+[  1.240 s,  522 / 3930] Action 2:0:Condition
+[  1.240 s,  522 / 3930] Action 2:1:Else
+[  1.240 s,  522 / 3930] Action 34:38:Execute
+[  1.240 s,  522 / 3930] Action 34:39:CreateActor
+[  1.240 s,  522 / 3930] Action 34:40:SetPosition
+[  1.240 s,  522 / 3930] Action 34:41:SetHardpointStatus
+[  1.240 s,  522 / 3930] Action 34:42:GetHardpointStatus
+[  1.240 s,  522 / 3930] Action 34:43:Execute: executing action group AssertHigherEqual..
+[  1.240 s,  522 / 3930] Test: Drone11_GunsDamaged Pass 4
+[  1.241 s,  522 / 3930] Action 6:0:Log
+[  1.242 s,  522 / 3930] Action 8:0:Condition
+[  1.242 s,  522 / 3930] Action 8:1:Else
+[  1.242 s,  522 / 3930] Action 34:43:Execute
+[  1.242 s,  522 / 3930] Action 34:44:Execute: executing action group AssertHigherEqual..
+[  1.242 s,  522 / 3930] Test: Drone11_GunsTotal Pass 4
+[  1.243 s,  522 / 3930] Action 6:0:Log
+[  1.243 s,  522 / 3930] Action 8:0:Condition
+[  1.243 s,  522 / 3930] Action 8:1:Else
+[  1.243 s,  522 / 3930] Action 34:44:Execute
+[  1.243 s,  522 / 3930] Action 34:45:Execute: executing action group AssertDone..
+[  1.243 s,  522 / 3930] Test: COMPLETE Pass 0
+[  1.244 s,  522 / 3930] Action 25:0:Log
+[  1.244 s,  522 / 3930] Action 27:0:Condition
+[  1.244 s,  522 / 3930] Action 27:1:Else
+[  1.244 s,  522 / 3930] Action 34:45:Execute
