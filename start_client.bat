@@ -4,10 +4,10 @@ setlocal EnableExtensions EnableDelayedExpansion
 call "%~dp0ib_env.bat"
 if errorlevel 1 exit /b 1
 
-set "USE_STEAM=1"
+set "USE_STEAM=0"
 set "USE_JOIN=1"
 set "USE_OFFLINE=1"
-set "USE_AUTH=1"
+set "USE_AUTH=0"
 set "USE_PASSWORD=0"
 set "USE_SHARED=0"
 set "USE_DIRECT=1"
@@ -268,10 +268,13 @@ if "%USE_AUTH%"=="1" (
 set "IB_LAUNCH_PASSWORD="
 if "%USE_PASSWORD%"=="1" set "IB_LAUNCH_PASSWORD=-serverpassword %PASSWORD%"
 set "IB_LAUNCH_DIRECT="
+rem Commented out for compatibility with local server
 if "%USE_DIRECT%"=="1" (
-    set "IB_LAUNCH_DIRECT=-direct %HOST% -host %HOST% %IB_LAUNCH_PASSWORD% -port %PORT% -portrange %PORTRANGE% -username %USERNAME%"
+    rem set "IB_LAUNCH_DIRECT=-direct %HOST% -host %HOST% %IB_LAUNCH_PASSWORD% -port %PORT% -portrange %PORTRANGE%
+    rem -username %USERNAME%"
 ) else (
-    set "IB_LAUNCH_DIRECT=-host %HOST% -port %PORT% -portrange %PORTRANGE% -username %USERNAME%"
+    rem set "IB_LAUNCH_DIRECT=-host %HOST% -port %PORT% -portrange %PORTRANGE%
+    rem -username %USERNAME%"
 )
 powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0ib_launch.ps1" -PidFile "%IB_CLIENT_PID_FILE%" %IB_LAUNCH_EXTRA% %IB_LAUNCH_DIRECT% %IB_LAUNCH_AUTH%
 

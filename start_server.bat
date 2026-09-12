@@ -8,10 +8,11 @@ set "IB_SCRIPTS=%~dp0"
 call "%IB_SCRIPTS%ib_env.bat"
 if errorlevel 1 exit /b 1
 
-set "USE_STEAM=1"
+set "USE_STEAM=0"
 set "SERVER_MODE=private"
 set "USE_REBOOT=1"
 set "MISSION=%IB_MISSION_DEFAULT%"
+set "USE_CUSTOM_CONFIG=0"
 set "SERVERCONFIG=%IB_SERVERCONFIG%"
 
 :parse
@@ -125,10 +126,12 @@ if "%SERVER_MODE%"=="public" (
 )
 if "%USE_STEAM%"=="1" (echo   Steam       : yes) else (echo   Steam       : no)
 if "%USE_REBOOT%"=="1" (echo   Reboot/no-DB: yes) else (echo   Reboot/no-DB: no)
-if exist "%IB_DOCS_SERVER%\%SERVERCONFIG%" (
-    echo   Documents   : "%IB_DOCS_SERVER%\%SERVERCONFIG%"
-) else (
-    echo   Documents   : "%SERVERCONFIG%" not found yet -- the game copies it from Dev\ on first run.
+if "%USE_CUSTOM_CONFIG%"=="1" (
+    if exist "%IB_DOCS_SERVER%\%SERVERCONFIG%" (
+        echo   Documents   : "%IB_DOCS_SERVER%\%SERVERCONFIG%"
+    ) else (
+        echo   Documents   : "%SERVERCONFIG%" not found yet -- the game copies it from Dev\ on first run.
+    )
 )
 
 REM Launch outside the parent job so the server keeps running after this window closes.
