@@ -1,37 +1,43 @@
 ## Assistant
 
-Seven dedicated-server mission scripts now live in `MissionTests/`. Each one logs `Test: $(Arg1) $(Arg2) $(Arg3)` so the actual value sits next to the expected value in `MissionRuntime.txt` and the server log.
+All seven mission scripts now finish with Test: COMPLETE Pass 0. Pass and Failure come from Condition / Else in Test_Assert.xml, not from me comparing log values by hand.
 
-A `PlayerActor` interceptor is the stand-in ship. Nothing waits for a real client. I started and killed only the test dedicated server for each run.
+Each script was run on a dedicated server (PlayerActor as the stand-in ship, no client). That server was started and killed per script; nothing is running now.
 
-**`start_server.bat`:** `shift` after `mission <path>` was rewriting `%~dp0` to the mission folder, so `ib_launch.ps1` could not be found. The script directory is now captured before any `shift`.
+Scripts
 
-### Scripts and results
+┌────────────────────┬───────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────┐
+│ Script             │ Manual coverage                                                                       │ Result                     │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_01_Values.xml │ Log, values, arithmetic, vectors, TransformValue, Overlap, actor/server params        │ Pass                       │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_02_           │ Execute + Local.ArgN, Include, EntryPoint, Replace, Wait, Loop, Break, Condition      │ Pass                       │
+│ ControlFlow.xml    │ /Else, Stop                                                                           │                            │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_03_Actors.xml │ CreateActor, SetPosition/Rotation/Velocity, Parent frame, wing spawn, DeleteActor,    │ Pass (TeamID="255" reads   │
+│                    │ KillActor                                                                             │ back as -1)                │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_04_AI.xml     │ CreatePath, SetAIState, bandit spawn, Timer WarpOut, SetAIPath, MoveAI, SetActorPath  │ Pass                       │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_05_Triggers   │ ActorCreated, ActorDestroyed, ActorProperty, Timer, Condition, ResetTrigger, Unique,  │ Pass                       │
+│ .xml               │ DeleteTrigger, ActorLookAt, InterruptTrigger                                          │                            │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_06_Hardpoints │ Get/SetHardpointStatus, AmmoUsageRatio                                                │ Pass                       │
+│ .xml               │                                                                                       │                            │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────┤
+│ Test_07_           │ SaveToDB / LoadFromDB, server settings                                                │ Pass                       │
+│ Persistence.xml    │                                                                                       │                            │
+└────────────────────┴───────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────┘
 
-| Script | Manual sections | Result |
-|---|---|---|
-| `Test_01_Values.xml` | Log, values, arithmetic, vectors, TransformValue, Overlap, actor/server params | Pass (unknown action `NotARealAction` skipped as documented) |
-| `Test_02_ControlFlow.xml` | Execute + `Local.ArgN`, Include, EntryPoint, Replace, Wait, Loop, Break, Condition/Else, Stop | Pass |
-| `Test_03_Actors.xml` | CreateActor, SetPosition/Rotation/Velocity, Parent frame, wing spawn loop, DeleteActor, KillActor | Pass (`TeamID="255"` reads back as `-1`) |
-| `Test_04_AI.xml` | CreatePath, SetAIState, bandit spawn, Timer WarpOut, SetAIPath, MoveAI, SetActorPath | Pass |
-| `Test_05_Triggers.xml` | ActorCreated, ActorDestroyed, ActorProperty, Timer, Condition, ResetTrigger, Unique, DeleteTrigger, ActorLookAt | Pass except ActorRange (below) |
-| `Test_06_Hardpoints.xml` | Get/SetHardpointStatus, AmmoUsageRatio | Pass; StartAbility did not apply (below) |
-| `Test_07_Persistence.xml` | SaveToDB / LoadFromDB, server settings | Pass |
+Logs: MissionTests/results/*_MissionRuntime.txt. Each subtest line is Test: <name> Pass|Failure|Skipped <actual>.
 
-Copied logs: `MissionTests/results/*_MissionRuntime.txt` and `*_ServerLog.txt`. Same `Test:` lines appear in both.
+Comparison conditions that were wrong or weak
 
-### Not tested (need a joined player)
+• DistanceValue with bare names (PlayerActor, Outpost) evaluates to 0. The manual’s “two actors” form needs Actor:PlayerActor and Actor:Outpost.
+• Unique used 30s timers that never fired, so it did not test uniqueness. It now creates two Unique="true" timers; only the first runs (UniqueFired=1).
+• In / NotIn / Lower / LowerEqual, case-insensitive In, and case-sensitive Equal were missing from the control-flow script and are now asserted.
+• ActorRange and StartAbility / ActorStartAbility still do not fire without a joined player. Those subtests log Skipped requires_player and do not increment FailCount.
 
-Per the manual, these wait on a client or only fire for a connected player, so they were skipped: `AwaitPlayers`, `Sync`, `FadeIn`, `SetCameraPath`, `SendTransmission Wait`, `WaitTransmissions`, `Highlight`, `SetPlayerState`, input/UI, objectives, waypoints, transmissions/popups/tips, and the Player\* / `TargetSelected` / `ActorAimAt` triggers.
+Not tested (need a joined player)
 
-**Tried with `PlayerActor` and did not fire without a join:**
-- `ActorRange` (enter/leave) — trigger created, ships teleported in/out, body never ran
-- `StartAbility` / `ActorStartAbility` Stealth — `OutValue` stayed `0`
-
-Run one yourself:
-
-```bat
-start_server.bat mission C:\Programming\grok-build\ib-server\MissionTests\Test_01_Values.xml
-```
-
-Then inspect `Documents\I-Novae Studios\Infinity Battlescape Server\Logs\MissionRuntime.txt` for `Test:` lines. Stop with `kill_server.bat`.
+Per the manual and the instruction to skip anything that cannot run without a player: AwaitPlayers, Sync, FadeIn, SetCameraPath, transmissions, highlights, SetPlayerState, input/UI, objectives, waypoints, and the Player* / TargetSelected / ActorAimAt triggers.
