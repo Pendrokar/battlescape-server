@@ -14,6 +14,7 @@ set "USE_REBOOT=1"
 set "MISSION=%IB_MISSION_DEFAULT%"
 set "USE_CUSTOM_CONFIG=0"
 set "SERVERCONFIG=%IB_SERVERCONFIG%"
+set "ENTRYPOINT="
 
 :parse
 if "%~1"=="" goto :parsed
@@ -73,6 +74,16 @@ if /i "%~1"=="config" (
     shift
     goto :parse
 )
+if /i "%~1"=="entrypoint" (
+    if "%~2"=="" (
+        echo ERROR: Incorrect command argument. "entrypoint" requires a value.
+        goto :usage
+    )
+    set "ENTRYPOINT=%~2"
+    shift
+    shift
+    goto :parse
+)
 
 echo ERROR: Incorrect command argument "%~1".
 echo The server was not started.
@@ -119,6 +130,11 @@ echo Starting Infinity Battlescape server...
 echo   Working dir : "%IB_BIN%"
 echo   Mission     : "%MISSION%"
 echo   Config      : "%SERVERCONFIG%"
+if not "%ENTRYPOINT%"=="" (
+    echo   EntryPoint  : "%ENTRYPOINT%"
+) else (
+    echo   EntryPoint  : default ^(Main^)
+)
 if "%SERVER_MODE%"=="public" (
     echo   Mode        : dedicated public
 ) else (
@@ -140,7 +156,9 @@ if "%USE_STEAM%"=="1" set "IB_LAUNCH_EXTRA=%IB_LAUNCH_EXTRA% -steam"
 if "%SERVER_MODE%"=="public" (set "IB_LAUNCH_MODE=-dedicated -public") else (set "IB_LAUNCH_MODE=-dedicated -private")
 set "IB_LAUNCH_REBOOT="
 if "%USE_REBOOT%"=="1" set "IB_LAUNCH_REBOOT=-reboot"
-powershell -NoProfile -ExecutionPolicy Bypass -File "%IB_SCRIPTS%ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
+set "IB_LAUNCH_ENTRYPOINT="
+if not "%ENTRYPOINT%"=="" set IB_LAUNCH_ENTRYPOINT=-entrypoint "%ENTRYPOINT%"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%IB_SCRIPTS%ib_launch.ps1" -PidFile "%IB_SERVER_PID_FILE%" %IB_LAUNCH_EXTRA% -server %IB_LAUNCH_MODE% %IB_LAUNCH_REBOOT% %IB_LAUNCH_ENTRYPOINT% -mission "%MISSION%" -serverconfig "%SERVERCONFIG%"
 
 if not exist "%IB_SERVER_PID_FILE%" (
     echo ERROR: Failed to start the server process.
@@ -195,6 +213,7 @@ echo   reboot             Do not load DB ^(default, -reboot^)
 echo   db                 Load DB ^(omit -reboot^)
 echo   mission ^<xml^>      Mission file ^(default: Documents Workshop\Empty.xml^)
 echo   config ^<xml^>       -serverconfig name ^(default: LocalServerConfig.xml^)
+echo   entrypoint ^<name^>  -entrypoint string for Global.EntryPoint ^(default: omit, game uses Main^)
 echo   help               Show this help
 echo.
 echo Examples:
@@ -202,6 +221,7 @@ echo   %~nx0
 echo   %~nx0 steam
 echo   %~nx0 public
 echo   %~nx0 mission "%IB_MISSION_DEFAULT%"
+echo   %~nx0 mission "%IB_MISSION_DEFAULT%" entrypoint Custom
 echo.
 echo Incorrect arguments abort without starting a process.
 echo Stop a running server with kill_server.bat

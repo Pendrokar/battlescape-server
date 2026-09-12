@@ -1,0 +1,26 @@
+<Mission ID="909" Category="Workshop" Title="Test_09_EntryPoint" Descr="Global.EntryPoint default and -entrypoint command line" Tags="TEST" GameMode="Custom">
+	<EntryPoint Name="Custom" Text="UI_Trial" Hidden="false" />
+	<Include Target="$Current/Test_Assert.xml" />
+	<SetValue Target="Global.FailCount" Source="0" />
+	<Log Text="Test: $(Arg1) $(Arg2) $(Arg3)" Arg1="BEGIN" Arg2="Test_09_EntryPoint" Arg3="ok" />
+
+	<CreateActor Name="PlayerActor" Class="Interceptor" TeamID="1" Loadout="Default" AI="false" DisplayName="PlayerActor" />
+	<SetPosition Target="PlayerActor" X="0" Y="0" Z="0" />
+
+	<Execute Target="AssertEqual" Arg1="EntryPoint" Arg2="Global.EntryPoint" Arg3="Custom" />
+
+	<SetValue Target="Global.CustomRan" Source="0" />
+	<SetValue Target="Global.MainRan" Source="0" />
+	<Actions Name="OnlyCustom">
+		<SetValue Target="Global.CustomRan" Source="1" />
+	</Actions>
+	<Actions Name="OnlyMain">
+		<SetValue Target="Global.MainRan" Source="1" />
+	</Actions>
+	<Execute Target="OnlyCustom" EntryPoint="Custom" />
+	<Execute Target="OnlyMain" EntryPoint="Main" />
+	<Execute Target="AssertEqual" Arg1="OnlyCustom_ran" Arg2="Global.CustomRan" Arg3="1" />
+	<Execute Target="AssertEqual" Arg1="OnlyMain_skipped" Arg2="Global.MainRan" Arg3="0" />
+
+	<Execute Target="AssertDone" />
+</Mission>

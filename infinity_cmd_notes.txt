@@ -50,28 +50,10 @@ IB Server:
 Commands must be run from the IB Bin directory to work.
 
 no Steam:
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -shared -private -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Workshop\Empty.xml" -serverconfig "PrivateSharedServerConfig.xml"
-
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -dedicated -public -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Workshop\Empty.xml" -serverconfig "PrivateSharedServerConfig.xml"
-
-with Steam:
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -server -shared -private -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Training\Empty.xml"-serverconfig "PrivateSharedServerConfig.xml"
-
-PrivateSharedServerConfig.xml = it is the one under Documents, if it does not exist it is copied from the IB Dev\ folder
-
+"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -server -private -dedicated -reboot -mission "C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Dev\Server\Workshop\Empty.xml" -serverconfig "PrivateSharedServerConfig.xml"
 
 
 IB Client tests that connect to server:
-
-ALMOST WORKS:
-
-(Client goes to loading screen, but never connects)
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -offline -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
-
-(Client connects to server, but server denies client due to an invalid "token or password")
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
-
-"C:\Program Files (x86)\Steam\steamapps\common\Infinity Battlescape\Bin\Infinity Battlescape.exe" -steam -join -offline -nopreload -direct 127.0.0.1 -auth -host 127.0.0.1 -serverpassword abcd1234 -port 7778 -portrange 1 -username Pendrokar
 
 WORKS (client started server, in-game Empty, 2026-08-16 16:26 and 17:20):
 Client: -steam

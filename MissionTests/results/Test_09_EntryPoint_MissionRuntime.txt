@@ -1,0 +1,41 @@
+[  0.000 s,  520 / 3426] Server Mission Runtime Log
+[  0.002 s,  520 / 3426] Loading mission runtime from config file 'C:\Programming\grok-build\ib-server\MissionTests\Test_09_EntryPoint.xml'
+[  0.003 s,  521 / 3425] Mission runtime successfully loaded
+[  0.012 s,  522 / 3423] Action 31:0:EntryPoint
+[  0.012 s,  522 / 3423] Action 31:1:Include
+[  0.012 s,  522 / 3423] Action 31:2:SetValue
+[  0.012 s,  522 / 3423] Test: BEGIN Test_09_EntryPoint ok
+[  0.014 s,  522 / 3423] Action 31:3:Log
+[  0.015 s,  522 / 3422] Action 31:4:CreateActor
+[  0.015 s,  522 / 3422] Action 31:5:SetPosition
+[  0.015 s,  522 / 3422] Action 31:6:Execute: executing action group AssertEqual..
+[  0.015 s,  522 / 3422] Test: EntryPoint Pass Custom
+[  0.016 s,  522 / 3422] Action 0:0:Log
+[  0.016 s,  522 / 3422] Action 2:0:Condition
+[  0.016 s,  522 / 3422] Action 2:1:Else
+[  0.016 s,  522 / 3422] Action 31:6:Execute
+[  0.016 s,  522 / 3422] Action 31:7:SetValue
+[  0.016 s,  522 / 3422] Action 31:8:SetValue
+[  0.016 s,  522 / 3422] Action 31:9:Execute: executing action group OnlyCustom..
+[  0.017 s,  522 / 3422] Action 29:0:SetValue
+[  0.017 s,  522 / 3422] Action 31:9:Execute
+[  0.017 s,  522 / 3422] Skipping action 31:10:Execute: entry point not matching for action group OnlyMain..
+[  0.017 s,  522 / 3422] Action 31:10:Execute
+[  0.017 s,  522 / 3422] Action 31:11:Execute: executing action group AssertEqual..
+[  0.017 s,  522 / 3422] Test: OnlyCustom_ran Pass 1
+[  0.018 s,  522 / 3422] Action 0:0:Log
+[  0.018 s,  522 / 3422] Action 2:0:Condition
+[  0.018 s,  522 / 3422] Action 2:1:Else
+[  0.018 s,  522 / 3422] Action 31:11:Execute
+[  0.018 s,  522 / 3422] Action 31:12:Execute: executing action group AssertEqual..
+[  0.018 s,  522 / 3422] Test: OnlyMain_skipped Pass 0
+[  0.019 s,  522 / 3422] Action 0:0:Log
+[  0.019 s,  522 / 3422] Action 2:0:Condition
+[  0.019 s,  522 / 3422] Action 2:1:Else
+[  0.019 s,  522 / 3422] Action 31:12:Execute
+[  0.019 s,  522 / 3422] Action 31:13:Execute: executing action group AssertDone..
+[  0.019 s,  522 / 3422] Test: COMPLETE Pass 0
+[  0.020 s,  522 / 3422] Action 25:0:Log
+[  0.020 s,  522 / 3422] Action 27:0:Condition
+[  0.020 s,  522 / 3422] Action 27:1:Else
+[  0.020 s,  522 / 3422] Action 31:13:Execute
