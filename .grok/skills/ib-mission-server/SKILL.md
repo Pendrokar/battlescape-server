@@ -3,7 +3,7 @@ name: ib-mission-server
 description: >
   Start and stop the local Infinity Battlescape dedicated server to run a mission
   XML, then read MissionRuntime.txt. Use when executing MissionTests, running
-  start_server.bat mission, or the user runs /ib-mission-server.
+  start_server.bat mission or entrypoint, or the user runs /ib-mission-server.
 ---
 
 # Run a mission on the dedicated server
@@ -20,6 +20,7 @@ Start and kill **only** this test server. Do not start `start_client.bat` unless
 
 ```bat
 start_server.bat mission C:\Programming\grok-build\ib-server\MissionTests\Test_01_Values.xml
+start_server.bat mission C:\Programming\grok-build\ib-server\MissionTests\Test_09_EntryPoint.xml entrypoint Custom
 ```
 
 The bat waits until named event `ServerStarted` (30s) and writes `server.pid`. Exit 0 means the process is up. Instant mission work may already be done by then.
@@ -55,3 +56,4 @@ If `ServerStarted` is not signaled, the process may still be running; check the 
 | `public` | Public dedicated instead of private |
 | `steam` | Add `-steam` |
 | `config <xml>` | Alternate `-serverconfig` (default `PrivateSharedServerConfig.xml`) |
+| `entrypoint <name>` | Pass `-entrypoint` so `Global.EntryPoint` is `<name>` instead of `Main`. Use when the script under test is gated on that name (see `mission-test-assert`). |

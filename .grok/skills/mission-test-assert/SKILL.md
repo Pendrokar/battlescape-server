@@ -3,7 +3,8 @@ name: mission-test-assert
 description: >
   Write Infinity Battlescape mission-script tests with MissionTests/Test_Assert.xml
   so Condition helpers log Pass/Failure/Skipped. Use when adding or editing
-  MissionTests XML, asserting runtime values, or the user runs /mission-test-assert.
+  MissionTests XML, asserting runtime values, gating asserts with EntryPoint
+  in a player-run mission, or the user runs /mission-test-assert.
 ---
 
 # Mission script asserts
@@ -64,3 +65,9 @@ Do not add a new helper when an existing comparison already fits. If you must, p
 Fail when the example should work on a dedicated server with `PlayerActor` only (`StartAbility` that spawns an actor, such as `MineLauncher` → `ProximityMine`, does).
 
 Custom loadouts: keep XML under `MissionTests/Loadouts/` and copy into the server Documents `Loadouts` folder **before** start (see `ib-mission-server`).
+
+## EntryPoint
+
+Default `Global.EntryPoint` is `Main`. `start_server.bat ... entrypoint <name>` sets it (`ib-mission-server`). Assert with `AssertEqual` Arg2=`Global.EntryPoint`. `Execute Target="Group" EntryPoint="Name"` runs the group only when that is the current value.
+
+Player-run missions can host the same automated checks: declare `<EntryPoint Name="Test" Hidden="true" />`, put the `Test_Assert.xml` sequence in a group, and `Execute` it with `EntryPoint="Test"` (or a `Condition` on `Global.EntryPoint`). Menu play stays `Main`; dedicated `entrypoint Test` runs the asserts without a client. Example dedicated-only script: `MissionTests/Test_09_EntryPoint.xml`.
