@@ -17,7 +17,8 @@ $tests = @(
     "Test_04_AI.xml",
     "Test_05_Triggers.xml",
     "Test_06_Hardpoints.xml",
-    "Test_07_Persistence.xml"
+    "Test_07_Persistence.xml",
+    "Test_08_StartAbility.xml"
 )
 
 function Stop-TestServer {
